@@ -6,10 +6,10 @@ html = r'''<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>LUNA NAIL STUDIO — Rezerwacja online</title>
+  <title>LUNA NAIL STUDIO — Rezerwacja</title>
   <meta
     name="description"
-    content="LUNA NAIL STUDIO — manicure, stylizacja paznokci i spokojna rezerwacja online w kilka kliknięć."
+    content="LUNA NAIL STUDIO — manicure, stylizacja paznokci, pielęgnacja dłoni i rezerwacja online bez wiadomości."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,33 +29,34 @@ html = r'''<!DOCTYPE html>
       --bg-0: #fff7fb;
       --bg-1: #fffafd;
       --bg-2: #f8edf4;
-      --bg-3: #f3e2ed;
-      --bg-4: #ead4e3;
+      --bg-3: #f1deea;
+      --bg-4: #ead1df;
 
-      --panel: rgba(255, 255, 255, 0.62);
-      --panel-strong: rgba(255, 255, 255, 0.78);
-      --panel-heavy: rgba(255, 255, 255, 0.92);
+      --panel: rgba(255, 255, 255, 0.58);
+      --panel-strong: rgba(255, 255, 255, 0.74);
+      --panel-heavy: rgba(255, 255, 255, 0.9);
 
-      --line: rgba(94, 46, 74, 0.10);
-      --line-strong: rgba(94, 46, 74, 0.16);
-      --line-soft: rgba(94, 46, 74, 0.06);
-      --line-pink: rgba(220, 126, 172, 0.24);
-      --line-pink-strong: rgba(220, 126, 172, 0.36);
+      --line: rgba(93, 41, 70, 0.10);
+      --line-strong: rgba(93, 41, 70, 0.16);
+      --line-soft: rgba(93, 41, 70, 0.055);
+      --line-rose: rgba(218, 116, 165, 0.24);
+      --line-rose-strong: rgba(218, 116, 165, 0.38);
 
-      --text: #34202b;
-      --text-strong: #21121b;
-      --muted: #8a6c7c;
-      --soft: #b99aac;
+      --text: #2d1723;
+      --text-strong: #1e0f18;
+      --muted: #8a6478;
+      --soft: #b08ca0;
 
-      --pink: #df7fab;
-      --pink-2: #c96798;
-      --pink-3: #f7bfd8;
-      --cream: #fff6ed;
+      --rose: #dd76a8;
+      --rose-2: #c45a8e;
+      --rose-3: #f7b8d2;
+      --rose-4: #ffdce9;
+      --cream: #fff8f1;
 
-      --shadow-xl: 0 34px 100px rgba(116, 72, 96, 0.22);
-      --shadow-lg: 0 24px 70px rgba(116, 72, 96, 0.18);
-      --shadow-md: 0 18px 46px rgba(116, 72, 96, 0.14);
-      --shadow-sm: 0 12px 28px rgba(116, 72, 96, 0.10);
+      --shadow-xl: 0 34px 100px rgba(119, 70, 96, 0.24);
+      --shadow-lg: 0 24px 70px rgba(119, 70, 96, 0.19);
+      --shadow-md: 0 18px 46px rgba(119, 70, 96, 0.15);
+      --shadow-sm: 0 12px 28px rgba(119, 70, 96, 0.11);
 
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -80,10 +81,10 @@ html = r'''<!DOCTYPE html>
       font-family: "Manrope", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 0% 0%, rgba(247, 191, 216, 0.38), transparent 25%),
-        radial-gradient(circle at 100% 8%, rgba(255, 221, 236, 0.44), transparent 28%),
-        radial-gradient(circle at 50% 100%, rgba(223, 127, 171, 0.16), transparent 34%),
-        linear-gradient(180deg, #fffafd 0%, #fff7fb 44%, #f8edf4 100%);
+        radial-gradient(circle at 0% 0%, rgba(247, 184, 210, 0.54), transparent 25%),
+        radial-gradient(circle at 100% 8%, rgba(255, 220, 233, 0.58), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(221, 118, 168, 0.22), transparent 34%),
+        linear-gradient(180deg, #fffafd 0%, #fff7fb 42%, #f8edf4 100%);
       overflow-x: hidden;
       overflow-y: auto;
       position: relative;
@@ -91,7 +92,9 @@ html = r'''<!DOCTYPE html>
       text-rendering: optimizeLegibility;
     }
 
-    body.booking-open { overflow: hidden; }
+    body.booking-open {
+      overflow: hidden;
+    }
 
     body::before {
       content: "";
@@ -100,9 +103,9 @@ html = r'''<!DOCTYPE html>
       pointer-events: none;
       z-index: 0;
       background:
-        linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 250, 253, 0.28)),
-        linear-gradient(rgba(94, 46, 74, 0.026) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(94, 46, 74, 0.026) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.68), rgba(255, 248, 252, 0.30)),
+        linear-gradient(rgba(93, 41, 70, 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(93, 41, 70, 0.026) 1px, transparent 1px);
       background-size: auto, 34px 34px, 34px 34px;
       mask-image: radial-gradient(circle at 50% 18%, black 18%, transparent 82%);
     }
@@ -115,7 +118,7 @@ html = r'''<!DOCTYPE html>
       z-index: 0;
       background:
         radial-gradient(circle at center, rgba(255, 255, 255, 0.62), transparent 62%),
-        linear-gradient(120deg, transparent 0 48%, rgba(223, 127, 171, 0.045) 48% 52%, transparent 52% 100%);
+        linear-gradient(120deg, transparent 0 48%, rgba(221, 118, 168, 0.05) 48% 52%, transparent 52% 100%);
     }
 
     h1, h2, h3, p { margin: 0; }
@@ -142,14 +145,16 @@ html = r'''<!DOCTYPE html>
 
     .landing-bg-orb,
     .landing-noise,
-    .screen-flash { pointer-events: none; }
+    .screen-flash {
+      pointer-events: none;
+    }
 
     .landing-bg-orb {
       position: fixed;
       z-index: 1;
       border-radius: 999px;
       filter: blur(90px);
-      opacity: 0.92;
+      opacity: 0.95;
       animation: orbMove 12s ease-in-out infinite alternate;
     }
 
@@ -158,7 +163,7 @@ html = r'''<!DOCTYPE html>
       height: 440px;
       left: -160px;
       top: -120px;
-      background: rgba(247, 191, 216, 0.52);
+      background: rgba(247, 184, 210, 0.56);
     }
 
     .landing-bg-orb.two {
@@ -166,7 +171,7 @@ html = r'''<!DOCTYPE html>
       height: 520px;
       right: -220px;
       top: 220px;
-      background: rgba(223, 127, 171, 0.22);
+      background: rgba(221, 118, 168, 0.26);
       animation-delay: -3s;
     }
 
@@ -175,7 +180,7 @@ html = r'''<!DOCTYPE html>
       height: 500px;
       left: 20%;
       bottom: -260px;
-      background: rgba(255, 225, 239, 0.54);
+      background: rgba(255, 220, 233, 0.62);
       animation-delay: -6s;
     }
 
@@ -183,10 +188,10 @@ html = r'''<!DOCTYPE html>
       position: fixed;
       inset: 0;
       z-index: 1;
-      opacity: 0.45;
+      opacity: 0.42;
       background-image:
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.85) 0 1px, transparent 1px),
-        radial-gradient(circle at 75% 75%, rgba(223, 127, 171, 0.12) 0 1px, transparent 1px);
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(221, 118, 168, 0.12) 0 1px, transparent 1px);
       background-size: 34px 34px, 48px 48px;
       mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
@@ -197,7 +202,7 @@ html = r'''<!DOCTYPE html>
       z-index: 300;
       opacity: 0;
       background:
-        radial-gradient(circle at center, rgba(247, 191, 216, 0.24), transparent 36%),
+        radial-gradient(circle at center, rgba(247, 184, 210, 0.26), transparent 36%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent 45%);
       transition: opacity 160ms ease;
     }
@@ -211,8 +216,8 @@ html = r'''<!DOCTYPE html>
       background: linear-gradient(180deg, rgba(255, 250, 253, 0.94), rgba(255, 247, 251, 0.78));
       backdrop-filter: blur(20px) saturate(135%);
       -webkit-backdrop-filter: blur(20px) saturate(135%);
-      border-bottom: 1px solid rgba(94, 46, 74, 0.08);
-      box-shadow: 0 18px 36px rgba(116, 72, 96, 0.12);
+      border-bottom: 1px solid rgba(93, 41, 70, 0.08);
+      box-shadow: 0 18px 36px rgba(119, 70, 96, 0.12);
     }
 
     .desktop-header {
@@ -235,43 +240,39 @@ html = r'''<!DOCTYPE html>
     .desktop-center { display: flex; justify-content: center; flex-shrink: 0; }
 
     .desktop-logo {
-      width: 142px;
+      width: 128px;
       min-height: 58px;
       display: grid;
       place-items: center;
-      border-radius: 22px;
+      border-radius: 20px;
       overflow: hidden;
-      padding: 8px 14px;
-      text-decoration: none;
-      border: 1px solid rgba(94, 46, 74, 0.09);
+      padding: 8px 12px;
+      border: 1px solid rgba(93, 41, 70, 0.09);
       background:
-        radial-gradient(circle at top, rgba(247, 191, 216, 0.42), transparent 46%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 247, 251, 0.78));
+        radial-gradient(circle at top, rgba(247, 184, 210, 0.42), transparent 44%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 251, 0.82));
       box-shadow:
-        0 16px 34px rgba(116, 72, 96, 0.13),
+        0 16px 34px rgba(119, 70, 96, 0.13),
         inset 0 1px 0 rgba(255, 255, 255, 0.92);
+      text-decoration: none;
       color: var(--text-strong);
-      font-family: "Sora", sans-serif;
-      font-weight: 800;
-      letter-spacing: -0.06em;
-      line-height: 0.95;
-      text-align: center;
+      animation: logoBreath 5.4s ease-in-out infinite;
     }
 
-    .desktop-logo img {
-      width: 100%;
-      max-width: 112px;
-      max-height: 44px;
-      object-fit: contain;
-      filter: saturate(0.95) contrast(1.04) drop-shadow(0 0 16px rgba(223, 127, 171, 0.16));
-    }
-
+    .logo-word,
     .desktop-logo-text,
     .logo-text {
       font-family: "Sora", sans-serif;
-      font-weight: 800;
+      font-weight: 900;
+      letter-spacing: -0.075em;
+      line-height: 0.84;
       color: var(--text-strong);
-      letter-spacing: -0.07em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .desktop-logo-text {
+      font-size: 19px;
     }
 
     .desktop-nav {
@@ -283,7 +284,7 @@ html = r'''<!DOCTYPE html>
 
     .desktop-nav a {
       position: relative;
-      color: rgba(52, 32, 43, 0.72);
+      color: rgba(45, 23, 35, 0.72);
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
@@ -299,7 +300,7 @@ html = r'''<!DOCTYPE html>
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--pink-3), var(--pink-2));
+      background: linear-gradient(90deg, var(--rose-3), var(--rose-2));
       transition: width 0.22s ease;
     }
 
@@ -310,11 +311,11 @@ html = r'''<!DOCTYPE html>
       min-height: 46px;
       padding: 0 17px;
       border-radius: 999px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       background: rgba(255, 255, 255, 0.58);
-      color: var(--pink-2);
+      color: var(--rose-2);
       box-shadow:
-        0 14px 28px rgba(116, 72, 96, 0.10),
+        0 14px 28px rgba(119, 70, 96, 0.10),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
       display: inline-flex;
       align-items: center;
@@ -329,10 +330,10 @@ html = r'''<!DOCTYPE html>
 
     .desktop-call-btn:hover {
       transform: translateY(-1px);
-      border-color: rgba(223, 127, 171, 0.28);
+      border-color: rgba(221, 118, 168, 0.28);
       box-shadow:
-        0 20px 42px rgba(116, 72, 96, 0.16),
-        0 0 0 4px rgba(223, 127, 171, 0.08),
+        0 20px 42px rgba(119, 70, 96, 0.16),
+        0 0 0 4px rgba(221, 118, 168, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
@@ -344,23 +345,25 @@ html = r'''<!DOCTYPE html>
       z-index: 2;
     }
 
-    #hero, #experience, #manifest, #pricing, #location, #contact { scroll-margin-top: 124px; }
+    #hero, #experience, #manifest, #pricing, #location, #contact {
+      scroll-margin-top: 124px;
+    }
 
     .hero-section { min-height: calc(100vh - var(--desktop-header-h) - 20px); }
 
     .hero-card,
     .section-card {
       border-radius: 36px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38)),
-        radial-gradient(circle at 16% 0%, rgba(247, 191, 216, 0.34), transparent 30%),
-        radial-gradient(circle at 100% 12%, rgba(223, 127, 171, 0.13), transparent 26%),
-        linear-gradient(135deg, #fffefd, #fff3fa 48%, #f8e7f1);
+        radial-gradient(circle at 16% 0%, rgba(247, 184, 210, 0.34), transparent 30%),
+        radial-gradient(circle at 100% 12%, rgba(221, 118, 168, 0.13), transparent 26%),
+        linear-gradient(135deg, #fffefd, #fff3fa 48%, #f8e5f0);
       box-shadow:
         var(--shadow-xl),
         inset 0 1px 0 rgba(255, 255, 255, 0.92),
-        inset 0 -1px 0 rgba(94, 46, 74, 0.03);
+        inset 0 -1px 0 rgba(93, 41, 70, 0.03);
       overflow: hidden;
       position: relative;
       isolation: isolate;
@@ -416,15 +419,15 @@ html = r'''<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(223, 127, 171, 0.20);
+      border: 1px solid rgba(221, 118, 168, 0.20);
       background: rgba(255, 255, 255, 0.64);
-      color: var(--pink-2);
+      color: var(--rose-2);
       font-size: 12px;
       font-weight: 900;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       box-shadow:
-        0 12px 26px rgba(116, 72, 96, 0.10),
+        0 12px 26px rgba(119, 70, 96, 0.10),
         inset 0 1px 0 rgba(255, 255, 255, 0.92);
       position: relative;
       z-index: 1;
@@ -435,8 +438,8 @@ html = r'''<!DOCTYPE html>
       width: 9px;
       height: 9px;
       border-radius: 999px;
-      background: var(--pink);
-      box-shadow: 0 0 16px rgba(223, 127, 171, 0.42);
+      background: var(--rose);
+      box-shadow: 0 0 16px rgba(221, 118, 168, 0.42);
     }
 
     .hero-title {
@@ -452,8 +455,8 @@ html = r'''<!DOCTYPE html>
 
     .hero-title span {
       display: inline-block;
-      color: var(--pink-2);
-      text-shadow: 0 18px 50px rgba(223, 127, 171, 0.20);
+      color: var(--rose-2);
+      text-shadow: 0 18px 50px rgba(221, 118, 168, 0.20);
     }
 
     .hero-sub {
@@ -486,13 +489,13 @@ html = r'''<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(94, 46, 74, 0.09);
+      border: 1px solid rgba(93, 41, 70, 0.09);
       background: rgba(255, 255, 255, 0.64);
       color: var(--muted);
       font-size: 13px;
       font-weight: 800;
       box-shadow:
-        0 18px 38px rgba(116, 72, 96, 0.10),
+        0 18px 38px rgba(119, 70, 96, 0.10),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
@@ -501,8 +504,8 @@ html = r'''<!DOCTYPE html>
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: var(--pink);
-      box-shadow: 0 0 16px rgba(223, 127, 171, 0.40);
+      background: var(--rose);
+      box-shadow: 0 0 16px rgba(221, 118, 168, 0.40);
     }
 
     .hero-side {
@@ -513,12 +516,12 @@ html = r'''<!DOCTYPE html>
 
     .glass-card {
       border-radius: 28px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.42)),
         rgba(255, 255, 255, 0.42);
       box-shadow:
-        0 20px 48px rgba(116, 72, 96, 0.13),
+        0 20px 48px rgba(119, 70, 96, 0.13),
         inset 0 1px 0 rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(14px) saturate(125%);
       -webkit-backdrop-filter: blur(14px) saturate(125%);
@@ -537,6 +540,9 @@ html = r'''<!DOCTYPE html>
     .hero-photo {
       min-height: 440px;
       overflow: hidden;
+      background:
+        radial-gradient(circle at 34% 20%, rgba(255,255,255,.9), transparent 30%),
+        linear-gradient(160deg, #ffeaf3, #f5d4e4 50%, #cfa6ba);
     }
 
     .hero-photo::before {
@@ -545,9 +551,9 @@ html = r'''<!DOCTYPE html>
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(52, 32, 43, 0.32)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(45, 23, 35, 0.34)),
         radial-gradient(circle at 28% 18%, rgba(255, 231, 243, 0.35), transparent 32%),
-        radial-gradient(circle at 62% 42%, rgba(223, 127, 171, 0.20), transparent 38%);
+        radial-gradient(circle at 62% 42%, rgba(221, 118, 168, 0.22), transparent 38%);
       pointer-events: none;
     }
 
@@ -561,6 +567,21 @@ html = r'''<!DOCTYPE html>
       transform: scale(1.01);
     }
 
+    .image-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 0.86;
+      letter-spacing: -0.08em;
+      color: rgba(45, 23, 35, 0.16);
+      z-index: 0;
+      pointer-events: none;
+    }
+
     .hero-photo-badge {
       position: absolute;
       bottom: 18px;
@@ -572,14 +593,14 @@ html = r'''<!DOCTYPE html>
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.7);
-      box-shadow: 0 16px 34px rgba(116, 72, 96, 0.18);
+      box-shadow: 0 16px 34px rgba(119, 70, 96, 0.18);
       max-width: 220px;
       display: grid;
       gap: 8px;
     }
 
     .hero-photo-badge span {
-      color: var(--pink-2);
+      color: var(--rose-2);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.14em;
@@ -635,7 +656,7 @@ html = r'''<!DOCTYPE html>
       align-items: center;
       justify-content: center;
       gap: 10px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       text-decoration: none;
       cursor: pointer;
       color: var(--text);
@@ -646,40 +667,40 @@ html = r'''<!DOCTYPE html>
       letter-spacing: 0.03em;
       text-transform: uppercase;
       box-shadow:
-        0 14px 30px rgba(116, 72, 96, 0.10),
+        0 14px 30px rgba(119, 70, 96, 0.10),
         inset 0 1px 0 rgba(255, 255, 255, 0.86);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease, filter 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(223, 127, 171, 0.28);
+      border-color: rgba(221, 118, 168, 0.28);
       box-shadow:
-        0 20px 42px rgba(116, 72, 96, 0.16),
-        0 0 0 4px rgba(223, 127, 171, 0.08),
+        0 20px 42px rgba(119, 70, 96, 0.16),
+        0 0 0 4px rgba(221, 118, 168, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .btn-primary {
-      color: #331522;
-      border-color: rgba(223, 127, 171, 0.34);
-      background: linear-gradient(180deg, var(--pink-3), var(--pink));
+      color: #321521;
+      border-color: rgba(221, 118, 168, 0.34);
+      background: linear-gradient(180deg, var(--rose-3), var(--rose));
       box-shadow:
-        0 18px 38px rgba(223, 127, 171, 0.24),
-        0 0 30px rgba(247, 191, 216, 0.20),
+        0 18px 38px rgba(221, 118, 168, 0.24),
+        0 0 30px rgba(247, 184, 210, 0.20),
         inset 0 1px 0 rgba(255, 255, 255, 0.48);
     }
 
     .btn-primary:hover {
       filter: brightness(1.03) saturate(1.03);
       box-shadow:
-        0 22px 44px rgba(223, 127, 171, 0.30),
-        0 0 0 5px rgba(223, 127, 171, 0.10),
+        0 22px 44px rgba(221, 118, 168, 0.30),
+        0 0 0 5px rgba(221, 118, 168, 0.10),
         inset 0 1px 0 rgba(255, 255, 255, 0.52);
     }
 
     .btn-ghost {
-      color: var(--pink-2);
+      color: var(--rose-2);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 247, 251, 0.52));
     }
 
@@ -738,12 +759,12 @@ html = r'''<!DOCTYPE html>
       padding: 22px;
       display: grid;
       align-content: end;
-      border-color: rgba(94, 46, 74, 0.10);
+      border-color: rgba(93, 41, 70, 0.10);
       background:
-        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.34), transparent 30%),
+        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.34), transparent 30%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.44));
       box-shadow:
-        0 24px 60px rgba(116, 72, 96, 0.13),
+        0 24px 60px rgba(119, 70, 96, 0.13),
         inset 0 1px 0 rgba(255, 255, 255, 0.86);
     }
 
@@ -752,12 +773,12 @@ html = r'''<!DOCTYPE html>
       margin: 0 auto;
       border-radius: 38px;
       padding: 12px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       background:
-        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.30), transparent 30%),
+        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.30), transparent 30%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58));
       box-shadow:
-        0 24px 60px rgba(116, 72, 96, 0.16),
+        0 24px 60px rgba(119, 70, 96, 0.16),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
       transform: rotate(-2deg);
     }
@@ -766,12 +787,12 @@ html = r'''<!DOCTYPE html>
       border-radius: 30px;
       min-height: 500px;
       overflow: hidden;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       background:
-        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.28), transparent 30%),
+        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.28), transparent 30%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58));
       box-shadow:
-        0 24px 60px rgba(116, 72, 96, 0.13),
+        0 24px 60px rgba(119, 70, 96, 0.13),
         inset 0 1px 0 rgba(255, 255, 255, 0.88);
       padding: 18px;
       display: grid;
@@ -794,20 +815,13 @@ html = r'''<!DOCTYPE html>
       display: grid;
       place-items: center;
       background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(94, 46, 74, 0.08);
-      box-shadow: 0 12px 24px rgba(116, 72, 96, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.08);
+      box-shadow: 0 12px 24px rgba(119, 70, 96, 0.10);
       overflow: hidden;
       font-family: "Sora", sans-serif;
-      color: var(--pink-2);
+      color: var(--rose-2);
       font-weight: 900;
       letter-spacing: -0.08em;
-    }
-
-    .mini-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 8px;
     }
 
     .mini-pill {
@@ -816,9 +830,9 @@ html = r'''<!DOCTYPE html>
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
-      color: var(--pink-2);
-      background: rgba(247, 191, 216, 0.30);
-      border: 1px solid rgba(223, 127, 171, 0.18);
+      color: var(--rose-2);
+      background: rgba(247, 184, 210, 0.30);
+      border: 1px solid rgba(221, 118, 168, 0.18);
       font-size: 11px;
       font-weight: 900;
     }
@@ -835,10 +849,10 @@ html = r'''<!DOCTYPE html>
     .mini-card {
       min-height: 68px;
       border-radius: 18px;
-      border: 1px solid rgba(94, 46, 74, 0.09);
+      border: 1px solid rgba(93, 41, 70, 0.09);
       background: rgba(255, 255, 255, 0.68);
       box-shadow:
-        0 18px 38px rgba(116, 72, 96, 0.08),
+        0 18px 38px rgba(119, 70, 96, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
       padding: 12px;
       display: flex;
@@ -863,8 +877,8 @@ html = r'''<!DOCTYPE html>
     .mini-cta {
       min-height: 56px;
       border-radius: 18px;
-      background: linear-gradient(180deg, var(--pink-3), var(--pink));
-      color: #331522;
+      background: linear-gradient(180deg, var(--rose-3), var(--rose));
+      color: #321521;
       display: grid;
       place-items: center;
       font-size: 13px;
@@ -872,8 +886,8 @@ html = r'''<!DOCTYPE html>
       letter-spacing: 0.04em;
       text-transform: uppercase;
       box-shadow:
-        0 18px 38px rgba(223, 127, 171, 0.24),
-        0 0 30px rgba(247, 191, 216, 0.20),
+        0 18px 38px rgba(221, 118, 168, 0.24),
+        0 0 30px rgba(247, 184, 210, 0.20),
         inset 0 1px 0 rgba(255, 255, 255, 0.46);
     }
 
@@ -884,20 +898,16 @@ html = r'''<!DOCTYPE html>
       min-height: 160px;
       display: grid;
       align-content: space-between;
-      gap 
-      : 14px;
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+      gap: 14px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .feature-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(223, 127, 171, 0.28);
+      border-color: rgba(221, 118, 168, 0.28);
       box-shadow:
-        0 20px 42px rgba(116, 72, 96, 0.16),
-        0 0 0 4px rgba(223, 127, 171, 0.08),
+        0 20px 42px rgba(119, 70, 96, 0.16),
+        0 0 0 4px rgba(221, 118, 168, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
@@ -907,11 +917,11 @@ html = r'''<!DOCTYPE html>
       border-radius: 16px;
       display: grid;
       place-items: center;
-      color: #331522;
-      background: linear-gradient(180deg, var(--pink-3), var(--pink));
+      color: #321521;
+      background: linear-gradient(180deg, var(--rose-3), var(--rose));
       box-shadow:
-        0 18px 38px rgba(223, 127, 171, 0.22),
-        0 0 30px rgba(247, 191, 216, 0.18),
+        0 18px 38px rgba(221, 118, 168, 0.22),
+        0 0 30px rgba(247, 184, 210, 0.18),
         inset 0 1px 0 rgba(255, 255, 255, 0.46);
       font-weight: 900;
       position: relative;
@@ -951,12 +961,12 @@ html = r'''<!DOCTYPE html>
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border-color: rgba(94, 46, 74, 0.10);
+      border-color: rgba(93, 41, 70, 0.10);
       background:
-        radial-gradient(circle at 50% 12%, rgba(247, 191, 216, 0.34), transparent 30%),
+        radial-gradient(circle at 50% 12%, rgba(247, 184, 210, 0.34), transparent 30%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 247, 251, 0.52));
       box-shadow:
-        0 24px 60px rgba(116, 72, 96, 0.13),
+        0 24px 60px rgba(119, 70, 96, 0.13),
         inset 0 1px 0 rgba(255, 255, 255, 0.88);
     }
 
@@ -966,6 +976,7 @@ html = r'''<!DOCTYPE html>
       gap: 22px;
       position: relative;
       z-index: 1;
+      text-align: center;
     }
 
     .manifest-logo-mark span:first-child {
@@ -974,8 +985,7 @@ html = r'''<!DOCTYPE html>
       line-height: 0.82;
       letter-spacing: -0.09em;
       color: var(--text-strong);
-      text-align: center;
-      text-shadow: 0 20px 60px rgba(223, 127, 171, 0.18);
+      text-shadow: 0 20px 60px rgba(221, 118, 168, 0.18);
     }
 
     .manifest-logo-mark span:last-child {
@@ -984,7 +994,7 @@ html = r'''<!DOCTYPE html>
       font-weight: 900;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--pink-2);
+      color: var(--rose-2);
       text-align: center;
     }
 
@@ -1006,9 +1016,7 @@ html = r'''<!DOCTYPE html>
       z-index: 1;
     }
 
-    .manifest-line strong {
-      color: var(--pink-2);
-    }
+    .manifest-line strong { color: var(--rose-2); }
 
     .pricing-grid {
       display: grid;
@@ -1023,18 +1031,15 @@ html = r'''<!DOCTYPE html>
       flex-direction: column;
       justify-content: space-between;
       gap: 18px;
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .pricing-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(223, 127, 171, 0.28);
+      border-color: rgba(221, 118, 168, 0.28);
       box-shadow:
-        0 20px 42px rgba(116, 72, 96, 0.16),
-        0 0 0 4px rgba(223, 127, 171, 0.08),
+        0 20px 42px rgba(119, 70, 96, 0.16),
+        0 0 0 4px rgba(221, 118, 168, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
@@ -1059,7 +1064,7 @@ html = r'''<!DOCTYPE html>
     .pricing-card__price {
       font-family: "Sora", sans-serif;
       font-size: 18px;
-      color: var(--pink-2);
+      color: var(--rose-2);
       font-weight: 800;
       white-space: nowrap;
     }
@@ -1088,9 +1093,9 @@ html = r'''<!DOCTYPE html>
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
-      background: rgba(247, 191, 216, 0.28);
-      border: 1px solid rgba(223, 127, 171, 0.18);
-      color: var(--pink-2);
+      background: rgba(247, 184, 210, 0.28);
+      border: 1px solid rgba(221, 118, 168, 0.18);
+      color: var(--rose-2);
       font-size: 12px;
       font-weight: 900;
     }
@@ -1123,7 +1128,7 @@ html = r'''<!DOCTYPE html>
       inset: 0;
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 247, 251, 0.18)),
-        radial-gradient(circle at center, transparent 42%, rgba(223, 127, 171, 0.08) 100%);
+        radial-gradient(circle at center, transparent 42%, rgba(221, 118, 168, 0.08) 100%);
       pointer-events: none;
     }
 
@@ -1138,15 +1143,15 @@ html = r'''<!DOCTYPE html>
       min-height: 280px;
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       display: grid;
       place-items: center;
       position: relative;
       background:
-        radial-gradient(circle at 50% 28%, rgba(247, 191, 216, 0.36), transparent 34%),
+        radial-gradient(circle at 50% 28%, rgba(247, 184, 210, 0.36), transparent 34%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.56));
       box-shadow:
-        0 24px 60px rgba(116, 72, 96, 0.13),
+        0 24px 60px rgba(119, 70, 96, 0.13),
         inset 0 1px 0 rgba(255, 255, 255, 0.88);
     }
 
@@ -1206,9 +1211,7 @@ html = r'''<!DOCTYPE html>
     }
 
     .contact-card,
-    .status-card {
-      padding: 22px;
-    }
+    .status-card { padding: 22px; }
 
     .contact-card {
       display: grid;
@@ -1218,9 +1221,9 @@ html = r'''<!DOCTYPE html>
     .contact-lead {
       padding: 20px;
       border-radius: 24px;
-      border: 1px solid rgba(223, 127, 171, 0.18);
+      border: 1px solid rgba(221, 118, 168, 0.18);
       background:
-        radial-gradient(circle at top left, rgba(247, 191, 216, 0.34), transparent 32%),
+        radial-gradient(circle at top left, rgba(247, 184, 210, 0.34), transparent 32%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
       position: relative;
@@ -1266,14 +1269,14 @@ html = r'''<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       background: rgba(255, 255, 255, 0.68);
       font-size: 13px;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       box-shadow:
-        0 18px 38px rgba(116, 72, 96, 0.08),
+        0 18px 38px rgba(119, 70, 96, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
       position: relative;
       z-index: 1;
@@ -1305,7 +1308,7 @@ html = r'''<!DOCTYPE html>
       min-height: 56px;
       padding: 0 16px;
       border-radius: 18px;
-      border: 1px solid rgba(94, 46, 74, 0.09);
+      border: 1px solid rgba(93, 41, 70, 0.09);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1315,50 +1318,51 @@ html = r'''<!DOCTYPE html>
       font-size: 14px;
       font-weight: 800;
       box-shadow:
-        0 18px 38px rgba(116, 72, 96, 0.08),
+        0 18px 38px rgba(119, 70, 96, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .status-list strong { color: var(--text-strong); }
 
+    .social-icons,
+    .social-row {
+      position: relative;
+      z-index: 1;
+    }
+
     .social-icons {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      position: relative;
-      z-index: 1;
     }
 
     .social-icon {
       width: 56px;
       height: 56px;
       border-radius: 18px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
-      color: var(--pink-2);
+      color: var(--rose-2);
       text-decoration: none;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       box-shadow:
-        0 14px 28px rgba(116, 72, 96, 0.10),
+        0 14px 28px rgba(119, 70, 96, 0.10),
         inset 0 1px 0 rgba(255, 255, 255, 0.86);
     }
 
     .social-icon:hover {
       transform: translateY(-2px);
-      border-color: rgba(223, 127, 171, 0.28);
+      border-color: rgba(221, 118, 168, 0.28);
       box-shadow:
-        0 20px 42px rgba(116, 72, 96, 0.16),
-        0 0 0 4px rgba(223, 127, 171, 0.08),
+        0 20px 42px rgba(119, 70, 96, 0.16),
+        0 0 0 4px rgba(221, 118, 168, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
-    .social-icon svg {
-      width: 22px;
-      height: 22px;
-    }
+    .social-icon svg { width: 22px; height: 22px; }
 
     .section-button-full {
       width: 100%;
@@ -1400,8 +1404,8 @@ html = r'''<!DOCTYPE html>
       justify-content: center;
       padding: 24px;
       background:
-        radial-gradient(circle at 20% 0%, rgba(247, 191, 216, 0.34), transparent 34%),
-        linear-gradient(180deg, rgba(255, 250, 253, 0.78), rgba(248, 237, 244, 0.9));
+        radial-gradient(circle at 20% 0%, rgba(247, 184, 210, 0.36), transparent 34%),
+        linear-gradient(180deg, rgba(255, 250, 253, 0.78), rgba(248, 237, 244, 0.92));
       backdrop-filter: blur(22px) saturate(140%);
       -webkit-backdrop-filter: blur(22px) saturate(140%);
     }
@@ -1426,12 +1430,12 @@ html = r'''<!DOCTYPE html>
       gap: 14px;
       padding: 14px;
       border-radius: 28px;
-      border: 1px solid rgba(94, 46, 74, 0.10);
+      border: 1px solid rgba(93, 41, 70, 0.10);
       background:
-        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.34), transparent 30%),
+        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.34), transparent 30%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
       box-shadow:
-        0 24px 60px rgba(116, 72, 96, 0.14),
+        0 24px 60px rgba(119, 70, 96, 0.14),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -1451,11 +1455,11 @@ html = r'''<!DOCTYPE html>
       place-items: center;
       padding: 0 12px;
       background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(94, 46, 74, 0.08);
+      border: 1px solid rgba(93, 41, 70, 0.08);
       font-family: "Sora", sans-serif;
       font-weight: 900;
       letter-spacing: -0.07em;
-      color: var(--pink-2);
+      color: var(--rose-2);
       text-align: center;
     }
 
@@ -1465,7 +1469,7 @@ html = r'''<!DOCTYPE html>
     }
 
     .booking-topbar__copy span {
-      color: var(--pink-2);
+      color: var(--rose-2);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -1512,17 +1516,8 @@ html = r'''<!DOCTYPE html>
     }
 
     @keyframes pageIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px) scale(0.99);
-        filter: blur(4px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
+      from { opacity: 0; transform: translateY(10px) scale(0.99); filter: blur(4px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
     }
 
     @keyframes rise {
@@ -1533,14 +1528,14 @@ html = r'''<!DOCTYPE html>
     @keyframes logoBreath {
       0%, 100% {
         box-shadow:
-          0 14px 34px rgba(116, 72, 96, 0.12),
+          0 14px 34px rgba(119, 70, 96, 0.12),
           inset 0 1px 0 rgba(255, 255, 255, 0.9);
       }
 
       50% {
         box-shadow:
-          0 18px 44px rgba(223, 127, 171, 0.20),
-          0 0 28px rgba(247, 191, 216, 0.24),
+          0 18px 44px rgba(221, 118, 168, 0.20),
+          0 0 28px rgba(247, 184, 210, 0.24),
           inset 0 1px 0 rgba(255, 255, 255, 0.94);
       }
     }
@@ -1551,10 +1546,7 @@ html = r'''<!DOCTYPE html>
     }
 
     .reveal { animation: fadeUp 680ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-
-    .hero-side .hero-photo {
-      animation: floatSoft 7s ease-in-out infinite;
-    }
+    .hero-side .hero-photo { animation: floatSoft 7s ease-in-out infinite; }
 
     @media (max-width: 1120px) {
       .hero-grid,
@@ -1562,9 +1554,7 @@ html = r'''<!DOCTYPE html>
       .manifest-grid,
       .pricing-grid,
       .location-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+      .contact-grid { grid-template-columns: 1fr; }
 
       .hero-grid { min-height: auto; }
       .manifest-vertical { min-height: 220px; }
@@ -1572,8 +1562,7 @@ html = r'''<!DOCTYPE html>
     }
 
     @media (max-width: 900px) {
-      html,
-      body {
+      html, body {
         height: 100%;
         overflow: hidden;
       }
@@ -1597,7 +1586,7 @@ html = r'''<!DOCTYPE html>
         grid-template-columns: 52px 1fr 52px;
         align-items: center;
         gap: 10px;
-        border-bottom: 1px solid rgba(94, 46, 74, 0.08);
+        border-bottom: 1px solid rgba(93, 41, 70, 0.08);
         background: linear-gradient(180deg, rgba(255, 250, 253, 0.92), rgba(255, 247, 251, 0.72));
         backdrop-filter: blur(20px) saturate(140%);
         -webkit-backdrop-filter: blur(20px) saturate(140%);
@@ -1612,7 +1601,7 @@ html = r'''<!DOCTYPE html>
         border-radius: 18px;
         display: grid;
         place-items: center;
-        color: var(--pink-2);
+        color: var(--rose-2);
         background: rgba(255, 255, 255, 0.62);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
         text-decoration: none;
@@ -1622,14 +1611,11 @@ html = r'''<!DOCTYPE html>
 
       .icon-btn:active {
         transform: scale(0.94);
-        border-color: rgba(223, 127, 171, 0.34);
-        background: rgba(247, 191, 216, 0.20);
+        border-color: rgba(221, 118, 168, 0.34);
+        background: rgba(247, 184, 210, 0.20);
       }
 
-      .icon-btn svg {
-        width: 22px;
-        height: 22px;
-      }
+      .icon-btn svg { width: 22px; height: 22px; }
 
       .logo-pill {
         height: 58px;
@@ -1640,16 +1626,16 @@ html = r'''<!DOCTYPE html>
         display: grid;
         place-items: center;
         background:
-          radial-gradient(circle at 50% 0%, rgba(247, 191, 216, 0.46), transparent 46%),
+          radial-gradient(circle at 50% 0%, rgba(247, 184, 210, 0.46), transparent 46%),
           rgba(255, 255, 255, 0.64);
         box-shadow:
-          0 14px 34px rgba(116, 72, 96, 0.12),
+          0 14px 34px rgba(119, 70, 96, 0.12),
           inset 0 1px 0 rgba(255, 255, 255, 0.88);
         animation: logoBreath 4.6s ease-in-out infinite;
-        font-family: "Sora", sans-serif;
-        color: var(--text-strong);
-        font-weight: 900;
-        letter-spacing: -0.08em;
+      }
+
+      .logo-pill .logo-word {
+        font-size: 20px;
       }
 
       .section-nav {
@@ -1658,7 +1644,7 @@ html = r'''<!DOCTYPE html>
         overflow-x: auto;
         padding: 10px 12px;
         scrollbar-width: none;
-        border-bottom: 1px solid rgba(94, 46, 74, 0.08);
+        border-bottom: 1px solid rgba(93, 41, 70, 0.08);
         background: rgba(255, 250, 253, 0.72);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
@@ -1672,7 +1658,7 @@ html = r'''<!DOCTYPE html>
         padding: 0 15px;
         border: 1px solid var(--line);
         border-radius: 999px;
-        color: rgba(52, 32, 43, 0.72);
+        color: rgba(45, 23, 35, 0.72);
         background: rgba(255, 255, 255, 0.58);
         font: inherit;
         font-size: 13px;
@@ -1684,10 +1670,10 @@ html = r'''<!DOCTYPE html>
       .nav-chip:active { transform: scale(0.94); }
 
       .nav-chip.active {
-        color: #331522;
-        background: linear-gradient(180deg, var(--pink-3), var(--pink));
-        border-color: rgba(223, 127, 171, 0.34);
-        box-shadow: 0 12px 28px rgba(223, 127, 171, 0.22);
+        color: #321521;
+        background: linear-gradient(180deg, var(--rose-3), var(--rose));
+        border-color: rgba(221, 118, 168, 0.34);
+        box-shadow: 0 12px 28px rgba(221, 118, 168, 0.22);
       }
 
       .pages {
@@ -1732,9 +1718,9 @@ html = r'''<!DOCTYPE html>
         min-height: 34px;
         padding: 0 12px;
         border-radius: 999px;
-        border: 1px solid rgba(223, 127, 171, 0.22);
+        border: 1px solid rgba(221, 118, 168, 0.22);
         background: rgba(255, 255, 255, 0.62);
-        color: var(--pink-2);
+        color: var(--rose-2);
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -1750,8 +1736,8 @@ html = r'''<!DOCTYPE html>
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: var(--pink);
-        box-shadow: 0 0 14px rgba(223, 127, 171, 0.42);
+        background: var(--rose);
+        box-shadow: 0 0 14px rgba(221, 118, 168, 0.42);
       }
 
       .page-title {
@@ -1759,14 +1745,14 @@ html = r'''<!DOCTYPE html>
         font-size: clamp(38px, 12vw, 64px);
         line-height: 0.88;
         letter-spacing: -0.085em;
-        max-width: 9.4ch;
+        max-width: 9.6ch;
         color: var(--text-strong);
       }
 
       .page-title .gold {
-        color: var(--pink-2);
+        color: var(--rose-2);
         display: inline-block;
-        text-shadow: 0 16px 42px rgba(223, 127, 171, 0.18);
+        text-shadow: 0 16px 42px rgba(221, 118, 168, 0.18);
       }
 
       .page-sub {
@@ -1789,7 +1775,9 @@ html = r'''<!DOCTYPE html>
         border: 1px solid var(--line);
         overflow: hidden;
         position: relative;
-        background: #fff;
+        background:
+          radial-gradient(circle at 34% 18%, rgba(255,255,255,.9), transparent 34%),
+          linear-gradient(160deg, #ffeaf3, #f5d4e4 50%, #cfa6ba);
         box-shadow:
           var(--shadow-lg),
           inset 0 1px 0 rgba(255, 255, 255, 0.86);
@@ -1811,9 +1799,9 @@ html = r'''<!DOCTYPE html>
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(52, 32, 43, 0.18)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(45, 23, 35, 0.18)),
           radial-gradient(circle at 26% 20%, rgba(255, 231, 243, 0.26), transparent 32%),
-          radial-gradient(circle at 64% 48%, rgba(223, 127, 171, 0.16), transparent 36%);
+          radial-gradient(circle at 64% 48%, rgba(221, 118, 168, 0.16), transparent 36%);
         pointer-events: none;
       }
 
@@ -1835,7 +1823,7 @@ html = r'''<!DOCTYPE html>
           linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58)),
           rgba(255, 255, 255, 0.66);
         box-shadow:
-          0 18px 46px rgba(116, 72, 96, 0.13),
+          0 18px 46px rgba(119, 70, 96, 0.13),
           inset 0 1px 0 rgba(255, 255, 255, 0.88);
         border-radius: 24px;
         position: relative;
@@ -1886,7 +1874,7 @@ html = r'''<!DOCTYPE html>
       }
 
       .price {
-        color: var(--pink-2);
+        color: var(--rose-2);
         font-weight: 900;
         font-size: 15px;
         white-space: nowrap;
@@ -1910,9 +1898,9 @@ html = r'''<!DOCTYPE html>
         min-height: 27px;
         padding: 0 9px;
         border-radius: 999px;
-        border: 1px solid rgba(223, 127, 171, 0.18);
-        background: rgba(247, 191, 216, 0.22);
-        color: var(--pink-2);
+        border: 1px solid rgba(221, 118, 168, 0.18);
+        background: rgba(247, 184, 210, 0.22);
+        color: var(--rose-2);
         display: inline-flex;
         align-items: center;
         font-size: 11px;
@@ -1940,10 +1928,10 @@ html = r'''<!DOCTYPE html>
         border-radius: 15px;
         display: grid;
         place-items: center;
-        background: linear-gradient(180deg, var(--pink-3), var(--pink));
-        color: #331522;
+        background: linear-gradient(180deg, var(--rose-3), var(--rose));
+        color: #321521;
         font-weight: 900;
-        box-shadow: 0 14px 26px rgba(223, 127, 171, 0.22);
+        box-shadow: 0 14px 26px rgba(221, 118, 168, 0.22);
       }
 
       .info-card strong {
@@ -2016,15 +2004,15 @@ html = r'''<!DOCTYPE html>
         justify-content: center;
         pointer-events: none;
         background:
-          radial-gradient(circle at center, rgba(247, 191, 216, 0.28), transparent 40%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(52, 32, 43, 0.12));
+          radial-gradient(circle at center, rgba(247, 184, 210, 0.28), transparent 40%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(45, 23, 35, 0.12));
       }
 
       .map-logo-overlay span {
         font-family: "Sora", sans-serif;
         font-size: 42px;
         letter-spacing: -0.08em;
-        color: rgba(52, 32, 43, 0.18);
+        color: rgba(45, 23, 35, 0.18);
       }
 
       .dual-actions {
@@ -2037,16 +2025,16 @@ html = r'''<!DOCTYPE html>
         min-height: 54px;
         border: 0;
         border-radius: 999px;
-        background: linear-gradient(180deg, var(--pink-3), var(--pink));
-        color: #331522;
+        background: linear-gradient(180deg, var(--rose-3), var(--rose));
+        color: #321521;
         font: inherit;
         font-size: 12px;
         font-weight: 1000;
         letter-spacing: 0.055em;
         text-transform: uppercase;
         box-shadow:
-          0 18px 34px rgba(223, 127, 171, 0.24),
-          0 0 22px rgba(247, 191, 216, 0.18),
+          0 18px 34px rgba(221, 118, 168, 0.24),
+          0 0 22px rgba(247, 184, 210, 0.18),
           inset 0 1px 0 rgba(255, 255, 255, 0.48);
       }
 
@@ -2056,7 +2044,7 @@ html = r'''<!DOCTYPE html>
         border-radius: 999px;
         border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.62);
-        color: var(--pink-2);
+        color: var(--rose-2);
         font: inherit;
         font-size: 12px;
         font-weight: 900;
@@ -2075,9 +2063,7 @@ html = r'''<!DOCTYPE html>
         min-height: 0;
       }
 
-      .contact-mobile-card {
-        padding: 16px;
-      }
+      .contact-mobile-card { padding: 16px; }
 
       .contact-mobile-card strong {
         display: block;
@@ -2128,15 +2114,12 @@ html = r'''<!DOCTYPE html>
         border: 1px solid var(--line);
         display: grid;
         place-items: center;
-        color: var(--pink-2);
+        color: var(--rose-2);
         background: rgba(255, 255, 255, 0.62);
         text-decoration: none;
       }
 
-      .social-row svg {
-        width: 21px;
-        height: 21px;
-      }
+      .social-row svg { width: 21px; height: 21px; }
 
       .bottom-cta {
         padding: 8px 12px calc(10px + var(--safe-bottom));
@@ -2150,22 +2133,10 @@ html = r'''<!DOCTYPE html>
         min-height: 58px;
       }
 
-      .booking-overlay {
-        padding: 8px;
-      }
-
-      .booking-shell {
-        width: min(420px, 100%);
-      }
-
-      .booking-topbar {
-        border-radius: 22px;
-        padding: 10px;
-      }
-
-      .booking-topbar__copy strong {
-        font-size: 18px;
-      }
+      .booking-overlay { padding: 8px; }
+      .booking-shell { width: min(420px, 100%); }
+      .booking-topbar { border-radius: 22px; padding: 10px; }
+      .booking-topbar__copy strong { font-size: 18px; }
     }
 
     @media (max-width: 390px) {
@@ -2182,8 +2153,7 @@ html = r'''<!DOCTYPE html>
     }
 
     @media (min-width: 901px) {
-      html,
-      body {
+      html, body {
         height: auto !important;
         min-height: 100% !important;
         overflow-x: hidden !important;
@@ -2197,15 +2167,11 @@ html = r'''<!DOCTYPE html>
         overflow: visible !important;
       }
 
-      .mobile-version {
-        display: none !important;
-      }
+      .mobile-version { display: none !important; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation: none !important;
         transition: none !important;
         scroll-behavior: auto !important;
@@ -2228,7 +2194,7 @@ html = r'''<!DOCTYPE html>
           <nav class="desktop-nav">
             <a href="#hero">Start</a>
             <a href="#experience">Rezerwacja</a>
-            <a href="#manifest">O nas</a>
+            <a href="#manifest">Studio</a>
           </nav>
         </div>
 
@@ -2244,7 +2210,6 @@ html = r'''<!DOCTYPE html>
             <a href="#location">Dojazd</a>
             <a href="#contact">Kontakt</a>
           </nav>
-
           <a href="tel:+48532377701" class="desktop-call-btn">Zadzwoń</a>
         </div>
       </div>
@@ -2259,21 +2224,18 @@ html = r'''<!DOCTYPE html>
                 <div class="section-chip">LUNA NAIL STUDIO</div>
 
                 <h1 class="hero-title">
-                  Perfekcyjny manicure zaczyna się od
-                  <span>rezerwacji.</span>
+                  Piękne dłonie zaczynają się od
+                  <span>dobrego terminu.</span>
                 </h1>
 
                 <p class="hero-sub">
-                  Umów wizytę bez pisania wiadomości. Wybierz usługę,
-                  stylistkę i godzinę w kilka kliknięć — spokojnie, jasno
-                  i bez czekania na odpowiedź.
+                  Umów wizytę bez pisania wiadomości. Wybierz usługę, stylistkę i godzinę w kilka kliknięć — spokojnie, jasno i bez czekania na odpowiedź.
                 </p>
 
                 <div class="hero-actions">
                   <button class="btn btn-primary" type="button" data-open-booking>
                     Zarezerwuj termin
                   </button>
-
                   <button class="btn btn-ghost" type="button" onclick="openMapsRoute()">
                     Jak dojechać
                   </button>
@@ -2288,6 +2250,7 @@ html = r'''<!DOCTYPE html>
 
               <div class="hero-side">
                 <article class="glass-card hero-photo">
+                  <div class="image-fallback">SOFT<br />BEAUTY</div>
                   <img src="/nails-hero.png" alt="LUNA manicure" />
                   <div class="hero-photo-badge">
                     <span>NAIL STUDIO &amp; BEAUTY CARE</span>
@@ -2312,72 +2275,84 @@ html = r'''<!DOCTYPE html>
         </div>
       </section>
 
-            <section class="section" id="experience">
+      <section class="section" id="experience">
         <div class="landing-container">
           <div class="section-card reveal">
             <div class="section-wrap">
-              <div class="section-head">
-                <h2>Rezerwacja bez wiadomości i czekania.</h2>
+              <div class="section-head center">
+                <div class="section-chip">SYSTEM REZERWACJI</div>
+                <h2>To nie jest zwykła rezerwacja. To system umawiania wizyt.</h2>
                 <p>
-                  Klient nie musi pisać na Instagramie i czekać. Wszystko dzieje się od razu — wybór, termin i potwierdzenie w jednym miejscu.
+                  Klient nie musi pisać wiadomości, czekać na odpowiedź ani pytać o wolne godziny. Usługa, stylistka, termin i potwierdzenie są w jednej spokojnej ścieżce.
                 </p>
               </div>
 
               <div class="experience-grid">
-                <div class="glass-card experience-showcase">
+                <article class="glass-card experience-showcase">
                   <div class="showcase-phone">
                     <div class="showcase-screen">
                       <div class="mini-top">
                         <div class="mini-logo">L</div>
-                        <div class="mini-pill">online</div>
+                        <div class="mini-pill">4 kroki</div>
                       </div>
 
-                      <div class="mini-title">Wybierz usługę</div>
+                      <div class="mini-title">Rezerwacja bez chaosu.</div>
 
                       <div class="mini-card">
-                        <strong>Manicure klasyczny</strong>
-                        <span>90 zł</span>
-                      </div>
-
-                      <div class="mini-card">
-                        <strong>Manicure hybrydowy</strong>
-                        <span>120 zł</span>
+                        <strong>1. Wpisz imię i telefon</strong>
+                        <span>kontakt</span>
                       </div>
 
                       <div class="mini-card">
-                        <strong>Żel + zdobienia</strong>
-                        <span>160 zł</span>
+                        <strong>2. Wybierz usługę</strong>
+                        <span>manicure / żel</span>
                       </div>
 
-                      <div class="mini-cta">Dalej</div>
+                      <div class="mini-card">
+                        <strong>3. Wybierz stylistkę i termin</strong>
+                        <span>dzień + godzina</span>
+                      </div>
+
+                      <div class="mini-card">
+                        <strong>4. Potwierdź wizytę</strong>
+                        <span>gotowe</span>
+                      </div>
+
+                      <div class="mini-cta">Zarezerwuj termin</div>
                     </div>
                   </div>
-                </div>
+                </article>
 
                 <div class="experience-stack">
-                  <div class="glass-card feature-card">
-                    <div class="feature-number">1</div>
-                    <strong>Klient wchodzi w link</strong>
-                    <p>
-                      Z bio, z Google, z reklamy — nie ma znaczenia skąd. Strona działa wszędzie tak samo.
-                    </p>
-                  </div>
+                  <article class="glass-card feature-card">
+                    <div class="feature-number">01</div>
+                    <div>
+                      <strong>Bez pisania wiadomości</strong>
+                      <p>
+                        Wszystkie usługi, ceny i czasy trwania są widoczne od razu. Klient przechodzi do terminu bez dopytywania o podstawowe informacje.
+                      </p>
+                    </div>
+                  </article>
 
-                  <div class="glass-card feature-card">
-                    <div class="feature-number">2</div>
-                    <strong>Wybiera usługę</strong>
-                    <p>
-                      Bez pisania, bez tłumaczenia — wszystko jasno pokazane w systemie.
-                    </p>
-                  </div>
+                  <article class="glass-card feature-card">
+                    <div class="feature-number">02</div>
+                    <div>
+                      <strong>Stylistka lub auto-dobór</strong>
+                      <p>
+                        Klient może wybrać konkretną osobę albo zostawić wybór systemowi, który prowadzi go do dostępnego terminu.
+                      </p>
+                    </div>
+                  </article>
 
-                  <div class="glass-card feature-card">
-                    <div class="feature-number">3</div>
-                    <strong>Rezerwuje termin</strong>
-                    <p>
-                      Godzina, data i stylistka — wszystko w jednym flow bez chaosu.
-                    </p>
-                  </div>
+                  <article class="glass-card feature-card">
+                    <div class="feature-number">03</div>
+                    <div>
+                      <strong>Realne dostępne godziny</strong>
+                      <p>
+                        W bookingu widoczne są tylko wolne sloty. Mniej chaosu, mniej ręcznego odpisywania i szybsza decyzja klienta.
+                      </p>
+                    </div>
+                  </article>
                 </div>
               </div>
             </div>
@@ -2385,14 +2360,20 @@ html = r'''<!DOCTYPE html>
         </div>
       </section>
 
-
       <section class="section" id="manifest">
         <div class="landing-container">
           <div class="section-card reveal">
             <div class="section-wrap">
-              <div class="manifest-grid">
+              <div class="section-head">
+                <div class="section-chip">LUNA EXPERIENCE</div>
+                <h2>Rezerwacja może wyglądać tak dobrze jak studio.</h2>
+                <p>
+                  Strona nie jest tylko miejscem z przyciskiem. To pierwsze wrażenie: czyste, spokojne, estetyczne i gotowe do zapisania klientki.
+                </p>
+              </div>
 
-                <div class="manifest-vertical">
+              <div class="manifest-grid">
+                <div class="glass-card manifest-vertical">
                   <div class="manifest-logo-mark">
                     <span>LUNA</span>
                     <span>NAIL STUDIO</span>
@@ -2400,192 +2381,993 @@ html = r'''<!DOCTYPE html>
                 </div>
 
                 <div class="manifest-copy">
-                  <div class="glass-card manifest-line">
+                  <article class="glass-card manifest-line">
                     <p>
-                      Nie jesteśmy tylko studiem paznokci. Tworzymy przestrzeń, gdzie wszystko jest spokojne, dopracowane i przemyślane.
+                      <strong>Wygląd buduje zaufanie.</strong> Klient szybciej zostawia dane, kiedy rezerwacja wygląda jak część dopracowanej marki, a nie przypadkowy formularz.
                     </p>
-                  </div>
+                  </article>
 
-                  <div class="glass-card manifest-line">
+                  <article class="glass-card manifest-line">
                     <p>
-                      <strong>Rezerwacja to część doświadczenia.</strong> Dlatego działa szybko, jasno i bez chaosu.
+                      <strong>Klient szybciej wybiera termin.</strong> Oferta wygląda jak usługa, nie jak lista w wiadomości. Każdy wybór prowadzi do konkretnej wizyty.
                     </p>
-                  </div>
+                  </article>
 
-                  <div class="glass-card manifest-line">
+                  <article class="glass-card manifest-line">
                     <p>
-                      Klient nie powinien pisać i czekać. Powinien wejść i od razu wiedzieć co zrobić.
+                      <strong>Wszystko w jednym miejscu.</strong> Usługi, ceny, stylistki, godziny, mapa i kontakt są połączone w jedną ścieżkę bez chaosu.
                     </p>
-                  </div>
-
+                  </article>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </section>
-
 
       <section class="section" id="pricing">
         <div class="landing-container">
           <div class="section-card reveal">
             <div class="section-wrap">
-              <div class="section-head center">
-                <h2>Najczęściej wybierane usługi</h2>
+              <div class="section-head">
+                <div class="section-chip">USŁUGI</div>
+                <h2>Oferta wygląda jak usługa, nie jak lista w wiadomości.</h2>
+                <p>
+                  Każda usługa jest opisana i gotowa do wyboru. Klient widzi cenę, czas trwania i od razu może przejść do rezerwacji.
+                </p>
               </div>
 
               <div class="pricing-grid">
-
-                <div class="glass-card pricing-card">
+                <article class="glass-card pricing-card">
                   <div>
                     <div class="pricing-card__top">
-                      <strong>Manicure klasyczny</strong>
-                      <div class="pricing-card__price">90 zł</div>
+                      <strong>Manicure hybrydowy</strong>
+                      <div class="pricing-card__price">od 120 zł</div>
                     </div>
-                    <p>Podstawowa pielęgnacja paznokci.</p>
+                    <p>
+                      Trwały manicure z kolorem i wykończeniem. Efekt do 3 tygodni, bez ciągłego poprawiania.
+                    </p>
+                    <div class="service-tags">
+                      <span>1h 30min</span>
+                      <span>Kolor</span>
+                      <span>Hybryda</span>
+                    </div>
                   </div>
-                  <button class="btn btn-primary" data-open-booking>Zarezerwuj</button>
-                </div>
 
-                <div class="glass-card pricing-card">
+                  <button class="btn section-button-full" type="button" data-open-booking>
+                    Zarezerwuj
+                  </button>
+                </article>
+
+                <article class="glass-card pricing-card">
                   <div>
                     <div class="pricing-card__top">
-                      <strong>Hybryda</strong>
-                      <div class="pricing-card__price">120 zł</div>
+                      <strong>Przedłużanie paznokci</strong>
+                      <div class="pricing-card__price">od 180 zł</div>
                     </div>
-                    <p>Trwały manicure z kolorem.</p>
+                    <p>
+                      Budowa paznokci żelem lub akrylem. Delikatny kształt, dopracowana długość i czyste wykończenie.
+                    </p>
+                    <div class="service-tags">
+                      <span>2h</span>
+                      <span>Żel</span>
+                      <span>Forma</span>
+                    </div>
                   </div>
-                  <button class="btn btn-primary" data-open-booking>Zarezerwuj</button>
-                </div>
 
-                <div class="glass-card pricing-card">
+                  <button class="btn section-button-full" type="button" data-open-booking>
+                    Zarezerwuj
+                  </button>
+                </article>
+
+                <article class="glass-card pricing-card">
                   <div>
                     <div class="pricing-card__top">
-                      <strong>Żel + zdobienia</strong>
-                      <div class="pricing-card__price">160 zł</div>
+                      <strong>Manicure + zdobienia</strong>
+                      <div class="pricing-card__price">od 150 zł</div>
                     </div>
-                    <p>Pełna stylizacja premium.</p>
+                    <p>
+                      Stylizacja z dodatkowymi zdobieniami. Opcja dla efektu, który ma być subtelny, widoczny albo po prostu Twój.
+                    </p>
+                    <div class="service-tags">
+                      <span>1h 45min</span>
+                      <span>Zdobienia</span>
+                      <span>Premium</span>
+                    </div>
                   </div>
-                  <button class="btn btn-primary" data-open-booking>Zarezerwuj</button>
-                </div>
 
+                  <button class="btn btn-primary section-button-full" type="button" data-open-booking>
+                    Zarezerwuj
+                  </button>
+                </article>
               </div>
             </div>
           </div>
         </div>
       </section>
-
 
       <section class="section" id="location">
         <div class="landing-container">
           <div class="section-card reveal">
             <div class="section-wrap">
-              <div class="location-grid">
+              <div class="section-head">
+                <div class="section-chip">LOKALIZACJA</div>
+                <h2>Jedno kliknięcie i jesteś na miejscu.</h2>
+                <p>
+                  Sprawdź lokalizację i przyjedź bez stresu. Trasa otwiera się od razu w mapach.
+                </p>
+              </div>
 
-                <div class="location-map">
-                  <iframe src="https://maps.google.com/maps?q=Wroclaw&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+              <div class="location-grid">
+                <div class="glass-card location-map">
+                  <iframe
+                    title="LUNA map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://maps.google.com/maps?q=Wroclaw&z=13&output=embed">
+                  </iframe>
                 </div>
 
-                <div class="location-side">
+                <div class="glass-card location-side">
+                  <div class="location-preview">
+                    <div class="location-preview__inner">
+                      <strong>LUNA</strong>
+                      <span>NAIL STUDIO &amp; BEAUTY CARE</span>
+                    </div>
+                  </div>
+
                   <div class="location-copy">
-                    <strong>Znajdź nas we Wrocławiu</strong>
+                    <strong>Beauty studio we Wrocławiu.</strong>
                     <p>
-                      Studio znajduje się w centrum — łatwy dojazd i spokojna przestrzeń.
+                      Kliknij trasę, sprawdź dojazd i przyjedź spokojnie na wybraną godzinę.
                     </p>
                   </div>
 
-                  <button class="btn btn-primary" onclick="openMapsRoute()">
-                    Otwórz trasę
-                  </button>
+                  <div class="section-actions">
+                    <button class="btn btn-primary" type="button" onclick="openMapsRoute()">
+                      Jak dojechać
+                    </button>
+                    <a class="btn btn-ghost" href="tel:+48532377701">
+                      Zadzwoń
+                    </a>
+                  </div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </section>
-
 
       <section class="section" id="contact">
         <div class="landing-container">
           <div class="section-card reveal">
             <div class="section-wrap">
-              <div class="contact-grid">
+              <div class="section-head">
+                <div class="section-chip">KONTAKT</div>
+                <h2>Masz chwilę dla siebie? Zacznij od terminu.</h2>
+                <p>
+                  Zarezerwuj wizytę online albo zadzwoń, jeżeli chcesz szybko dopytać o stylizację.
+                </p>
+              </div>
 
-                <div class="contact-card">
+              <div class="contact-grid">
+                <div class="glass-card contact-card">
                   <div class="contact-lead">
-                    <strong>Kontakt</strong>
-                    <p>Zadzwoń lub napisz — odpowiadamy szybko.</p>
+                    <strong>LUNA NAIL STUDIO</strong>
+                    <p>
+                      Manicure, przedłużanie, zdobienia i spokojna pielęgnacja dłoni. Wpadasz, siadasz, wychodzisz z dopracowaną stylizacją.
+                    </p>
                   </div>
 
-                  <a href="tel:+48532377701" class="btn btn-primary">
-                    +48 532 377 701
-                  </a>
+                  <button class="btn btn-primary section-button-full" type="button" data-open-booking>
+                    Zarezerwuj termin
+                  </button>
+
+                  <div class="contact-note">
+                    Rezerwacja trwa chwilę: dane kontaktowe, usługa, stylistka, data, godzina i potwierdzenie.
+                  </div>
                 </div>
 
-                <div class="status-card">
-                  <div class="status-pill open">Otwarte</div>
+                <div class="glass-card status-card">
+                  <div id="liveStatus" class="status-pill closed">Closed now</div>
 
                   <ul class="status-list">
-                    <li><strong>Pon–Pt</strong> 10:00–20:00</li>
-                    <li><strong>Sobota</strong> 10:00–18:00</li>
-                    <li><strong>Niedziela</strong> Zamknięte</li>
+                    <li><span>Poniedziałek – Sobota</span><strong>10:00 – 20:00</strong></li>
+                    <li><span>Niedziela</span><strong>10:00 – 18:00</strong></li>
                   </ul>
-                </div>
 
+                  <div class="social-icons">
+                    <a class="social-icon" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener" aria-label="Instagram">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
+                      </svg>
+                    </a>
+
+                    <a class="social-icon" href="https://www.tiktok.com/@mrozowski.automation" target="_blank" rel="noopener" aria-label="TikTok">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.7 3c.2 1.6 1.1 3 2.4 3.8.8.5 1.7.8 2.7.8v3.1c-1.4 0-2.9-.4-4.1-1.2v6.4c0 3.1-2.5 5.6-5.6 5.6S5.5 19 5.5 15.9s2.5-5.6 5.6-5.6c.3 0 .7 0 1 .1v3.2a2.7 2.7 0 0 0-1-.2 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-2.5V3h2.1Z"></path>
+                      </svg>
+                    </a>
+
+                    <a class="social-icon" href="https://www.facebook.com/profile.php?id=61576437654902" target="_blank" rel="noopener" aria-label="Facebook">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.5-1.5H17V3.7c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.6v1.8H7V13h3v8h3.5Z"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
+
+    <button class="btn btn-primary floating-book" type="button" data-open-booking>
+      Zarezerwuj termin
+    </button>
   </div>
 
+  <main class="mobile-version" id="mobile-version">
+    <header class="app-top">
+      <div class="top-spacer"></div>
 
-  <div class="booking-overlay" id="bookingOverlay">
+      <div class="logo-pill">
+        <span class="logo-word">LUNA<br />NAIL</span>
+      </div>
+
+      <a class="icon-btn" href="tel:+48532377701" aria-label="Zadzwoń">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.35 1.77.68 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.25a2 2 0 0 1 2.11-.45c.83.33 1.7.56 2.6.68A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </a>
+    </header>
+
+    <nav class="section-nav" aria-label="Mobile pages">
+      <button class="nav-chip active" type="button" data-page="home">Start</button>
+      <button class="nav-chip" type="button" data-page="services">Usługi</button>
+      <button class="nav-chip" type="button" data-page="visit">Wizyta</button>
+      <button class="nav-chip" type="button" data-page="location">Dojazd</button>
+      <button class="nav-chip" type="button" data-page="contact">Kontakt</button>
+    </nav>
+
+    <section class="pages">
+      <article class="page active" id="page-home">
+        <div class="page-head">
+          <div class="kicker">LUNA NAIL STUDIO</div>
+          <h1 class="page-title">
+            Piękne dłonie
+            <span class="gold">zaczynają się od terminu.</span>
+          </h1>
+          <p class="page-sub">
+            Wybierz usługę, stylistkę i godzinę bez pisania wiadomości. Rezerwacja jest spokojna, szybka i dostępna zawsze.
+          </p>
+        </div>
+
+        <div class="screen-body">
+          <div class="hero-photo-card">
+            <div class="image-fallback">SOFT<br />BEAUTY</div>
+            <img src="/nails-hero.png" alt="LUNA manicure" />
+          </div>
+
+          <div class="mini-stats">
+            <div class="stat-card">
+              <span>Najczęściej wybierane stylizacje</span>
+              <strong>3+</strong>
+            </div>
+
+            <div class="stat-card">
+              <span>Godziny pracy studia</span>
+              <strong>10–20</strong>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="page" id="page-services">
+        <div class="page-head">
+          <div class="kicker">USŁUGI</div>
+          <h2 class="page-title">Manicure, żel, zdobienia. Bez chaosu.</h2>
+          <p class="page-sub">
+            Wybierz to, czego potrzebujesz. Usługa, cena i czas trwania są widoczne od razu.
+          </p>
+        </div>
+
+        <div class="services-list">
+          <div class="service-card">
+            <strong>Hybryda</strong>
+            <div class="price">od 120 zł</div>
+            <p>
+              Trwały manicure z kolorem i wykończeniem. Efekt do 3 tygodni.
+            </p>
+            <div class="tags">
+              <span>1h 30min</span>
+              <span>Kolor</span>
+              <span>Hybryda</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <strong>Przedłużanie</strong>
+            <div class="price">od 180 zł</div>
+            <p>
+              Budowa paznokci żelem lub akrylem. Długość i kształt dopasowane do dłoni.
+            </p>
+            <div class="tags">
+              <span>2h</span>
+              <span>Żel</span>
+              <span>Forma</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <strong>Zdobienia</strong>
+            <div class="price">od 150 zł</div>
+            <p>
+              Stylizacja z dodatkami. Subtelna, elegancka albo bardziej widoczna.
+            </p>
+            <div class="tags">
+              <span>1h 45min</span>
+              <span>Design</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="page" id="page-visit">
+        <div class="page-head">
+          <div class="kicker">WIZYTA</div>
+          <h2 class="page-title">Rezerwacja ma być szybka. Wizyta ma być spokojna.</h2>
+          <p class="page-sub">
+            Od razu widzisz usługę, czas trwania i wolny termin. Wybierasz dzień, godzinę i przychodzisz bez ustalania wszystkiego w DM.
+          </p>
+        </div>
+
+        <div class="visit-grid">
+          <div class="info-card">
+            <div class="num">01</div>
+            <div>
+              <strong>Wybierz usługę</strong>
+              <p>
+                Hybryda, przedłużanie albo stylizacja ze zdobieniami. Wszystko jest opisane jasno.
+              </p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="num">02</div>
+            <div>
+              <strong>Wybierz stylistkę i godzinę</strong>
+              <p>
+                Możesz wybrać konkretną osobę albo zostawić dobór wolnego terminu.
+              </p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="num">03</div>
+            <div>
+              <strong>Potwierdź wizytę</strong>
+              <p>
+                Dane trafiają do systemu. Przychodzisz na wybraną godzinę bez chaosu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="page" id="page-location">
+        <div class="page-head">
+          <div class="kicker">DOJAZD</div>
+          <h2 class="page-title">Jedno kliknięcie i jesteś na miejscu.</h2>
+          <p class="page-sub">
+            Sprawdź lokalizację i przyjedź bez stresu. Trasa otwiera się od razu.
+          </p>
+        </div>
+
+        <div class="screen-body">
+          <div class="location-card">
+            <div class="address-box">
+              <strong>Wrocław.</strong>
+              <p>
+                Studio znajduje się w spokojnej okolicy z wygodnym dojazdem.
+              </p>
+            </div>
+
+            <div class="map-glass" onclick="openMapsRoute()">
+              <img class="map-image" src="/luna-map.png" alt="Mapa LUNA NAIL STUDIO" />
+              <div class="map-logo-overlay">
+                <span>LUNA</span>
+              </div>
+            </div>
+
+            <div class="dual-actions">
+              <button class="cta-btn" type="button" onclick="openMapsRoute()">
+                Jak dojechać
+              </button>
+              <a class="ghost-btn" href="tel:+48532377701">Zadzwoń</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="page" id="page-contact">
+        <div class="page-head">
+          <div class="kicker">KONTAKT</div>
+          <h2 class="page-title">Masz chwilę dla siebie? Zacznij od terminu.</h2>
+          <p class="page-sub">
+            Zarezerwuj online albo zadzwoń, jeżeli chcesz szybko dopytać o stylizację.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-mobile-card">
+            <strong>LUNA NAIL STUDIO</strong>
+            <p>
+              Manicure, przedłużanie i zdobienia. Spokojne studio, czysta estetyka i prosta rezerwacja.
+            </p>
+          </div>
+
+          <div class="hours-list">
+            <div class="hour-row">
+              <span>Poniedziałek – Sobota</span>
+              <strong>10:00 – 20:00</strong>
+            </div>
+
+            <div class="hour-row">
+              <span>Niedziela</span>
+              <strong>10:00 – 18:00</strong>
+            </div>
+          </div>
+
+          <div class="social-row">
+            <a href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
+              </svg>
+            </a>
+
+            <a href="https://www.tiktok.com/@mrozowski.automation" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.7 3c.2 1.6 1.1 3 2.4 3.8.8.5 1.7.8 2.7.8v3.1c-1.4 0-2.9-.4-4.1-1.2v6.4c0 3.1-2.5 5.6-5.6 5.6S5.5 19 5.5 15.9s2.5-5.6 5.6-5.6c.3 0 .7 0 1 .1v3.2a2.7 2.7 0 0 0-1-.2 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-2.5V3h2.1Z"></path>
+              </svg>
+            </a>
+
+            <a href="https://www.facebook.com/profile.php?id=61576437654902" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.5-1.5H17V3.7c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.6v1.8H7V13h3v8h3.5Z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="bottom-cta">
+      <button class="cta-btn" type="button" data-open-booking>
+        Zarezerwuj termin
+      </button>
+    </div>
+  </main>
+
+  <section class="booking-overlay" id="bookingOverlay" aria-hidden="true">
     <div class="booking-shell">
       <div class="booking-topbar">
         <div class="booking-topbar__left">
           <div class="booking-logo-text">LUNA</div>
           <div class="booking-topbar__copy">
-            <span>Rezerwacja</span>
-            <strong>Wybierz termin</strong>
+            <span>LUNA NAIL STUDIO</span>
+            <strong>Rezerwacja online</strong>
           </div>
         </div>
 
-        <button class="btn booking-close" onclick="closeBooking()">×</button>
+        <button class="btn booking-close" type="button" id="bookingCloseBtn" aria-label="Zamknij booking">
+          ×
+        </button>
       </div>
 
       <div class="wizard-host">
-        <!-- tutaj wklejasz swój booking system -->
+        <main class="app-shell">
+          <section class="wizard-frame">
+            <header class="wizard-top">
+              <div class="wizard-top-row">
+                <div class="wizard-top-copy">
+                  <div class="eyebrow">LUNA NAIL STUDIO</div>
+                  <h1 id="stepTitle">Dane kontaktowe</h1>
+                  <p id="stepSubtitle">Zostaw podstawowe dane i przejdź dalej.</p>
+                </div>
+
+                <div class="step-pill" id="stepPill">1 / 8</div>
+              </div>
+
+              <div class="progress-wrap">
+                <div class="progress-track">
+                  <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">13%</div>
+              </div>
+            </header>
+
+            <section class="wizard-card">
+              <section class="step active" data-step="1">
+                <div class="step-content narrow">
+                  <div class="intro-card">
+                    <div class="intro-top">
+                      <div class="logo-box logo-box-image">
+                        <div class="booking-logo-text">LUNA</div>
+                      </div>
+
+                      <div class="intro-copy">
+                        <span class="section-kicker">LUNA NAIL STUDIO</span>
+                        <strong>Umów wizytę szybko i wygodnie</strong>
+                      </div>
+                    </div>
+
+                    <div class="intro-divider"></div>
+
+                    <div class="card-head">
+                      <h2>Wpisz imię i telefon</h2>
+                      <p>Zostaw swoje dane, a potem wybierz usługę i termin wizyty.</p>
+                    </div>
+
+                    <div class="intro-benefits">
+                      <div class="intro-benefit">Szybko</div>
+                      <div class="intro-benefit">Spokojnie</div>
+                      <div class="intro-benefit">Online</div>
+                    </div>
+                  </div>
+
+                  <label class="field">
+                    <span>Imię</span>
+                    <input id="nameInput" type="text" placeholder="Np. Julia" autocomplete="name" />
+                    <small class="error" id="nameError"></small>
+                  </label>
+
+                  <label class="field">
+                    <span>Telefon</span>
+                    <input id="phoneInput" type="tel" placeholder="+48 123 456 789" autocomplete="tel" />
+                    <small class="error" id="phoneError"></small>
+                  </label>
+                </div>
+              </section>
+
+              <section class="step" data-step="2">
+                <div class="step-content">
+                  <div class="card-head">
+                    <h2>Wybór usługi</h2>
+                    <p>Najpierw wybierz kategorię, potem konkretną usługę.</p>
+                  </div>
+
+                  <div class="accordion-list" id="categoryAccordion"></div>
+                </div>
+              </section>
+
+              <section class="step" data-step="3">
+                <div class="step-content narrow">
+                  <div class="card-head">
+                    <h2>Wybrać stylistkę?</h2>
+                    <p>Możesz wybrać konkretną stylistkę albo przejść dalej bez wyboru.</p>
+                  </div>
+
+                  <div class="summary-list">
+                    <div class="summary-row">
+                      <span>Imię</span>
+                      <strong data-bind="name">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Telefon</span>
+                      <strong data-bind="phone">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Usługa</span>
+                      <strong data-bind="serviceName">—</strong>
+                    </div>
+                  </div>
+
+                  <div class="choice-actions">
+                    <button class="choice-btn choice-btn-strong" id="chooseBarberYes" type="button">Tak</button>
+                    <button class="choice-btn choice-btn-strong" id="chooseBarberNo" type="button">Nie</button>
+                  </div>
+
+                  <div class="barber-skip-box hidden" id="barberSkipBox">
+                    <div class="summary-list">
+                      <div class="summary-row">
+                        <span>Stylistka</span>
+                        <strong>Bez wyboru</strong>
+                      </div>
+
+                      <div class="summary-row">
+                        <span>Status</span>
+                        <strong>System dobierze dostępną stylistkę</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="step" data-step="4">
+                <div class="step-content narrow">
+                  <div class="card-head">
+                    <h2>Wybór stylistki</h2>
+                    <p>Przeglądaj stylistki strzałkami i wybierz konkretną osobę.</p>
+                  </div>
+
+                  <div class="barber-slider-card">
+                    <div class="barber-slide-photo" id="barberSlidePhoto">
+                      <img src="/nails-stylist.png" alt="Stylistka" class="barber-photo-img" />
+                    </div>
+
+                    <div class="barber-slide-info">
+                      <strong id="barberSlideName">—</strong>
+                      <p id="barberSlideDescription">—</p>
+                      <div class="barber-langs" id="barberSlideLangs"></div>
+                    </div>
+
+                    <div class="barber-slider-controls">
+                      <button class="slider-arrow" id="barberPrevBtn" type="button">←</button>
+                      <div class="slider-counter" id="barberCounter">1 / 3</div>
+                      <button class="slider-arrow" id="barberNextBtn" type="button">→</button>
+                    </div>
+
+                    <button class="select-barber-btn" id="selectBarberBtn" type="button">
+                      Wybierz tę stylistkę
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="step" data-step="5">
+                <div class="step-content">
+                  <div class="card-head">
+                    <h2>Wybór daty</h2>
+                    <p>Wybierz dogodny dzień wizyty.</p>
+                  </div>
+
+                  <div class="calendar-box">
+                    <div class="calendar-header">
+                      <button class="calendar-nav-btn" id="calendarPrevBtn" type="button">←</button>
+
+                      <div class="calendar-title-wrap">
+                        <strong id="monthLabel">Miesiąc</strong>
+                        <span id="calendarStatus">Dostępne terminy</span>
+                      </div>
+
+                      <button class="calendar-nav-btn" id="calendarNextBtn" type="button">→</button>
+                    </div>
+
+                    <div class="calendar-weekdays">
+                      <span>Pn</span>
+                      <span>Wt</span>
+                      <span>Śr</span>
+                      <span>Cz</span>
+                      <span>Pt</span>
+                      <span>Sb</span>
+                      <span>Nd</span>
+                    </div>
+
+                    <div class="calendar-month-grid" id="calendarGrid"></div>
+                    <small class="error" id="dateError"></small>
+                  </div>
+                </div>
+              </section>
+
+              <section class="step" data-step="6">
+                <div class="step-content">
+                  <div class="card-head">
+                    <h2>Wybór godziny</h2>
+                    <p>Wybierz dogodną godzinę wizyty.</p>
+                  </div>
+
+                  <div class="slots-box">
+                    <div class="calendar-top">
+                      <strong>Godziny</strong>
+                      <span id="slotsStatus">Wybierz datę</span>
+                    </div>
+
+                    <div class="slots-grid" id="slotsGrid"></div>
+                    <small class="error" id="timeError"></small>
+                  </div>
+                </div>
+              </section>
+
+              <section class="step" data-step="7">
+                <div class="step-content">
+                  <div class="card-head">
+                    <h2>Potwierdzenie danych</h2>
+                    <p>Sprawdź wszystko przed zapisaniem wizyty.</p>
+                  </div>
+
+                  <div class="summary-list">
+                    <div class="summary-row">
+                      <span>Imię</span>
+                      <strong data-bind="name">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Telefon</span>
+                      <strong data-bind="phone">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Usługa</span>
+                      <strong data-bind="serviceName">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Stylistka</span>
+                      <strong data-bind="barberName">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Data</span>
+                      <strong data-bind="dateText">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Godzina</span>
+                      <strong data-bind="time">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Czas trwania</span>
+                      <strong data-bind="serviceDuration">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Cena</span>
+                      <strong data-bind="servicePrice">—</strong>
+                    </div>
+                  </div>
+
+                  <div class="info-note">
+                    Sprawdź dane i potwierdź, aby zapisać wizytę.
+                  </div>
+
+                  <small class="error" id="submitError"></small>
+                </div>
+              </section>
+
+              <section class="step" data-step="8">
+                <div class="step-content narrow center">
+                  <div class="success-icon">✓</div>
+
+                  <div class="card-head center">
+                    <h2>Rezerwacja zapisana</h2>
+                    <p>Wizyta została pomyślnie dodana do systemu.</p>
+                  </div>
+
+                  <div class="summary-list">
+                    <div class="summary-row">
+                      <span>Usługa</span>
+                      <strong data-bind="serviceName">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Stylistka</span>
+                      <strong data-bind="barberName">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Data</span>
+                      <strong data-bind="dateText">—</strong>
+                    </div>
+
+                    <div class="summary-row">
+                      <span>Godzina</span>
+                      <strong data-bind="time">—</strong>
+                    </div>
+                  </div>
+
+                  <div class="success-links">
+                    <a class="nav-btn nav-btn-primary" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">
+                      Instagram
+                    </a>
+
+                    <a class="nav-btn" href="https://www.google.com/maps/search/?api=1&query=Wroclaw" target="_blank" rel="noopener">
+                      Lokalizacja
+                    </a>
+
+                    <button class="nav-btn" type="button" onclick="callBarbershop()">
+                      Zadzwoń: 532 377 701
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </section>
+
+            <footer class="wizard-nav">
+              <button class="nav-btn" id="backBtn" type="button">Wstecz</button>
+              <button class="nav-btn nav-btn-primary" id="nextBtn" type="button">Dalej</button>
+            </footer>
+          </section>
+        </main>
       </div>
     </div>
-  </div>
-
+  </section>
 
   <script>
-    const overlay = document.getElementById("bookingOverlay");
-
-    document.querySelectorAll("[data-open-booking]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        overlay.classList.add("open");
-        document.body.classList.add("booking-open");
-      });
-    });
-
-    function closeBooking() {
-      overlay.classList.remove("open");
-      document.body.classList.remove("booking-open");
-    }
-
     function openMapsRoute() {
       window.open("https://maps.google.com?q=Wroclaw", "_blank");
     }
+
+    function callBarbershop() {
+      window.location.href = "tel:+48532377701";
+    }
+
+    window.openMapsRoute = openMapsRoute;
+    window.callBarbershop = callBarbershop;
+    window.callDogma = callBarbershop;
+
+    (function () {
+      const flash = document.getElementById("screenFlash");
+      const overlay = document.getElementById("bookingOverlay");
+      const closeBtn = document.getElementById("bookingCloseBtn");
+      const openButtons = document.querySelectorAll("[data-open-booking]");
+      const clickable = document.querySelectorAll('a[href^="#"], .btn, .cta-btn, .ghost-btn');
+      const liveStatus = document.getElementById("liveStatus");
+      const body = document.body;
+      const floatingBook = document.querySelector(".floating-book");
+      const contactSection = document.getElementById("contact");
+      const heroSection = document.getElementById("hero");
+      const tabs = document.querySelectorAll(".mobile-tab");
+      const sections = [...document.querySelectorAll("main.landing-wrap > section[id]")];
+
+      function triggerFlash() {
+        if (!flash) return;
+        flash.classList.add("active");
+        setTimeout(() => flash.classList.remove("active"), 130);
+      }
+
+      clickable.forEach((item) => {
+        item.addEventListener("click", triggerFlash);
+      });
+
+      function openBooking() {
+        if (!overlay) return;
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        body.classList.add("booking-open");
+      }
+
+      function closeBooking() {
+        if (!overlay) return;
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        body.classList.remove("booking-open");
+      }
+
+      window.closeBooking = closeBooking;
+
+      openButtons.forEach((btn) => {
+        btn.addEventListener("click", openBooking);
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener("click", closeBooking);
+      }
+
+      if (overlay) {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeBooking();
+        });
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          if (overlay && overlay.classList.contains("open")) {
+            closeBooking();
+          }
+        }
+      });
+
+      function updateLiveStatus() {
+        if (!liveStatus) return;
+
+        const now = new Date();
+        const day = now.getDay();
+        const minutes = now.getHours() * 60 + now.getMinutes();
+
+        let open = 10 * 60;
+        let close = 20 * 60;
+
+        if (day === 0) close = 18 * 60;
+
+        const isOpen = minutes >= open && minutes < close;
+
+        liveStatus.classList.remove("open", "closed");
+        liveStatus.classList.add(isOpen ? "open" : "closed");
+        liveStatus.textContent = isOpen ? "Open now" : "Closed now";
+      }
+
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      function handleFloatingButton() {
+        if (!floatingBook || !contactSection || !heroSection) return;
+
+        const heroRect = heroSection.getBoundingClientRect();
+        const contactRect = contactSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        const passedHero = heroRect.bottom < viewportHeight * 0.35;
+        const nearContact = contactRect.top < viewportHeight - 140;
+
+        floatingBook.classList.remove("is-visible", "hidden-on-contact");
+
+        if (nearContact) {
+          floatingBook.classList.add("hidden-on-contact");
+          return;
+        }
+
+        if (passedHero) {
+          floatingBook.classList.add("is-visible");
+        }
+      }
+
+      function handleActiveTabs() {
+        if (!tabs.length || !sections.length) return;
+
+        let current = sections[0].id;
+        const marker = window.innerHeight * 0.34;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= marker && rect.bottom >= marker) {
+            current = section.id;
+          }
+        });
+
+        tabs.forEach((tab) => {
+          const href = tab.getAttribute("href") || "";
+          tab.classList.toggle("active", href === `#${current}`);
+        });
+      }
+
+      window.addEventListener("scroll", () => {
+        handleFloatingButton();
+        handleActiveTabs();
+      });
+
+      window.addEventListener("resize", () => {
+        handleFloatingButton();
+        handleActiveTabs();
+      });
+
+      handleFloatingButton();
+      handleActiveTabs();
+    })();
+
+    (function () {
+      const pages = document.querySelectorAll(".page");
+      const chips = document.querySelectorAll("[data-page]");
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const target = chip.dataset.page;
+
+          chips.forEach((item) => {
+            item.classList.toggle("active", item === chip);
+          });
+
+          pages.forEach((page) => {
+            page.classList.toggle("active", page.id === `page-${target}`);
+          });
+        });
+      });
+    })();
   </script>
 
+  <script src="./script.js"></script>
 </body>
 </html>
+'''
 
-      
+path = Path("/mnt/data/luna_nail_index_premium.html")
+path.write_text(html, encoding="utf-8")
+path
