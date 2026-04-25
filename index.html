@@ -1,82 +1,97 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MONARCH BARBERSHOP — Premium Rezerwacja</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>LUNA NAIL STUDIO — Rezerwacja online</title>
   <meta
     name="description"
-    content="MONARCH BARBERSHOP — jasny premium landing z rezerwacją online w kilka kliknięć."
+    content="LUNA NAIL STUDIO — manicure, stylizacja paznokci i spokojna rezerwacja online w kilka kliknięć."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
 
   <link rel="stylesheet" href="./style.css" />
 
   <style>
-    html {
-      scroll-behavior: smooth;
-      background: #f8fbff;
-    }
-
     :root {
       --landing-max: 1240px;
-      --landing-bg-0: #f8fbff;
-      --landing-bg-1: #f5f7fb;
-      --landing-bg-2: #eef4ff;
-      --landing-bg-3: #e7eefc;
-      --landing-surface: rgba(255, 255, 255, 0.82);
-      --landing-surface-strong: rgba(255, 255, 255, 0.94);
-      --landing-surface-heavy: #ffffff;
-      --landing-text: #0f172a;
-      --landing-text-strong: #0b1220;
-      --landing-muted: #64748b;
-      --landing-soft: #94a3b8;
-      --landing-accent: #2563eb;
-      --landing-accent-strong: #3b82f6;
-      --landing-accent-deep: #1d4ed8;
-      --landing-accent-soft: #dbeafe;
-      --landing-accent-faint: rgba(37, 99, 235, 0.08);
-      --landing-line: rgba(15, 23, 42, 0.08);
-      --landing-line-strong: rgba(15, 23, 42, 0.12);
-      --landing-line-blue: rgba(37, 99, 235, 0.16);
-      --landing-shadow-xl: 0 34px 100px rgba(148, 163, 184, 0.22);
-      --landing-shadow-lg: 0 24px 60px rgba(148, 163, 184, 0.17);
-      --landing-shadow-md: 0 16px 34px rgba(148, 163, 184, 0.14);
-      --landing-shadow-sm: 0 10px 22px rgba(148, 163, 184, 0.1);
-      --header-desktop-h: 92px;
-      --header-mobile-top-h: 78px;
-      --header-mobile-tabs-h: 64px;
+
+      --bg-0: #fff7fb;
+      --bg-1: #fffafd;
+      --bg-2: #f8edf4;
+      --bg-3: #f3e2ed;
+      --bg-4: #ead4e3;
+
+      --panel: rgba(255, 255, 255, 0.62);
+      --panel-strong: rgba(255, 255, 255, 0.78);
+      --panel-heavy: rgba(255, 255, 255, 0.92);
+
+      --line: rgba(94, 46, 74, 0.10);
+      --line-strong: rgba(94, 46, 74, 0.16);
+      --line-soft: rgba(94, 46, 74, 0.06);
+      --line-pink: rgba(220, 126, 172, 0.24);
+      --line-pink-strong: rgba(220, 126, 172, 0.36);
+
+      --text: #34202b;
+      --text-strong: #21121b;
+      --muted: #8a6c7c;
+      --soft: #b99aac;
+
+      --pink: #df7fab;
+      --pink-2: #c96798;
+      --pink-3: #f7bfd8;
+      --cream: #fff6ed;
+
+      --shadow-xl: 0 34px 100px rgba(116, 72, 96, 0.22);
+      --shadow-lg: 0 24px 70px rgba(116, 72, 96, 0.18);
+      --shadow-md: 0 18px 46px rgba(116, 72, 96, 0.14);
+      --shadow-sm: 0 12px 28px rgba(116, 72, 96, 0.10);
+
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+      --desktop-header-h: 92px;
     }
 
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-0);
+      height: auto;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     body {
       margin: 0;
+      min-height: 100%;
       font-family: "Manrope", sans-serif;
-      color: var(--landing-text);
+      color: var(--text);
       background:
-        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.12), transparent 26%),
-        radial-gradient(circle at 100% 0%, rgba(37, 99, 235, 0.08), transparent 24%),
-        radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.05), transparent 32%),
-        linear-gradient(180deg, #fbfdff 0%, #f5f7fb 44%, #eef4ff 100%);
+        radial-gradient(circle at 0% 0%, rgba(247, 191, 216, 0.38), transparent 25%),
+        radial-gradient(circle at 100% 8%, rgba(255, 221, 236, 0.44), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(223, 127, 171, 0.16), transparent 34%),
+        linear-gradient(180deg, #fffafd 0%, #fff7fb 44%, #f8edf4 100%);
       overflow-x: hidden;
+      overflow-y: auto;
       position: relative;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    body.menu-open,
-    body.booking-open {
-      overflow: hidden;
-    }
+    body.booking-open { overflow: hidden; }
 
     body::before {
       content: "";
@@ -85,9 +100,9 @@
       pointer-events: none;
       z-index: 0;
       background:
-        linear-gradient(rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.18)),
-        linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 250, 253, 0.28)),
+        linear-gradient(rgba(94, 46, 74, 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(94, 46, 74, 0.026) 1px, transparent 1px);
       background-size: auto, 34px 34px, 34px 34px;
       mask-image: radial-gradient(circle at 50% 18%, black 18%, transparent 82%);
     }
@@ -99,7 +114,20 @@
       pointer-events: none;
       z-index: 0;
       background:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.52), transparent 62%);
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.62), transparent 62%),
+        linear-gradient(120deg, transparent 0 48%, rgba(223, 127, 171, 0.045) 48% 52%, transparent 52% 100%);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    img { max-width: 100%; display: block; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+
+    .desktop-version,
+    .mobile-version,
+    .booking-overlay {
+      position: relative;
+      z-index: 2;
     }
 
     .landing-container {
@@ -109,19 +137,20 @@
       z-index: 2;
     }
 
+    .desktop-version { display: block; }
+    .mobile-version { display: none; }
+
     .landing-bg-orb,
-    .landing-bg-blur,
     .landing-noise,
-    .screen-flash {
-      pointer-events: none;
-    }
+    .screen-flash { pointer-events: none; }
 
     .landing-bg-orb {
       position: fixed;
       z-index: 1;
       border-radius: 999px;
       filter: blur(90px);
-      opacity: 0.9;
+      opacity: 0.92;
+      animation: orbMove 12s ease-in-out infinite alternate;
     }
 
     .landing-bg-orb.one {
@@ -129,7 +158,7 @@
       height: 440px;
       left: -160px;
       top: -120px;
-      background: rgba(59, 130, 246, 0.16);
+      background: rgba(247, 191, 216, 0.52);
     }
 
     .landing-bg-orb.two {
@@ -137,7 +166,8 @@
       height: 520px;
       right: -220px;
       top: 220px;
-      background: rgba(96, 165, 250, 0.12);
+      background: rgba(223, 127, 171, 0.22);
+      animation-delay: -3s;
     }
 
     .landing-bg-orb.three {
@@ -145,17 +175,18 @@
       height: 500px;
       left: 20%;
       bottom: -260px;
-      background: rgba(37, 99, 235, 0.08);
+      background: rgba(255, 225, 239, 0.54);
+      animation-delay: -6s;
     }
 
     .landing-noise {
       position: fixed;
       inset: 0;
       z-index: 1;
-      opacity: 0.5;
+      opacity: 0.45;
       background-image:
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1px),
-        radial-gradient(circle at 75% 75%, rgba(37, 99, 235, 0.08) 0 1px, transparent 1px);
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.85) 0 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(223, 127, 171, 0.12) 0 1px, transparent 1px);
       background-size: 34px 34px, 48px 48px;
       mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
@@ -166,29 +197,26 @@
       z-index: 300;
       opacity: 0;
       background:
-        radial-gradient(circle at center, rgba(59, 130, 246, 0.12), transparent 36%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.7), transparent 45%);
+        radial-gradient(circle at center, rgba(247, 191, 216, 0.24), transparent 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent 45%);
       transition: opacity 160ms ease;
     }
 
-    .screen-flash.active {
-      opacity: 1;
-    }
+    .screen-flash.active { opacity: 1; }
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 160;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 251, 255, 0.78));
+      background: linear-gradient(180deg, rgba(255, 250, 253, 0.94), rgba(255, 247, 251, 0.78));
       backdrop-filter: blur(20px) saturate(135%);
       -webkit-backdrop-filter: blur(20px) saturate(135%);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-      box-shadow: 0 12px 28px rgba(148, 163, 184, 0.08);
+      border-bottom: 1px solid rgba(94, 46, 74, 0.08);
+      box-shadow: 0 18px 36px rgba(116, 72, 96, 0.12);
     }
 
     .desktop-header {
-      min-height: var(--header-desktop-h);
+      min-height: var(--desktop-header-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -203,36 +231,47 @@
       flex: 1;
     }
 
-    .desktop-right {
-      justify-content: flex-end;
-    }
-
-    .desktop-center {
-      display: flex;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .desktop-right { justify-content: flex-end; }
+    .desktop-center { display: flex; justify-content: center; flex-shrink: 0; }
 
     .desktop-logo {
-      width: 128px;
+      width: 142px;
       min-height: 58px;
       display: grid;
       place-items: center;
-      border-radius: 20px;
-      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: 22px;
+      overflow: hidden;
+      padding: 8px 14px;
+      text-decoration: none;
+      border: 1px solid rgba(94, 46, 74, 0.09);
       background:
-        radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 44%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.88));
+        radial-gradient(circle at top, rgba(247, 191, 216, 0.42), transparent 46%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 247, 251, 0.78));
       box-shadow:
-        0 10px 22px rgba(148, 163, 184, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 16px 34px rgba(116, 72, 96, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
+      color: var(--text-strong);
+      font-family: "Sora", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      line-height: 0.95;
+      text-align: center;
     }
 
     .desktop-logo img {
-      width: 108px;
-      height: auto;
-      display: block;
-      filter: saturate(0.88) contrast(1.03);
+      width: 100%;
+      max-width: 112px;
+      max-height: 44px;
+      object-fit: contain;
+      filter: saturate(0.95) contrast(1.04) drop-shadow(0 0 16px rgba(223, 127, 171, 0.16));
+    }
+
+    .desktop-logo-text,
+    .logo-text {
+      font-family: "Sora", sans-serif;
+      font-weight: 800;
+      color: var(--text-strong);
+      letter-spacing: -0.07em;
     }
 
     .desktop-nav {
@@ -244,7 +283,7 @@
 
     .desktop-nav a {
       position: relative;
-      color: rgba(15, 23, 42, 0.72);
+      color: rgba(52, 32, 43, 0.72);
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
@@ -260,34 +299,23 @@
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--landing-accent-strong), var(--landing-accent));
+      background: linear-gradient(90deg, var(--pink-3), var(--pink-2));
       transition: width 0.22s ease;
     }
 
-    .desktop-nav a:hover {
-      color: var(--landing-text-strong);
-    }
-
-    .desktop-nav a:hover::after {
-      width: 100%;
-    }
-
-    .desktop-call-btn,
-    .mobile-call-btn,
-    .mobile-icon-btn {
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.94));
-      color: var(--landing-accent-deep);
-      box-shadow:
-        0 10px 20px rgba(148, 163, 184, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
+    .desktop-nav a:hover { color: var(--text-strong); }
+    .desktop-nav a:hover::after { width: 100%; }
 
     .desktop-call-btn {
       min-height: 46px;
       padding: 0 17px;
       border-radius: 999px;
+      border: 1px solid rgba(94, 46, 74, 0.10);
+      background: rgba(255, 255, 255, 0.58);
+      color: var(--pink-2);
+      box-shadow:
+        0 14px 28px rgba(116, 72, 96, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -301,148 +329,11 @@
 
     .desktop-call-btn:hover {
       transform: translateY(-1px);
-      border-color: rgba(37, 99, 235, 0.18);
+      border-color: rgba(223, 127, 171, 0.28);
       box-shadow:
-        0 16px 28px rgba(148, 163, 184, 0.14),
-        0 0 0 4px rgba(37, 99, 235, 0.035),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .mobile-topbar,
-    .mobile-tabs,
-    .mobile-drawer {
-      display: none;
-    }
-
-    .mobile-topbar {
-      min-height: var(--header-mobile-top-h);
-      padding: 0 14px;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-    }
-
-    .mobile-brand {
-      width: 112px;
-      min-height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .mobile-brand img {
-      width: 92px;
-      height: auto;
-      display: block;
-    }
-
-    .mobile-icon-btn,
-    .mobile-call-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      text-decoration: none;
-    }
-
-    .mobile-icon-btn {
-      padding: 0;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-
-    .mobile-icon-btn span {
-      width: 20px;
-      height: 2px;
-      border-radius: 999px;
-      background: currentColor;
-    }
-
-    .mobile-call-btn svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .mobile-tabs {
-      min-height: var(--header-mobile-tabs-h);
-      padding: 0 8px;
-      align-items: center;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-    }
-
-    .mobile-tabs::-webkit-scrollbar {
-      display: none;
-    }
-
-    .mobile-tab {
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap;
-      text-decoration: none;
-      color: rgba(15, 23, 42, 0.7);
-      background: rgba(255, 255, 255, 0.68);
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      font-size: 13px;
-      font-weight: 800;
-      flex-shrink: 0;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
-    }
-
-    .mobile-tab.active,
-    .mobile-tab:hover {
-      color: #ffffff;
-      background: linear-gradient(180deg, var(--landing-accent-strong), var(--landing-accent));
-      border-color: rgba(37, 99, 235, 0.18);
-      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.16);
-    }
-
-    .mobile-drawer {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(248, 251, 255, 0.98);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.07);
-      padding: 10px 12px 14px;
-      box-shadow: 0 28px 60px rgba(148, 163, 184, 0.18);
-    }
-
-    .mobile-drawer.open {
-      display: block;
-    }
-
-    .mobile-drawer-nav {
-      display: grid;
-      gap: 8px;
-    }
-
-    .mobile-drawer-nav a {
-      min-height: 52px;
-      padding: 0 16px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: var(--landing-text);
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      font-size: 15px;
-      font-weight: 800;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 20px 42px rgba(116, 72, 96, 0.16),
+        0 0 0 4px rgba(223, 127, 171, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .landing-wrap {
@@ -453,31 +344,23 @@
       z-index: 2;
     }
 
-    #hero,
-    #experience,
-    #manifest,
-    #pricing,
-    #location,
-    #contact {
-      scroll-margin-top: 124px;
-    }
+    #hero, #experience, #manifest, #pricing, #location, #contact { scroll-margin-top: 124px; }
 
-    .hero-section {
-      min-height: calc(100vh - var(--header-desktop-h) - 20px);
-    }
+    .hero-section { min-height: calc(100vh - var(--desktop-header-h) - 20px); }
 
     .hero-card,
     .section-card {
       border-radius: 36px;
-      border: 1px solid var(--landing-line);
+      border: 1px solid rgba(94, 46, 74, 0.10);
       background:
-        radial-gradient(circle at 12% 0%, rgba(59, 130, 246, 0.11), transparent 28%),
-        radial-gradient(circle at 100% 10%, rgba(37, 99, 235, 0.06), transparent 24%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 251, 255, 0.84));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38)),
+        radial-gradient(circle at 16% 0%, rgba(247, 191, 216, 0.34), transparent 30%),
+        radial-gradient(circle at 100% 12%, rgba(223, 127, 171, 0.13), transparent 26%),
+        linear-gradient(135deg, #fffefd, #fff3fa 48%, #f8e7f1);
       box-shadow:
-        var(--landing-shadow-xl),
-        inset 0 1px 0 rgba(255, 255, 255, 0.96),
-        inset 0 -1px 0 rgba(15, 23, 42, 0.02);
+        var(--shadow-xl),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        inset 0 -1px 0 rgba(94, 46, 74, 0.03);
       overflow: hidden;
       position: relative;
       isolation: isolate;
@@ -491,8 +374,8 @@
       pointer-events: none;
       z-index: 0;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.72), transparent 38%),
-        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.74), transparent 46%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.8), transparent 38%),
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.66), transparent 42%);
     }
 
     .hero-card::after,
@@ -503,7 +386,7 @@
       z-index: 0;
       border-radius: inherit;
       pointer-events: none;
-      border: 1px solid rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.68);
     }
 
     .hero-grid {
@@ -533,17 +416,16 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(37, 99, 235, 0.12);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(239, 246, 255, 0.86));
-      color: var(--landing-accent-deep);
+      border: 1px solid rgba(223, 127, 171, 0.20);
+      background: rgba(255, 255, 255, 0.64);
+      color: var(--pink-2);
       font-size: 12px;
       font-weight: 900;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       box-shadow:
-        0 10px 20px rgba(148, 163, 184, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 12px 26px rgba(116, 72, 96, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
       position: relative;
       z-index: 1;
     }
@@ -553,8 +435,8 @@
       width: 9px;
       height: 9px;
       border-radius: 999px;
-      background: var(--landing-accent-strong);
-      box-shadow: 0 0 16px rgba(37, 99, 235, 0.38);
+      background: var(--pink);
+      box-shadow: 0 0 16px rgba(223, 127, 171, 0.42);
     }
 
     .hero-title {
@@ -563,20 +445,20 @@
       font-size: clamp(52px, 8vw, 104px);
       line-height: 0.92;
       letter-spacing: -0.08em;
-      color: var(--landing-text-strong);
-      max-width: 10ch;
+      color: var(--text-strong);
+      max-width: 11ch;
       text-wrap: balance;
     }
 
     .hero-title span {
       display: inline-block;
-      color: var(--landing-accent-deep);
-      text-shadow: 0 18px 50px rgba(37, 99, 235, 0.16);
+      color: var(--pink-2);
+      text-shadow: 0 18px 50px rgba(223, 127, 171, 0.20);
     }
 
     .hero-sub {
       margin: 0;
-      color: var(--landing-muted);
+      color: var(--muted);
       font-size: 18px;
       line-height: 1.78;
       max-width: 600px;
@@ -604,12 +486,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      background: rgba(255, 255, 255, 0.78);
-      color: var(--landing-muted);
+      border: 1px solid rgba(94, 46, 74, 0.09);
+      background: rgba(255, 255, 255, 0.64);
+      color: var(--muted);
       font-size: 13px;
       font-weight: 800;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+      box-shadow:
+        0 18px 38px rgba(116, 72, 96, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .trust-pill::before {
@@ -617,8 +501,8 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: var(--landing-accent);
-      box-shadow: 0 0 12px rgba(37, 99, 235, 0.28);
+      background: var(--pink);
+      box-shadow: 0 0 16px rgba(223, 127, 171, 0.40);
     }
 
     .hero-side {
@@ -629,13 +513,13 @@
 
     .glass-card {
       border-radius: 28px;
-      border: 1px solid rgba(15, 23, 42, 0.07);
+      border: 1px solid rgba(94, 46, 74, 0.10);
       background:
-        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.06), transparent 28%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 251, 255, 0.86));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.42)),
+        rgba(255, 255, 255, 0.42);
       box-shadow:
-        var(--landing-shadow-md),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 20px 48px rgba(116, 72, 96, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(14px) saturate(125%);
       -webkit-backdrop-filter: blur(14px) saturate(125%);
       position: relative;
@@ -647,7 +531,7 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 45%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.36), transparent 45%);
     }
 
     .hero-photo {
@@ -661,8 +545,9 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(180deg, transparent 45%, rgba(15, 23, 42, 0.5)),
-        radial-gradient(circle at 70% 0%, rgba(59, 130, 246, 0.18), transparent 34%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(52, 32, 43, 0.32)),
+        radial-gradient(circle at 28% 18%, rgba(255, 231, 243, 0.35), transparent 32%),
+        radial-gradient(circle at 62% 42%, rgba(223, 127, 171, 0.20), transparent 38%);
       pointer-events: none;
     }
 
@@ -671,29 +556,30 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      filter: grayscale(0.15) contrast(1.02) brightness(1.02);
+      object-position: center;
+      filter: contrast(1.05) brightness(1.04) saturate(1.08);
       transform: scale(1.01);
     }
 
     .hero-photo-badge {
       position: absolute;
-      left: 18px;
-      right: 18px;
       bottom: 18px;
+      left: 18px;
       z-index: 2;
-      padding: 16px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.74);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.14);
+      padding: 12px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 16px 34px rgba(116, 72, 96, 0.18);
+      max-width: 220px;
       display: grid;
-      gap: 6px;
+      gap: 8px;
     }
 
     .hero-photo-badge span {
-      color: var(--landing-accent);
+      color: var(--pink-2);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.14em;
@@ -702,10 +588,10 @@
 
     .hero-photo-badge strong {
       font-family: "Sora", sans-serif;
-      font-size: 24px;
-      line-height: 1;
-      letter-spacing: -0.05em;
-      color: var(--landing-text-strong);
+      font-size: 27px;
+      line-height: .92;
+      letter-spacing: -0.07em;
+      color: var(--text-strong);
     }
 
     .hero-info-grid {
@@ -723,18 +609,22 @@
     }
 
     .metric-card span {
-      color: var(--landing-muted);
+      color: var(--muted);
       font-size: 13px;
       font-weight: 800;
       line-height: 1.5;
+      position: relative;
+      z-index: 1;
     }
 
     .metric-card strong {
       font-family: "Sora", sans-serif;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
       font-size: 34px;
       line-height: 0.95;
       letter-spacing: -0.07em;
+      position: relative;
+      z-index: 1;
     }
 
     .btn {
@@ -745,64 +635,55 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(94, 46, 74, 0.10);
       text-decoration: none;
       cursor: pointer;
-      color: var(--landing-text);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.94));
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 250, 253, 0.58));
       font: inherit;
       font-size: 14px;
       font-weight: 900;
       letter-spacing: 0.03em;
       text-transform: uppercase;
       box-shadow:
-        var(--landing-shadow-sm),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease,
-        filter 0.2s ease;
+        0 14px 30px rgba(116, 72, 96, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease, filter 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(37, 99, 235, 0.16);
+      border-color: rgba(223, 127, 171, 0.28);
       box-shadow:
-        0 18px 34px rgba(148, 163, 184, 0.15),
-        0 0 0 4px rgba(37, 99, 235, 0.03),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 20px 42px rgba(116, 72, 96, 0.16),
+        0 0 0 4px rgba(223, 127, 171, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .btn-primary {
-      color: #ffffff;
-      border-color: rgba(37, 99, 235, 0.18);
-      background: linear-gradient(180deg, var(--landing-accent-strong), var(--landing-accent));
+      color: #331522;
+      border-color: rgba(223, 127, 171, 0.34);
+      background: linear-gradient(180deg, var(--pink-3), var(--pink));
       box-shadow:
-        0 18px 34px rgba(37, 99, 235, 0.22),
-        0 0 0 1px rgba(37, 99, 235, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+        0 18px 38px rgba(223, 127, 171, 0.24),
+        0 0 30px rgba(247, 191, 216, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.48);
     }
 
     .btn-primary:hover {
       filter: brightness(1.03) saturate(1.03);
       box-shadow:
-        0 22px 42px rgba(37, 99, 235, 0.28),
-        0 0 0 5px rgba(37, 99, 235, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        0 22px 44px rgba(223, 127, 171, 0.30),
+        0 0 0 5px rgba(223, 127, 171, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.52);
     }
 
     .btn-ghost {
-      color: var(--landing-accent-deep);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.88));
+      color: var(--pink-2);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 247, 251, 0.52));
     }
 
-    .section {
-      padding: 0;
-    }
+    .section { padding: 0; }
 
     .section-wrap {
       padding: 28px;
@@ -830,18 +711,16 @@
       font-size: clamp(34px, 5vw, 68px);
       line-height: 0.97;
       letter-spacing: -0.065em;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
       max-width: 13ch;
       text-wrap: balance;
     }
 
-    .section-head.center h2 {
-      max-width: 16ch;
-    }
+    .section-head.center h2 { max-width: 16ch; }
 
     .section-head p {
       margin: 0;
-      color: var(--landing-muted);
+      color: var(--muted);
       line-height: 1.75;
       font-size: 16px;
       max-width: 780px;
@@ -859,9 +738,13 @@
       padding: 22px;
       display: grid;
       align-content: end;
+      border-color: rgba(94, 46, 74, 0.10);
       background:
-        radial-gradient(circle at 18% 0%, rgba(59, 130, 246, 0.11), transparent 30%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.82));
+        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.34), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.44));
+      box-shadow:
+        0 24px 60px rgba(116, 72, 96, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.86);
     }
 
     .showcase-phone {
@@ -869,12 +752,13 @@
       margin: 0 auto;
       border-radius: 38px;
       padding: 12px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(94, 46, 74, 0.10);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.94));
+        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.30), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58));
       box-shadow:
-        0 36px 80px rgba(148, 163, 184, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 24px 60px rgba(116, 72, 96, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
       transform: rotate(-2deg);
     }
 
@@ -882,10 +766,13 @@
       border-radius: 30px;
       min-height: 500px;
       overflow: hidden;
-      border: 1px solid rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(94, 46, 74, 0.10);
       background:
-        radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 36%),
-        linear-gradient(180deg, #ffffff, #f2f7ff);
+        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.28), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58));
+      box-shadow:
+        0 24px 60px rgba(116, 72, 96, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.88);
       padding: 18px;
       display: grid;
       align-content: start;
@@ -906,16 +793,21 @@
       border-radius: 16px;
       display: grid;
       place-items: center;
-      background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      box-shadow: 0 10px 18px rgba(148, 163, 184, 0.11);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(94, 46, 74, 0.08);
+      box-shadow: 0 12px 24px rgba(116, 72, 96, 0.10);
       overflow: hidden;
+      font-family: "Sora", sans-serif;
+      color: var(--pink-2);
+      font-weight: 900;
+      letter-spacing: -0.08em;
     }
 
     .mini-logo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      padding: 8px;
     }
 
     .mini-pill {
@@ -924,15 +816,16 @@
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
-      color: var(--landing-accent-deep);
-      background: rgba(219, 234, 254, 0.72);
+      color: var(--pink-2);
+      background: rgba(247, 191, 216, 0.30);
+      border: 1px solid rgba(223, 127, 171, 0.18);
       font-size: 11px;
       font-weight: 900;
     }
 
     .mini-title {
       font-family: "Sora", sans-serif;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
       font-size: 31px;
       line-height: 0.98;
       letter-spacing: -0.07em;
@@ -942,9 +835,11 @@
     .mini-card {
       min-height: 68px;
       border-radius: 18px;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      background: rgba(255, 255, 255, 0.78);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 10px 20px rgba(148, 163, 184, 0.08);
+      border: 1px solid rgba(94, 46, 74, 0.09);
+      background: rgba(255, 255, 255, 0.68);
+      box-shadow:
+        0 18px 38px rgba(116, 72, 96, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
       padding: 12px;
       display: flex;
       align-items: center;
@@ -953,13 +848,13 @@
     }
 
     .mini-card strong {
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
       font-size: 14px;
       line-height: 1.25;
     }
 
     .mini-card span {
-      color: var(--landing-muted);
+      color: var(--muted);
       font-size: 12px;
       font-weight: 800;
       white-space: nowrap;
@@ -968,38 +863,42 @@
     .mini-cta {
       min-height: 56px;
       border-radius: 18px;
-      background: linear-gradient(180deg, var(--landing-accent-strong), var(--landing-accent));
-      color: #fff;
+      background: linear-gradient(180deg, var(--pink-3), var(--pink));
+      color: #331522;
       display: grid;
       place-items: center;
       font-size: 13px;
       font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      box-shadow: 0 18px 34px rgba(37, 99, 235, 0.22);
+      box-shadow:
+        0 18px 38px rgba(223, 127, 171, 0.24),
+        0 0 30px rgba(247, 191, 216, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.46);
     }
 
-    .experience-stack {
-      display: grid;
-      gap: 14px;
-    }
+    .experience-stack { display: grid; gap: 14px; }
 
     .feature-card {
       padding: 22px;
       min-height: 160px;
       display: grid;
       align-content: space-between;
-      gap: 14px;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      gap 
+      : 14px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .feature-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(37, 99, 235, 0.14);
+      border-color: rgba(223, 127, 171, 0.28);
       box-shadow:
-        0 24px 48px rgba(148, 163, 184, 0.16),
-        0 0 0 4px rgba(37, 99, 235, 0.025),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 20px 42px rgba(116, 72, 96, 0.16),
+        0 0 0 4px rgba(223, 127, 171, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .feature-number {
@@ -1008,27 +907,36 @@
       border-radius: 16px;
       display: grid;
       place-items: center;
-      color: #fff;
-      background: linear-gradient(180deg, var(--landing-accent-strong), var(--landing-accent));
-      box-shadow: 0 14px 26px rgba(37, 99, 235, 0.18);
+      color: #331522;
+      background: linear-gradient(180deg, var(--pink-3), var(--pink));
+      box-shadow:
+        0 18px 38px rgba(223, 127, 171, 0.22),
+        0 0 30px rgba(247, 191, 216, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.46);
       font-weight: 900;
+      position: relative;
+      z-index: 1;
     }
 
     .feature-card strong {
       display: block;
       font-family: "Sora", sans-serif;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
       font-size: 24px;
       line-height: 1;
       letter-spacing: -0.055em;
       margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
     }
 
     .feature-card p {
       margin: 0;
-      color: var(--landing-muted);
+      color: var(--muted);
       line-height: 1.65;
       font-size: 15px;
+      position: relative;
+      z-index: 1;
     }
 
     .manifest-grid {
@@ -1043,22 +951,41 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      border-color: rgba(94, 46, 74, 0.10);
       background:
-        radial-gradient(circle at 50% 12%, rgba(37, 99, 235, 0.15), transparent 32%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.82));
+        radial-gradient(circle at 50% 12%, rgba(247, 191, 216, 0.34), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 247, 251, 0.52));
+      box-shadow:
+        0 24px 60px rgba(116, 72, 96, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.88);
     }
 
-    .manifest-vertical__text {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
+    .manifest-logo-mark {
+      display: grid;
+      justify-items: center;
+      gap: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .manifest-logo-mark span:first-child {
       font-family: "Sora", sans-serif;
-      font-size: clamp(56px, 8vw, 108px);
-      line-height: 0.8;
-      letter-spacing: -0.08em;
-      color: var(--landing-text-strong);
-      text-shadow:
-        0 22px 60px rgba(37, 99, 235, 0.14),
-        0 0 1px rgba(37, 99, 235, 0.16);
+      font-size: clamp(54px, 8vw, 98px);
+      line-height: 0.82;
+      letter-spacing: -0.09em;
+      color: var(--text-strong);
+      text-align: center;
+      text-shadow: 0 20px 60px rgba(223, 127, 171, 0.18);
+    }
+
+    .manifest-logo-mark span:last-child {
+      font-family: "Sora", sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pink-2);
+      text-align: center;
     }
 
     .manifest-copy {
@@ -1072,13 +999,15 @@
 
     .manifest-line p {
       margin: 0;
-      color: var(--landing-text);
+      color: var(--muted);
       font-size: 16px;
       line-height: 1.82;
+      position: relative;
+      z-index: 1;
     }
 
     .manifest-line strong {
-      color: var(--landing-accent-deep);
+      color: var(--pink-2);
     }
 
     .pricing-grid {
@@ -1094,16 +1023,19 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 18px;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .pricing-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(37, 99, 235, 0.16);
+      border-color: rgba(223, 127, 171, 0.28);
       box-shadow:
-        0 26px 56px rgba(148, 163, 184, 0.18),
-        0 0 0 4px rgba(37, 99, 235, 0.026),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 20px 42px rgba(116, 72, 96, 0.16),
+        0 0 0 4px rgba(223, 127, 171, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .pricing-card__top {
@@ -1112,6 +1044,8 @@
       gap: 12px;
       align-items: flex-start;
       margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .pricing-card__top strong {
@@ -1119,22 +1053,24 @@
       font-size: 28px;
       line-height: 0.98;
       letter-spacing: -0.06em;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
     }
 
     .pricing-card__price {
       font-family: "Sora", sans-serif;
       font-size: 18px;
-      color: var(--landing-accent-deep);
+      color: var(--pink-2);
       font-weight: 800;
       white-space: nowrap;
     }
 
     .pricing-card p {
       margin: 0;
-      color: var(--landing-muted);
+      color: var(--muted);
       line-height: 1.75;
       font-size: 15px;
+      position: relative;
+      z-index: 1;
     }
 
     .service-tags {
@@ -1142,6 +1078,8 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .service-tags span {
@@ -1150,9 +1088,9 @@
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
-      background: rgba(219, 234, 254, 0.72);
-      border: 1px solid rgba(37, 99, 235, 0.1);
-      color: var(--landing-accent-deep);
+      background: rgba(247, 191, 216, 0.28);
+      border: 1px solid rgba(223, 127, 171, 0.18);
+      color: var(--pink-2);
       font-size: 12px;
       font-weight: 900;
     }
@@ -1175,7 +1113,7 @@
       height: 100%;
       border: 0;
       display: block;
-      filter: grayscale(0.05) contrast(1.02) brightness(1.03) saturate(0.82);
+      filter: grayscale(0.18) contrast(1.02) brightness(1.06) saturate(0.78);
       opacity: 0.96;
     }
 
@@ -1184,8 +1122,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(248, 251, 255, 0.16)),
-        radial-gradient(circle at center, transparent 42%, rgba(37, 99, 235, 0.07) 100%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 247, 251, 0.18)),
+        radial-gradient(circle at center, transparent 42%, rgba(223, 127, 171, 0.08) 100%);
       pointer-events: none;
     }
 
@@ -1200,14 +1138,16 @@
       min-height: 280px;
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(15, 23, 42, 0.07);
+      border: 1px solid rgba(94, 46, 74, 0.10);
       display: grid;
       place-items: center;
       position: relative;
       background:
-        radial-gradient(circle at 50% 28%, rgba(59, 130, 246, 0.15), transparent 34%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.82));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+        radial-gradient(circle at 50% 28%, rgba(247, 191, 216, 0.36), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.56));
+      box-shadow:
+        0 24px 60px rgba(116, 72, 96, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.88);
     }
 
     .location-preview__inner {
@@ -1219,23 +1159,16 @@
       text-align: center;
     }
 
-    .location-preview__inner img {
-      width: 150px;
-      height: auto;
-      display: block;
-      filter: saturate(0.9);
-    }
-
     .location-preview__inner strong {
       font-family: "Sora", sans-serif;
-      font-size: 30px;
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-      color: var(--landing-text-strong);
+      font-size: 42px;
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      color: var(--text-strong);
     }
 
     .location-preview__inner span {
-      color: var(--landing-muted);
+      color: var(--muted);
       font-size: 13px;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -1245,6 +1178,8 @@
     .location-copy {
       display: grid;
       gap: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .location-copy strong {
@@ -1252,13 +1187,13 @@
       font-size: 30px;
       line-height: 0.98;
       letter-spacing: -0.06em;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
       max-width: 14ch;
     }
 
     .location-copy p {
       margin: 0;
-      color: var(--landing-muted);
+      color: var(--muted);
       line-height: 1.78;
       font-size: 15px;
     }
@@ -1283,17 +1218,19 @@
     .contact-lead {
       padding: 20px;
       border-radius: 24px;
-      border: 1px solid rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(223, 127, 171, 0.18);
       background:
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.09), transparent 32%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.88));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+        radial-gradient(circle at top left, rgba(247, 191, 216, 0.34), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      position: relative;
+      z-index: 1;
     }
 
     .contact-lead strong {
       display: block;
       font-family: "Sora", sans-serif;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
       font-size: 28px;
       line-height: 1;
       letter-spacing: -0.06em;
@@ -1302,15 +1239,17 @@
 
     .contact-lead p {
       margin: 0;
-      color: var(--landing-muted);
+      color: var(--muted);
       line-height: 1.7;
       font-size: 15px;
     }
 
     .contact-note {
-      color: var(--landing-muted);
+      color: var(--muted);
       font-size: 14px;
       line-height: 1.6;
+      position: relative;
+      z-index: 1;
     }
 
     .status-card {
@@ -1327,13 +1266,17 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(15, 23, 42, 0.07);
-      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(94, 46, 74, 0.10);
+      background: rgba(255, 255, 255, 0.68);
       font-size: 13px;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+      box-shadow:
+        0 18px 38px rgba(116, 72, 96, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 1;
     }
 
     .status-pill::before {
@@ -1345,13 +1288,8 @@
       box-shadow: 0 0 14px currentColor;
     }
 
-    .status-pill.open {
-      color: #16a34a;
-    }
-
-    .status-pill.closed {
-      color: #dc2626;
-    }
+    .status-pill.open { color: #16a34a; }
+    .status-pill.closed { color: #dc5a79; }
 
     .status-list {
       list-style: none;
@@ -1359,58 +1297,62 @@
       padding: 0;
       display: grid;
       gap: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .status-list li {
       min-height: 56px;
       padding: 0 16px;
       border-radius: 18px;
-      border: 1px solid rgba(15, 23, 42, 0.07);
+      border: 1px solid rgba(94, 46, 74, 0.09);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.76);
-      color: var(--landing-muted);
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--muted);
       font-size: 14px;
       font-weight: 800;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+      box-shadow:
+        0 18px 38px rgba(116, 72, 96, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
-    .status-list strong {
-      color: var(--landing-text-strong);
-    }
+    .status-list strong { color: var(--text-strong); }
 
     .social-icons {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .social-icon {
       width: 56px;
       height: 56px;
       border-radius: 18px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(94, 46, 74, 0.10);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.96));
-      color: var(--landing-accent-deep);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
+      color: var(--pink-2);
       text-decoration: none;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       box-shadow:
-        var(--landing-shadow-sm),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 14px 28px rgba(116, 72, 96, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.86);
     }
 
     .social-icon:hover {
       transform: translateY(-2px);
-      border-color: rgba(37, 99, 235, 0.16);
+      border-color: rgba(223, 127, 171, 0.28);
       box-shadow:
-        0 16px 28px rgba(148, 163, 184, 0.14),
-        0 0 0 4px rgba(37, 99, 235, 0.03),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 20px 42px rgba(116, 72, 96, 0.16),
+        0 0 0 4px rgba(223, 127, 171, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     .social-icon svg {
@@ -1420,6 +1362,8 @@
 
     .section-button-full {
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     .floating-book {
@@ -1456,15 +1400,13 @@
       justify-content: center;
       padding: 24px;
       background:
-        radial-gradient(circle at 20% 0%, rgba(59, 130, 246, 0.15), transparent 34%),
-        linear-gradient(180deg, rgba(248, 251, 255, 0.74), rgba(238, 244, 255, 0.88));
+        radial-gradient(circle at 20% 0%, rgba(247, 191, 216, 0.34), transparent 34%),
+        linear-gradient(180deg, rgba(255, 250, 253, 0.78), rgba(248, 237, 244, 0.9));
       backdrop-filter: blur(22px) saturate(140%);
       -webkit-backdrop-filter: blur(22px) saturate(140%);
     }
 
-    .booking-overlay.open {
-      display: flex;
-    }
+    .booking-overlay.open { display: flex; }
 
     .booking-shell {
       width: min(1180px, 100%);
@@ -1484,11 +1426,13 @@
       gap: 14px;
       padding: 14px;
       border-radius: 28px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(94, 46, 74, 0.10);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(247, 191, 216, 0.34), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
       box-shadow:
-        0 24px 60px rgba(148, 163, 184, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 24px 60px rgba(116, 72, 96, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
@@ -1499,11 +1443,20 @@
       gap: 14px;
     }
 
-    .booking-topbar__left img {
-      width: 86px;
+    .booking-logo-text {
+      min-width: 86px;
       min-height: 52px;
-      object-fit: contain;
-      display: block;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      padding: 0 12px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(94, 46, 74, 0.08);
+      font-family: "Sora", sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      color: var(--pink-2);
+      text-align: center;
     }
 
     .booking-topbar__copy {
@@ -1512,7 +1465,7 @@
     }
 
     .booking-topbar__copy span {
-      color: var(--landing-accent);
+      color: var(--pink-2);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -1524,7 +1477,7 @@
       font-size: 22px;
       line-height: 1;
       letter-spacing: -0.05em;
-      color: var(--landing-text-strong);
+      color: var(--text-strong);
     }
 
     .booking-close {
@@ -1554,19 +1507,50 @@
     }
 
     @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pageIn {
       from {
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(10px) scale(0.99);
+        filter: blur(4px);
       }
+
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+        filter: blur(0);
       }
     }
 
-    .reveal {
-      animation: fadeUp 680ms cubic-bezier(.2, .8, .2, 1) both;
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
+    @keyframes logoBreath {
+      0%, 100% {
+        box-shadow:
+          0 14px 34px rgba(116, 72, 96, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      50% {
+        box-shadow:
+          0 18px 44px rgba(223, 127, 171, 0.20),
+          0 0 28px rgba(247, 191, 216, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.94);
+      }
+    }
+
+    @keyframes orbMove {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(-38px, 64px, 0) scale(1.18); }
+    }
+
+    .reveal { animation: fadeUp 680ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 
     .hero-side .hero-photo {
       animation: floatSoft 7s ease-in-out infinite;
@@ -1582,111 +1566,596 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-grid {
-        min-height: auto;
-      }
-
-      .manifest-vertical {
-        min-height: 220px;
-      }
-
-      .manifest-vertical__text {
-        writing-mode: initial;
-        transform: none;
-      }
-
-      .location-copy strong {
-        max-width: none;
-      }
+      .hero-grid { min-height: auto; }
+      .manifest-vertical { min-height: 220px; }
+      .location-copy strong { max-width: none; }
     }
 
     @media (max-width: 900px) {
-      .desktop-header {
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .desktop-version { display: none !important; }
+      .mobile-version { display: grid !important; }
+
+      .mobile-version {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        min-height: 100svh;
+        height: 100svh;
+        overflow: hidden;
+        grid-template-rows: auto auto 1fr auto;
+      }
+
+      .app-top {
+        padding: calc(10px + var(--safe-top)) 12px 8px;
+        display: grid;
+        grid-template-columns: 52px 1fr 52px;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid rgba(94, 46, 74, 0.08);
+        background: linear-gradient(180deg, rgba(255, 250, 253, 0.92), rgba(255, 247, 251, 0.72));
+        backdrop-filter: blur(20px) saturate(140%);
+        -webkit-backdrop-filter: blur(20px) saturate(140%);
+      }
+
+      .top-spacer { width: 52px; height: 52px; }
+
+      .icon-btn {
+        width: 52px;
+        height: 52px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        color: var(--pink-2);
+        background: rgba(255, 255, 255, 0.62);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        text-decoration: none;
+        font: inherit;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .icon-btn:active {
+        transform: scale(0.94);
+        border-color: rgba(223, 127, 171, 0.34);
+        background: rgba(247, 191, 216, 0.20);
+      }
+
+      .icon-btn svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .logo-pill {
+        height: 58px;
+        width: min(172px, 100%);
+        justify-self: center;
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(247, 191, 216, 0.46), transparent 46%),
+          rgba(255, 255, 255, 0.64);
+        box-shadow:
+          0 14px 34px rgba(116, 72, 96, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.88);
+        animation: logoBreath 4.6s ease-in-out infinite;
+        font-family: "Sora", sans-serif;
+        color: var(--text-strong);
+        font-weight: 900;
+        letter-spacing: -0.08em;
+      }
+
+      .section-nav {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 10px 12px;
+        scrollbar-width: none;
+        border-bottom: 1px solid rgba(94, 46, 74, 0.08);
+        background: rgba(255, 250, 253, 0.72);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .section-nav::-webkit-scrollbar { display: none; }
+
+      .nav-chip {
+        flex: 0 0 auto;
+        min-height: 42px;
+        padding: 0 15px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: rgba(52, 32, 43, 0.72);
+        background: rgba(255, 255, 255, 0.58);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .nav-chip:active { transform: scale(0.94); }
+
+      .nav-chip.active {
+        color: #331522;
+        background: linear-gradient(180deg, var(--pink-3), var(--pink));
+        border-color: rgba(223, 127, 171, 0.34);
+        box-shadow: 0 12px 28px rgba(223, 127, 171, 0.22);
+      }
+
+      .pages {
+        position: relative;
+        overflow: hidden;
+        min-height: 0;
+      }
+
+      .page {
+        position: absolute;
+        inset: 0;
+        padding: 14px 12px 12px;
+        overflow: hidden;
         display: none;
+        animation: pageIn 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) both;
       }
 
-      .mobile-topbar {
-        display: flex;
+      .page.active {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
       }
 
-      .mobile-tabs {
-        display: flex;
+      .page.active .page-head > *,
+      .page.active .screen-body > *,
+      .page.active .services-list > *,
+      .page.active .visit-grid > *,
+      .page.active .contact-layout > * {
+        animation: rise 0.44s cubic-bezier(0.2, 0.8, 0.2, 1) both;
       }
 
-      .landing-wrap {
-        gap: 14px;
-        padding-top: 12px;
+      .page.active .page-head > *:nth-child(2) { animation-delay: 0.04s; }
+      .page.active .page-head > *:nth-child(3) { animation-delay: 0.08s; }
+
+      .page-head {
+        display: grid;
+        gap: 8px;
       }
 
-      .landing-container {
-        width: min(100%, calc(100% - 14px));
+      .kicker {
+        width: fit-content;
+        min-height: 34px;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(223, 127, 171, 0.22);
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--pink-2);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
       }
 
-      .hero-section {
-        min-height: auto;
+      .kicker::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--pink);
+        box-shadow: 0 0 14px rgba(223, 127, 171, 0.42);
       }
 
-      .hero-card,
-      .section-card {
+      .page-title {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(38px, 12vw, 64px);
+        line-height: 0.88;
+        letter-spacing: -0.085em;
+        max-width: 9.4ch;
+        color: var(--text-strong);
+      }
+
+      .page-title .gold {
+        color: var(--pink-2);
+        display: inline-block;
+        text-shadow: 0 16px 42px rgba(223, 127, 171, 0.18);
+      }
+
+      .page-sub {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+        max-width: 36ch;
+      }
+
+      .screen-body {
+        min-height: 0;
+        display: grid;
+        align-content: stretch;
+        gap: 10px;
+      }
+
+      .hero-photo-card {
+        min-height: 0;
         border-radius: 28px;
+        border: 1px solid var(--line);
+        overflow: hidden;
+        position: relative;
+        background: #fff;
+        box-shadow:
+          var(--shadow-lg),
+          inset 0 1px 0 rgba(255, 255, 255, 0.86);
       }
 
-      .hero-grid {
-        grid-template-columns: 1fr;
-        padding: 18px;
-        gap: 14px;
+      .hero-photo-card img {
+        width: 100%;
+        height: 100%;
+        min-height: 270px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        filter: contrast(1.04) brightness(1.05) saturate(1.08);
+        transform: scale(1.03);
       }
 
-      .hero-title {
-        font-size: 43px;
-        max-width: none;
-        line-height: 0.96;
+      .hero-photo-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(52, 32, 43, 0.18)),
+          radial-gradient(circle at 26% 20%, rgba(255, 231, 243, 0.26), transparent 32%),
+          radial-gradient(circle at 64% 48%, rgba(223, 127, 171, 0.16), transparent 36%);
+        pointer-events: none;
       }
 
-      .hero-sub {
+      .mini-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat-card,
+      .service-card,
+      .info-card,
+      .location-card,
+      .contact-mobile-card,
+      .hour-row,
+      .map-glass {
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58)),
+          rgba(255, 255, 255, 0.66);
+        box-shadow:
+          0 18px 46px rgba(116, 72, 96, 0.13),
+          inset 0 1px 0 rgba(255, 255, 255, 0.88);
+        border-radius: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card {
+        min-height: 92px;
+        padding: 13px;
+        display: grid;
+        align-content: space-between;
+      }
+
+      .stat-card span {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+        font-weight: 800;
+      }
+
+      .stat-card strong {
+        font-family: "Sora", sans-serif;
+        font-size: 28px;
+        line-height: 1;
+        letter-spacing: -0.07em;
+      }
+
+      .services-list {
+        min-height: 0;
+        display: grid;
+        gap: 10px;
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      .service-card {
+        padding: 16px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px 12px;
+        align-items: start;
+      }
+
+      .service-card strong {
+        font-family: "Sora", sans-serif;
+        font-size: 25px;
+        letter-spacing: -0.06em;
+        line-height: 0.95;
+      }
+
+      .price {
+        color: var(--pink-2);
+        font-weight: 900;
         font-size: 15px;
-        line-height: 1.65;
+        white-space: nowrap;
       }
 
-      .hero-side {
-        display: none;
+      .service-card p {
+        grid-column: 1 / -1;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.42;
       }
 
-      .section-wrap {
-        padding: 18px;
+      .tags {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
       }
 
-      .section-head h2 {
-        font-size: 34px;
-        max-width: none;
+      .tags span {
+        min-height: 27px;
+        padding: 0 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(223, 127, 171, 0.18);
+        background: rgba(247, 191, 216, 0.22);
+        color: var(--pink-2);
+        display: inline-flex;
+        align-items: center;
+        font-size: 11px;
+        font-weight: 900;
       }
 
-      .section-head p {
-        font-size: 15px;
+      .visit-grid {
+        min-height: 0;
+        display: grid;
+        gap: 8px;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
       }
 
-      .showcase-phone {
-        transform: none;
+      .info-card {
+        padding: 12px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        align-items: start;
       }
 
-      .experience-showcase {
-        min-height: auto;
+      .num {
+        width: 42px;
+        height: 42px;
+        border-radius: 15px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, var(--pink-3), var(--pink));
+        color: #331522;
+        font-weight: 900;
+        box-shadow: 0 14px 26px rgba(223, 127, 171, 0.22);
       }
 
-      .showcase-screen {
-        min-height: 430px;
+      .info-card strong {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 19px;
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+        margin-bottom: 5px;
       }
 
-      .floating-book {
-        left: 12px;
-        right: 12px;
-        width: auto;
-        min-width: unset;
-        bottom: 12px;
+      .info-card p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.32;
+      }
+
+      .location-card {
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+        grid-template-rows: auto 1fr auto;
+        min-height: 0;
+      }
+
+      .address-box {
+        display: grid;
+        gap: 4px;
+      }
+
+      .address-box strong {
+        font-family: "Sora", sans-serif;
+        font-size: 28px;
+        line-height: 0.95;
+        letter-spacing: -0.07em;
+      }
+
+      .address-box p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.38;
+      }
+
+      .map-glass {
+        position: relative;
+        min-height: 190px;
+        padding: 8px;
+        overflow: hidden;
+        isolation: isolate;
+        cursor: pointer;
+      }
+
+      .map-image {
+        width: 100%;
+        height: 100%;
+        min-height: 174px;
+        object-fit: cover;
+        border-radius: 18px;
+        display: block;
+        filter: grayscale(0.12) contrast(1.02) brightness(1.06) saturate(0.82);
+        opacity: 0.94;
+      }
+
+      .map-logo-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at center, rgba(247, 191, 216, 0.28), transparent 40%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(52, 32, 43, 0.12));
+      }
+
+      .map-logo-overlay span {
+        font-family: "Sora", sans-serif;
+        font-size: 42px;
+        letter-spacing: -0.08em;
+        color: rgba(52, 32, 43, 0.18);
+      }
+
+      .dual-actions {
+        display: grid;
+        grid-template-columns: 1fr 0.78fr;
+        gap: 10px;
+      }
+
+      .cta-btn {
+        min-height: 54px;
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--pink-3), var(--pink));
+        color: #331522;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 1000;
+        letter-spacing: 0.055em;
+        text-transform: uppercase;
+        box-shadow:
+          0 18px 34px rgba(223, 127, 171, 0.24),
+          0 0 22px rgba(247, 191, 216, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.48);
+      }
+
+      .ghost-btn {
+        min-height: 54px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--pink-2);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact-layout {
+        display: grid;
+        gap: 10px;
+        grid-template-rows: auto auto 1fr;
+        min-height: 0;
+      }
+
+      .contact-mobile-card {
+        padding: 16px;
+      }
+
+      .contact-mobile-card strong {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 28px;
+        line-height: 0.95;
+        letter-spacing: -0.07em;
+        margin-bottom: 8px;
+      }
+
+      .contact-mobile-card p {
+        color: var(--muted);
+        line-height: 1.45;
+        font-size: 14px;
+      }
+
+      .hours-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .hour-row {
+        min-height: 52px;
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .hour-row strong {
+        color: var(--text-strong);
+        font-weight: 900;
+      }
+
+      .social-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        align-self: end;
+      }
+
+      .social-row a {
+        min-height: 52px;
+        border-radius: 17px;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        color: var(--pink-2);
+        background: rgba(255, 255, 255, 0.62);
+        text-decoration: none;
+      }
+
+      .social-row svg {
+        width: 21px;
+        height: 21px;
+      }
+
+      .bottom-cta {
+        padding: 8px 12px calc(10px + var(--safe-bottom));
+        background: linear-gradient(180deg, transparent, rgba(255, 250, 253, 0.94) 38%);
+        position: relative;
+        z-index: 20;
+      }
+
+      .bottom-cta .cta-btn {
+        width: 100%;
+        min-height: 58px;
       }
 
       .booking-overlay {
-        padding: 10px;
+        padding: 8px;
+      }
+
+      .booking-shell {
+        width: min(420px, 100%);
       }
 
       .booking-topbar {
@@ -1694,463 +2163,43 @@
         padding: 10px;
       }
 
-      .booking-topbar__left img {
-        width: 72px;
-      }
-
       .booking-topbar__copy strong {
         font-size: 18px;
       }
     }
 
-    @media (max-width: 560px) {
-      .mobile-topbar {
-        padding: 0 12px;
+    @media (max-width: 390px) {
+      .page { padding: 12px 10px 10px; }
+      .page-title { font-size: 37px; }
+      .page-sub { font-size: 13px; line-height: 1.48; }
+      .service-card strong { font-size: 22px; }
+      .info-card { padding: 12px; }
+      .info-card strong { font-size: 18px; }
+      .info-card p { font-size: 12px; line-height: 1.32; }
+      .map-glass { min-height: 140px; }
+      .map-image { min-height: 124px; }
+      .nav-chip { padding: 0 12px; }
+    }
+
+    @media (min-width: 901px) {
+      html,
+      body {
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
       }
 
-      .mobile-brand {
-        width: 104px;
+      .desktop-version {
+        display: block !important;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
       }
 
-      .mobile-brand img {
-        width: 86px;
+      .mobile-version {
+        display: none !important;
       }
-
-      .hero-title {
-        font-size: 37px;
-      }
-
-      .section-head h2 {
-        font-size: 30px;
-      }
-
-      .btn,
-      .btn-primary,
-      .btn-ghost {
-        width: 100%;
-      }
-
-      .hero-actions,
-      .section-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      .hero-trust-row {
-        display: grid;
-      }
-
-      .hero-info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .status-list li {
-        padding: 0 12px;
-        font-size: 13px;
-      }
-
-      .contact-card,
-      .status-card,
-      .location-side {
-        padding: 16px;
-      }
-
-      .showcase-screen {
-        min-height: 390px;
-        padding: 14px;
-      }
-
-      .mini-title {
-        font-size: 27px;
-      }
-
-      .booking-topbar__copy span {
-        display: none;
-      }
-    }
-
-        /* BLUE / WHITE PREMIUM VERSION — landing only. Booking CSS stays untouched. */
-    :root {
-      --landing-bg-0: #f8fbff;
-      --landing-bg-1: #f5f7fb;
-      --landing-bg-2: #eef4ff;
-      --landing-bg-3: #e7eefc;
-      --landing-surface: rgba(255, 255, 255, 0.82);
-      --landing-surface-strong: rgba(255, 255, 255, 0.94);
-      --landing-surface-heavy: #ffffff;
-      --landing-text: #0f172a;
-      --landing-text-strong: #0b1220;
-      --landing-muted: #64748b;
-      --landing-soft: #94a3b8;
-      --landing-accent: #2563eb;
-      --landing-accent-strong: #3b82f6;
-      --landing-accent-deep: #1d4ed8;
-      --landing-accent-soft: #dbeafe;
-      --landing-accent-faint: rgba(37, 99, 235, 0.08);
-      --landing-line: rgba(15, 23, 42, 0.08);
-      --landing-line-strong: rgba(15, 23, 42, 0.12);
-      --landing-line-blue: rgba(37, 99, 235, 0.16);
-      --landing-shadow-xl: 0 34px 100px rgba(148, 163, 184, 0.22);
-      --landing-shadow-lg: 0 24px 60px rgba(148, 163, 184, 0.17);
-      --landing-shadow-md: 0 16px 34px rgba(148, 163, 184, 0.14);
-      --landing-shadow-sm: 0 10px 22px rgba(148, 163, 184, 0.1);
-    }
-
-    html {
-      background: #f8fbff;
-    }
-
-    body {
-      color: var(--landing-text);
-      background:
-        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.12), transparent 26%),
-        radial-gradient(circle at 100% 0%, rgba(37, 99, 235, 0.08), transparent 24%),
-        radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.05), transparent 32%),
-        linear-gradient(180deg, #fbfdff 0%, #f5f7fb 44%, #eef4ff 100%);
-    }
-
-    body::before {
-      background:
-        linear-gradient(rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.18)),
-        linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
-      background-size: auto, 34px 34px, 34px 34px;
-      mask-image: radial-gradient(circle at 50% 18%, black 18%, transparent 82%);
-    }
-
-    body::after {
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.52), transparent 62%);
-    }
-
-    .landing-bg-orb.one {
-      background: rgba(59, 130, 246, 0.16);
-    }
-
-    .landing-bg-orb.two {
-      background: rgba(96, 165, 250, 0.12);
-    }
-
-    .landing-bg-orb.three {
-      background: rgba(37, 99, 235, 0.08);
-    }
-
-    .landing-noise {
-      opacity: 0.5;
-      background-image:
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1px),
-        radial-gradient(circle at 75% 75%, rgba(37, 99, 235, 0.08) 0 1px, transparent 1px);
-    }
-
-    .screen-flash {
-      background:
-        radial-gradient(circle at center, rgba(59, 130, 246, 0.12), transparent 36%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.7), transparent 45%);
-    }
-
-    .site-header {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 251, 255, 0.78));
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-      box-shadow: 0 12px 28px rgba(148, 163, 184, 0.08);
-    }
-
-    .desktop-logo,
-    .mobile-brand {
-      overflow: hidden;
-      padding: 8px 12px;
-      border-color: rgba(15, 23, 42, 0.06);
-      background:
-        radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 44%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.88));
-      box-shadow:
-        0 10px 22px rgba(148, 163, 184, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .desktop-logo img {
-      width: 100%;
-      max-width: 104px;
-      max-height: 44px;
-      object-fit: contain;
-      filter: saturate(0.88) contrast(1.03);
-    }
-
-    .mobile-brand img {
-      width: 100%;
-      max-width: 88px;
-      max-height: 38px;
-      object-fit: contain;
-    }
-
-    .desktop-nav a {
-      color: rgba(15, 23, 42, 0.72);
-    }
-
-    .desktop-nav a:hover {
-      color: var(--landing-text-strong);
-    }
-
-    .desktop-nav a::after {
-      background: linear-gradient(90deg, var(--landing-accent-strong), var(--landing-accent));
-    }
-
-    .desktop-call-btn,
-    .mobile-call-btn {
-      color: var(--landing-accent-deep);
-      border-color: rgba(15, 23, 42, 0.08);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.94));
-      box-shadow:
-        0 10px 20px rgba(148, 163, 184, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .mobile-icon-btn,
-    .mobile-drawer {
-      display: none !important;
-    }
-
-    .mobile-topbar {
-      justify-content: center;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-    }
-
-    .mobile-call-btn {
-      position: absolute;
-      right: 12px;
-    }
-
-    .mobile-tabs {
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-    }
-
-    .mobile-tab {
-      color: rgba(15, 23, 42, 0.7);
-      background: rgba(255, 255, 255, 0.68);
-      border-color: rgba(15, 23, 42, 0.06);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
-    }
-
-    .mobile-tab.active,
-    .mobile-tab:hover {
-      color: #ffffff;
-      background: linear-gradient(180deg, var(--landing-accent-strong), var(--landing-accent));
-      border-color: rgba(37, 99, 235, 0.18);
-      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.16);
-    }
-
-    .hero-card,
-    .section-card {
-      border-color: var(--landing-line);
-      background:
-        radial-gradient(circle at 12% 0%, rgba(59, 130, 246, 0.11), transparent 28%),
-        radial-gradient(circle at 100% 10%, rgba(37, 99, 235, 0.06), transparent 24%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 251, 255, 0.84));
-      box-shadow:
-        var(--landing-shadow-xl),
-        inset 0 1px 0 rgba(255, 255, 255, 0.96),
-        inset 0 -1px 0 rgba(15, 23, 42, 0.02);
-    }
-
-    .hero-card::before,
-    .section-card::before {
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.72), transparent 38%),
-        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.74), transparent 46%);
-    }
-
-    .hero-card::after,
-    .section-card::after {
-      border-color: rgba(255, 255, 255, 0.62);
-    }
-
-    .section-chip {
-      color: var(--landing-accent-deep);
-      border-color: rgba(37, 99, 235, 0.12);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(239, 246, 255, 0.86));
-      box-shadow:
-        0 10px 20px rgba(148, 163, 184, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .section-chip::before,
-    .trust-pill::before {
-      background: var(--landing-accent-strong);
-      box-shadow: 0 0 16px rgba(37, 99, 235, 0.38);
-    }
-
-    .hero-title,
-    .section-head h2,
-    .hero-photo-badge strong,
-    .metric-card strong,
-    .feature-card strong,
-    .manifest-vertical__text,
-    .pricing-card__top strong,
-    .location-preview__inner strong,
-    .location-copy strong,
-    .contact-lead strong {
-      color: var(--landing-text-strong);
-    }
-
-    .hero-title span,
-    .manifest-line strong,
-    .pricing-card__price,
-    .hero-photo-badge span,
-    .mini-pill,
-    .service-tags span,
-    .booking-topbar__copy span {
-      color: var(--landing-accent-deep);
-    }
-
-    .hero-title span {
-      text-shadow: 0 18px 50px rgba(37, 99, 235, 0.16);
-    }
-
-    .hero-sub,
-    .section-head p,
-    .trust-pill,
-    .metric-card span,
-    .feature-card p,
-    .manifest-line p,
-    .pricing-card p,
-    .location-preview__inner span,
-    .location-copy p,
-    .contact-lead p,
-    .contact-note,
-    .status-list li {
-      color: var(--landing-muted);
-    }
-
-    .glass-card {
-      border-color: rgba(15, 23, 42, 0.07);
-      background:
-        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.06), transparent 28%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 251, 255, 0.86));
-      box-shadow:
-        var(--landing-shadow-md),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .glass-card::after {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 45%);
-    }
-
-    .hero-photo::before {
-      background:
-        linear-gradient(180deg, transparent 45%, rgba(15, 23, 42, 0.5)),
-        radial-gradient(circle at 70% 0%, rgba(59, 130, 246, 0.18), transparent 34%);
-    }
-
-    .hero-photo img {
-      filter: grayscale(0.15) contrast(1.02) brightness(1.02);
-    }
-
-    .hero-photo-badge,
-    .trust-pill,
-    .mini-card,
-    .status-pill,
-    .status-list li {
-      border-color: rgba(15, 23, 42, 0.06);
-      background: rgba(255, 255, 255, 0.78);
-      box-shadow:
-        0 18px 38px rgba(148, 163, 184, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .btn {
-      color: var(--landing-text);
-      border-color: rgba(15, 23, 42, 0.08);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.94));
-      box-shadow:
-        var(--landing-shadow-sm),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .btn:hover {
-      border-color: rgba(37, 99, 235, 0.16);
-      box-shadow:
-        0 18px 34px rgba(148, 163, 184, 0.15),
-        0 0 0 4px rgba(37, 99, 235, 0.03),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .btn-primary,
-    .mini-cta,
-    .feature-number {
-      color: #ffffff;
-      border-color: rgba(37, 99, 235, 0.18);
-      background: linear-gradient(180deg, var(--landing-accent-strong), var(--landing-accent));
-      box-shadow:
-        0 18px 34px rgba(37, 99, 235, 0.22),
-        0 0 0 1px rgba(37, 99, 235, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28);
-    }
-
-    .btn-ghost {
-      color: var(--landing-accent-deep);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.88));
-    }
-
-    .experience-showcase,
-    .showcase-phone,
-    .showcase-screen,
-    .manifest-vertical,
-    .location-preview,
-    .contact-lead,
-    .booking-topbar {
-      border-color: rgba(15, 23, 42, 0.07);
-      background:
-        radial-gradient(circle at 18% 0%, rgba(59, 130, 246, 0.11), transparent 30%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.82));
-      box-shadow:
-        0 24px 60px rgba(148, 163, 184, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .mini-logo {
-      background: #ffffff;
-      border-color: rgba(15, 23, 42, 0.06);
-      box-shadow: 0 10px 18px rgba(148, 163, 184, 0.11);
-    }
-
-    .mini-title,
-    .mini-card strong,
-    .status-list strong,
-    .booking-topbar__copy strong {
-      color: var(--landing-text-strong);
-    }
-
-    .mini-card span {
-      color: var(--landing-muted);
-    }
-
-    .service-tags span {
-      background: rgba(219, 234, 254, 0.72);
-      border-color: rgba(37, 99, 235, 0.1);
-    }
-
-    .location-map iframe {
-      filter: grayscale(0.05) contrast(1.02) brightness(1.03) saturate(0.82);
-      opacity: 0.96;
-    }
-
-    .location-map::after {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(248, 251, 255, 0.16)),
-        radial-gradient(circle at center, transparent 42%, rgba(37, 99, 235, 0.07) 100%);
-    }
-
-    .social-icon {
-      color: var(--landing-accent-deep);
-      border-color: rgba(15, 23, 42, 0.08);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.96));
-      box-shadow:
-        var(--landing-shadow-sm),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-
-    .booking-overlay {
-      background:
-        radial-gradient(circle at 20% 0%, rgba(59, 130, 246, 0.15), transparent 34%),
-        linear-gradient(180deg, rgba(248, 251, 255, 0.74), rgba(238, 244, 255, 0.88));
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2164,982 +2213,379 @@
     }
   </style>
 </head>
+
 <body>
-  
-  <a class="portfolio-back" href="https://mrozowski-automation-production.up.railway.app/">
-  ← Wróć do wyboru
-</a>
-  
-  <div class="landing-bg-orb one"></div>
-  <div class="landing-bg-orb two"></div>
-  <div class="landing-bg-orb three"></div>
-  <div class="landing-noise"></div>
-  <div class="screen-flash" id="screenFlash"></div>
+  <div class="desktop-version" id="desktop-version">
+    <div class="landing-bg-orb one"></div>
+    <div class="landing-bg-orb two"></div>
+    <div class="landing-bg-orb three"></div>
+    <div class="landing-noise"></div>
+    <div class="screen-flash" id="screenFlash"></div>
 
-  <header class="site-header" id="top">
-    <div class="landing-container desktop-header">
-      <div class="desktop-left">
-        <nav class="desktop-nav">
-          <a href="#hero">Start</a>
-          <a href="#experience">Rezerwacja</a>
-          <a href="#manifest">O nas</a>
-        </nav>
-      </div>
+    <header class="site-header" id="top">
+      <div class="landing-container desktop-header">
+        <div class="desktop-left">
+          <nav class="desktop-nav">
+            <a href="#hero">Start</a>
+            <a href="#experience">Rezerwacja</a>
+            <a href="#manifest">O nas</a>
+          </nav>
+        </div>
 
-      <div class="desktop-center">
-        <a href="#top" class="desktop-logo" aria-label="MONARCH start">
-          <img src="/monarch-logo.png" alt="MONARCH logo" />
-        </a>
-      </div>
+        <div class="desktop-center">
+          <a href="#top" class="desktop-logo" aria-label="LUNA start">
+            <span class="desktop-logo-text">LUNA<br />NAIL</span>
+          </a>
+        </div>
 
-      <div class="desktop-right">
-        <nav class="desktop-nav">
-          <a href="#pricing">Usługi</a>
-          <a href="#location">Dojazd</a>
-          <a href="#contact">Kontakt</a>
-        </nav>
-        <a href="tel:+48532377701" class="desktop-call-btn">Zadzwoń</a>
-      </div>
-    </div>
+        <div class="desktop-right">
+          <nav class="desktop-nav">
+            <a href="#pricing">Usługi</a>
+            <a href="#location">Dojazd</a>
+            <a href="#contact">Kontakt</a>
+          </nav>
 
-    <div class="mobile-topbar">
-      <a href="#top" class="mobile-brand" aria-label="MONARCH start">
-        <img src="/monarch-logo.png" alt="MONARCH logo" />
-      </a>
-
-      <a href="tel:+48532377701" class="mobile-call-btn" aria-label="Zadzwoń">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.35 1.77.68 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.25a2 2 0 0 1 2.11-.45c.83.33 1.7.56 2.6.68A2 2 0 0 1 22 16.92z"/>
-        </svg>
-      </a>
-    </div>
-
-    <div class="mobile-tabs">
-      <a href="#hero" class="mobile-tab active">Start</a>
-      <a href="#experience" class="mobile-tab">Booking</a>
-      <a href="#manifest" class="mobile-tab">O nas</a>
-      <a href="#pricing" class="mobile-tab">Usługi</a>
-      <a href="#location" class="mobile-tab">Dojazd</a>
-      <a href="#contact" class="mobile-tab">Kontakt</a>
-    </div>
-
-    <div class="mobile-drawer" id="mobileDrawer">
-      <nav class="mobile-drawer-nav">
-        <a href="#hero">Start</a>
-        <a href="#experience">Jak działa rezerwacja</a>
-        <a href="#manifest">O nas</a>
-        <a href="#pricing">Usługi</a>
-        <a href="#location">Jak dojechać</a>
-        <a href="#contact">Kontakt</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="landing-wrap">
-    <section class="hero-section" id="hero">
-      <div class="landing-container">
-        <div class="hero-card reveal">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <div class="section-chip">MONARCH BARBERSHOP</div>
-
-              <h1 class="hero-title">
-                Fryzura zaczyna się od <span>dobrego terminu.</span>
-              </h1>
-
-              <p class="hero-sub">
-                Wybierz usługę, barbera, dzień i godzinę bez dzwonienia. Premium booking
-                prowadzi klienta od pierwszego kliknięcia do konkretnego terminu — spokojnie,
-                szybko i bez chaosu w wiadomościach.
-              </p>
-
-              <div class="hero-actions">
-                <button class="btn btn-primary" type="button" data-open-booking>
-                  Zarezerwuj termin
-                </button>
-                <button class="btn btn-ghost" type="button" onclick="openMapsRoute()">
-                  Jak dojechać
-                </button>
-              </div>
-
-              <div class="hero-trust-row">
-                <div class="trust-pill">Rezerwacja online</div>
-                <div class="trust-pill">Wybór barbera</div>
-                <div class="trust-pill">Zajęte sloty ukryte</div>
-              </div>
-            </div>
-
-            <div class="hero-side">
-              <article class="glass-card hero-photo">
-                <img src="/tymur.png" alt="MONARCH barber" />
-                <div class="hero-photo-badge">
-                  <span>BARBERSHOP &amp; SOCIAL CLUB</span>
-                  <strong>MONARCH</strong>
-                </div>
-              </article>
-
-              <div class="hero-info-grid">
-                <article class="glass-card metric-card">
-                  <span>Od wejścia na stronę do wyboru godziny</span>
-                  <strong>8 kroków</strong>
-                </article>
-
-                <article class="glass-card metric-card">
-                  <span>Godziny pracy w systemie</span>
-                  <strong>10–20</strong>
-                </article>
-              </div>
-            </div>
-          </div>
+          <a href="tel:+48532377701" class="desktop-call-btn">Zadzwoń</a>
         </div>
       </div>
-    </section>
+    </header>
 
-    <section class="section" id="experience">
-      <div class="landing-container">
-        <div class="section-card reveal">
-          <div class="section-wrap">
-            <div class="section-head center">
-              <div class="section-chip">REZERWACJA ONLINE</div>
-              <h2>To nie jest zwykły formularz. To system sprzedaży terminu.</h2>
-              <p>
-                Klient nie musi pisać wiadomości, czekać na odpowiedź ani pytać o wolne godziny. Wszystko dzieje się w jednym miejscu: oferta, usługa, barber, data, godzina i potwierdzenie.
-              </p>
-            </div>
+    <main class="landing-wrap">
+      <section class="hero-section" id="hero">
+        <div class="landing-container">
+          <div class="hero-card reveal">
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <div class="section-chip">LUNA NAIL STUDIO</div>
 
-            <div class="experience-grid">
-              <article class="glass-card experience-showcase">
-                <div class="showcase-phone">
-                  <div class="showcase-screen">
-                    <div class="mini-top">
-                      <div class="mini-logo">
-                        <img src="/monarch-logo.png" alt="MONARCH logo" />
-                      </div>
-                      <div class="mini-pill">Online booking</div>
-                    </div>
+                <h1 class="hero-title">
+                  Perfekcyjny manicure zaczyna się od
+                  <span>rezerwacji.</span>
+                </h1>
 
-                    <div class="mini-title">Umów wizytę bez chaosu.</div>
+                <p class="hero-sub">
+                  Umów wizytę bez pisania wiadomości. Wybierz usługę,
+                  stylistkę i godzinę w kilka kliknięć — spokojnie, jasno
+                  i bez czekania na odpowiedź.
+                </p>
 
-                    <div class="mini-card">
-                      <strong>Strzyżenie / Haircut</strong>
-                      <span>90 zł</span>
-                    </div>
+                <div class="hero-actions">
+                  <button class="btn btn-primary" type="button" data-open-booking>
+                    Zarezerwuj termin
+                  </button>
 
-                    <div class="mini-card">
-                      <strong>Combo włosy + broda</strong>
-                      <span>140 zł</span>
-                    </div>
-
-                    <div class="mini-card">
-                      <strong>Wybierz barbera</strong>
-                      <span>3 osoby</span>
-                    </div>
-
-                    <div class="mini-card">
-                      <strong>Wolne godziny</strong>
-                      <span>10:00–20:00</span>
-                    </div>
-
-                    <div class="mini-cta">Zarezerwuj termin</div>
-                  </div>
-                </div>
-              </article>
-
-              <div class="experience-stack">
-                <article class="glass-card feature-card">
-                  <div class="feature-number">01</div>
-                  <div>
-                    <strong>Bez rozmów w DM</strong>
-                    <p>Klient widzi usługi, ceny, czas trwania i przechodzi do terminu bez pytania o podstawowe rzeczy.</p>
-                  </div>
-                </article>
-
-                <article class="glass-card feature-card">
-                  <div class="feature-number">02</div>
-                  <div>
-                    <strong>Barber albo auto-dobór</strong>
-                    <p>Można wybrać konkretną osobę albo zostawić systemowi dobór dostępnego specjalisty.</p>
-                  </div>
-                </article>
-
-                <article class="glass-card feature-card">
-                  <div class="feature-number">03</div>
-                  <div>
-                    <strong>Terminy z logiką kalendarza</strong>
-                    <p>Zajęte terminy są automatycznie pomijane, więc klient widzi tylko dostępne godziny.</p>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="manifest">
-      <div class="landing-container">
-        <div class="section-card reveal">
-          <div class="section-wrap">
-            <div class="section-head">
-              <div class="section-chip">O NAS</div>
-              <h2>Rezerwacja może wyglądać tak dobrze jak sam lokal.</h2>
-              <p>
-                Ten układ działa jak gotowa prezentacja barbershopu: klimat miejsca, usługi, lokalizacja i booking w jednej płynnej ścieżce.
-              </p>
-            </div>
-
-            <div class="manifest-grid">
-              <div class="glass-card manifest-vertical">
-                <div class="manifest-vertical__text">MONARCH</div>
-              </div>
-
-              <div class="manifest-copy">
-                <article class="glass-card manifest-line">
-                  <p>
-                    <strong>Wygląd sprzedaje zaufanie.</strong> Klient szybciej zostawia dane, kiedy strona wygląda jak część dopracowanej marki, a nie przypadkowy formularz z internetu.
-                  </p>
-                </article>
-
-                <article class="glass-card manifest-line">
-                  <p>
-                    <strong>Rezerwacja skraca rozmowę.</strong> Zamiast pytań o ceny, godziny i usługi, klient dostaje gotową ścieżkę i sam przechodzi do terminu.
-                  </p>
-                </article>
-
-                <article class="glass-card manifest-line">
-                  <p>
-                    <strong>System działa pod lokal.</strong> Możesz pokazać usługi, barberów, godziny pracy, mapę i kontakt — wszystko w jednym miejscu, podłączone do booking flow.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="pricing">
-      <div class="landing-container">
-        <div class="section-card reveal">
-          <div class="section-wrap">
-            <div class="section-head">
-              <div class="section-chip">USŁUGI</div>
-              <h2>Oferta wygląda jak produkt, nie jak lista cen w wiadomości.</h2>
-              <p>
-                Najważniejsze usługi są pokazane od razu, a pełny wybór klient widzi w bookingu. To pomaga szybciej przejść od zainteresowania do konkretnej wizyty.
-              </p>
-            </div>
-
-            <div class="pricing-grid">
-              <article class="glass-card pricing-card">
-                <div>
-                  <div class="pricing-card__top">
-                    <strong>Strzyżenie</strong>
-                    <div class="pricing-card__price">od 90 zł</div>
-                  </div>
-                  <p>
-                    Klasyka albo nowocześniejsza forma. Dobór cięcia do twarzy, włosa i tego,
-                    jak naprawdę chcesz wyglądać po wyjściu.
-                  </p>
-                  <div class="service-tags">
-                    <span>1h</span>
-                    <span>Haircut</span>
-                    <span>Rabat pn–czw</span>
-                  </div>
-                </div>
-                <button class="btn section-button-full" type="button" data-open-booking>
-                  Zarezerwuj
-                </button>
-              </article>
-
-              <article class="glass-card pricing-card">
-                <div>
-                  <div class="pricing-card__top">
-                    <strong>Broda</strong>
-                    <div class="pricing-card__price">od 70 zł</div>
-                  </div>
-                  <p>
-                    Kontur, proporcja i czyste wykończenie. Broda ma wyglądać jak element stylu,
-                    nie przypadkowy dodatek.
-                  </p>
-                  <div class="service-tags">
-                    <span>40min</span>
-                    <span>Kontury</span>
-                    <span>Golenie</span>
-                  </div>
-                </div>
-                <button class="btn section-button-full" type="button" data-open-booking>
-                  Zarezerwuj
-                </button>
-              </article>
-
-              <article class="glass-card pricing-card">
-                <div>
-                  <div class="pricing-card__top">
-                    <strong>Combo</strong>
-                    <div class="pricing-card__price">od 140 zł</div>
-                  </div>
-                  <p>
-                    Włosy i broda w jednym rytmie. Opcja dla tych, którzy chcą wyjść gotowi,
-                    a nie „jeszcze coś poprawić”.
-                  </p>
-                  <div class="service-tags">
-                    <span>1h 30min</span>
-                    <span>Włosy + broda</span>
-                    <span>Premium</span>
-                  </div>
-                </div>
-                <button class="btn btn-primary section-button-full" type="button" data-open-booking>
-                  Zarezerwuj
-                </button>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="location">
-      <div class="landing-container">
-        <div class="section-card reveal">
-          <div class="section-wrap">
-            <div class="section-head">
-              <div class="section-chip">JAK DO NAS TRAFIĆ</div>
-              <h2>Jedno kliknięcie i jesteś w drodze.</h2>
-              <p>
-                Odpal trasę, sprawdź lokalizację i przyjedź na godzinę. Bez ręcznego wpisywania adresu,
-                bez szukania po mapie, bez zgadywania.
-              </p>
-            </div>
-
-            <div class="location-grid">
-              <div class="glass-card location-map">
-                <iframe
-                  title="MONARCH map"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?q=Buddha+Statue&z=13&output=embed"
-                ></iframe>
-              </div>
-
-              <div class="glass-card location-side">
-                <div class="location-preview">
-                  <div class="location-preview__inner">
-                    <img src="/monarch-logo.png" alt="MONARCH sign" />
-                    <strong>MONARCH</strong>
-                    <span>BARBERSHOP &amp; SOCIAL CLUB</span>
-                  </div>
-                </div>
-
-                <div class="location-copy">
-                  <strong>Prosta droga do miejsca, do którego chce się wracać.</strong>
-                  <p>
-                    Sprawdź lokalizację, odpal nawigację i wpadaj bez błądzenia.
-                  </p>
-                </div>
-
-                <div class="section-actions">
-                  <button class="btn btn-primary" type="button" onclick="openMapsRoute()">
+                  <button class="btn btn-ghost" type="button" onclick="openMapsRoute()">
                     Jak dojechać
                   </button>
-                  <a class="btn btn-ghost" href="tel:+48532377701">
-                    Zadzwoń
-                  </a>
+                </div>
+
+                <div class="hero-trust-row">
+                  <div class="trust-pill">Manicure, żel, zdobienia</div>
+                  <div class="trust-pill">Rezerwacja online 24/7</div>
+                  <div class="trust-pill">Beauty studio • Wrocław</div>
+                </div>
+              </div>
+
+              <div class="hero-side">
+                <article class="glass-card hero-photo">
+                  <img src="/nails-hero.png" alt="LUNA manicure" />
+                  <div class="hero-photo-badge">
+                    <span>NAIL STUDIO &amp; BEAUTY CARE</span>
+                    <strong>LUNA</strong>
+                  </div>
+                </article>
+
+                <div class="hero-info-grid">
+                  <article class="glass-card metric-card">
+                    <span>Najczęściej wybierane stylizacje</span>
+                    <strong>3+</strong>
+                  </article>
+
+                  <article class="glass-card metric-card">
+                    <span>Godziny pracy studia</span>
+                    <strong>10–20</strong>
+                  </article>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="contact">
-      <div class="landing-container">
-        <div class="section-card reveal">
-          <div class="section-wrap">
-            <div class="section-head">
-              <div class="section-chip">DOŁĄCZ DO MONARCH</div>
-              <h2>Zamień wejścia z Instagrama w konkretne rezerwacje.</h2>
-              <p>
-                Landing można podpiąć pod link w bio, DM automatyzację albo reklamę. Klient trafia na stronę, widzi ofertę i przechodzi prosto do bookingu.
-              </p>
-            </div>
-
-            <div class="contact-grid">
-              <div class="glass-card contact-card">
-                <div class="contact-lead">
-                  <strong>Gotowy system pod barbershop.</strong>
-                  <p>
-                    To jest dokładnie ten typ strony, który możesz pokazać znajomym: wygląda premium, od razu tłumaczy wartość i ma działający booking w środku.
-                  </p>
-                </div>
-
-                <button class="btn btn-primary section-button-full" type="button" data-open-booking>
-                  Zarezerwuj termin
-                </button>
-
-                <div class="contact-note">
-                  W praktyce właściciel dostaje mniej ręcznego odpisywania, a klient szybszą drogę od zainteresowania do terminu.
-                </div>
+            <section class="section" id="experience">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="section-head">
+                <h2>Rezerwacja bez wiadomości i czekania.</h2>
+                <p>
+                  Klient nie musi pisać na Instagramie i czekać. Wszystko dzieje się od razu — wybór, termin i potwierdzenie w jednym miejscu.
+                </p>
               </div>
 
-              <div class="glass-card status-card">
-                <div id="liveStatus" class="status-pill closed">Closed now</div>
+              <div class="experience-grid">
+                <div class="glass-card experience-showcase">
+                  <div class="showcase-phone">
+                    <div class="showcase-screen">
+                      <div class="mini-top">
+                        <div class="mini-logo">L</div>
+                        <div class="mini-pill">online</div>
+                      </div>
 
-                <ul class="status-list">
-                  <li><span>Poniedziałek – Sobota</span><strong>10:00 – 20:00</strong></li>
-                  <li><span>Niedziela</span><strong>10:00 – 18:00</strong></li>
-                </ul>
+                      <div class="mini-title">Wybierz usługę</div>
 
-                <div class="social-icons">
-                  <a class="social-icon" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                      <circle cx="12" cy="12" r="4"></circle>
-                      <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
-                    </svg>
-                  </a>
+                      <div class="mini-card">
+                        <strong>Manicure klasyczny</strong>
+                        <span>90 zł</span>
+                      </div>
 
-                  <a class="social-icon" href="https://www.tiktok.com/@mrozowski.automation" target="_blank" rel="noopener" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M15.7 3c.2 1.6 1.1 3 2.4 3.8.8.5 1.7.8 2.7.8v3.1c-1.4 0-2.9-.4-4.1-1.2v6.4c0 3.1-2.5 5.6-5.6 5.6S5.5 19 5.5 15.9s2.5-5.6 5.6-5.6c.3 0 .7 0 1 .1v3.2a2.7 2.7 0 0 0-1-.2 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-2.5V3h2.1Z"></path>
-                    </svg>
-                  </a>
+                      <div class="mini-card">
+                        <strong>Manicure hybrydowy</strong>
+                        <span>120 zł</span>
+                      </div>
 
-                  <a class="social-icon" href="https://www.facebook.com/profile.php?id=61576437654902" target="_blank" rel="noopener" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.5-1.5H17V3.7c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.6v1.8H7V13h3v8h3.5Z"></path>
-                    </svg>
-                  </a>
+                      <div class="mini-card">
+                        <strong>Żel + zdobienia</strong>
+                        <span>160 zł</span>
+                      </div>
+
+                      <div class="mini-cta">Dalej</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="experience-stack">
+                  <div class="glass-card feature-card">
+                    <div class="feature-number">1</div>
+                    <strong>Klient wchodzi w link</strong>
+                    <p>
+                      Z bio, z Google, z reklamy — nie ma znaczenia skąd. Strona działa wszędzie tak samo.
+                    </p>
+                  </div>
+
+                  <div class="glass-card feature-card">
+                    <div class="feature-number">2</div>
+                    <strong>Wybiera usługę</strong>
+                    <p>
+                      Bez pisania, bez tłumaczenia — wszystko jasno pokazane w systemie.
+                    </p>
+                  </div>
+
+                  <div class="glass-card feature-card">
+                    <div class="feature-number">3</div>
+                    <strong>Rezerwuje termin</strong>
+                    <p>
+                      Godzina, data i stylistka — wszystko w jednym flow bez chaosu.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <button class="btn btn-primary floating-book" type="button" data-open-booking>
-    Zarezerwuj termin
-  </button>
 
-  <section class="booking-overlay" id="bookingOverlay" aria-hidden="true">
+      <section class="section" id="manifest">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="manifest-grid">
+
+                <div class="manifest-vertical">
+                  <div class="manifest-logo-mark">
+                    <span>LUNA</span>
+                    <span>NAIL STUDIO</span>
+                  </div>
+                </div>
+
+                <div class="manifest-copy">
+                  <div class="glass-card manifest-line">
+                    <p>
+                      Nie jesteśmy tylko studiem paznokci. Tworzymy przestrzeń, gdzie wszystko jest spokojne, dopracowane i przemyślane.
+                    </p>
+                  </div>
+
+                  <div class="glass-card manifest-line">
+                    <p>
+                      <strong>Rezerwacja to część doświadczenia.</strong> Dlatego działa szybko, jasno i bez chaosu.
+                    </p>
+                  </div>
+
+                  <div class="glass-card manifest-line">
+                    <p>
+                      Klient nie powinien pisać i czekać. Powinien wejść i od razu wiedzieć co zrobić.
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section" id="pricing">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="section-head center">
+                <h2>Najczęściej wybierane usługi</h2>
+              </div>
+
+              <div class="pricing-grid">
+
+                <div class="glass-card pricing-card">
+                  <div>
+                    <div class="pricing-card__top">
+                      <strong>Manicure klasyczny</strong>
+                      <div class="pricing-card__price">90 zł</div>
+                    </div>
+                    <p>Podstawowa pielęgnacja paznokci.</p>
+                  </div>
+                  <button class="btn btn-primary" data-open-booking>Zarezerwuj</button>
+                </div>
+
+                <div class="glass-card pricing-card">
+                  <div>
+                    <div class="pricing-card__top">
+                      <strong>Hybryda</strong>
+                      <div class="pricing-card__price">120 zł</div>
+                    </div>
+                    <p>Trwały manicure z kolorem.</p>
+                  </div>
+                  <button class="btn btn-primary" data-open-booking>Zarezerwuj</button>
+                </div>
+
+                <div class="glass-card pricing-card">
+                  <div>
+                    <div class="pricing-card__top">
+                      <strong>Żel + zdobienia</strong>
+                      <div class="pricing-card__price">160 zł</div>
+                    </div>
+                    <p>Pełna stylizacja premium.</p>
+                  </div>
+                  <button class="btn btn-primary" data-open-booking>Zarezerwuj</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section" id="location">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="location-grid">
+
+                <div class="location-map">
+                  <iframe src="https://maps.google.com/maps?q=Wroclaw&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                </div>
+
+                <div class="location-side">
+                  <div class="location-copy">
+                    <strong>Znajdź nas we Wrocławiu</strong>
+                    <p>
+                      Studio znajduje się w centrum — łatwy dojazd i spokojna przestrzeń.
+                    </p>
+                  </div>
+
+                  <button class="btn btn-primary" onclick="openMapsRoute()">
+                    Otwórz trasę
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section" id="contact">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="contact-grid">
+
+                <div class="contact-card">
+                  <div class="contact-lead">
+                    <strong>Kontakt</strong>
+                    <p>Zadzwoń lub napisz — odpowiadamy szybko.</p>
+                  </div>
+
+                  <a href="tel:+48532377701" class="btn btn-primary">
+                    +48 532 377 701
+                  </a>
+                </div>
+
+                <div class="status-card">
+                  <div class="status-pill open">Otwarte</div>
+
+                  <ul class="status-list">
+                    <li><strong>Pon–Pt</strong> 10:00–20:00</li>
+                    <li><strong>Sobota</strong> 10:00–18:00</li>
+                    <li><strong>Niedziela</strong> Zamknięte</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+  <div class="booking-overlay" id="bookingOverlay">
     <div class="booking-shell">
       <div class="booking-topbar">
         <div class="booking-topbar__left">
-          <img src="/monarch-logo.png" alt="MONARCH logo" />
+          <div class="booking-logo-text">LUNA</div>
           <div class="booking-topbar__copy">
-            <span>MONARCH BARBERSHOP</span>
-            <strong>Rezerwacja online</strong>
+            <span>Rezerwacja</span>
+            <strong>Wybierz termin</strong>
           </div>
         </div>
 
-        <button class="btn booking-close" type="button" id="bookingCloseBtn" aria-label="Zamknij booking">
-          ×
-        </button>
+        <button class="btn booking-close" onclick="closeBooking()">×</button>
       </div>
 
       <div class="wizard-host">
-        <main class="app-shell">
-          <section class="wizard-frame">
-            <header class="wizard-top">
-              <div class="wizard-top-row">
-                <div class="wizard-top-copy">
-                  <div class="eyebrow">MONARCH BARBERSHOP</div>
-                  <h1 id="stepTitle">Dane kontaktowe</h1>
-                  <p id="stepSubtitle">Zostaw podstawowe dane i przejdź dalej.</p>
-                </div>
-                <div class="step-pill" id="stepPill">1 / 8</div>
-              </div>
-
-              <div class="progress-wrap">
-                <div class="progress-track">
-                  <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="progress-text" id="progressText">13%</div>
-              </div>
-            </header>
-
-            <section class="wizard-card">
-              <section class="step active" data-step="1">
-                <div class="step-content narrow">
-                  <div class="intro-card">
-                    <div class="intro-top">
-                      <div class="logo-box logo-box-image">
-                        <img src="/monarch-logo.png" alt="MONARCH logo" />
-                      </div>
-
-                      <div class="intro-copy">
-                        <span class="section-kicker">MONARCH BARBERSHOP</span>
-                        <strong>Umów wizytę szybko i wygodnie</strong>
-                      </div>
-                    </div>
-
-                    <div class="intro-divider"></div>
-
-                    <div class="card-head">
-                      <h2>Wpisz imię i telefon</h2>
-                      <p>
-                        Zostaw swoje dane, a potem wybierz usługę i termin wizyty.
-                      </p>
-                    </div>
-
-                    <div class="intro-benefits">
-                      <div class="intro-benefit">Szybko</div>
-                      <div class="intro-benefit">Wygodnie</div>
-                      <div class="intro-benefit">Online</div>
-                    </div>
-                  </div>
-
-                  <label class="field">
-                    <span>Imię</span>
-                    <input id="nameInput" type="text" placeholder="Np. Michał" autocomplete="name" />
-                    <small class="error" id="nameError"></small>
-                  </label>
-
-                  <label class="field">
-                    <span>Telefon</span>
-                    <input id="phoneInput" type="tel" placeholder="+48 123 456 789" autocomplete="tel" />
-                    <small class="error" id="phoneError"></small>
-                  </label>
-                </div>
-              </section>
-
-              <section class="step" data-step="2">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Wybór usługi</h2>
-                    <p>Najpierw wybierz kategorię, potem konkretną usługę.</p>
-                  </div>
-
-                  <div class="accordion-list" id="categoryAccordion"></div>
-                </div>
-              </section>
-
-              <section class="step" data-step="3">
-                <div class="step-content narrow">
-                  <div class="card-head">
-                    <h2>Wybrać barbera?</h2>
-                    <p>Możesz wybrać konkretnego barbera albo przejść dalej bez wyboru.</p>
-                  </div>
-
-                  <div class="summary-list">
-                    <div class="summary-row">
-                      <span>Imię</span>
-                      <strong data-bind="name">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Telefon</span>
-                      <strong data-bind="phone">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Usługa</span>
-                      <strong data-bind="serviceName">—</strong>
-                    </div>
-                  </div>
-
-                  <div class="choice-actions">
-                    <button class="choice-btn choice-btn-strong" id="chooseBarberYes" type="button">Tak</button>
-                    <button class="choice-btn choice-btn-strong" id="chooseBarberNo" type="button">Nie</button>
-                  </div>
-
-                  <div class="barber-skip-box hidden" id="barberSkipBox">
-                    <div class="summary-list">
-                      <div class="summary-row">
-                        <span>Barber</span>
-                        <strong>Bez wyboru</strong>
-                      </div>
-                      <div class="summary-row">
-                        <span>Status</span>
-                        <strong>System dobierze dostępnego barbera</strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="4">
-                <div class="step-content narrow">
-                  <div class="card-head">
-                    <h2>Wybór barbera</h2>
-                    <p>Przeglądaj barbera strzałkami i wybierz konkretną osobę.</p>
-                  </div>
-
-                  <div class="barber-slider-card">
-                    <div class="barber-slide-photo" id="barberSlidePhoto">
-                      <img src="/tymur.png" alt="Barber" class="barber-photo-img" />
-                    </div>
-
-                    <div class="barber-slide-info">
-                      <strong id="barberSlideName">—</strong>
-                      <p id="barberSlideDescription">—</p>
-                      <div class="barber-langs" id="barberSlideLangs"></div>
-                    </div>
-
-                    <div class="barber-slider-controls">
-                      <button class="slider-arrow" id="barberPrevBtn" type="button">←</button>
-                      <div class="slider-counter" id="barberCounter">1 / 3</div>
-                      <button class="slider-arrow" id="barberNextBtn" type="button">→</button>
-                    </div>
-
-                    <button class="select-barber-btn" id="selectBarberBtn" type="button">
-                      Wybierz tego barbera
-                    </button>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="5">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Wybór daty</h2>
-                    <p>Wybierz dogodny dzień wizyty.</p>
-                  </div>
-
-                  <div class="calendar-box">
-                    <div class="calendar-header">
-                      <button class="calendar-nav-btn" id="calendarPrevBtn" type="button">←</button>
-
-                      <div class="calendar-title-wrap">
-                        <strong id="monthLabel">Miesiąc</strong>
-                        <span id="calendarStatus">Dostępne terminy</span>
-                      </div>
-
-                      <button class="calendar-nav-btn" id="calendarNextBtn" type="button">→</button>
-                    </div>
-
-                    <div class="calendar-weekdays">
-                      <span>Pn</span>
-                      <span>Wt</span>
-                      <span>Śr</span>
-                      <span>Cz</span>
-                      <span>Pt</span>
-                      <span>Sb</span>
-                      <span>Nd</span>
-                    </div>
-
-                    <div class="calendar-month-grid" id="calendarGrid"></div>
-                    <small class="error" id="dateError"></small>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="6">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Wybór godziny</h2>
-                    <p>Wybierz dogodną godzinę wizyty.</p>
-                  </div>
-
-                  <div class="slots-box">
-                    <div class="calendar-top">
-                      <strong>Godziny</strong>
-                      <span id="slotsStatus">Wybierz datę</span>
-                    </div>
-
-                    <div class="slots-grid" id="slotsGrid"></div>
-                    <small class="error" id="timeError"></small>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="7">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Potwierdzenie danych</h2>
-                    <p>Sprawdź wszystko przed zapisaniem wizyty.</p>
-                  </div>
-
-                  <div class="summary-list">
-                    <div class="summary-row">
-                      <span>Imię</span>
-                      <strong data-bind="name">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Telefon</span>
-                      <strong data-bind="phone">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Usługa</span>
-                      <strong data-bind="serviceName">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Barber</span>
-                      <strong data-bind="barberName">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Data</span>
-                      <strong data-bind="dateText">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Godzina</span>
-                      <strong data-bind="time">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Czas trwania</span>
-                      <strong data-bind="serviceDuration">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Cena</span>
-                      <strong data-bind="servicePrice">—</strong>
-                    </div>
-                  </div>
-
-                  <div class="info-note">
-                    Sprawdź dane i potwierdź, aby zapisać wizytę.
-                  </div>
-
-                  <small class="error" id="submitError"></small>
-                </div>
-              </section>
-
-              <section class="step" data-step="8">
-                <div class="step-content narrow center">
-                  <div class="success-icon">✓</div>
-
-                  <div class="card-head center">
-                    <h2>Rezerwacja zapisana</h2>
-                    <p>Wizyta została pomyślnie dodana do systemu.</p>
-                  </div>
-
-                  <div class="summary-list">
-                    <div class="summary-row">
-                      <span>Usługa</span>
-                      <strong data-bind="serviceName">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Barber</span>
-                      <strong data-bind="barberName">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Data</span>
-                      <strong data-bind="dateText">—</strong>
-                    </div>
-                    <div class="summary-row">
-                      <span>Godzina</span>
-                      <strong data-bind="time">—</strong>
-                    </div>
-                  </div>
-
-                  <div class="success-links">
-                    <a class="nav-btn nav-btn-primary" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">
-                      Instagram
-                    </a>
-                    <a class="nav-btn" href="https://www.google.com/maps/search/?api=1&query=Wroclaw" target="_blank" rel="noopener">
-                      Lokalizacja
-                    </a>
-                    <button class="nav-btn" type="button" onclick="callBarbershop()">
-                      Zadzwoń: 532 377 701
-                    </button>
-                  </div>
-                </div>
-              </section>
-            </section>
-
-            <footer class="wizard-nav">
-              <button class="nav-btn" id="backBtn" type="button">Wstecz</button>
-              <button class="nav-btn nav-btn-primary" id="nextBtn" type="button">Dalej</button>
-            </footer>
-          </section>
-        </main>
+        <!-- tutaj wklejasz swój booking system -->
       </div>
     </div>
-  </section>
+  </div>
+
 
   <script>
-    function openMapsRoute() {
-      const mapsQuery = encodeURIComponent("Buddha Statue");
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const overlay = document.getElementById("bookingOverlay");
 
-      if (isIOS) {
-        window.open(`https://maps.apple.com/?q=${mapsQuery}`, "_blank");
-      } else {
-        window.open(`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`, "_blank");
-      }
-    }
-
-    function callBarbershop() {
-      window.location.href = "tel:+48532377701";
-    }
-
-    window.callBarbershop = callBarbershop;
-    window.callDogma = callBarbershop;
-
-    (function () {
-      const flash = document.getElementById("screenFlash");
-      const overlay = document.getElementById("bookingOverlay");
-      const closeBtn = document.getElementById("bookingCloseBtn");
-      const openButtons = document.querySelectorAll("[data-open-booking]");
-      const clickable = document.querySelectorAll('a[href^="#"], .btn');
-      const liveStatus = document.getElementById("liveStatus");
-      const menuToggle = document.getElementById("mobileMenuToggle");
-      const mobileDrawer = document.getElementById("mobileDrawer");
-      const body = document.body;
-      const floatingBook = document.querySelector(".floating-book");
-      const contactSection = document.getElementById("contact");
-      const heroSection = document.getElementById("hero");
-      const mobileLinks = document.querySelectorAll(".mobile-drawer a, .mobile-tabs a");
-      const tabs = document.querySelectorAll(".mobile-tab");
-      const sections = [...document.querySelectorAll("main.landing-wrap > section[id]")];
-
-      function triggerFlash() {
-        if (!flash) return;
-        flash.classList.add("active");
-        setTimeout(() => flash.classList.remove("active"), 130);
-      }
-
-      clickable.forEach((item) => {
-        item.addEventListener("click", triggerFlash);
-      });
-
-      function openBooking() {
-        if (!overlay) return;
+    document.querySelectorAll("[data-open-booking]").forEach(btn => {
+      btn.addEventListener("click", () => {
         overlay.classList.add("open");
-        overlay.setAttribute("aria-hidden", "false");
-        body.classList.add("booking-open");
-        if (mobileDrawer) {
-          mobileDrawer.classList.remove("open");
-          body.classList.remove("menu-open");
-        }
-      }
-
-      function closeBooking() {
-        if (!overlay) return;
-        overlay.classList.remove("open");
-        overlay.setAttribute("aria-hidden", "true");
-        body.classList.remove("booking-open");
-      }
-
-      openButtons.forEach((btn) => {
-        btn.addEventListener("click", openBooking);
+        document.body.classList.add("booking-open");
       });
+    });
 
-      if (closeBtn) {
-        closeBtn.addEventListener("click", closeBooking);
-      }
+    function closeBooking() {
+      overlay.classList.remove("open");
+      document.body.classList.remove("booking-open");
+    }
 
-      if (overlay) {
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) closeBooking();
-        });
-      }
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          if (overlay && overlay.classList.contains("open")) {
-            closeBooking();
-          }
-
-          if (mobileDrawer && mobileDrawer.classList.contains("open")) {
-            mobileDrawer.classList.remove("open");
-            body.classList.remove("menu-open");
-          }
-        }
-      });
-
-      function updateLiveStatus() {
-        if (!liveStatus) return;
-
-        const now = new Date();
-        const day = now.getDay();
-        const minutes = now.getHours() * 60 + now.getMinutes();
-
-        let open = 10 * 60;
-        let close = 20 * 60;
-
-        if (day === 0) close = 18 * 60;
-
-        const isOpen = minutes >= open && minutes < close;
-
-        liveStatus.classList.remove("open", "closed");
-        liveStatus.classList.add(isOpen ? "open" : "closed");
-        liveStatus.textContent = isOpen ? "Open now" : "Closed now";
-      }
-
-      updateLiveStatus();
-      setInterval(updateLiveStatus, 60000);
-
-      if (menuToggle && mobileDrawer) {
-        menuToggle.addEventListener("click", () => {
-          mobileDrawer.classList.toggle("open");
-          body.classList.toggle("menu-open");
-        });
-
-        mobileLinks.forEach(link => {
-          link.addEventListener("click", () => {
-            mobileDrawer.classList.remove("open");
-            body.classList.remove("menu-open");
-          });
-        });
-
-        document.addEventListener("click", (e) => {
-          if (
-            mobileDrawer.classList.contains("open") &&
-            !mobileDrawer.contains(e.target) &&
-            !menuToggle.contains(e.target)
-          ) {
-            mobileDrawer.classList.remove("open");
-            body.classList.remove("menu-open");
-          }
-        });
-      }
-
-      function handleFloatingButton() {
-        if (!floatingBook || !contactSection || !heroSection) return;
-
-        const heroRect = heroSection.getBoundingClientRect();
-        const contactRect = contactSection.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-
-        const passedHero = heroRect.bottom < viewportHeight * 0.35;
-        const nearContact = contactRect.top < viewportHeight - 140;
-
-        floatingBook.classList.remove("is-visible", "hidden-on-contact");
-
-        if (nearContact) {
-          floatingBook.classList.add("hidden-on-contact");
-          return;
-        }
-
-        if (passedHero) {
-          floatingBook.classList.add("is-visible");
-        }
-      }
-
-      function handleActiveTabs() {
-        if (!tabs.length || !sections.length) return;
-
-        let current = sections[0].id;
-        const marker = window.innerHeight * 0.34;
-
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= marker && rect.bottom >= marker) {
-            current = section.id;
-          }
-        });
-
-        tabs.forEach((tab) => {
-          const href = tab.getAttribute("href") || "";
-          tab.classList.toggle("active", href === `#${current}`);
-        });
-      }
-
-      window.addEventListener("scroll", () => {
-        handleFloatingButton();
-        handleActiveTabs();
-      });
-      window.addEventListener("resize", () => {
-        handleFloatingButton();
-        handleActiveTabs();
-      });
-
-      handleFloatingButton();
-      handleActiveTabs();
-    })();
+    function openMapsRoute() {
+      window.open("https://maps.google.com?q=Wroclaw", "_blank");
+    }
   </script>
 
-  <script src="./script.js"></script>
 </body>
 </html>
+
+      
