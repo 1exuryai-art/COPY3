@@ -4982,6 +4982,42 @@
     </div>
   </div>
 
+  <section class="booking-overlay" id="bookingOverlay" aria-hidden="true">
+  <div class="booking-shell">
+    <div class="booking-topbar">
+      <div class="booking-topbar__left">
+        <img src="/images/logo-luna-nail.png" alt="LUNA NAIL logo" />
+        <div class="booking-topbar__copy">
+          <span>LUNA NAIL STUDIO</span>
+          <strong>Rezerwacja online</strong>
+        </div>
+      </div>
+
+      <button class="btn booking-close" type="button" id="bookingCloseBtn" aria-label="Zamknij booking">
+        ×
+      </button>
+    </div>
+
+    <div class="wizard-host">
+      <main class="app-shell">
+        <section class="wizard-frame">
+          <header class="wizard-top">
+            <div class="wizard-top-row">
+              <div class="wizard-top-copy">
+                <div class="eyebrow">LUNA NAIL STUDIO</div>
+                <h1 id="stepTitle">Dane kontaktowe</h1>
+                <p id="stepSubtitle">Zostaw podstawowe dane i przejdź dalej.</p>
+              </div>
+              <div class="step-pill" id="stepPill">1 / 8</div>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <div class="progress-text" id="progressText">13%</div>
+            </div>
+          </header>
   <section class="wizard-card">
   <section class="step active" data-step="1">
     <div class="step-content narrow">
@@ -5260,9 +5296,35 @@
   <button class="nav-btn" id="backBtn" type="button">Wstecz</button>
   <button class="nav-btn nav-btn-primary" id="nextBtn" type="button">Dalej</button>
 </footer>
+         </section>
+      </main>
+    </div>
+  </div>
+</section>
 
   <script>
     const overlay = document.getElementById("bookingOverlay");
+    function openBooking() {
+  overlay.classList.add("open");
+  overlay.setAttribute("aria-hidden", "false");
+  document.body.classList.add("booking-open");
+}
+
+function closeBooking() {
+  overlay.classList.remove("open");
+  overlay.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("booking-open");
+}
+
+document.querySelectorAll("[data-open-booking]").forEach((btn) => {
+  btn.addEventListener("click", openBooking);
+});
+
+document.getElementById("bookingCloseBtn")?.addEventListener("click", closeBooking);
+
+overlay?.addEventListener("click", (e) => {
+  if (e.target === overlay) closeBooking();
+});
     const flash = document.getElementById("screenFlash");
     const siteHeader = document.querySelector(".site-header");
     const mobileVersion = document.getElementById("mobile-version");
