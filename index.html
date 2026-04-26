@@ -4083,11 +4083,15 @@
     opacity: 1 !important;
   }
 
-  .site-header.header-hidden {
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
+  .site-header {
+  transition: transform 260ms ease, opacity 260ms ease;
+}
+
+.site-header.header-hidden {
+  transform: translateY(-110%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 }
   </style>
 </head>
