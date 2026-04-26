@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>LUNA NAIL STUDIO — Rezerwacja</title>
+  <title>LUNA NAIL STUDIO — Manicure i rezerwacja online</title>
   <meta
     name="description"
-    content="LUNA NAIL STUDIO — manicure, stylizacja paznokci, pielęgnacja dłoni i rezerwacja online bez wiadomości."
+    content="LUNA NAIL STUDIO — manicure hybrydowy, przedłużanie paznokci, zdobienia i wygodna rezerwacja online we Wrocławiu."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -237,13 +237,21 @@
     .desktop-right { justify-content: flex-end; }
     .desktop-center { display: flex; justify-content: center; flex-shrink: 0; }
 
+    .desktop-logo,
+    .logo-pill,
+    .mini-logo,
+    .brand-logo-box,
+    .booking-logo-text {
+      position: relative;
+      overflow: hidden;
+    }
+
     .desktop-logo {
-      width: 128px;
+      width: 132px;
       min-height: 58px;
       display: grid;
       place-items: center;
       border-radius: 20px;
-      overflow: hidden;
       padding: 8px 12px;
       border: 1px solid rgba(93, 41, 70, 0.09);
       background:
@@ -255,6 +263,22 @@
       text-decoration: none;
       color: var(--text-strong);
       animation: logoBreath 5.4s ease-in-out infinite;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      max-width: 104px;
+      max-height: 44px;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 10px 20px rgba(119, 70, 96, 0.14));
+    }
+
+    .brand-logo-img[src=""],
+    .brand-logo-img:not([src]) {
+      display: none;
     }
 
     .logo-word,
@@ -269,8 +293,15 @@
       text-transform: uppercase;
     }
 
-    .desktop-logo-text {
-      font-size: 19px;
+    .desktop-logo-text { font-size: 19px; }
+
+    .desktop-logo .desktop-logo-text {
+      display: none;
+    }
+
+    .desktop-logo .brand-logo-img[src=""] + .desktop-logo-text,
+    .desktop-logo .brand-logo-img:not([src]) + .desktop-logo-text {
+      display: block;
     }
 
     .desktop-nav {
@@ -580,6 +611,28 @@
       pointer-events: none;
     }
 
+    .hero-logo-panel,
+    .manifest-logo-panel {
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.84), transparent 34%),
+        radial-gradient(circle at 50% 50%, rgba(247, 184, 210, 0.48), transparent 42%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(255, 229, 241, 0.58));
+    }
+
+    .hero-logo-panel .brand-logo-img,
+    .manifest-logo-panel .brand-logo-img {
+      max-width: min(340px, 78%);
+      max-height: 250px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 24px 46px rgba(119, 70, 96, 0.18))
+        drop-shadow(0 0 34px rgba(247, 184, 210, 0.32));
+    }
+
     .hero-photo-badge {
       position: absolute;
       bottom: 18px;
@@ -702,6 +755,26 @@
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 247, 251, 0.52));
     }
 
+    .btn-back-home {
+      color: var(--rose-2);
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(93, 41, 70, 0.10);
+      background: rgba(255, 255, 255, 0.64);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      box-shadow:
+        0 14px 28px rgba(119, 70, 96, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    }
+
     .section { padding: 0; }
 
     .section-wrap {
@@ -822,6 +895,11 @@
       letter-spacing: -0.08em;
     }
 
+    .mini-logo .brand-logo-img {
+      max-width: 38px;
+      max-height: 38px;
+    }
+
     .mini-pill {
       min-height: 30px;
       padding: 0 10px;
@@ -889,7 +967,10 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.46);
     }
 
-    .experience-stack { display: grid; gap: 14px; }
+    .experience-stack {
+      display: grid;
+      gap: 14px;
+    }
 
     .feature-card {
       padding: 22px;
@@ -947,7 +1028,7 @@
       z-index: 1;
     }
 
-    .manifest-grid {
+        .manifest-grid {
       display: grid;
       grid-template-columns: 0.72fr 1.28fr;
       gap: 18px;
@@ -966,6 +1047,10 @@
       box-shadow:
         0 24px 60px rgba(119, 70, 96, 0.13),
         inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    }
+
+    .manifest-logo-panel {
+      min-height: 560px;
     }
 
     .manifest-logo-mark {
@@ -1014,7 +1099,9 @@
       z-index: 1;
     }
 
-    .manifest-line strong { color: var(--rose-2); }
+    .manifest-line strong {
+      color: var(--rose-2);
+    }
 
     .pricing-grid {
       display: grid;
@@ -1162,6 +1249,12 @@
       text-align: center;
     }
 
+    .location-preview__inner .brand-logo-img {
+      max-width: 220px;
+      max-height: 160px;
+      object-fit: contain;
+    }
+
     .location-preview__inner strong {
       font-family: "Sora", sans-serif;
       font-size: 42px;
@@ -1209,7 +1302,9 @@
     }
 
     .contact-card,
-    .status-card { padding: 22px; }
+    .status-card {
+      padding: 22px;
+    }
 
     .contact-card {
       display: grid;
@@ -1320,7 +1415,9 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
-    .status-list strong { color: var(--text-strong); }
+    .status-list strong {
+      color: var(--text-strong);
+    }
 
     .social-icons,
     .social-row {
@@ -1360,7 +1457,10 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
-    .social-icon svg { width: 22px; height: 22px; }
+    .social-icon svg {
+      width: 22px;
+      height: 22px;
+    }
 
     .section-button-full {
       width: 100%;
@@ -1408,7 +1508,9 @@
       -webkit-backdrop-filter: blur(22px) saturate(140%);
     }
 
-    .booking-overlay.open { display: flex; }
+    .booking-overlay.open {
+      display: flex;
+    }
 
     .booking-shell {
       width: min(1180px, 100%);
@@ -1459,6 +1561,11 @@
       letter-spacing: -0.07em;
       color: var(--rose-2);
       text-align: center;
+    }
+
+    .booking-logo-text .brand-logo-img {
+      max-width: 66px;
+      max-height: 38px;
     }
 
     .booking-topbar__copy {
@@ -1543,8 +1650,14 @@
       to { transform: translate3d(-38px, 64px, 0) scale(1.18); }
     }
 
-    .reveal { animation: fadeUp 680ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-    .hero-side .hero-photo { animation: floatSoft 7s ease-in-out infinite; }
+    .reveal {
+      animation: fadeUp 680ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .hero-side .hero-photo,
+    .hero-side .hero-logo-panel {
+      animation: floatSoft 7s ease-in-out infinite;
+    }
 
     @media (max-width: 1120px) {
       .hero-grid,
@@ -1552,14 +1665,17 @@
       .manifest-grid,
       .pricing-grid,
       .location-grid,
-      .contact-grid { grid-template-columns: 1fr; }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
 
       .hero-grid { min-height: auto; }
-      .manifest-vertical { min-height: 220px; }
+      .manifest-vertical,
+      .manifest-logo-panel { min-height: 280px; }
       .location-copy strong { max-width: none; }
     }
 
-    @media (max-width: 900px) {
+        @media (max-width: 900px) {
       html, body {
         height: 100%;
         overflow: hidden;
@@ -1630,6 +1746,11 @@
           0 14px 34px rgba(119, 70, 96, 0.12),
           inset 0 1px 0 rgba(255, 255, 255, 0.88);
         animation: logoBreath 4.6s ease-in-out infinite;
+      }
+
+      .logo-pill .brand-logo-img {
+        max-width: 112px;
+        max-height: 42px;
       }
 
       .logo-pill .logo-word {
@@ -2006,6 +2127,12 @@
           linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(45, 23, 35, 0.12));
       }
 
+      .map-logo-overlay .brand-logo-img {
+        max-width: 130px;
+        max-height: 92px;
+        opacity: 0.72;
+      }
+
       .map-logo-overlay span {
         font-family: "Sora", sans-serif;
         font-size: 42px;
@@ -2061,7 +2188,9 @@
         min-height: 0;
       }
 
-      .contact-mobile-card { padding: 16px; }
+      .contact-mobile-card {
+        padding: 16px;
+      }
 
       .contact-mobile-card strong {
         display: block;
@@ -2117,7 +2246,10 @@
         text-decoration: none;
       }
 
-      .social-row svg { width: 21px; height: 21px; }
+      .social-row svg {
+        width: 21px;
+        height: 21px;
+      }
 
       .bottom-cta {
         padding: 8px 12px calc(10px + var(--safe-bottom));
@@ -2190,22 +2322,23 @@
       <div class="landing-container desktop-header">
         <div class="desktop-left">
           <nav class="desktop-nav">
+            <a href="/index.html">Wybór demo</a>
             <a href="#hero">Start</a>
             <a href="#experience">Rezerwacja</a>
-            <a href="#manifest">Studio</a>
           </nav>
         </div>
 
         <div class="desktop-center">
-          <a href="#top" class="desktop-logo" aria-label="LUNA start">
+          <a href="#top" class="desktop-logo" aria-label="LUNA NAIL STUDIO start">
+            <img class="brand-logo-img" src="/luna-logo.png" alt="LUNA NAIL STUDIO logo" />
             <span class="desktop-logo-text">LUNA<br />NAIL</span>
           </a>
         </div>
 
         <div class="desktop-right">
           <nav class="desktop-nav">
+            <a href="#manifest">Studio</a>
             <a href="#pricing">Usługi</a>
-            <a href="#location">Dojazd</a>
             <a href="#contact">Kontakt</a>
           </nav>
           <a href="tel:+48532377701" class="desktop-call-btn">Zadzwoń</a>
@@ -2222,36 +2355,36 @@
                 <div class="section-chip">LUNA NAIL STUDIO</div>
 
                 <h1 class="hero-title">
-                  Piękne dłonie zaczynają się od
-                  <span>dobrego terminu.</span>
+                  Dłonie, które wyglądają
+                  <span>lekko i elegancko.</span>
                 </h1>
 
                 <p class="hero-sub">
-                  Umów wizytę bez pisania wiadomości. Wybierz usługę, stylistkę i godzinę w kilka kliknięć — spokojnie, jasno i bez czekania na odpowiedź.
+                  Manicure hybrydowy, przedłużanie paznokci i subtelne zdobienia w spokojnym studio we Wrocławiu. Wybierz usługę, stylistkę i termin online — bez pisania wiadomości.
                 </p>
 
                 <div class="hero-actions">
                   <button class="btn btn-primary" type="button" data-open-booking>
-                    Zarezerwuj termin
+                    Zarezerwuj wizytę
                   </button>
                   <button class="btn btn-ghost" type="button" onclick="openMapsRoute()">
-                    Jak dojechać
+                    Sprawdź dojazd
                   </button>
                 </div>
 
                 <div class="hero-trust-row">
-                  <div class="trust-pill">Manicure, żel, zdobienia</div>
-                  <div class="trust-pill">Rezerwacja online 24/7</div>
-                  <div class="trust-pill">Beauty studio • Wrocław</div>
+                  <div class="trust-pill">Manicure hybrydowy</div>
+                  <div class="trust-pill">Przedłużanie paznokci</div>
+                  <div class="trust-pill">Zdobienia i pielęgnacja</div>
                 </div>
               </div>
 
               <div class="hero-side">
-                <article class="glass-card hero-photo">
-                  <div class="image-fallback">SOFT<br />BEAUTY</div>
-                  <img src="/nails-hero.png" alt="LUNA manicure" />
+                <article class="glass-card hero-photo hero-logo-panel">
+                  <div class="image-fallback">LUNA<br />NAIL</div>
+                  <img src="/luna-logo.png" alt="LUNA NAIL STUDIO logo" />
                   <div class="hero-photo-badge">
-                    <span>NAIL STUDIO &amp; BEAUTY CARE</span>
+                    <span>MANICURE • BEAUTY • CARE</span>
                     <strong>LUNA</strong>
                   </div>
                 </article>
@@ -2273,1099 +2406,166 @@
         </div>
       </section>
 
-      <section class="section" id="experience">
+            </section>
+
+      <section id="experience">
         <div class="landing-container">
           <div class="section-card reveal">
-            <div class="section-wrap">
-              <div class="section-head center">
-                <div class="section-chip">SYSTEM REZERWACJI</div>
-                <h2>To nie jest zwykła rezerwacja. To system umawiania wizyt.</h2>
-                <p>
-                  Klient nie musi pisać wiadomości, czekać na odpowiedź ani pytać o wolne godziny. Usługa, stylistka, termin i potwierdzenie są w jednej spokojnej ścieżce.
-                </p>
+            <div class="section-head">
+              <div class="section-chip">REZERWACJA</div>
+              <h2 class="section-title">
+                Umów wizytę <span>bez pisania wiadomości</span>
+              </h2>
+              <p class="section-sub">
+                Wybierz usługę, stylistkę i godzinę w kilka kliknięć — spokojnie, jasno i bez czekania na odpowiedź.
+              </p>
+            </div>
+
+            <div class="experience-grid">
+              <div class="experience-copy">
+                <div class="experience-item">
+                  <strong>1. Wybór usługi</strong>
+                  <p>Widzisz dokładnie co wybierasz — bez chaosu wiadomości.</p>
+                </div>
+
+                <div class="experience-item">
+                  <strong>2. Stylistka i termin</strong>
+                  <p>Dostępne godziny od razu — bez pytania “czy jest miejsce”.</p>
+                </div>
+
+                <div class="experience-item">
+                  <strong>3. Potwierdzenie</strong>
+                  <p>Rezerwacja zapisuje się automatycznie. Ty masz spokój.</p>
+                </div>
               </div>
 
-              <div class="experience-grid">
-                <article class="glass-card experience-showcase">
-                  <div class="showcase-phone">
-                    <div class="showcase-screen">
-                      <div class="mini-top">
-                        <div class="mini-logo">L</div>
-                        <div class="mini-pill">4 kroki</div>
-                      </div>
-
-                      <div class="mini-title">Rezerwacja bez chaosu.</div>
-
-                      <div class="mini-card">
-                        <strong>1. Wpisz imię i telefon</strong>
-                        <span>kontakt</span>
-                      </div>
-
-                      <div class="mini-card">
-                        <strong>2. Wybierz usługę</strong>
-                        <span>manicure / żel</span>
-                      </div>
-
-                      <div class="mini-card">
-                        <strong>3. Wybierz stylistkę i termin</strong>
-                        <span>dzień + godzina</span>
-                      </div>
-
-                      <div class="mini-card">
-                        <strong>4. Potwierdź wizytę</strong>
-                        <span>gotowe</span>
-                      </div>
-
-                      <div class="mini-cta">Zarezerwuj termin</div>
-                    </div>
-                  </div>
-                </article>
-
-                <div class="experience-stack">
-                  <article class="glass-card feature-card">
-                    <div class="feature-number">01</div>
-                    <div>
-                      <strong>Bez pisania wiadomości</strong>
-                      <p>
-                        Wszystkie usługi, ceny i czasy trwania są widoczne od razu. Klient przechodzi do terminu bez dopytywania o podstawowe informacje.
-                      </p>
-                    </div>
-                  </article>
-
-                  <article class="glass-card feature-card">
-                    <div class="feature-number">02</div>
-                    <div>
-                      <strong>Stylistka lub auto-dobór</strong>
-                      <p>
-                        Klient może wybrać konkretną osobę albo zostawić wybór systemowi, który prowadzi go do dostępnego terminu.
-                      </p>
-                    </div>
-                  </article>
-
-                  <article class="glass-card feature-card">
-                    <div class="feature-number">03</div>
-                    <div>
-                      <strong>Realne dostępne godziny</strong>
-                      <p>
-                        W bookingu widoczne są tylko wolne sloty. Mniej chaosu, mniej ręcznego odpisywania i szybsza decyzja klienta.
-                      </p>
-                    </div>
-                  </article>
-                </div>
+              <div class="experience-visual">
+                <img src="/luna-logo.png" alt="Luna Studio Logo" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="manifest">
+      <section id="manifest">
         <div class="landing-container">
           <div class="section-card reveal">
-            <div class="section-wrap">
-              <div class="section-head">
-                <div class="section-chip">LUNA EXPERIENCE</div>
-                <h2>Rezerwacja może wyglądać tak dobrze jak studio.</h2>
-                <p>
-                  Strona nie jest tylko miejscem z przyciskiem. To pierwsze wrażenie: czyste, spokojne, estetyczne i gotowe do zapisania klientki.
-                </p>
+            <div class="section-head">
+              <div class="section-chip">STUDIO</div>
+              <h2 class="section-title">
+                Spokojne miejsce, gdzie <span>liczy się detal</span>
+              </h2>
+              <p class="section-sub">
+                Bez pośpiechu. Bez hałasu. Każda stylizacja jest przemyślana i dopracowana.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-head">
+              <div class="section-chip">USŁUGI</div>
+              <h2 class="section-title">
+                To nie lista wiadomości. <span>To konkretna oferta.</span>
+              </h2>
+            </div>
+
+            <div class="pricing-grid">
+              <div class="price-card">
+                <strong>Manicure hybrydowy</strong>
+                <span>120 zł</span>
               </div>
 
-              <div class="manifest-grid">
-                <div class="glass-card manifest-vertical">
-                  <div class="manifest-logo-mark">
-                    <span>LUNA</span>
-                    <span>NAIL STUDIO</span>
-                  </div>
-                </div>
+              <div class="price-card">
+                <strong>Przedłużanie paznokci</strong>
+                <span>180 zł</span>
+              </div>
 
-                <div class="manifest-copy">
-                  <article class="glass-card manifest-line">
-                    <p>
-                      <strong>Wygląd buduje zaufanie.</strong> Klient szybciej zostawia dane, kiedy rezerwacja wygląda jak część dopracowanej marki, a nie przypadkowy formularz.
-                    </p>
-                  </article>
-
-                  <article class="glass-card manifest-line">
-                    <p>
-                      <strong>Klient szybciej wybiera termin.</strong> Oferta wygląda jak usługa, nie jak lista w wiadomości. Każdy wybór prowadzi do konkretnej wizyty.
-                    </p>
-                  </article>
-
-                  <article class="glass-card manifest-line">
-                    <p>
-                      <strong>Wszystko w jednym miejscu.</strong> Usługi, ceny, stylistki, godziny, mapa i kontakt są połączone w jedną ścieżkę bez chaosu.
-                    </p>
-                  </article>
-                </div>
+              <div class="price-card">
+                <strong>Zdobienia</strong>
+                <span>+20 zł</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="pricing">
+      <section id="contact">
         <div class="landing-container">
           <div class="section-card reveal">
-            <div class="section-wrap">
-              <div class="section-head">
-                <div class="section-chip">USŁUGI</div>
-                <h2>Oferta wygląda jak usługa, nie jak lista w wiadomości.</h2>
-                <p>
-                  Każda usługa jest opisana i gotowa do wyboru. Klient widzi cenę, czas trwania i od razu może przejść do rezerwacji.
-                </p>
-              </div>
-
-              <div class="pricing-grid">
-                <article class="glass-card pricing-card">
-                  <div>
-                    <div class="pricing-card__top">
-                      <strong>Manicure hybrydowy</strong>
-                      <div class="pricing-card__price">od 120 zł</div>
-                    </div>
-                    <p>
-                      Trwały manicure z kolorem i wykończeniem. Efekt do 3 tygodni, bez ciągłego poprawiania.
-                    </p>
-                    <div class="service-tags">
-                      <span>1h 30min</span>
-                      <span>Kolor</span>
-                      <span>Hybryda</span>
-                    </div>
-                  </div>
-
-                  <button class="btn section-button-full" type="button" data-open-booking>
-                    Zarezerwuj
-                  </button>
-                </article>
-
-                <article class="glass-card pricing-card">
-                  <div>
-                    <div class="pricing-card__top">
-                      <strong>Przedłużanie paznokci</strong>
-                      <div class="pricing-card__price">od 180 zł</div>
-                    </div>
-                    <p>
-                      Budowa paznokci żelem lub akrylem. Delikatny kształt, dopracowana długość i czyste wykończenie.
-                    </p>
-                    <div class="service-tags">
-                      <span>2h</span>
-                      <span>Żel</span>
-                      <span>Forma</span>
-                    </div>
-                  </div>
-
-                  <button class="btn section-button-full" type="button" data-open-booking>
-                    Zarezerwuj
-                  </button>
-                </article>
-
-                <article class="glass-card pricing-card">
-                  <div>
-                    <div class="pricing-card__top">
-                      <strong>Manicure + zdobienia</strong>
-                      <div class="pricing-card__price">od 150 zł</div>
-                    </div>
-                    <p>
-                      Stylizacja z dodatkowymi zdobieniami. Opcja dla efektu, który ma być subtelny, widoczny albo po prostu Twój.
-                    </p>
-                    <div class="service-tags">
-                      <span>1h 45min</span>
-                      <span>Zdobienia</span>
-                      <span>Premium</span>
-                    </div>
-                  </div>
-
-                  <button class="btn btn-primary section-button-full" type="button" data-open-booking>
-                    Zarezerwuj
-                  </button>
-                </article>
-              </div>
+            <div class="section-head">
+              <div class="section-chip">KONTAKT</div>
+              <h2 class="section-title">
+                Wpadnij do studia <span>LUNA</span>
+              </h2>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section" id="location">
-        <div class="landing-container">
-          <div class="section-card reveal">
-            <div class="section-wrap">
-              <div class="section-head">
-                <div class="section-chip">LOKALIZACJA</div>
-                <h2>Jedno kliknięcie i jesteś na miejscu.</h2>
-                <p>
-                  Sprawdź lokalizację i przyjedź bez stresu. Trasa otwiera się od razu w mapach.
-                </p>
+            <div class="contact-grid">
+              <div>
+                <strong>Wrocław</strong>
+                <p>ul. Przykładowa 12</p>
+                <p>+48 532 377 701</p>
               </div>
 
-              <div class="location-grid">
-                <div class="glass-card location-map">
-                  <iframe
-                    title="LUNA map"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://maps.google.com/maps?q=Wroclaw&z=13&output=embed">
-                  </iframe>
-                </div>
-
-                <div class="glass-card location-side">
-                  <div class="location-preview">
-                    <div class="location-preview__inner">
-                      <strong>LUNA</strong>
-                      <span>NAIL STUDIO &amp; BEAUTY CARE</span>
-                    </div>
-                  </div>
-
-                  <div class="location-copy">
-                    <strong>Beauty studio we Wrocławiu.</strong>
-                    <p>
-                      Kliknij trasę, sprawdź dojazd i przyjedź spokojnie na wybraną godzinę.
-                    </p>
-                  </div>
-
-                  <div class="section-actions">
-                    <button class="btn btn-primary" type="button" onclick="openMapsRoute()">
-                      Jak dojechać
-                    </button>
-                    <a class="btn btn-ghost" href="tel:+48532377701">
-                      Zadzwoń
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="landing-container">
-          <div class="section-card reveal">
-            <div class="section-wrap">
-              <div class="section-head">
-                <div class="section-chip">KONTAKT</div>
-                <h2>Masz chwilę dla siebie? Zacznij od terminu.</h2>
-                <p>
-                  Zarezerwuj wizytę online albo zadzwoń, jeżeli chcesz szybko dopytać o stylizację.
-                </p>
-              </div>
-
-              <div class="contact-grid">
-                <div class="glass-card contact-card">
-                  <div class="contact-lead">
-                    <strong>LUNA NAIL STUDIO</strong>
-                    <p>
-                      Manicure, przedłużanie, zdobienia i spokojna pielęgnacja dłoni. Wpadasz, siadasz, wychodzisz z dopracowaną stylizacją.
-                    </p>
-                  </div>
-
-                  <button class="btn btn-primary section-button-full" type="button" data-open-booking>
-                    Zarezerwuj termin
-                  </button>
-
-                  <div class="contact-note">
-                    Rezerwacja trwa chwilę: dane kontaktowe, usługa, stylistka, data, godzina i potwierdzenie.
-                  </div>
-                </div>
-
-                <div class="glass-card status-card">
-                  <div id="liveStatus" class="status-pill closed">Closed now</div>
-
-                  <ul class="status-list">
-                    <li><span>Poniedziałek – Sobota</span><strong>10:00 – 20:00</strong></li>
-                    <li><span>Niedziela</span><strong>10:00 – 18:00</strong></li>
-                  </ul>
-
-                  <div class="social-icons">
-                    <a class="social-icon" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener" aria-label="Instagram">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
-                      </svg>
-                    </a>
-
-                    <a class="social-icon" href="https://www.tiktok.com/@mrozowski.automation" target="_blank" rel="noopener" aria-label="TikTok">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M15.7 3c.2 1.6 1.1 3 2.4 3.8.8.5 1.7.8 2.7.8v3.1c-1.4 0-2.9-.4-4.1-1.2v6.4c0 3.1-2.5 5.6-5.6 5.6S5.5 19 5.5 15.9s2.5-5.6 5.6-5.6c.3 0 .7 0 1 .1v3.2a2.7 2.7 0 0 0-1-.2 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-2.5V3h2.1Z"></path>
-                      </svg>
-                    </a>
-
-                    <a class="social-icon" href="https://www.facebook.com/profile.php?id=61576437654902" target="_blank" rel="noopener" aria-label="Facebook">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.5-1.5H17V3.7c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.6v1.8H7V13h3v8h3.5Z"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
+              <div class="contact-logo">
+                <img src="/luna-logo.png" alt="Luna logo" />
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-
-    <button class="btn btn-primary floating-book" type="button" data-open-booking>
-      Zarezerwuj termin
-    </button>
   </div>
 
-  <main class="mobile-version" id="mobile-version">
-    <header class="app-top">
-      <div class="top-spacer"></div>
-
-      <div class="logo-pill">
-        <span class="logo-word">LUNA<br />NAIL</span>
-      </div>
-
-      <a class="icon-btn" href="tel:+48532377701" aria-label="Zadzwoń">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.35 1.77.68 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.25a2 2 0 0 1 2.11-.45c.83.33 1.7.56 2.6.68A2 2 0 0 1 22 16.92z"></path>
-        </svg>
-      </a>
-    </header>
-
-    <nav class="section-nav" aria-label="Mobile pages">
-      <button class="nav-chip active" type="button" data-page="home">Start</button>
-      <button class="nav-chip" type="button" data-page="services">Usługi</button>
-      <button class="nav-chip" type="button" data-page="visit">Wizyta</button>
-      <button class="nav-chip" type="button" data-page="location">Dojazd</button>
-      <button class="nav-chip" type="button" data-page="contact">Kontakt</button>
-    </nav>
-
-    <section class="pages">
-      <article class="page active" id="page-home">
-        <div class="page-head">
-          <div class="kicker">LUNA NAIL STUDIO</div>
-          <h1 class="page-title">
-            Piękne dłonie
-            <span class="gold">zaczynają się od terminu.</span>
-          </h1>
-          <p class="page-sub">
-            Wybierz usługę, stylistkę i godzinę bez pisania wiadomości. Rezerwacja jest spokojna, szybka i dostępna zawsze.
-          </p>
-        </div>
-
-        <div class="screen-body">
-          <div class="hero-photo-card">
-            <div class="image-fallback">SOFT<br />BEAUTY</div>
-            <img src="/nails-hero.png" alt="LUNA manicure" />
-          </div>
-
-          <div class="mini-stats">
-            <div class="stat-card">
-              <span>Najczęściej wybierane stylizacje</span>
-              <strong>3+</strong>
-            </div>
-
-            <div class="stat-card">
-              <span>Godziny pracy studia</span>
-              <strong>10–20</strong>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="page" id="page-services">
-        <div class="page-head">
-          <div class="kicker">USŁUGI</div>
-          <h2 class="page-title">Manicure, żel, zdobienia. Bez chaosu.</h2>
-          <p class="page-sub">
-            Wybierz to, czego potrzebujesz. Usługa, cena i czas trwania są widoczne od razu.
-          </p>
-        </div>
-
-        <div class="services-list">
-          <div class="service-card">
-            <strong>Hybryda</strong>
-            <div class="price">od 120 zł</div>
-            <p>
-              Trwały manicure z kolorem i wykończeniem. Efekt do 3 tygodni.
-            </p>
-            <div class="tags">
-              <span>1h 30min</span>
-              <span>Kolor</span>
-              <span>Hybryda</span>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <strong>Przedłużanie</strong>
-            <div class="price">od 180 zł</div>
-            <p>
-              Budowa paznokci żelem lub akrylem. Długość i kształt dopasowane do dłoni.
-            </p>
-            <div class="tags">
-              <span>2h</span>
-              <span>Żel</span>
-              <span>Forma</span>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <strong>Zdobienia</strong>
-            <div class="price">od 150 zł</div>
-            <p>
-              Stylizacja z dodatkami. Subtelna, elegancka albo bardziej widoczna.
-            </p>
-            <div class="tags">
-              <span>1h 45min</span>
-              <span>Design</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="page" id="page-visit">
-        <div class="page-head">
-          <div class="kicker">WIZYTA</div>
-          <h2 class="page-title">Rezerwacja ma być szybka. Wizyta ma być spokojna.</h2>
-          <p class="page-sub">
-            Od razu widzisz usługę, czas trwania i wolny termin. Wybierasz dzień, godzinę i przychodzisz bez ustalania wszystkiego w DM.
-          </p>
-        </div>
-
-        <div class="visit-grid">
-          <div class="info-card">
-            <div class="num">01</div>
-            <div>
-              <strong>Wybierz usługę</strong>
-              <p>
-                Hybryda, przedłużanie albo stylizacja ze zdobieniami. Wszystko jest opisane jasno.
-              </p>
-            </div>
-          </div>
-
-          <div class="info-card">
-            <div class="num">02</div>
-            <div>
-              <strong>Wybierz stylistkę i godzinę</strong>
-              <p>
-                Możesz wybrać konkretną osobę albo zostawić dobór wolnego terminu.
-              </p>
-            </div>
-          </div>
-
-          <div class="info-card">
-            <div class="num">03</div>
-            <div>
-              <strong>Potwierdź wizytę</strong>
-              <p>
-                Dane trafiają do systemu. Przychodzisz na wybraną godzinę bez chaosu.
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="page" id="page-location">
-        <div class="page-head">
-          <div class="kicker">DOJAZD</div>
-          <h2 class="page-title">Jedno kliknięcie i jesteś na miejscu.</h2>
-          <p class="page-sub">
-            Sprawdź lokalizację i przyjedź bez stresu. Trasa otwiera się od razu.
-          </p>
-        </div>
-
-        <div class="screen-body">
-          <div class="location-card">
-            <div class="address-box">
-              <strong>Wrocław.</strong>
-              <p>
-                Studio znajduje się w spokojnej okolicy z wygodnym dojazdem.
-              </p>
-            </div>
-
-            <div class="map-glass" onclick="openMapsRoute()">
-              <img class="map-image" src="/luna-map.png" alt="Mapa LUNA NAIL STUDIO" />
-              <div class="map-logo-overlay">
-                <span>LUNA</span>
-              </div>
-            </div>
-
-            <div class="dual-actions">
-              <button class="cta-btn" type="button" onclick="openMapsRoute()">
-                Jak dojechać
-              </button>
-              <a class="ghost-btn" href="tel:+48532377701">Zadzwoń</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="page" id="page-contact">
-        <div class="page-head">
-          <div class="kicker">KONTAKT</div>
-          <h2 class="page-title">Masz chwilę dla siebie? Zacznij od terminu.</h2>
-          <p class="page-sub">
-            Zarezerwuj online albo zadzwoń, jeżeli chcesz szybko dopytać o stylizację.
-          </p>
-        </div>
-
-        <div class="contact-layout">
-          <div class="contact-mobile-card">
-            <strong>LUNA NAIL STUDIO</strong>
-            <p>
-              Manicure, przedłużanie i zdobienia. Spokojne studio, czysta estetyka i prosta rezerwacja.
-            </p>
-          </div>
-
-          <div class="hours-list">
-            <div class="hour-row">
-              <span>Poniedziałek – Sobota</span>
-              <strong>10:00 – 20:00</strong>
-            </div>
-
-            <div class="hour-row">
-              <span>Niedziela</span>
-              <strong>10:00 – 18:00</strong>
-            </div>
-          </div>
-
-          <div class="social-row">
-            <a href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
-                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                <circle cx="12" cy="12" r="4"></circle>
-                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
-              </svg>
-            </a>
-
-            <a href="https://www.tiktok.com/@mrozowski.automation" target="_blank" rel="noopener" aria-label="TikTok">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.7 3c.2 1.6 1.1 3 2.4 3.8.8.5 1.7.8 2.7.8v3.1c-1.4 0-2.9-.4-4.1-1.2v6.4c0 3.1-2.5 5.6-5.6 5.6S5.5 19 5.5 15.9s2.5-5.6 5.6-5.6c.3 0 .7 0 1 .1v3.2a2.7 2.7 0 0 0-1-.2 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-2.5V3h2.1Z"></path>
-              </svg>
-            </a>
-
-            <a href="https://www.facebook.com/profile.php?id=61576437654902" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.5-1.5H17V3.7c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.6v1.8H7V13h3v8h3.5Z"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <div class="bottom-cta">
-      <button class="cta-btn" type="button" data-open-booking>
-        Zarezerwuj termin
-      </button>
-    </div>
-  </main>
-
-  <section class="booking-overlay" id="bookingOverlay" aria-hidden="true">
+  <!-- BOOKING OVERLAY -->
+  <div class="booking-overlay" id="bookingOverlay">
     <div class="booking-shell">
       <div class="booking-topbar">
-        <div class="booking-topbar__left">
-          <div class="booking-logo-text">LUNA</div>
-          <div class="booking-topbar__copy">
-            <span>LUNA NAIL STUDIO</span>
-            <strong>Rezerwacja online</strong>
-          </div>
+        <button class="icon-btn" onclick="closeBooking()">
+          ←
+        </button>
+
+        <div class="booking-logo">
+          <img src="/luna-logo.png" alt="Luna logo" />
         </div>
 
-        <button class="btn booking-close" type="button" id="bookingCloseBtn" aria-label="Zamknij booking">
-          ×
-        </button>
+        <div class="top-spacer"></div>
       </div>
 
-      <div class="wizard-host">
-        <main class="app-shell">
-          <section class="wizard-frame">
-            <header class="wizard-top">
-              <div class="wizard-top-row">
-                <div class="wizard-top-copy">
-                  <div class="eyebrow">LUNA NAIL STUDIO</div>
-                  <h1 id="stepTitle">Dane kontaktowe</h1>
-                  <p id="stepSubtitle">Zostaw podstawowe dane i przejdź dalej.</p>
-                </div>
-
-                <div class="step-pill" id="stepPill">1 / 8</div>
-              </div>
-
-              <div class="progress-wrap">
-                <div class="progress-track">
-                  <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="progress-text" id="progressText">13%</div>
-              </div>
-            </header>
-
-            <section class="wizard-card">
-              <section class="step active" data-step="1">
-                <div class="step-content narrow">
-                  <div class="intro-card">
-                    <div class="intro-top">
-                      <div class="logo-box logo-box-image">
-                        <div class="booking-logo-text">LUNA</div>
-                      </div>
-
-                      <div class="intro-copy">
-                        <span class="section-kicker">LUNA NAIL STUDIO</span>
-                        <strong>Umów wizytę szybko i wygodnie</strong>
-                      </div>
-                    </div>
-
-                    <div class="intro-divider"></div>
-
-                    <div class="card-head">
-                      <h2>Wpisz imię i telefon</h2>
-                      <p>Zostaw swoje dane, a potem wybierz usługę i termin wizyty.</p>
-                    </div>
-
-                    <div class="intro-benefits">
-                      <div class="intro-benefit">Szybko</div>
-                      <div class="intro-benefit">Spokojnie</div>
-                      <div class="intro-benefit">Online</div>
-                    </div>
-                  </div>
-
-                  <label class="field">
-                    <span>Imię</span>
-                    <input id="nameInput" type="text" placeholder="Np. Julia" autocomplete="name" />
-                    <small class="error" id="nameError"></small>
-                  </label>
-
-                  <label class="field">
-                    <span>Telefon</span>
-                    <input id="phoneInput" type="tel" placeholder="+48 123 456 789" autocomplete="tel" />
-                    <small class="error" id="phoneError"></small>
-                  </label>
-                </div>
-              </section>
-
-              <section class="step" data-step="2">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Wybór usługi</h2>
-                    <p>Najpierw wybierz kategorię, potem konkretną usługę.</p>
-                  </div>
-
-                  <div class="accordion-list" id="categoryAccordion"></div>
-                </div>
-              </section>
-
-              <section class="step" data-step="3">
-                <div class="step-content narrow">
-                  <div class="card-head">
-                    <h2>Wybrać stylistkę?</h2>
-                    <p>Możesz wybrać konkretną stylistkę albo przejść dalej bez wyboru.</p>
-                  </div>
-
-                  <div class="summary-list">
-                    <div class="summary-row">
-                      <span>Imię</span>
-                      <strong data-bind="name">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Telefon</span>
-                      <strong data-bind="phone">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Usługa</span>
-                      <strong data-bind="serviceName">—</strong>
-                    </div>
-                  </div>
-
-                  <div class="choice-actions">
-                    <button class="choice-btn choice-btn-strong" id="chooseBarberYes" type="button">Tak</button>
-                    <button class="choice-btn choice-btn-strong" id="chooseBarberNo" type="button">Nie</button>
-                  </div>
-
-                  <div class="barber-skip-box hidden" id="barberSkipBox">
-                    <div class="summary-list">
-                      <div class="summary-row">
-                        <span>Stylistka</span>
-                        <strong>Bez wyboru</strong>
-                      </div>
-
-                      <div class="summary-row">
-                        <span>Status</span>
-                        <strong>System dobierze dostępną stylistkę</strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="4">
-                <div class="step-content narrow">
-                  <div class="card-head">
-                    <h2>Wybór stylistki</h2>
-                    <p>Przeglądaj stylistki strzałkami i wybierz konkretną osobę.</p>
-                  </div>
-
-                  <div class="barber-slider-card">
-                    <div class="barber-slide-photo" id="barberSlidePhoto">
-                      <img src="/nails-stylist.png" alt="Stylistka" class="barber-photo-img" />
-                    </div>
-
-                    <div class="barber-slide-info">
-                      <strong id="barberSlideName">—</strong>
-                      <p id="barberSlideDescription">—</p>
-                      <div class="barber-langs" id="barberSlideLangs"></div>
-                    </div>
-
-                    <div class="barber-slider-controls">
-                      <button class="slider-arrow" id="barberPrevBtn" type="button">←</button>
-                      <div class="slider-counter" id="barberCounter">1 / 3</div>
-                      <button class="slider-arrow" id="barberNextBtn" type="button">→</button>
-                    </div>
-
-                    <button class="select-barber-btn" id="selectBarberBtn" type="button">
-                      Wybierz tę stylistkę
-                    </button>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="5">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Wybór daty</h2>
-                    <p>Wybierz dogodny dzień wizyty.</p>
-                  </div>
-
-                  <div class="calendar-box">
-                    <div class="calendar-header">
-                      <button class="calendar-nav-btn" id="calendarPrevBtn" type="button">←</button>
-
-                      <div class="calendar-title-wrap">
-                        <strong id="monthLabel">Miesiąc</strong>
-                        <span id="calendarStatus">Dostępne terminy</span>
-                      </div>
-
-                      <button class="calendar-nav-btn" id="calendarNextBtn" type="button">→</button>
-                    </div>
-
-                    <div class="calendar-weekdays">
-                      <span>Pn</span>
-                      <span>Wt</span>
-                      <span>Śr</span>
-                      <span>Cz</span>
-                      <span>Pt</span>
-                      <span>Sb</span>
-                      <span>Nd</span>
-                    </div>
-
-                    <div class="calendar-month-grid" id="calendarGrid"></div>
-                    <small class="error" id="dateError"></small>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="6">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Wybór godziny</h2>
-                    <p>Wybierz dogodną godzinę wizyty.</p>
-                  </div>
-
-                  <div class="slots-box">
-                    <div class="calendar-top">
-                      <strong>Godziny</strong>
-                      <span id="slotsStatus">Wybierz datę</span>
-                    </div>
-
-                    <div class="slots-grid" id="slotsGrid"></div>
-                    <small class="error" id="timeError"></small>
-                  </div>
-                </div>
-              </section>
-
-              <section class="step" data-step="7">
-                <div class="step-content">
-                  <div class="card-head">
-                    <h2>Potwierdzenie danych</h2>
-                    <p>Sprawdź wszystko przed zapisaniem wizyty.</p>
-                  </div>
-
-                  <div class="summary-list">
-                    <div class="summary-row">
-                      <span>Imię</span>
-                      <strong data-bind="name">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Telefon</span>
-                      <strong data-bind="phone">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Usługa</span>
-                      <strong data-bind="serviceName">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Stylistka</span>
-                      <strong data-bind="barberName">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Data</span>
-                      <strong data-bind="dateText">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Godzina</span>
-                      <strong data-bind="time">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Czas trwania</span>
-                      <strong data-bind="serviceDuration">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Cena</span>
-                      <strong data-bind="servicePrice">—</strong>
-                    </div>
-                  </div>
-
-                  <div class="info-note">
-                    Sprawdź dane i potwierdź, aby zapisać wizytę.
-                  </div>
-
-                  <small class="error" id="submitError"></small>
-                </div>
-              </section>
-
-              <section class="step" data-step="8">
-                <div class="step-content narrow center">
-                  <div class="success-icon">✓</div>
-
-                  <div class="card-head center">
-                    <h2>Rezerwacja zapisana</h2>
-                    <p>Wizyta została pomyślnie dodana do systemu.</p>
-                  </div>
-
-                  <div class="summary-list">
-                    <div class="summary-row">
-                      <span>Usługa</span>
-                      <strong data-bind="serviceName">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Stylistka</span>
-                      <strong data-bind="barberName">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Data</span>
-                      <strong data-bind="dateText">—</strong>
-                    </div>
-
-                    <div class="summary-row">
-                      <span>Godzina</span>
-                      <strong data-bind="time">—</strong>
-                    </div>
-                  </div>
-
-                  <div class="success-links">
-                    <a class="nav-btn nav-btn-primary" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">
-                      Instagram
-                    </a>
-
-                    <a class="nav-btn" href="https://www.google.com/maps/search/?api=1&query=Wroclaw" target="_blank" rel="noopener">
-                      Lokalizacja
-                    </a>
-
-                    <button class="nav-btn" type="button" onclick="callBarbershop()">
-                      Zadzwoń: 532 377 701
-                    </button>
-                  </div>
-                </div>
-              </section>
-            </section>
-
-            <footer class="wizard-nav">
-              <button class="nav-btn" id="backBtn" type="button">Wstecz</button>
-              <button class="nav-btn nav-btn-primary" id="nextBtn" type="button">Dalej</button>
-            </footer>
-          </section>
-        </main>
-      </div>
+      <iframe
+        src="/booking.html"
+        class="booking-frame"
+        frameborder="0"
+      ></iframe>
     </div>
-  </section>
+  </div>
 
   <script>
-    function openMapsRoute() {
-      window.open("https://maps.google.com?q=Wroclaw", "_blank");
-    }
+    const overlay = document.getElementById("bookingOverlay");
+    const flash = document.getElementById("screenFlash");
 
-    function callBarbershop() {
-      window.location.href = "tel:+48532377701";
-    }
+    document.querySelectorAll("[data-open-booking]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        overlay.classList.add("active");
+        document.body.classList.add("booking-open");
 
-    window.openMapsRoute = openMapsRoute;
-    window.callBarbershop = callBarbershop;
-    window.callDogma = callBarbershop;
-
-    (function () {
-      const flash = document.getElementById("screenFlash");
-      const overlay = document.getElementById("bookingOverlay");
-      const closeBtn = document.getElementById("bookingCloseBtn");
-      const openButtons = document.querySelectorAll("[data-open-booking]");
-      const clickable = document.querySelectorAll('a[href^="#"], .btn, .cta-btn, .ghost-btn');
-      const liveStatus = document.getElementById("liveStatus");
-      const body = document.body;
-      const floatingBook = document.querySelector(".floating-book");
-      const contactSection = document.getElementById("contact");
-      const heroSection = document.getElementById("hero");
-      const tabs = document.querySelectorAll(".mobile-tab");
-      const sections = [...document.querySelectorAll("main.landing-wrap > section[id]")];
-
-      function triggerFlash() {
-        if (!flash) return;
         flash.classList.add("active");
-        setTimeout(() => flash.classList.remove("active"), 130);
-      }
-
-      clickable.forEach((item) => {
-        item.addEventListener("click", triggerFlash);
+        setTimeout(() => flash.classList.remove("active"), 180);
       });
+    });
 
-      function openBooking() {
-        if (!overlay) return;
-        overlay.classList.add("open");
-        overlay.setAttribute("aria-hidden", "false");
-        body.classList.add("booking-open");
-      }
+    function closeBooking() {
+      overlay.classList.remove("active");
+      document.body.classList.remove("booking-open");
+    }
 
-      function closeBooking() {
-        if (!overlay) return;
-        overlay.classList.remove("open");
-        overlay.setAttribute("aria-hidden", "true");
-        body.classList.remove("booking-open");
-      }
-
-      window.closeBooking = closeBooking;
-
-      openButtons.forEach((btn) => {
-        btn.addEventListener("click", openBooking);
-      });
-
-      if (closeBtn) {
-        closeBtn.addEventListener("click", closeBooking);
-      }
-
-      if (overlay) {
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) closeBooking();
-        });
-      }
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          if (overlay && overlay.classList.contains("open")) {
-            closeBooking();
-          }
-        }
-      });
-
-      function updateLiveStatus() {
-        if (!liveStatus) return;
-
-        const now = new Date();
-        const day = now.getDay();
-        const minutes = now.getHours() * 60 + now.getMinutes();
-
-        let open = 10 * 60;
-        let close = 20 * 60;
-
-        if (day === 0) close = 18 * 60;
-
-        const isOpen = minutes >= open && minutes < close;
-
-        liveStatus.classList.remove("open", "closed");
-        liveStatus.classList.add(isOpen ? "open" : "closed");
-        liveStatus.textContent = isOpen ? "Open now" : "Closed now";
-      }
-
-      updateLiveStatus();
-      setInterval(updateLiveStatus, 60000);
-
-      function handleFloatingButton() {
-        if (!floatingBook || !contactSection || !heroSection) return;
-
-        const heroRect = heroSection.getBoundingClientRect();
-        const contactRect = contactSection.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-
-        const passedHero = heroRect.bottom < viewportHeight * 0.35;
-        const nearContact = contactRect.top < viewportHeight - 140;
-
-        floatingBook.classList.remove("is-visible", "hidden-on-contact");
-
-        if (nearContact) {
-          floatingBook.classList.add("hidden-on-contact");
-          return;
-        }
-
-        if (passedHero) {
-          floatingBook.classList.add("is-visible");
-        }
-      }
-
-      function handleActiveTabs() {
-        if (!tabs.length || !sections.length) return;
-
-        let current = sections[0].id;
-        const marker = window.innerHeight * 0.34;
-
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= marker && rect.bottom >= marker) {
-            current = section.id;
-          }
-        });
-
-        tabs.forEach((tab) => {
-          const href = tab.getAttribute("href") || "";
-          tab.classList.toggle("active", href === `#${current}`);
-        });
-      }
-
-      window.addEventListener("scroll", () => {
-        handleFloatingButton();
-        handleActiveTabs();
-      });
-
-      window.addEventListener("resize", () => {
-        handleFloatingButton();
-        handleActiveTabs();
-      });
-
-      handleFloatingButton();
-      handleActiveTabs();
-    })();
-
-    (function () {
-      const pages = document.querySelectorAll(".page");
-      const chips = document.querySelectorAll("[data-page]");
-
-      chips.forEach((chip) => {
-        chip.addEventListener("click", () => {
-          const target = chip.dataset.page;
-
-          chips.forEach((item) => {
-            item.classList.toggle("active", item === chip);
-          });
-
-          pages.forEach((page) => {
-            page.classList.toggle("active", page.id === `page-${target}`);
-          });
-        });
-      });
-    })();
+    function openMapsRoute() {
+      window.open("https://maps.google.com?q=Wrocław", "_blank");
+    }
   </script>
-
-  <script src="./script.js"></script>
 </body>
 </html>
-'''
-
-path = Path("/mnt/data/luna_nail_index_premium.html")
-path.write_text(html, encoding="utf-8")
-path
+      
