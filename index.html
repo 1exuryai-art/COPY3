@@ -50,6 +50,11 @@
       --accent-line: rgba(47, 125, 244, 0.16);
       --accent-line-strong: rgba(47, 125, 244, 0.28);
 
+      --green: #16a34a;
+      --green-2: #22c55e;
+      --green-soft: rgba(22, 163, 74, 0.10);
+      --green-line: rgba(22, 163, 74, 0.22);
+
       --pink-soft: #fff1f7;
       --milk: #fffdf8;
 
@@ -63,6 +68,7 @@
       --shadow-lg: 0 34px 84px rgba(80, 112, 158, 0.16);
       --shadow-xl: 0 44px 110px rgba(80, 112, 158, 0.18);
       --shadow-blue: 0 22px 52px rgba(47, 125, 244, 0.18);
+      --shadow-green: 0 18px 42px rgba(22, 163, 74, 0.18);
 
       --glass: blur(22px) saturate(145%);
       --glass-light: blur(14px) saturate(132%);
@@ -121,7 +127,8 @@
       position: relative;
     }
 
-    body.booking-open {
+    body.booking-open,
+    body.faq-open {
       overflow: hidden;
     }
 
@@ -471,6 +478,55 @@
         var(--glass-highlight);
     }
 
+    /* =========================
+       LANGUAGE SWITCHER
+       ========================= */
+
+    .lang-switcher {
+      position: relative;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow-xs), var(--glass-highlight);
+      backdrop-filter: var(--glass-light);
+      -webkit-backdrop-filter: var(--glass-light);
+    }
+
+    .lang-btn {
+      min-width: 36px;
+      height: 34px;
+      padding: 0 9px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 1000;
+      letter-spacing: .04em;
+      transition:
+        transform 160ms ease,
+        color 160ms ease,
+        background 160ms ease,
+        box-shadow 160ms ease;
+    }
+
+    .lang-btn:active {
+      transform: scale(.94);
+    }
+
+    .lang-btn.active {
+      color: #fff;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.24), transparent 42%),
+        linear-gradient(180deg, #61a8ff, #2f7df4 58%, #2563eb);
+      box-shadow: 0 10px 22px rgba(47,125,244,.18);
+    }
+
     .landing-wrap {
       display: grid;
       gap: 20px;
@@ -695,6 +751,17 @@
       color: var(--accent-deep);
     }
 
+    .btn-google {
+      color: #fff;
+      border-color: var(--green-line);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.22), transparent 42%),
+        linear-gradient(180deg, var(--green-2), var(--green));
+      box-shadow:
+        var(--shadow-green),
+        inset 0 1px 0 rgba(255,255,255,.28);
+    }
+
     /* =========================
        HERO / START
        ========================= */
@@ -898,7 +965,7 @@
       letter-spacing: -.075em;
     }
 
-        /* =========================
+    /* =========================
        DESKTOP — REZERWACJA / APP PREVIEW
        ========================= */
 
@@ -968,7 +1035,7 @@
         0 22px 50px rgba(80, 112, 158, 0.12);
     }
 
-    .mini-top {
+        .mini-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1711,6 +1778,14 @@
       letter-spacing: .12em;
     }
 
+    .reviews-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
     /* =========================
        DESKTOP — LOCATION / FAQ / CONTACT
        ========================= */
@@ -1729,6 +1804,9 @@
       min-height: 540px;
       overflow: hidden;
       position: relative;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(185,221,255,.58), transparent 34%),
+        linear-gradient(160deg, #ffffff, #edf7ff);
     }
 
     .location-map iframe {
@@ -1737,8 +1815,8 @@
       min-height: 540px;
       border: 0;
       display: block;
-      filter: grayscale(.1) contrast(1.02) brightness(1.06) saturate(.86);
-      opacity: .96;
+      filter: grayscale(.14) contrast(1.02) brightness(1.07) saturate(.82);
+      opacity: .84;
     }
 
     .location-map::after {
@@ -1747,8 +1825,42 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(232,243,255,.22)),
-        radial-gradient(circle at center, transparent 42%, rgba(47,125,244,.08) 100%);
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(232,243,255,.28)),
+        radial-gradient(circle at center, transparent 38%, rgba(47,125,244,.12) 100%),
+        linear-gradient(135deg, rgba(255,255,255,.42), transparent 48%);
+    }
+
+    .location-map-card {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      padding: 18px;
+      display: grid;
+      gap: 8px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.72);
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(16px) saturate(142%);
+      -webkit-backdrop-filter: blur(16px) saturate(142%);
+      box-shadow: var(--shadow-md), var(--glass-highlight);
+    }
+
+    .location-map-card strong {
+      color: var(--text-strong);
+      font-family: "Sora", sans-serif;
+      font-size: 30px;
+      line-height: .94;
+      letter-spacing: -.075em;
+    }
+
+    .location-map-card span {
+      color: var(--accent-deep);
+      font-size: 11px;
+      font-weight: 1000;
+      letter-spacing: .13em;
+      text-transform: uppercase;
     }
 
     .location-side,
@@ -1850,8 +1962,44 @@
     }
 
     .faq-item {
-      padding: 22px;
-      min-height: 168px;
+      padding: 22px 62px 22px 22px;
+      min-height: 138px;
+      text-align: left;
+      border: 1px solid rgba(15, 23, 42, 0.075);
+      cursor: pointer;
+      transition:
+        transform 190ms ease,
+        border-color 190ms ease,
+        box-shadow 190ms ease,
+        background 190ms ease;
+    }
+
+    .faq-item::before {
+      content: "+";
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 2;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      border: 1px solid var(--accent-line);
+      background: rgba(232,243,255,.82);
+      color: var(--accent-deep);
+      font-size: 20px;
+      font-weight: 1000;
+      box-shadow: var(--glass-highlight);
+    }
+
+    .faq-item:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-line-strong);
+      box-shadow:
+        var(--shadow-md),
+        0 0 0 5px rgba(47,125,244,.06),
+        var(--glass-highlight);
     }
 
     .faq-item strong {
@@ -1870,8 +2018,8 @@
       position: relative;
       z-index: 1;
       color: var(--muted);
-      line-height: 1.72;
-      font-size: 15px;
+      line-height: 1.62;
+      font-size: 14px;
     }
 
     .contact-card {
@@ -2012,6 +2160,104 @@
     }
 
     /* =========================
+       FAQ BOTTOM SHEET
+       ========================= */
+
+    .faq-sheet {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .faq-sheet.open {
+      display: flex;
+    }
+
+    .faq-sheet__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 17, 31, .32);
+      backdrop-filter: blur(18px) saturate(130%);
+      -webkit-backdrop-filter: blur(18px) saturate(130%);
+      opacity: 0;
+      animation: faqFadeIn 220ms ease forwards;
+    }
+
+    .faq-sheet__panel {
+      position: relative;
+      z-index: 2;
+      width: min(620px, 100%);
+      max-height: min(78svh, 620px);
+      overflow: auto;
+      padding: 18px;
+      border-radius: 34px 34px 28px 28px;
+      border: 1px solid rgba(255,255,255,.78);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(185,221,255,.48), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,252,255,.90));
+      box-shadow:
+        0 34px 90px rgba(15,23,42,.24),
+        inset 0 1px 0 rgba(255,255,255,.96);
+      transform: translateY(28px);
+      opacity: 0;
+      animation: faqSheetUp 340ms var(--ease-spring) forwards;
+    }
+
+    .faq-sheet__close {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.76);
+      color: var(--accent-deep);
+      box-shadow: var(--shadow-xs), var(--glass-highlight);
+      font-size: 22px;
+      font-weight: 1000;
+    }
+
+    .faq-sheet__content {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-sheet__content span {
+      width: fit-content;
+      min-height: 32px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid var(--accent-line);
+      background: rgba(232,243,255,.78);
+      color: var(--accent-deep);
+      font-size: 10px;
+      font-weight: 1000;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .faq-sheet__content h3 {
+      color: var(--text-strong);
+      font-family: "Sora", sans-serif;
+      font-size: clamp(28px, 8vw, 44px);
+      line-height: .96;
+      letter-spacing: -.075em;
+    }
+
+    .faq-sheet__content p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    /* =========================
        BOOKING OVERLAY SHELL ONLY
        Сам booking внутри не трогаем
        ========================= */
@@ -2124,7 +2370,7 @@
       line-height: 1;
     }
 
-        /* =========================
+    /* =========================
        MOBILE — APP EXPERIENCE BASE
        ========================= */
 
@@ -2227,6 +2473,24 @@
         display: none !important;
       }
 
+      .app-top,
+      .section-nav {
+        transition:
+          transform 320ms var(--ease-spring),
+          opacity 220ms ease;
+        will-change: transform;
+      }
+
+      .mobile-version.mobile-header-hidden .app-top {
+        transform: translateY(-112%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .mobile-version.mobile-header-hidden .section-nav {
+        transform: translateY(calc(-1 * (var(--mobile-top-h) + var(--safe-top))));
+      }
+
       /* =========================
          MOBILE TOP BAR
          ========================= */
@@ -2312,7 +2576,21 @@
         filter: drop-shadow(0 10px 20px rgba(47,125,244,.10));
       }
 
-      /* =========================
+      .mobile-lang-switcher {
+        position: absolute;
+        right: 72px;
+        top: calc(10px + var(--safe-top));
+        z-index: 60;
+      }
+
+      .mobile-lang-switcher .lang-btn {
+        min-width: 31px;
+        height: 30px;
+        padding: 0 7px;
+        font-size: 10px;
+      }
+
+            /* =========================
          MOBILE NAV CHIPS
          ========================= */
 
@@ -2388,6 +2666,7 @@
         min-height: 0;
         height: 100%;
         padding: 0;
+        transition: margin-top 320ms var(--ease-spring);
       }
 
       .page {
@@ -3005,13 +3284,13 @@
         align-items: center;
         justify-content: center;
         border-radius: 999px;
-        border: 1px solid rgba(22, 163, 74, .20);
+        border: 1px solid var(--green-line);
         background:
           radial-gradient(circle at 50% 0%, rgba(255,255,255,.24), transparent 42%),
-          linear-gradient(180deg, #22c55e, #16a34a);
+          linear-gradient(180deg, var(--green-2), var(--green));
         color: #ffffff;
         text-decoration: none;
-        box-shadow: 0 16px 32px rgba(22, 163, 74, .18);
+        box-shadow: var(--shadow-green);
         font-size: 12px;
         font-weight: 1000;
         letter-spacing: .055em;
@@ -3019,7 +3298,7 @@
       }
 
       /* =========================
-         MOBILE FAQ — VERTICAL LIST
+         MOBILE FAQ — LIST + BOTTOM SHEET
          ========================= */
 
       .faq-mobile-list {
@@ -3038,12 +3317,35 @@
       }
 
       .mobile-faq-card {
-        min-height: auto;
-        padding: 15px;
+        width: 100%;
+        min-height: 76px;
+        padding: 15px 56px 15px 15px;
         display: grid;
         gap: 8px;
-        align-content: start;
+        align-content: center;
         border-radius: 22px;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .mobile-faq-card::before {
+        content: "+";
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        z-index: 2;
+        transform: translateY(-50%);
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        border: 1px solid var(--accent-line);
+        background: rgba(232,243,255,.82);
+        color: var(--accent-deep);
+        font-size: 20px;
+        font-weight: 1000;
+        box-shadow: var(--glass-highlight);
       }
 
       .mobile-faq-card strong {
@@ -3053,11 +3355,26 @@
       }
 
       .mobile-faq-card p {
-        font-size: 13px;
-        line-height: 1.46;
+        display: none;
       }
 
-            /* =========================
+      .faq-sheet {
+        padding: 10px;
+        padding-bottom: calc(10px + var(--safe-bottom));
+      }
+
+      .faq-sheet__panel {
+        border-radius: 32px 32px 24px 24px;
+        padding: 16px;
+        max-height: 76svh;
+      }
+
+      .faq-sheet__content p {
+        font-size: 15px;
+        line-height: 1.68;
+      }
+
+      /* =========================
          MOBILE LOCATION
          ========================= */
 
@@ -3369,6 +3686,17 @@
         max-height: 38px;
       }
 
+      .mobile-lang-switcher {
+        right: 62px;
+      }
+
+      .mobile-lang-switcher .lang-btn {
+        min-width: 28px;
+        height: 28px;
+        padding: 0 6px;
+        font-size: 9px;
+      }
+
       .section-nav {
         padding: 9px 10px;
       }
@@ -3526,6 +3854,19 @@
       }
     }
 
+    @keyframes faqFadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes faqSheetUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     @keyframes logoBreath {
       0%, 100% {
         box-shadow: var(--shadow-sm), var(--glass-highlight);
@@ -3587,10 +3928,10 @@
       <div class="landing-container desktop-header">
         <div class="desktop-left">
           <nav class="desktop-nav">
-            <a href="#hero">Start</a>
-            <a href="#pricing">Usługi</a>
-            <a href="#masters">Stylistki</a>
-            <a href="#gallery">Efekt</a>
+            <a href="#hero" data-i18n="nav.start">Start</a>
+            <a href="#pricing" data-i18n="nav.services">Usługi</a>
+            <a href="#masters" data-i18n="nav.masters">Stylistki</a>
+            <a href="#gallery" data-i18n="nav.effect">Efekt</a>
           </nav>
         </div>
 
@@ -3602,12 +3943,19 @@
 
         <div class="desktop-right">
           <nav class="desktop-nav">
-            <a href="#reviews">Opinie</a>
-            <a href="#location">Lokalizacja</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Kontakt</a>
+            <a href="#reviews" data-i18n="nav.reviews">Opinie</a>
+            <a href="#location" data-i18n="nav.location">Lokalizacja</a>
+            <a href="#faq" data-i18n="nav.faq">FAQ</a>
+            <a href="#contact" data-i18n="nav.contact">Kontakt</a>
           </nav>
-          <a href="tel:+48532377701" class="desktop-call-btn">Zadzwoń</a>
+
+          <div class="lang-switcher" aria-label="Language switcher">
+            <button class="lang-btn active" type="button" data-lang="pl">PL</button>
+            <button class="lang-btn" type="button" data-lang="ru">RU</button>
+            <button class="lang-btn" type="button" data-lang="en">EN</button>
+          </div>
+
+          <a href="tel:+48532377701" class="desktop-call-btn" data-i18n="common.call">Zadzwoń</a>
         </div>
       </div>
     </header>
@@ -3618,31 +3966,31 @@
           <div class="hero-card reveal">
             <div class="hero-grid">
               <div class="hero-copy">
-                <div class="section-chip">LUNA NAIL STUDIO</div>
+                <div class="section-chip" data-i18n="hero.chip">LUNA NAIL STUDIO</div>
 
                 <h1 class="hero-title">
-                  Manicure, który wygląda
-                  <span>lekko i czysto.</span>
+                  <span data-i18n="hero.titleA">Manicure, który wygląda</span>
+                  <span data-i18n="hero.titleB">lekko i czysto.</span>
                 </h1>
 
-                <p class="hero-sub">
+                <p class="hero-sub" data-i18n="hero.sub">
                   Spokojne studio manicure we Wrocławiu. Hybryda, żel, french
                   i subtelne zdobienia — z możliwością rezerwacji terminu online.
                 </p>
 
                 <div class="hero-actions">
-                  <button class="btn btn-primary" type="button" data-open-booking>
+                  <button class="btn btn-primary" type="button" data-open-booking data-i18n="common.book">
                     Zarezerwuj wizytę
                   </button>
-                  <button class="btn btn-ghost" type="button" onclick="openMapsRoute()">
+                  <button class="btn btn-ghost" type="button" onclick="openMapsRoute()" data-i18n="common.route">
                     Sprawdź dojazd
                   </button>
                 </div>
 
                 <div class="hero-trust-row">
-                  <div class="trust-pill">Manicure hybrydowy</div>
-                  <div class="trust-pill">Przedłużanie żelowe</div>
-                  <div class="trust-pill">French i zdobienia</div>
+                  <div class="trust-pill" data-i18n="hero.pill1">Manicure hybrydowy</div>
+                  <div class="trust-pill" data-i18n="hero.pill2">Przedłużanie żelowe</div>
+                  <div class="trust-pill" data-i18n="hero.pill3">French i zdobienia</div>
                 </div>
               </div>
 
@@ -3657,12 +4005,12 @@
 
                 <div class="hero-info-grid">
                   <article class="glass-card metric-card">
-                    <span>Najczęściej wybierane stylizacje</span>
+                    <span data-i18n="hero.metric1">Najczęściej wybierane stylizacje</span>
                     <strong>12+</strong>
                   </article>
 
                   <article class="glass-card metric-card">
-                    <span>Godziny pracy studia</span>
+                    <span data-i18n="hero.metric2">Godziny pracy studia</span>
                     <strong>10–20</strong>
                   </article>
                 </div>
@@ -3677,9 +4025,12 @@
           <div class="section-card reveal">
             <div class="section-wrap">
               <div class="section-head">
-                <div class="section-chip">REZERWACJA</div>
-                <h2>Wybierasz usługę. <span>System prowadzi dalej.</span></h2>
-                <p>
+                <div class="section-chip" data-i18n="experience.chip">REZERWACJA</div>
+                <h2>
+                  <span data-i18n="experience.titleA">Wybierasz usługę.</span>
+                  <span data-i18n="experience.titleB">System prowadzi dalej.</span>
+                </h2>
+                <p data-i18n="experience.sub">
                   Klientka nie musi pisać wiadomości i czekać na odpowiedź.
                   Widzi ofertę, wybiera termin i przechodzi przez rezerwację krok po kroku.
                 </p>
@@ -3696,29 +4047,29 @@
                         <div class="mini-pill">ONLINE</div>
                       </div>
 
-                      <div class="mini-title">Rezerwacja manicure</div>
+                      <div class="mini-title" data-i18n="experience.phoneTitle">Rezerwacja manicure</div>
 
                       <div class="mini-card">
-                        <strong>Manicure hybrydowy</strong>
+                        <strong data-i18n="services.hybrid.title">Manicure hybrydowy</strong>
                         <span>120 zł</span>
                       </div>
 
                       <div class="mini-card">
-                        <strong>Przedłużanie żelowe</strong>
+                        <strong data-i18n="services.gel.title">Przedłużanie żelowe</strong>
                         <span>180 zł</span>
                       </div>
 
                       <div class="mini-card">
-                        <strong>Stylistka</strong>
+                        <strong data-i18n="experience.stylist">Stylistka</strong>
                         <span>Maja</span>
                       </div>
 
                       <div class="mini-card">
-                        <strong>Termin</strong>
-                        <span>dzisiaj</span>
+                        <strong data-i18n="experience.term">Termin</strong>
+                        <span data-i18n="experience.today">dzisiaj</span>
                       </div>
 
-                      <div class="mini-cta">Wybierz termin</div>
+                      <div class="mini-cta" data-i18n="experience.chooseTerm">Wybierz termin</div>
                     </div>
                   </div>
                 </article>
@@ -3727,24 +4078,24 @@
                   <article class="glass-card feature-card">
                     <div class="feature-number">1</div>
                     <div>
-                      <strong>Jasna oferta</strong>
-                      <p>Usługi, czas i cena są pokazane od razu — bez zgadywania.</p>
+                      <strong data-i18n="experience.card1Title">Jasna oferta</strong>
+                      <p data-i18n="experience.card1Text">Usługi, czas i cena są pokazane od razu — bez zgadywania.</p>
                     </div>
                   </article>
 
                   <article class="glass-card feature-card">
                     <div class="feature-number">2</div>
                     <div>
-                      <strong>Wybór stylistki</strong>
-                      <p>Klientka może wybrać osobę, do której chce się zapisać.</p>
+                      <strong data-i18n="experience.card2Title">Wybór stylistki</strong>
+                      <p data-i18n="experience.card2Text">Klientka może wybrać osobę, do której chce się zapisać.</p>
                     </div>
                   </article>
 
                   <article class="glass-card feature-card">
                     <div class="feature-number">3</div>
                     <div>
-                      <strong>Rezerwacja online</strong>
-                      <p>Cały proces odbywa się w środku strony, bez przełączania aplikacji.</p>
+                      <strong data-i18n="experience.card3Title">Rezerwacja online</strong>
+                      <p data-i18n="experience.card3Text">Cały proces odbywa się w środku strony, bez przełączania aplikacji.</p>
                     </div>
                   </article>
                 </div>
@@ -3769,23 +4120,25 @@
 
                 <div class="manifest-copy">
                   <div class="section-head">
-                    <div class="section-chip">STUDIO</div>
-                    <h2>Spokojne miejsce, gdzie <span>liczy się detal.</span></h2>
-                    <p>
+                    <div class="section-chip" data-i18n="manifest.chip">STUDIO</div>
+                    <h2>
+                      <span data-i18n="manifest.titleA">Spokojne miejsce, gdzie</span>
+                      <span data-i18n="manifest.titleB">liczy się detal.</span>
+                    </h2>
+                    <p data-i18n="manifest.sub">
                       LUNA NAIL STUDIO to jasne, czyste wnętrze, miękkie kolory
                       i praca robiona bez pośpiechu.
                     </p>
                   </div>
 
                   <article class="glass-card manifest-line">
-                    <p>
-                      <strong>Nie robimy paznokci “na szybko”.</strong>
-                      Robimy stylizacje, które dobrze wyglądają w codziennym życiu.
+                    <p data-i18n="manifest.line1">
+                      Nie robimy paznokci “na szybko”. Robimy stylizacje, które dobrze wyglądają w codziennym życiu.
                     </p>
                   </article>
 
                   <article class="glass-card manifest-line">
-                    <p>
+                    <p data-i18n="manifest.line2">
                       Stawiamy na czysty kształt, estetyczną linię światła,
                       delikatne kolory i komfort podczas całej wizyty.
                     </p>
@@ -3817,9 +4170,12 @@
           <div class="section-card reveal">
             <div class="section-wrap">
               <div class="section-head center">
-                <div class="section-chip">USŁUGI</div>
-                <h2>Wybierz stylizację. <span>Termin dobierzesz dalej.</span></h2>
-                <p>Najczęściej wybierane usługi w LUNA NAIL STUDIO.</p>
+                <div class="section-chip" data-i18n="services.chip">USŁUGI</div>
+                <h2>
+                  <span data-i18n="services.titleA">Wybierz stylizację.</span>
+                  <span data-i18n="services.titleB">Termin dobierzesz dalej.</span>
+                </h2>
+                <p data-i18n="services.sub">Najczęściej wybierane usługi w LUNA NAIL STUDIO.</p>
               </div>
 
               <div class="pricing-grid">
@@ -3827,10 +4183,10 @@
                   <div class="service-visual hybrid"></div>
                   <div class="pricing-card__content">
                     <div class="pricing-card__top">
-                      <strong>Manicure hybrydowy</strong>
+                      <strong data-i18n="services.hybrid.title">Manicure hybrydowy</strong>
                       <span class="pricing-card__price">120 zł</span>
                     </div>
-                    <p>Opracowanie skórek, czysty kształt i elegancki kolor na co dzień.</p>
+                    <p data-i18n="services.hybrid.text">Opracowanie skórek, czysty kształt i elegancki kolor na co dzień.</p>
                   </div>
                   <div class="service-tags">
                     <span>90 min</span>
@@ -3843,10 +4199,10 @@
                   <div class="service-visual gel"></div>
                   <div class="pricing-card__content">
                     <div class="pricing-card__top">
-                      <strong>Przedłużanie żelowe</strong>
+                      <strong data-i18n="services.gel.title">Przedłużanie żelowe</strong>
                       <span class="pricing-card__price">180 zł</span>
                     </div>
-                    <p>Budowa paznokci, proporcja, kształt i wykończenie premium.</p>
+                    <p data-i18n="services.gel.text">Budowa paznokci, proporcja, kształt i wykończenie premium.</p>
                   </div>
                   <div class="service-tags">
                     <span>150 min</span>
@@ -3859,10 +4215,10 @@
                   <div class="service-visual art"></div>
                   <div class="pricing-card__content">
                     <div class="pricing-card__top">
-                      <strong>Zdobienia</strong>
+                      <strong data-i18n="services.art.title">Zdobienia</strong>
                       <span class="pricing-card__price">+20 zł</span>
                     </div>
-                    <p>French, baby boomer albo subtelny detal bez przeładowania.</p>
+                    <p data-i18n="services.art.text">French, baby boomer albo subtelny detal bez przeładowania.</p>
                   </div>
                   <div class="service-tags">
                     <span>detail</span>
@@ -3872,7 +4228,7 @@
                 </article>
               </div>
 
-              <p class="pricing-note">
+              <p class="pricing-note" data-i18n="services.note">
                 Ceny i czas trwania są przykładowe — możesz je później podmienić pod realny cennik salonu.
               </p>
             </div>
@@ -3885,9 +4241,12 @@
           <div class="section-card reveal">
             <div class="section-wrap">
               <div class="section-head">
-                <div class="section-chip">STYLISTKI</div>
-                <h2>Wybierz osobę, która rozumie <span>Twój styl.</span></h2>
-                <p>
+                <div class="section-chip" data-i18n="masters.chip">STYLISTKI</div>
+                <h2>
+                  <span data-i18n="masters.titleA">Wybierz osobę, która rozumie</span>
+                  <span data-i18n="masters.titleB">Twój styl.</span>
+                </h2>
+                <p data-i18n="masters.sub">
                   Każda stylistka ma własną estetykę. Możesz wybrać konkretną osobę
                   od razu z poziomu strony.
                 </p>
@@ -3898,14 +4257,14 @@
                   <div class="master-photo maja-photo"></div>
                   <div>
                     <h3>Maja</h3>
-                    <p>Clean manicure, subtelne kolory i naturalny efekt.</p>
+                    <p data-i18n="masters.maja">Clean manicure, subtelne kolory i naturalny efekt.</p>
                   </div>
                   <div class="master-tags">
                     <span>clean look</span>
                     <span>hybryda</span>
                     <span>soft colors</span>
                   </div>
-                  <button class="master-book-btn" type="button" data-open-booking>
+                  <button class="master-book-btn" type="button" data-open-booking data-i18n="masters.bookMaja">
                     Zarezerwuj u Mai
                   </button>
                 </article>
@@ -3914,14 +4273,14 @@
                   <div class="master-photo ola-photo"></div>
                   <div>
                     <h3>Ola</h3>
-                    <p>French, baby boomer i minimalistyczne zdobienia.</p>
+                    <p data-i18n="masters.ola">French, baby boomer i minimalistyczne zdobienia.</p>
                   </div>
                   <div class="master-tags">
                     <span>french</span>
                     <span>baby boomer</span>
                     <span>detail</span>
                   </div>
-                  <button class="master-book-btn" type="button" data-open-booking>
+                  <button class="master-book-btn" type="button" data-open-booking data-i18n="masters.bookOla">
                     Zarezerwuj u Oli
                   </button>
                 </article>
@@ -3930,14 +4289,14 @@
                   <div class="master-photo nina-photo"></div>
                   <div>
                     <h3>Nina</h3>
-                    <p>Żel, przedłużanie i mocniejsze stylizacje premium.</p>
+                    <p data-i18n="masters.nina">Żel, przedłużanie i mocniejsze stylizacje premium.</p>
                   </div>
                   <div class="master-tags">
                     <span>żel</span>
                     <span>premium shape</span>
                     <span>extensions</span>
                   </div>
-                  <button class="master-book-btn" type="button" data-open-booking>
+                  <button class="master-book-btn" type="button" data-open-booking data-i18n="masters.bookNina">
                     Zarezerwuj u Niny
                   </button>
                 </article>
@@ -3952,31 +4311,20 @@
           <div class="section-card reveal">
             <div class="section-wrap">
               <div class="section-head center">
-                <div class="section-chip">EFEKT</div>
-                <h2>Estetyka, która wygląda dobrze <span>z bliska.</span></h2>
-                <p>Realizacje, które pokazują czystość kształtu, światło i detal.</p>
+                <div class="section-chip" data-i18n="gallery.chip">EFEKT</div>
+                <h2>
+                  <span data-i18n="gallery.titleA">Estetyka, która wygląda dobrze</span>
+                  <span data-i18n="gallery.titleB">z bliska.</span>
+                </h2>
+                <p data-i18n="gallery.sub">Realizacje, które pokazują czystość kształtu, światło i detal.</p>
               </div>
 
               <div class="gallery-grid">
-                <article class="gallery-tile gallery-clean large">
-                  <span>clean manicure</span>
-                </article>
-
-                <article class="gallery-tile gallery-soft">
-                  <span>soft french</span>
-                </article>
-
-                <article class="gallery-tile gallery-milk">
-                  <span>milk white</span>
-                </article>
-
-                <article class="gallery-tile gallery-shape wide">
-                  <span>premium nail shape</span>
-                </article>
-
-                <article class="gallery-tile gallery-art">
-                  <span>subtle art</span>
-                </article>
+                <article class="gallery-tile gallery-clean large"><span>clean manicure</span></article>
+                <article class="gallery-tile gallery-soft"><span>soft french</span></article>
+                <article class="gallery-tile gallery-milk"><span>milk white</span></article>
+                <article class="gallery-tile gallery-shape wide"><span>premium nail shape</span></article>
+                <article class="gallery-tile gallery-art"><span>subtle art</span></article>
               </div>
             </div>
           </div>
@@ -3988,29 +4336,38 @@
           <div class="section-card reveal">
             <div class="section-wrap">
               <div class="section-head">
-                <div class="section-chip">OPINIE</div>
-                <h2>Klientki wracają, gdy efekt jest <span>dopracowany.</span></h2>
-                <p>Przykładowe opinie — później możesz podmienić na realne recenzje z Google.</p>
+                <div class="section-chip" data-i18n="reviews.chip">OPINIE</div>
+                <h2>
+                  <span data-i18n="reviews.titleA">Klientki wracają, gdy efekt jest</span>
+                  <span data-i18n="reviews.titleB">dopracowany.</span>
+                </h2>
+                <p data-i18n="reviews.sub">Przykładowe opinie — później możesz podmienić na realne recenzje z Google.</p>
               </div>
 
               <div class="reviews-grid">
                 <article class="glass-card review-card">
                   <div class="stars">★★★★★</div>
-                  <p>“Bardzo spokojna atmosfera i dokładna praca. Wszystko wygląda czysto i elegancko.”</p>
+                  <p data-i18n="reviews.r1">“Bardzo spokojna atmosfera i dokładna praca. Wszystko wygląda czysto i elegancko.”</p>
                   <strong>— Julia</strong>
                 </article>
 
                 <article class="glass-card review-card">
                   <div class="stars">★★★★★</div>
-                  <p>“Bez pośpiechu, bez chaosu. Efekt dokładnie taki, jak chciałam.”</p>
+                  <p data-i18n="reviews.r2">“Bez pośpiechu, bez chaosu. Efekt dokładnie taki, jak chciałam.”</p>
                   <strong>— Natalia</strong>
                 </article>
 
                 <article class="glass-card review-card">
                   <div class="stars">★★★★★</div>
-                  <p>“French wyszedł bardzo równo. Widać, że detal ma tutaj znaczenie.”</p>
+                  <p data-i18n="reviews.r3">“French wyszedł bardzo równo. Widać, że detal ma tutaj znaczenie.”</p>
                   <strong>— Karolina</strong>
                 </article>
+              </div>
+
+              <div class="reviews-actions">
+                <a class="btn btn-google" href="#" target="_blank" rel="noopener" data-i18n="reviews.google">
+                  Zobacz opinie w Google
+                </a>
               </div>
             </div>
           </div>
@@ -4028,10 +4385,15 @@
                     loading="lazy"
                     src="https://www.google.com/maps?q=Wroc%C5%82aw&output=embed">
                   </iframe>
+
+                  <div class="location-map-card">
+                    <span data-i18n="location.mapChip">LOKALIZACJA</span>
+                    <strong>LUNA NAIL STUDIO</strong>
+                  </div>
                 </article>
 
                 <article class="glass-card location-side">
-                  <div class="section-chip">LOKALIZACJA</div>
+                  <div class="section-chip" data-i18n="location.chip">LOKALIZACJA</div>
 
                   <div class="location-preview">
                     <div class="location-preview__inner">
@@ -4041,11 +4403,11 @@
                   </div>
 
                   <div class="location-copy">
-                    <strong>Wrocław, spokojna okolica i szybki dojazd.</strong>
-                    <p>Dokładny adres możesz później podmienić w kodzie.</p>
+                    <strong data-i18n="location.title">Wrocław, spokojna okolica i szybki dojazd.</strong>
+                    <p data-i18n="location.sub">Dokładny adres możesz później podmienić w kodzie.</p>
                   </div>
 
-                  <button class="btn btn-primary section-button-full" type="button" onclick="openMapsRoute()">
+                  <button class="btn btn-primary section-button-full" type="button" onclick="openMapsRoute()" data-i18n="location.openMap">
                     Otwórz mapę
                   </button>
                 </article>
@@ -4061,30 +4423,53 @@
             <div class="section-wrap">
               <div class="section-head center">
                 <div class="section-chip">FAQ</div>
-                <h2>Przed wizytą <span>warto wiedzieć.</span></h2>
-                <p>Krótka sekcja, która odpowiada na najczęstsze pytania.</p>
+                <h2>
+                  <span data-i18n="faq.titleA">Przed wizytą</span>
+                  <span data-i18n="faq.titleB">warto wiedzieć.</span>
+                </h2>
+                <p data-i18n="faq.sub">Kliknij pytanie — odpowiedź otworzy się jako osobny ekran.</p>
               </div>
 
               <div class="faq-grid">
-                <article class="glass-card faq-item">
-                  <strong>Czy muszę pisać wiadomość?</strong>
-                  <p>Nie. Klikasz rezerwację i przechodzisz przez booking flow.</p>
-                </article>
+                <button class="glass-card faq-item" type="button" data-faq="message">
+                  <strong data-i18n="faq.q.message">Czy muszę pisać wiadomość?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
 
-                <article class="glass-card faq-item">
-                  <strong>Czy mogę wybrać stylistkę?</strong>
-                  <p>Tak, możesz kliknąć stylistkę albo wybrać ją w systemie rezerwacji.</p>
-                </article>
+                <button class="glass-card faq-item" type="button" data-faq="stylist">
+                  <strong data-i18n="faq.q.stylist">Czy mogę wybrać stylistkę?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
 
-                <article class="glass-card faq-item">
-                  <strong>Ile trwa stylizacja?</strong>
-                  <p>Manicure hybrydowy zwykle około 90 minut, przedłużanie około 150 minut.</p>
-                </article>
+                <button class="glass-card faq-item" type="button" data-faq="duration">
+                  <strong data-i18n="faq.q.duration">Ile trwa stylizacja?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
 
-                <article class="glass-card faq-item">
-                  <strong>Czy ceny są finalne?</strong>
-                  <p>Ceny są przykładowe. Podmień je pod realny salon.</p>
-                </article>
+                <button class="glass-card faq-item" type="button" data-faq="french">
+                  <strong data-i18n="faq.q.french">Czy można zrobić french?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
+
+                <button class="glass-card faq-item" type="button" data-faq="prices">
+                  <strong data-i18n="faq.q.prices">Czy ceny są finalne?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
+
+                <button class="glass-card faq-item" type="button" data-faq="early">
+                  <strong data-i18n="faq.q.early">Czy trzeba przyjść wcześniej?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
+
+                <button class="glass-card faq-item" type="button" data-faq="cancel">
+                  <strong data-i18n="faq.q.cancel">Czy mogę odwołać wizytę?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
+
+                <button class="glass-card faq-item" type="button" data-faq="weekend">
+                  <strong data-i18n="faq.q.weekend">Czy studio pracuje w weekend?</strong>
+                  <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+                </button>
               </div>
             </div>
           </div>
@@ -4097,14 +4482,14 @@
             <div class="section-wrap">
               <div class="contact-grid">
                 <article class="glass-card contact-card">
-                  <div class="section-chip">KONTAKT</div>
+                  <div class="section-chip" data-i18n="contact.chip">KONTAKT</div>
 
                   <div class="contact-lead">
-                    <strong>Wpadnij do studia LUNA</strong>
-                    <p>Rezerwacje przyjmujemy online. Wybierz termin, a my przygotujemy stanowisko.</p>
+                    <strong data-i18n="contact.title">Wpadnij do studia LUNA</strong>
+                    <p data-i18n="contact.sub">Rezerwacje przyjmujemy online. Wybierz termin, a my przygotujemy stanowisko.</p>
                   </div>
 
-                  <p class="contact-note">
+                  <p class="contact-note" data-i18n="contact.note">
                     Najszybciej zapiszesz się przez formularz rezerwacji w środku strony.
                   </p>
 
@@ -4114,19 +4499,19 @@
                     <a class="social-icon" href="tel:+48532377701" aria-label="Telefon">☎</a>
                   </div>
 
-                  <button class="btn btn-primary section-button-full" type="button" data-open-booking>
+                  <button class="btn btn-primary section-button-full" type="button" data-open-booking data-i18n="common.book">
                     Zarezerwuj wizytę
                   </button>
                 </article>
 
                 <article class="glass-card status-card">
-                  <div class="status-pill open" id="desktopStatus">Otwarte dzisiaj</div>
+                  <div class="status-pill open" id="desktopStatus" data-i18n="contact.open">Otwarte dzisiaj</div>
                   <ul class="status-list">
-                    <li><span>Pon — Pt</span><strong>10:00 — 20:00</strong></li>
-                    <li><span>Sobota</span><strong>10:00 — 18:00</strong></li>
-                    <li><span>Niedziela</span><strong>zamknięte</strong></li>
-                    <li><span>Telefon</span><strong>+48 532 377 701</strong></li>
-                    <li><span>Adres</span><strong>ul. Przykładowa 12</strong></li>
+                    <li><span data-i18n="contact.monFri">Pon — Pt</span><strong>10:00 — 20:00</strong></li>
+                    <li><span data-i18n="contact.sat">Sobota</span><strong>10:00 — 18:00</strong></li>
+                    <li><span data-i18n="contact.sun">Niedziela</span><strong data-i18n="contact.closed">zamknięte</strong></li>
+                    <li><span data-i18n="contact.phone">Telefon</span><strong>+48 532 377 701</strong></li>
+                    <li><span data-i18n="contact.address">Adres</span><strong>ul. Przykładowa 12</strong></li>
                   </ul>
                 </article>
               </div>
@@ -4139,10 +4524,7 @@
 
   <div class="mobile-version" id="mobile-version">
     <header class="app-top">
-      <a
-        class="icon-btn"
-        href="https://mrozowski-automation-production.up.railway.app/"
-        aria-label="Wróć do wyboru">
+      <a class="icon-btn" href="https://mrozowski-automation-production.up.railway.app/" aria-label="Wróć do wyboru">
         ←
       </a>
 
@@ -4151,25 +4533,34 @@
       </div>
 
       <a class="icon-btn" href="tel:+48532377701" aria-label="Zadzwoń">☎</a>
+
+      <div class="lang-switcher mobile-lang-switcher" aria-label="Language switcher">
+        <button class="lang-btn active" type="button" data-lang="pl">PL</button>
+        <button class="lang-btn" type="button" data-lang="ru">RU</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
     </header>
 
     <nav class="section-nav" aria-label="Nawigacja mobilna">
-      <button class="nav-chip active" type="button" data-page="home">Start</button>
-      <button class="nav-chip" type="button" data-page="services">Usługi</button>
-      <button class="nav-chip" type="button" data-page="masters">Stylistki</button>
-      <button class="nav-chip" type="button" data-page="gallery">Efekt</button>
-      <button class="nav-chip" type="button" data-page="reviews">Opinie</button>
-      <button class="nav-chip" type="button" data-page="where">Lokalizacja</button>
+      <button class="nav-chip active" type="button" data-page="home" data-i18n="nav.start">Start</button>
+      <button class="nav-chip" type="button" data-page="services" data-i18n="nav.services">Usługi</button>
+      <button class="nav-chip" type="button" data-page="masters" data-i18n="nav.masters">Stylistki</button>
+      <button class="nav-chip" type="button" data-page="gallery" data-i18n="nav.effect">Efekt</button>
+      <button class="nav-chip" type="button" data-page="reviews" data-i18n="nav.reviews">Opinie</button>
+      <button class="nav-chip" type="button" data-page="where" data-i18n="nav.location">Lokalizacja</button>
       <button class="nav-chip" type="button" data-page="faq">FAQ</button>
-      <button class="nav-chip" type="button" data-page="hello">Kontakt</button>
+      <button class="nav-chip" type="button" data-page="hello" data-i18n="nav.contact">Kontakt</button>
     </nav>
 
     <main class="pages">
       <section class="page active" data-page-view="home">
         <div class="page-head">
           <div class="kicker">LUNA NAIL STUDIO</div>
-          <h1 class="page-title">Manicure <span class="gold">bez chaosu.</span></h1>
-          <p class="page-sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
+          <h1 class="page-title">
+            <span data-i18n="mobile.home.titleA">Manicure</span>
+            <span class="gold" data-i18n="mobile.home.titleB">bez chaosu.</span>
+          </h1>
+          <p class="page-sub" data-i18n="mobile.home.sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
         </div>
 
         <div class="screen-body">
@@ -4177,17 +4568,17 @@
             <div class="image-fallback">LUNA<br />NAIL</div>
             <div class="mobile-hero-floating">
               <span>MANICURE • BEAUTY • CARE</span>
-              <strong>Jasne studio manicure we Wrocławiu</strong>
+              <strong data-i18n="mobile.home.card">Jasne studio manicure we Wrocławiu</strong>
             </div>
           </div>
 
           <div class="mini-stats">
             <div class="stat-card">
-              <span>Stylizacje</span>
+              <span data-i18n="mobile.home.stat1">Stylizacje</span>
               <strong>12+</strong>
             </div>
             <div class="stat-card">
-              <span>Godziny</span>
+              <span data-i18n="mobile.home.stat2">Godziny</span>
               <strong>10–20</strong>
             </div>
           </div>
@@ -4196,25 +4587,28 @@
 
       <section class="page" data-page-view="services">
         <div class="page-head">
-          <div class="kicker">USŁUGI</div>
-          <h2 class="page-title">Wybierz <span class="gold">stylizację.</span></h2>
-          <p class="page-sub">Przesuń karty i wybierz usługę.</p>
+          <div class="kicker" data-i18n="services.chip">USŁUGI</div>
+          <h2 class="page-title">
+            <span data-i18n="mobile.services.titleA">Wybierz</span>
+            <span class="gold" data-i18n="mobile.services.titleB">stylizację.</span>
+          </h2>
+          <p class="page-sub" data-i18n="mobile.services.sub">Przesuń karty i wybierz usługę.</p>
         </div>
 
         <div class="services-list">
           <article class="service-card">
             <div class="service-img hybrid"></div>
             <div class="service-card-header">
-              <strong>Manicure hybrydowy</strong>
+              <strong data-i18n="services.hybrid.title">Manicure hybrydowy</strong>
               <span class="price">120 zł</span>
             </div>
-            <p>Clean look, opracowanie skórek i elegancki kolor na co dzień.</p>
+            <p data-i18n="services.hybrid.text">Clean look, opracowanie skórek i elegancki kolor na co dzień.</p>
             <div class="tags">
               <span>90 min</span>
               <span>hybryda</span>
               <span>clean</span>
             </div>
-            <button class="mobile-card-btn" type="button" data-open-booking>
+            <button class="mobile-card-btn" type="button" data-open-booking data-i18n="mobile.services.choose">
               Wybierz usługę
             </button>
           </article>
@@ -4222,16 +4616,16 @@
           <article class="service-card">
             <div class="service-img gel"></div>
             <div class="service-card-header">
-              <strong>Przedłużanie żelowe</strong>
+              <strong data-i18n="services.gel.title">Przedłużanie żelowe</strong>
               <span class="price">180 zł</span>
             </div>
-            <p>Budowa, proporcja, kształt i wykończenie premium.</p>
+            <p data-i18n="services.gel.text">Budowa, proporcja, kształt i wykończenie premium.</p>
             <div class="tags">
               <span>150 min</span>
               <span>żel</span>
               <span>shape</span>
             </div>
-            <button class="mobile-card-btn" type="button" data-open-booking>
+            <button class="mobile-card-btn" type="button" data-open-booking data-i18n="mobile.services.choose">
               Wybierz usługę
             </button>
           </article>
@@ -4239,16 +4633,16 @@
           <article class="service-card">
             <div class="service-img art"></div>
             <div class="service-card-header">
-              <strong>Zdobienia</strong>
+              <strong data-i18n="services.art.title">Zdobienia</strong>
               <span class="price">+20 zł</span>
             </div>
-            <p>French, baby boomer albo subtelny detal bez przeładowania.</p>
+            <p data-i18n="services.art.text">French, baby boomer albo subtelny detal bez przeładowania.</p>
             <div class="tags">
               <span>detail</span>
               <span>soft art</span>
               <span>french</span>
             </div>
-            <button class="mobile-card-btn" type="button" data-open-booking>
+            <button class="mobile-card-btn" type="button" data-open-booking data-i18n="mobile.services.choose">
               Wybierz usługę
             </button>
           </article>
@@ -4257,22 +4651,25 @@
 
       <section class="page" data-page-view="masters">
         <div class="page-head">
-          <div class="kicker">STYLISTKI</div>
-          <h2 class="page-title">Każda ma <span class="gold">swój styl.</span></h2>
-          <p class="page-sub">Przesuń karty i wybierz stylistkę.</p>
+          <div class="kicker" data-i18n="masters.chip">STYLISTKI</div>
+          <h2 class="page-title">
+            <span data-i18n="mobile.masters.titleA">Każda ma</span>
+            <span class="gold" data-i18n="mobile.masters.titleB">swój styl.</span>
+          </h2>
+          <p class="page-sub" data-i18n="mobile.masters.sub">Przesuń karty i wybierz stylistkę.</p>
         </div>
 
         <div class="masters-mobile-list">
           <article class="mobile-master-card">
             <div class="mobile-master-photo maja"></div>
             <strong>Maja</strong>
-            <p>Clean manicure, subtelne kolory i naturalny efekt.</p>
+            <p data-i18n="masters.maja">Clean manicure, subtelne kolory i naturalny efekt.</p>
             <div class="tags">
               <span>hybryda</span>
               <span>soft</span>
               <span>clean look</span>
             </div>
-            <button class="mobile-card-btn" type="button" data-open-booking>
+            <button class="mobile-card-btn" type="button" data-open-booking data-i18n="masters.bookMaja">
               Zarezerwuj u Mai
             </button>
           </article>
@@ -4280,13 +4677,13 @@
           <article class="mobile-master-card">
             <div class="mobile-master-photo ola"></div>
             <strong>Ola</strong>
-            <p>French, baby boomer i minimalistyczne detale.</p>
+            <p data-i18n="masters.ola">French, baby boomer i minimalistyczne detale.</p>
             <div class="tags">
               <span>french</span>
               <span>detail</span>
               <span>baby boomer</span>
             </div>
-            <button class="mobile-card-btn" type="button" data-open-booking>
+            <button class="mobile-card-btn" type="button" data-open-booking data-i18n="masters.bookOla">
               Zarezerwuj u Oli
             </button>
           </article>
@@ -4294,13 +4691,13 @@
           <article class="mobile-master-card">
             <div class="mobile-master-photo nina"></div>
             <strong>Nina</strong>
-            <p>Żel, przedłużanie i mocniejsze stylizacje premium.</p>
+            <p data-i18n="masters.nina">Żel, przedłużanie i mocniejsze stylizacje premium.</p>
             <div class="tags">
               <span>żel</span>
               <span>shape</span>
               <span>premium</span>
             </div>
-            <button class="mobile-card-btn" type="button" data-open-booking>
+            <button class="mobile-card-btn" type="button" data-open-booking data-i18n="masters.bookNina">
               Zarezerwuj u Niny
             </button>
           </article>
@@ -4309,86 +4706,80 @@
 
       <section class="page" data-page-view="gallery">
         <div class="page-head">
-          <div class="kicker">EFEKT</div>
-          <h2 class="page-title">Detale robią <span class="gold">całość.</span></h2>
-          <p class="page-sub">Przesuń realizacje i zobacz styl studia.</p>
+          <div class="kicker" data-i18n="gallery.chip">EFEKT</div>
+          <h2 class="page-title">
+            <span data-i18n="mobile.gallery.titleA">Detale robią</span>
+            <span class="gold" data-i18n="mobile.gallery.titleB">całość.</span>
+          </h2>
+          <p class="page-sub" data-i18n="mobile.gallery.sub">Przesuń realizacje i zobacz styl studia.</p>
         </div>
 
         <div class="gallery-mobile-list">
           <article class="mobile-gallery-card">
             <div class="mobile-gallery-photo clean"></div>
             <strong>Clean manicure</strong>
-            <p>Jasny, spokojny efekt na co dzień.</p>
+            <p data-i18n="mobile.gallery.card1">Jasny, spokojny efekt na co dzień.</p>
           </article>
 
           <article class="mobile-gallery-card">
             <div class="mobile-gallery-photo french"></div>
             <strong>Soft french</strong>
-            <p>Naturalne wykończenie i czysta linia.</p>
+            <p data-i18n="mobile.gallery.card2">Naturalne wykończenie i czysta linia.</p>
           </article>
 
           <article class="mobile-gallery-card">
             <div class="mobile-gallery-photo art"></div>
             <strong>Minimal art</strong>
-            <p>Detal bez przesady, lekko i elegancko.</p>
+            <p data-i18n="mobile.gallery.card3">Detal bez przesady, lekko i elegancko.</p>
           </article>
         </div>
       </section>
 
       <section class="page" data-page-view="reviews">
         <div class="page-head">
-          <div class="kicker">OPINIE</div>
-          <h2 class="page-title">Spokój, detal, <span class="gold">efekt.</span></h2>
-          <p class="page-sub">Przewiń w dół i zobacz przykładowe opinie klientek.</p>
+          <div class="kicker" data-i18n="reviews.chip">OPINIE</div>
+          <h2 class="page-title">
+            <span data-i18n="mobile.reviews.titleA">Spokój, detal,</span>
+            <span class="gold" data-i18n="mobile.reviews.titleB">efekt.</span>
+          </h2>
+          <p class="page-sub" data-i18n="mobile.reviews.sub">Przewiń w dół i zobacz przykładowe opinie klientek.</p>
         </div>
 
         <div class="reviews-mobile-list">
           <article class="mobile-review-card">
             <div class="mobile-stars">★★★★★</div>
-            <p>“Bardzo spokojna atmosfera i dokładna praca. Paznokcie wyglądają naturalnie i czysto.”</p>
+            <p data-i18n="reviews.r1">“Bardzo spokojna atmosfera i dokładna praca. Paznokcie wyglądają naturalnie i czysto.”</p>
             <strong>— Julia</strong>
           </article>
 
           <article class="mobile-review-card">
             <div class="mobile-stars">★★★★★</div>
-            <p>“Bez pośpiechu, bez chaosu. Efekt dokładnie taki, jak chciałam.”</p>
+            <p data-i18n="reviews.r2">“Bez pośpiechu, bez chaosu. Efekt dokładnie taki, jak chciałam.”</p>
             <strong>— Natalia</strong>
           </article>
 
           <article class="mobile-review-card">
             <div class="mobile-stars">★★★★★</div>
-            <p>“French wyszedł bardzo równo. Widać, że detal ma tutaj znaczenie.”</p>
+            <p data-i18n="reviews.r3">“French wyszedł bardzo równo. Widać, że detal ma tutaj znaczenie.”</p>
             <strong>— Karolina</strong>
           </article>
 
           <article class="mobile-review-card">
             <div class="mobile-stars">★★★★★</div>
-            <p>“Piękne miejsce, jasne wnętrze i bardzo przyjemna obsługa.”</p>
+            <p data-i18n="reviews.r4">“Piękne miejsce, jasne wnętrze i bardzo przyjemna obsługa.”</p>
             <strong>— Amelia</strong>
           </article>
 
           <article class="mobile-review-card">
             <div class="mobile-stars">★★★★★</div>
-            <p>“Kolor dobrany idealnie, skórki opracowane bardzo dokładnie.”</p>
+            <p data-i18n="reviews.r5">“Kolor dobrany idealnie, skórki opracowane bardzo dokładnie.”</p>
             <strong>— Zuzanna</strong>
           </article>
 
-          <article class="mobile-review-card">
-            <div class="mobile-stars">★★★★★</div>
-            <p>“Rezerwacja online jest mega wygodna. Kliknęłam, wybrałam termin i gotowe.”</p>
-            <strong>— Wiktoria</strong>
-          </article>
-
-          <article class="mobile-review-card">
-            <div class="mobile-stars">★★★★★</div>
-            <p>“Delikatny efekt, dokładnie taki, jak lubię. Bez przesady i bez tandety.”</p>
-            <strong>— Lena</strong>
-          </article>
-
           <article class="google-review-card">
-            <strong>Zobacz więcej opinii</strong>
-            <p>Link możesz później podmienić na prawdziwy profil Google salonu.</p>
-            <a class="google-review-link" href="#" target="_blank" rel="noopener">
+            <strong data-i18n="reviews.more">Zobacz więcej opinii</strong>
+            <p data-i18n="reviews.moreText">Link możesz później podmienić na prawdziwy profil Google salonu.</p>
+            <a class="google-review-link" href="#" target="_blank" rel="noopener" data-i18n="reviews.google">
               Zobacz opinie w Google
             </a>
           </article>
@@ -4397,9 +4788,12 @@
 
       <section class="page" data-page-view="where">
         <div class="page-head">
-          <div class="kicker">LOKALIZACJA</div>
-          <h2 class="page-title">Studio we <span class="gold">Wrocławiu.</span></h2>
-          <p class="page-sub">Adres możesz podmienić w kodzie.</p>
+          <div class="kicker" data-i18n="location.chip">LOKALIZACJA</div>
+          <h2 class="page-title">
+            <span data-i18n="mobile.location.titleA">Studio we</span>
+            <span class="gold" data-i18n="mobile.location.titleB">Wrocławiu.</span>
+          </h2>
+          <p class="page-sub" data-i18n="location.sub">Adres możesz podmienić w kodzie.</p>
         </div>
 
         <div class="screen-body">
@@ -4416,8 +4810,8 @@
             </div>
 
             <div class="dual-actions">
-              <button class="cta-btn" type="button" data-open-booking>Rezerwuj</button>
-              <button class="ghost-btn" type="button" onclick="openMapsRoute()">Mapa</button>
+              <button class="cta-btn" type="button" data-open-booking data-i18n="mobile.location.book">Rezerwuj</button>
+              <button class="ghost-btn" type="button" onclick="openMapsRoute()" data-i18n="mobile.location.map">Mapa</button>
             </div>
           </article>
         </div>
@@ -4426,78 +4820,84 @@
       <section class="page" data-page-view="faq">
         <div class="page-head">
           <div class="kicker">FAQ</div>
-          <h2 class="page-title">Krótko. <span class="gold">Bez chaosu.</span></h2>
-          <p class="page-sub">Przewiń pytania przed wizytą.</p>
+          <h2 class="page-title">
+            <span data-i18n="mobile.faq.titleA">Krótko.</span>
+            <span class="gold" data-i18n="mobile.faq.titleB">Bez chaosu.</span>
+          </h2>
+          <p class="page-sub" data-i18n="faq.sub">Kliknij pytanie — odpowiedź otworzy się jako osobny ekran.</p>
         </div>
 
         <div class="faq-mobile-list">
-          <article class="mobile-faq-card">
-            <strong>Czy muszę pisać wiadomość?</strong>
-            <p>Nie. Klikasz rezerwację i przechodzisz przez booking flow.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="message">
+            <strong data-i18n="faq.q.message">Czy muszę pisać wiadomość?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
 
-          <article class="mobile-faq-card">
-            <strong>Czy mogę wybrać stylistkę?</strong>
-            <p>Tak, możesz kliknąć kartę stylistki albo wybrać ją w systemie.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="stylist">
+            <strong data-i18n="faq.q.stylist">Czy mogę wybrać stylistkę?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
 
-          <article class="mobile-faq-card">
-            <strong>Ile trwa stylizacja?</strong>
-            <p>Hybryda zwykle około 90 minut, przedłużanie około 150 minut.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="duration">
+            <strong data-i18n="faq.q.duration">Ile trwa stylizacja?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
 
-          <article class="mobile-faq-card">
-            <strong>Czy można zrobić french?</strong>
-            <p>Tak, french i soft french możesz dodać jako zdobienie.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="french">
+            <strong data-i18n="faq.q.french">Czy można zrobić french?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
 
-          <article class="mobile-faq-card">
-            <strong>Czy ceny są finalne?</strong>
-            <p>To przykładowy cennik. Finalne ceny podmienisz pod realny salon.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="prices">
+            <strong data-i18n="faq.q.prices">Czy ceny są finalne?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
 
-          <article class="mobile-faq-card">
-            <strong>Czy trzeba przyjść wcześniej?</strong>
-            <p>Wystarczy być kilka minut przed wizytą, żeby spokojnie zacząć.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="early">
+            <strong data-i18n="faq.q.early">Czy trzeba przyjść wcześniej?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
 
-          <article class="mobile-faq-card">
-            <strong>Czy mogę odwołać wizytę?</strong>
-            <p>Tak, najlepiej skontaktować się telefonicznie lub przez Instagram.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="cancel">
+            <strong data-i18n="faq.q.cancel">Czy mogę odwołać wizytę?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
 
-          <article class="mobile-faq-card">
-            <strong>Czy studio pracuje w weekend?</strong>
-            <p>W sobotę tak, niedziela jest ustawiona jako dzień zamknięty.</p>
-          </article>
+          <button class="mobile-faq-card" type="button" data-faq="weekend">
+            <strong data-i18n="faq.q.weekend">Czy studio pracuje w weekend?</strong>
+            <p data-i18n="faq.tap">Dotknij, żeby zobaczyć odpowiedź.</p>
+          </button>
         </div>
       </section>
 
       <section class="page" data-page-view="hello">
         <div class="page-head">
-          <div class="kicker">KONTAKT</div>
-          <h2 class="page-title">Napisz albo <span class="gold">zarezerwuj.</span></h2>
-          <p class="page-sub">Online jest najszybciej.</p>
+          <div class="kicker" data-i18n="contact.chip">KONTAKT</div>
+          <h2 class="page-title">
+            <span data-i18n="mobile.contact.titleA">Napisz albo</span>
+            <span class="gold" data-i18n="mobile.contact.titleB">zarezerwuj.</span>
+          </h2>
+          <p class="page-sub" data-i18n="mobile.contact.sub">Online jest najszybciej.</p>
         </div>
 
         <div class="contact-layout">
           <article class="contact-mobile-card">
             <strong>+48 532 377 701</strong>
-            <p>Rezerwacje przyjmujemy przez formularz online.</p>
+            <p data-i18n="contact.note">Rezerwacje przyjmujemy przez formularz online.</p>
           </article>
 
           <div class="hours-list">
             <div class="hour-row">
-              <span>Pon — Pt</span>
+              <span data-i18n="contact.monFri">Pon — Pt</span>
               <strong>10–20</strong>
             </div>
             <div class="hour-row">
-              <span>Sobota</span>
+              <span data-i18n="contact.sat">Sobota</span>
               <strong>10–18</strong>
             </div>
             <div class="hour-row">
-              <span>Niedziela</span>
-              <strong>zamknięte</strong>
+              <span data-i18n="contact.sun">Niedziela</span>
+              <strong data-i18n="contact.closed">zamknięte</strong>
             </div>
           </div>
 
@@ -4509,6 +4909,20 @@
         </div>
       </section>
     </main>
+  </div>
+
+  <div class="faq-sheet" id="faqSheet" aria-hidden="true">
+    <div class="faq-sheet__backdrop" data-close-faq></div>
+
+    <div class="faq-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="faqSheetTitle">
+      <button class="faq-sheet__close" type="button" data-close-faq aria-label="Zamknij">×</button>
+
+      <div class="faq-sheet__content">
+        <span>FAQ</span>
+        <h3 id="faqSheetTitle">Pytanie</h3>
+        <p id="faqSheetAnswer">Odpowiedź.</p>
+      </div>
+    </div>
   </div>
 
   <!-- 
@@ -4524,9 +4938,621 @@
     const overlay = document.getElementById("bookingOverlay");
     const flash = document.getElementById("screenFlash");
     const siteHeader = document.querySelector(".site-header");
+    const mobileVersion = document.getElementById("mobile-version");
+    const faqSheet = document.getElementById("faqSheet");
+    const faqSheetTitle = document.getElementById("faqSheetTitle");
+    const faqSheetAnswer = document.getElementById("faqSheetAnswer");
+
+    const GOOGLE_REVIEWS_URL = "#";
+    const MAPS_URL = "https://maps.google.com?q=Wrocław";
 
     let lastScrollY = window.scrollY;
+    let lastMobileScrollTop = 0;
     let ticking = false;
+
+    const translations = {
+      pl: {
+        "nav.start": "Start",
+        "nav.services": "Usługi",
+        "nav.masters": "Stylistki",
+        "nav.effect": "Efekt",
+        "nav.reviews": "Opinie",
+        "nav.location": "Lokalizacja",
+        "nav.faq": "FAQ",
+        "nav.contact": "Kontakt",
+
+        "common.call": "Zadzwoń",
+        "common.book": "Zarezerwuj wizytę",
+        "common.route": "Sprawdź dojazd",
+
+        "hero.chip": "LUNA NAIL STUDIO",
+        "hero.titleA": "Manicure, który wygląda",
+        "hero.titleB": "lekko i czysto.",
+        "hero.sub": "Spokojne studio manicure we Wrocławiu. Hybryda, żel, french i subtelne zdobienia — z możliwością rezerwacji terminu online.",
+        "hero.pill1": "Manicure hybrydowy",
+        "hero.pill2": "Przedłużanie żelowe",
+        "hero.pill3": "French i zdobienia",
+        "hero.metric1": "Najczęściej wybierane stylizacje",
+        "hero.metric2": "Godziny pracy studia",
+
+        "experience.chip": "REZERWACJA",
+        "experience.titleA": "Wybierasz usługę.",
+        "experience.titleB": "System prowadzi dalej.",
+        "experience.sub": "Klientka nie musi pisać wiadomości i czekać na odpowiedź. Widzi ofertę, wybiera termin i przechodzi przez rezerwację krok po kroku.",
+        "experience.phoneTitle": "Rezerwacja manicure",
+        "experience.stylist": "Stylistka",
+        "experience.term": "Termin",
+        "experience.today": "dzisiaj",
+        "experience.chooseTerm": "Wybierz termin",
+        "experience.card1Title": "Jasna oferta",
+        "experience.card1Text": "Usługi, czas i cena są pokazane od razu — bez zgadywania.",
+        "experience.card2Title": "Wybór stylistki",
+        "experience.card2Text": "Klientka może wybrać osobę, do której chce się zapisać.",
+        "experience.card3Title": "Rezerwacja online",
+        "experience.card3Text": "Cały proces odbywa się w środku strony, bez przełączania aplikacji.",
+
+        "manifest.chip": "STUDIO",
+        "manifest.titleA": "Spokojne miejsce, gdzie",
+        "manifest.titleB": "liczy się detal.",
+        "manifest.sub": "LUNA NAIL STUDIO to jasne, czyste wnętrze, miękkie kolory i praca robiona bez pośpiechu.",
+        "manifest.line1": "Nie robimy paznokci “na szybko”. Robimy stylizacje, które dobrze wyglądają w codziennym życiu.",
+        "manifest.line2": "Stawiamy na czysty kształt, estetyczną linię światła, delikatne kolory i komfort podczas całej wizyty.",
+
+        "services.chip": "USŁUGI",
+        "services.titleA": "Wybierz stylizację.",
+        "services.titleB": "Termin dobierzesz dalej.",
+        "services.sub": "Najczęściej wybierane usługi w LUNA NAIL STUDIO.",
+        "services.hybrid.title": "Manicure hybrydowy",
+        "services.hybrid.text": "Opracowanie skórek, czysty kształt i elegancki kolor na co dzień.",
+        "services.gel.title": "Przedłużanie żelowe",
+        "services.gel.text": "Budowa paznokci, proporcja, kształt i wykończenie premium.",
+        "services.art.title": "Zdobienia",
+        "services.art.text": "French, baby boomer albo subtelny detal bez przeładowania.",
+        "services.note": "Ceny i czas trwania są przykładowe — możesz je później podmienić pod realny cennik salonu.",
+
+        "masters.chip": "STYLISTKI",
+        "masters.titleA": "Wybierz osobę, która rozumie",
+        "masters.titleB": "Twój styl.",
+        "masters.sub": "Każda stylistka ma własną estetykę. Możesz wybrać konkretną osobę od razu z poziomu strony.",
+        "masters.maja": "Clean manicure, subtelne kolory i naturalny efekt.",
+        "masters.ola": "French, baby boomer i minimalistyczne zdobienia.",
+        "masters.nina": "Żel, przedłużanie i mocniejsze stylizacje premium.",
+        "masters.bookMaja": "Zarezerwuj u Mai",
+        "masters.bookOla": "Zarezerwuj u Oli",
+        "masters.bookNina": "Zarezerwuj u Niny",
+
+        "gallery.chip": "EFEKT",
+        "gallery.titleA": "Estetyka, która wygląda dobrze",
+        "gallery.titleB": "z bliska.",
+        "gallery.sub": "Realizacje, które pokazują czystość kształtu, światło i detal.",
+
+        "reviews.chip": "OPINIE",
+        "reviews.titleA": "Klientki wracają, gdy efekt jest",
+        "reviews.titleB": "dopracowany.",
+        "reviews.sub": "Przykładowe opinie — później możesz podmienić na realne recenzje z Google.",
+        "reviews.r1": "“Bardzo spokojna atmosfera i dokładna praca. Paznokcie wyglądają naturalnie i czysto.”",
+        "reviews.r2": "“Bez pośpiechu, bez chaosu. Efekt dokładnie taki, jak chciałam.”",
+        "reviews.r3": "“French wyszedł bardzo równo. Widać, że detal ma tutaj znaczenie.”",
+        "reviews.r4": "“Piękne miejsce, jasne wnętrze i bardzo przyjemna obsługa.”",
+        "reviews.r5": "“Kolor dobrany idealnie, skórki opracowane bardzo dokładnie.”",
+        "reviews.more": "Zobacz więcej opinii",
+        "reviews.moreText": "Link możesz później podmienić na prawdziwy profil Google salonu.",
+        "reviews.google": "Zobacz opinie w Google",
+
+        "location.chip": "LOKALIZACJA",
+        "location.mapChip": "LOKALIZACJA",
+        "location.title": "Wrocław, spokojna okolica i szybki dojazd.",
+        "location.sub": "Dokładny adres możesz później podmienić w kodzie.",
+        "location.openMap": "Otwórz mapę",
+
+        "faq.titleA": "Przed wizytą",
+        "faq.titleB": "warto wiedzieć.",
+        "faq.sub": "Kliknij pytanie — odpowiedź otworzy się jako osobny ekran.",
+        "faq.tap": "Dotknij, żeby zobaczyć odpowiedź.",
+        "faq.q.message": "Czy muszę pisać wiadomość?",
+        "faq.q.stylist": "Czy mogę wybrać stylistkę?",
+        "faq.q.duration": "Ile trwa stylizacja?",
+        "faq.q.french": "Czy można zrobić french?",
+        "faq.q.prices": "Czy ceny są finalne?",
+        "faq.q.early": "Czy trzeba przyjść wcześniej?",
+        "faq.q.cancel": "Czy mogę odwołać wizytę?",
+        "faq.q.weekend": "Czy studio pracuje w weekend?",
+
+        "contact.chip": "KONTAKT",
+        "contact.title": "Wpadnij do studia LUNA",
+        "contact.sub": "Rezerwacje przyjmujemy online. Wybierz termin, a my przygotujemy stanowisko.",
+        "contact.note": "Rezerwacje przyjmujemy przez formularz online.",
+        "contact.open": "Otwarte dzisiaj",
+        "contact.monFri": "Pon — Pt",
+        "contact.sat": "Sobota",
+        "contact.sun": "Niedziela",
+        "contact.closed": "zamknięte",
+        "contact.phone": "Telefon",
+        "contact.address": "Adres",
+
+        "mobile.home.titleA": "Manicure",
+        "mobile.home.titleB": "bez chaosu.",
+        "mobile.home.sub": "Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.",
+        "mobile.home.card": "Jasne studio manicure we Wrocławiu",
+        "mobile.home.stat1": "Stylizacje",
+        "mobile.home.stat2": "Godziny",
+        "mobile.services.titleA": "Wybierz",
+        "mobile.services.titleB": "stylizację.",
+        "mobile.services.sub": "Przesuń karty i wybierz usługę.",
+        "mobile.services.choose": "Wybierz usługę",
+        "mobile.masters.titleA": "Każda ma",
+        "mobile.masters.titleB": "swój styl.",
+        "mobile.masters.sub": "Przesuń karty i wybierz stylistkę.",
+        "mobile.gallery.titleA": "Detale robią",
+        "mobile.gallery.titleB": "całość.",
+        "mobile.gallery.sub": "Przesuń realizacje i zobacz styl studia.",
+        "mobile.gallery.card1": "Jasny, spokojny efekt na co dzień.",
+        "mobile.gallery.card2": "Naturalne wykończenie i czysta linia.",
+        "mobile.gallery.card3": "Detal bez przesady, lekko i elegancko.",
+        "mobile.reviews.titleA": "Spokój, detal,",
+        "mobile.reviews.titleB": "efekt.",
+        "mobile.reviews.sub": "Przewiń w dół i zobacz przykładowe opinie klientek.",
+        "mobile.location.titleA": "Studio we",
+        "mobile.location.titleB": "Wrocławiu.",
+        "mobile.location.book": "Rezerwuj",
+        "mobile.location.map": "Mapa",
+        "mobile.faq.titleA": "Krótko.",
+        "mobile.faq.titleB": "Bez chaosu.",
+        "mobile.contact.titleA": "Napisz albo",
+        "mobile.contact.titleB": "zarezerwuj.",
+        "mobile.contact.sub": "Online jest najszybciej."
+      },
+
+      ru: {
+        "nav.start": "Старт",
+        "nav.services": "Услуги",
+        "nav.masters": "Мастера",
+        "nav.effect": "Работы",
+        "nav.reviews": "Отзывы",
+        "nav.location": "Локация",
+        "nav.faq": "FAQ",
+        "nav.contact": "Контакт",
+
+        "common.call": "Позвонить",
+        "common.book": "Записаться",
+        "common.route": "Маршрут",
+
+        "hero.chip": "LUNA NAIL STUDIO",
+        "hero.titleA": "Маникюр, который выглядит",
+        "hero.titleB": "лёгко и чисто.",
+        "hero.sub": "Спокойная студия маникюра во Вроцлаве. Гибрид, гель, french и аккуратные дизайны — с удобной онлайн-записью.",
+        "hero.pill1": "Гибридный маникюр",
+        "hero.pill2": "Гелевое наращивание",
+        "hero.pill3": "French и дизайн",
+        "hero.metric1": "Популярные стилизации",
+        "hero.metric2": "Часы работы студии",
+
+        "experience.chip": "ЗАПИСЬ",
+        "experience.titleA": "Выбираешь услугу.",
+        "experience.titleB": "Система ведёт дальше.",
+        "experience.sub": "Клиентке не нужно писать и ждать ответ. Она видит оффер, выбирает время и спокойно проходит запись шаг за шагом.",
+        "experience.phoneTitle": "Запись на маникюр",
+        "experience.stylist": "Мастер",
+        "experience.term": "Время",
+        "experience.today": "сегодня",
+        "experience.chooseTerm": "Выбрать время",
+        "experience.card1Title": "Понятный оффер",
+        "experience.card1Text": "Услуги, время и цена видны сразу — без угадывания.",
+        "experience.card2Title": "Выбор мастера",
+        "experience.card2Text": "Клиентка может выбрать человека, к которому хочет записаться.",
+        "experience.card3Title": "Онлайн-запись",
+        "experience.card3Text": "Весь процесс внутри страницы, без прыжков между приложениями.",
+
+        "manifest.chip": "СТУДИЯ",
+        "manifest.titleA": "Спокойное место, где",
+        "manifest.titleB": "важна деталь.",
+        "manifest.sub": "LUNA NAIL STUDIO — светлый интерьер, мягкие цвета и работа без суеты.",
+        "manifest.line1": "Мы не делаем ногти “на бегу”. Мы делаем стилизации, которые красиво смотрятся в жизни.",
+        "manifest.line2": "Чистая форма, аккуратная линия света, нежные оттенки и комфорт на протяжении всей визиты.",
+
+        "services.chip": "УСЛУГИ",
+        "services.titleA": "Выбери стилизацию.",
+        "services.titleB": "Время подберёшь дальше.",
+        "services.sub": "Самые популярные услуги LUNA NAIL STUDIO.",
+        "services.hybrid.title": "Гибридный маникюр",
+        "services.hybrid.text": "Обработка кутикулы, чистая форма и элегантный цвет на каждый день.",
+        "services.gel.title": "Гелевое наращивание",
+        "services.gel.text": "Архитектура, пропорции, форма и премиальное завершение.",
+        "services.art.title": "Дизайн",
+        "services.art.text": "French, baby boomer или тонкая деталь без перегруза.",
+        "services.note": "Цены и время примерные — позже можно заменить под реальный прайс салона.",
+
+        "masters.chip": "МАСТЕРА",
+        "masters.titleA": "Выбери человека, который понимает",
+        "masters.titleB": "твой стиль.",
+        "masters.sub": "У каждого мастера своя эстетика. Можно выбрать конкретного мастера прямо со страницы.",
+        "masters.maja": "Clean manicure, мягкие цвета и натуральный эффект.",
+        "masters.ola": "French, baby boomer и минималистичные детали.",
+        "masters.nina": "Гель, наращивание и более выразительные премиум-стилизации.",
+        "masters.bookMaja": "Записаться к Мае",
+        "masters.bookOla": "Записаться к Оле",
+        "masters.bookNina": "Записаться к Нине",
+
+        "gallery.chip": "РАБОТЫ",
+        "gallery.titleA": "Эстетика, которая хорошо выглядит",
+        "gallery.titleB": "вблизи.",
+        "gallery.sub": "Работы, где видна чистая форма, свет и деталь.",
+
+        "reviews.chip": "ОТЗЫВЫ",
+        "reviews.titleA": "Клиентки возвращаются, когда результат",
+        "reviews.titleB": "доработан.",
+        "reviews.sub": "Примерные отзывы — позже можно заменить на настоящие отзывы из Google.",
+        "reviews.r1": "“Очень спокойная атмосфера и точная работа. Ногти выглядят натурально и чисто.”",
+        "reviews.r2": "“Без спешки и хаоса. Результат именно такой, как я хотела.”",
+        "reviews.r3": "“French получился очень ровным. Видно, что детали здесь важны.”",
+        "reviews.r4": "“Красивое место, светлый интерьер и очень приятный сервис.”",
+        "reviews.r5": "“Цвет подобрали идеально, кутикулу обработали очень аккуратно.”",
+        "reviews.more": "Больше отзывов",
+        "reviews.moreText": "Ссылку позже можно заменить на реальный профиль Google салона.",
+        "reviews.google": "Смотреть отзывы в Google",
+
+        "location.chip": "ЛОКАЦИЯ",
+        "location.mapChip": "ЛОКАЦИЯ",
+        "location.title": "Вроцлав, спокойный район и удобный доезд.",
+        "location.sub": "Точный адрес позже можно заменить в коде.",
+        "location.openMap": "Открыть карту",
+
+        "faq.titleA": "Перед визитом",
+        "faq.titleB": "важно знать.",
+        "faq.sub": "Нажми на вопрос — ответ откроется отдельным экраном.",
+        "faq.tap": "Нажми, чтобы увидеть ответ.",
+        "faq.q.message": "Нужно ли писать сообщение?",
+        "faq.q.stylist": "Можно выбрать мастера?",
+        "faq.q.duration": "Сколько длится стилизация?",
+        "faq.q.french": "Можно сделать french?",
+        "faq.q.prices": "Цены финальные?",
+        "faq.q.early": "Нужно прийти раньше?",
+        "faq.q.cancel": "Можно отменить визит?",
+        "faq.q.weekend": "Студия работает в выходные?",
+
+        "contact.chip": "КОНТАКТ",
+        "contact.title": "Заходи в студию LUNA",
+        "contact.sub": "Запись принимаем онлайн. Выбери время, а мы подготовим место.",
+        "contact.note": "Быстрее всего записаться через онлайн-форму.",
+        "contact.open": "Сегодня открыто",
+        "contact.monFri": "Пн — Пт",
+        "contact.sat": "Суббота",
+        "contact.sun": "Воскресенье",
+        "contact.closed": "закрыто",
+        "contact.phone": "Телефон",
+        "contact.address": "Адрес",
+
+        "mobile.home.titleA": "Маникюр",
+        "mobile.home.titleB": "без хаоса.",
+        "mobile.home.sub": "Выбери услугу, мастера и время онлайн — быстро, спокойно, удобно.",
+        "mobile.home.card": "Светлая студия маникюра во Вроцлаве",
+        "mobile.home.stat1": "Стилизации",
+        "mobile.home.stat2": "Часы",
+        "mobile.services.titleA": "Выбери",
+        "mobile.services.titleB": "стиль.",
+        "mobile.services.sub": "Листай карточки и выбери услугу.",
+        "mobile.services.choose": "Выбрать услугу",
+        "mobile.masters.titleA": "У каждой",
+        "mobile.masters.titleB": "свой стиль.",
+        "mobile.masters.sub": "Листай карточки и выбери мастера.",
+        "mobile.gallery.titleA": "Детали делают",
+        "mobile.gallery.titleB": "всё.",
+        "mobile.gallery.sub": "Листай работы и смотри стиль студии.",
+        "mobile.gallery.card1": "Светлый, спокойный эффект на каждый день.",
+        "mobile.gallery.card2": "Натуральное завершение и чистая линия.",
+        "mobile.gallery.card3": "Деталь без перегруза, легко и элегантно.",
+        "mobile.reviews.titleA": "Спокойствие, деталь,",
+        "mobile.reviews.titleB": "эффект.",
+        "mobile.reviews.sub": "Прокрути вниз и посмотри отзывы клиенток.",
+        "mobile.location.titleA": "Студия во",
+        "mobile.location.titleB": "Вроцлаве.",
+        "mobile.location.book": "Запись",
+        "mobile.location.map": "Карта",
+        "mobile.faq.titleA": "Коротко.",
+        "mobile.faq.titleB": "Без хаоса.",
+        "mobile.contact.titleA": "Напиши или",
+        "mobile.contact.titleB": "запишись.",
+        "mobile.contact.sub": "Онлайн быстрее всего."
+      },
+
+      en: {
+        "nav.start": "Start",
+        "nav.services": "Services",
+        "nav.masters": "Artists",
+        "nav.effect": "Results",
+        "nav.reviews": "Reviews",
+        "nav.location": "Location",
+        "nav.faq": "FAQ",
+        "nav.contact": "Contact",
+
+        "common.call": "Call",
+        "common.book": "Book a visit",
+        "common.route": "Get directions",
+
+        "hero.chip": "LUNA NAIL STUDIO",
+        "hero.titleA": "Manicure that feels",
+        "hero.titleB": "light and clean.",
+        "hero.sub": "A calm nail studio in Wrocław. Hybrid, gel, french and subtle nail art — with easy online booking.",
+        "hero.pill1": "Hybrid manicure",
+        "hero.pill2": "Gel extensions",
+        "hero.pill3": "French and nail art",
+        "hero.metric1": "Most chosen styles",
+        "hero.metric2": "Studio working hours",
+
+        "experience.chip": "BOOKING",
+        "experience.titleA": "Choose a service.",
+        "experience.titleB": "The system guides you.",
+        "experience.sub": "No need to message and wait for a reply. The client sees the offer, picks a time and books step by step.",
+        "experience.phoneTitle": "Manicure booking",
+        "experience.stylist": "Nail artist",
+        "experience.term": "Time",
+        "experience.today": "today",
+        "experience.chooseTerm": "Choose time",
+        "experience.card1Title": "Clear offer",
+        "experience.card1Text": "Services, duration and price are visible right away.",
+        "experience.card2Title": "Artist selection",
+        "experience.card2Text": "The client can choose the person they want to book with.",
+        "experience.card3Title": "Online booking",
+        "experience.card3Text": "The whole process happens inside the page, without switching apps.",
+
+        "manifest.chip": "STUDIO",
+        "manifest.titleA": "A calm place where",
+        "manifest.titleB": "details matter.",
+        "manifest.sub": "LUNA NAIL STUDIO is a bright, clean space with soft colors and work done without rush.",
+        "manifest.line1": "We do not do nails “in a hurry”. We create styles that look good in real life.",
+        "manifest.line2": "Clean shape, a neat light line, soft shades and comfort during the whole visit.",
+
+        "services.chip": "SERVICES",
+        "services.titleA": "Choose your style.",
+        "services.titleB": "Pick a time next.",
+        "services.sub": "Most chosen services at LUNA NAIL STUDIO.",
+        "services.hybrid.title": "Hybrid manicure",
+        "services.hybrid.text": "Cuticle care, clean shape and an elegant everyday color.",
+        "services.gel.title": "Gel extensions",
+        "services.gel.text": "Nail structure, proportions, shape and premium finish.",
+        "services.art.title": "Nail art",
+        "services.art.text": "French, baby boomer or a subtle detail without overload.",
+        "services.note": "Prices and durations are examples — you can later replace them with the real salon price list.",
+
+        "masters.chip": "ARTISTS",
+        "masters.titleA": "Choose someone who understands",
+        "masters.titleB": "your style.",
+        "masters.sub": "Each artist has her own aesthetic. You can choose a specific person directly from the page.",
+        "masters.maja": "Clean manicure, subtle colors and a natural result.",
+        "masters.ola": "French, baby boomer and minimalist details.",
+        "masters.nina": "Gel, extensions and stronger premium styles.",
+        "masters.bookMaja": "Book with Maja",
+        "masters.bookOla": "Book with Ola",
+        "masters.bookNina": "Book with Nina",
+
+        "gallery.chip": "RESULTS",
+        "gallery.titleA": "Aesthetic that looks good",
+        "gallery.titleB": "up close.",
+        "gallery.sub": "Work that shows clean shape, light and detail.",
+
+        "reviews.chip": "REVIEWS",
+        "reviews.titleA": "Clients return when the result is",
+        "reviews.titleB": "polished.",
+        "reviews.sub": "Example reviews — later you can replace them with real Google reviews.",
+        "reviews.r1": "“Very calm atmosphere and precise work. Nails look natural and clean.”",
+        "reviews.r2": "“No rush, no chaos. Exactly the result I wanted.”",
+        "reviews.r3": "“The french came out very even. You can see details matter here.”",
+        "reviews.r4": "“Beautiful place, bright interior and very pleasant service.”",
+        "reviews.r5": "“The color was matched perfectly and the cuticles were done very carefully.”",
+        "reviews.more": "See more reviews",
+        "reviews.moreText": "You can later replace this with the real Google profile link.",
+        "reviews.google": "See Google reviews",
+
+        "location.chip": "LOCATION",
+        "location.mapChip": "LOCATION",
+        "location.title": "Wrocław, calm area and easy access.",
+        "location.sub": "You can replace the exact address in the code later.",
+        "location.openMap": "Open map",
+
+        "faq.titleA": "Before your visit",
+        "faq.titleB": "good to know.",
+        "faq.sub": "Tap a question — the answer opens as a separate screen.",
+        "faq.tap": "Tap to see the answer.",
+        "faq.q.message": "Do I need to send a message?",
+        "faq.q.stylist": "Can I choose my nail artist?",
+        "faq.q.duration": "How long does styling take?",
+        "faq.q.french": "Can I get french nails?",
+        "faq.q.prices": "Are prices final?",
+        "faq.q.early": "Should I come earlier?",
+        "faq.q.cancel": "Can I cancel a visit?",
+        "faq.q.weekend": "Is the studio open on weekends?",
+
+        "contact.chip": "CONTACT",
+        "contact.title": "Visit LUNA studio",
+        "contact.sub": "We accept bookings online. Choose a time and we will prepare the station.",
+        "contact.note": "The fastest way to book is through the online form.",
+        "contact.open": "Open today",
+        "contact.monFri": "Mon — Fri",
+        "contact.sat": "Saturday",
+        "contact.sun": "Sunday",
+        "contact.closed": "closed",
+        "contact.phone": "Phone",
+        "contact.address": "Address",
+
+        "mobile.home.titleA": "Manicure",
+        "mobile.home.titleB": "without chaos.",
+        "mobile.home.sub": "Choose a service, artist and time online — fast, calm, convenient.",
+        "mobile.home.card": "Bright nail studio in Wrocław",
+        "mobile.home.stat1": "Styles",
+        "mobile.home.stat2": "Hours",
+        "mobile.services.titleA": "Choose",
+        "mobile.services.titleB": "your style.",
+        "mobile.services.sub": "Swipe the cards and choose a service.",
+        "mobile.services.choose": "Choose service",
+        "mobile.masters.titleA": "Each has",
+        "mobile.masters.titleB": "her style.",
+        "mobile.masters.sub": "Swipe the cards and choose your artist.",
+        "mobile.gallery.titleA": "Details make",
+        "mobile.gallery.titleB": "the whole.",
+        "mobile.gallery.sub": "Swipe the work and see the studio style.",
+        "mobile.gallery.card1": "A bright, calm everyday result.",
+        "mobile.gallery.card2": "Natural finish and a clean line.",
+        "mobile.gallery.card3": "Detail without overload, light and elegant.",
+        "mobile.reviews.titleA": "Calm, detail,",
+        "mobile.reviews.titleB": "result.",
+        "mobile.reviews.sub": "Scroll down and see example client reviews.",
+        "mobile.location.titleA": "Studio in",
+        "mobile.location.titleB": "Wrocław.",
+        "mobile.location.book": "Book",
+        "mobile.location.map": "Map",
+        "mobile.faq.titleA": "Short.",
+        "mobile.faq.titleB": "No chaos.",
+        "mobile.contact.titleA": "Message or",
+        "mobile.contact.titleB": "book.",
+        "mobile.contact.sub": "Online is fastest."
+      }
+    };
+
+    const faqAnswers = {
+      pl: {
+        message: {
+          title: "Czy muszę pisać wiadomość?",
+          answer: "Nie. Wystarczy kliknąć przycisk rezerwacji, wybrać usługę, stylistkę, datę i godzinę. System prowadzi przez cały proces bez czekania na odpowiedź w wiadomościach."
+        },
+        stylist: {
+          title: "Czy mogę wybrać stylistkę?",
+          answer: "Tak. Możesz wybrać stylistkę z poziomu strony albo przejść do rezerwacji i wskazać ją w systemie. Jeśli nie masz preferencji, salon może przypisać dostępny termin."
+        },
+        duration: {
+          title: "Ile trwa stylizacja?",
+          answer: "Manicure hybrydowy trwa zwykle około 90 minut, a przedłużanie żelowe około 150 minut. Dokładny czas zależy od usługi, stanu paznokci i wybranych zdobień."
+        },
+        french: {
+          title: "Czy można zrobić french?",
+          answer: "Tak. French, soft french, baby boomer i delikatne zdobienia mogą być dodane do stylizacji. Najlepiej wybrać odpowiednią usługę lub zaznaczyć to podczas rezerwacji."
+        },
+        prices: {
+          title: "Czy ceny są finalne?",
+          answer: "Ceny na tej wersji strony są przykładowe. W realnym wdrożeniu salon może wpisać własny cennik, czas trwania usług i zasady dopłat za zdobienia."
+        },
+        early: {
+          title: "Czy trzeba przyjść wcześniej?",
+          answer: "Wystarczy przyjść kilka minut przed wizytą. Dzięki temu można spokojnie zacząć, wybrać kolor i omówić efekt bez pośpiechu."
+        },
+        cancel: {
+          title: "Czy mogę odwołać wizytę?",
+          answer: "Tak. Najlepiej zrobić to możliwie wcześniej telefonicznie, przez Instagram albo innym kanałem kontaktu salonu, żeby termin mógł trafić do innej klientki."
+        },
+        weekend: {
+          title: "Czy studio pracuje w weekend?",
+          answer: "W tej wersji sobota jest dostępna, a niedziela ustawiona jako dzień zamknięty. Godziny pracy można później zmienić pod realny grafik salonu."
+        }
+      },
+
+      ru: {
+        message: {
+          title: "Нужно ли писать сообщение?",
+          answer: "Нет. Достаточно нажать кнопку записи, выбрать услугу, мастера, дату и время. Система ведёт через весь процесс без ожидания ответа в сообщениях."
+        },
+        stylist: {
+          title: "Можно выбрать мастера?",
+          answer: "Да. Можно выбрать мастера на странице или уже внутри системы бронирования. Если нет предпочтений, салон может назначить доступного мастера."
+        },
+        duration: {
+          title: "Сколько длится стилизация?",
+          answer: "Гибридный маникюр обычно занимает около 90 минут, гелевое наращивание — около 150 минут. Точное время зависит от услуги, состояния ногтей и дизайна."
+        },
+        french: {
+          title: "Можно сделать french?",
+          answer: "Да. French, soft french, baby boomer и деликатный дизайн можно добавить к стилизации. Лучше выбрать нужную услугу или указать это при записи."
+        },
+        prices: {
+          title: "Цены финальные?",
+          answer: "Цены в этой версии страницы примерные. В реальном проекте салон может поставить свой прайс, время услуг и правила доплат за дизайн."
+        },
+        early: {
+          title: "Нужно прийти раньше?",
+          answer: "Достаточно прийти за несколько минут до визита. Так можно спокойно начать, выбрать цвет и обсудить результат без спешки."
+        },
+        cancel: {
+          title: "Можно отменить визит?",
+          answer: "Да. Лучше сделать это заранее по телефону, через Instagram или другим каналом связи салона, чтобы время мог занять другой клиент."
+        },
+        weekend: {
+          title: "Студия работает в выходные?",
+          answer: "В этой версии суббота доступна, а воскресенье указано как выходной. График можно позже поменять под реальное расписание салона."
+        }
+      },
+
+      en: {
+        message: {
+          title: "Do I need to send a message?",
+          answer: "No. Just tap the booking button, choose a service, artist, date and time. The system guides the client through the whole process without waiting for a reply."
+        },
+        stylist: {
+          title: "Can I choose my nail artist?",
+          answer: "Yes. You can choose an artist directly from the page or inside the booking system. If you have no preference, the salon can assign an available time."
+        },
+        duration: {
+          title: "How long does styling take?",
+          answer: "A hybrid manicure usually takes around 90 minutes, while gel extensions take around 150 minutes. The exact duration depends on the service, nail condition and design."
+        },
+        french: {
+          title: "Can I get french nails?",
+          answer: "Yes. French, soft french, baby boomer and subtle nail art can be added to the styling. It is best to choose the right service or mention it while booking."
+        },
+        prices: {
+          title: "Are prices final?",
+          answer: "Prices in this version are examples. In a real launch, the salon can add its own price list, service durations and extra charges for nail art."
+        },
+        early: {
+          title: "Should I come earlier?",
+          answer: "A few minutes before the visit is enough. This gives time to start calmly, choose a color and discuss the desired result."
+        },
+        cancel: {
+          title: "Can I cancel a visit?",
+          answer: "Yes. It is best to do it as early as possible by phone, Instagram or another salon contact channel, so the slot can be offered to another client."
+        },
+        weekend: {
+          title: "Is the studio open on weekends?",
+          answer: "In this version, Saturday is available and Sunday is set as closed. Working hours can later be changed to match the real salon schedule."
+        }
+      }
+    };
+
+    function getCurrentLang() {
+      return localStorage.getItem("luna_lang") || "pl";
+    }
+
+    function setLanguage(lang) {
+      const dictionary = translations[lang] || translations.pl;
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.dataset.i18n;
+        if (dictionary[key]) {
+          element.textContent = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("luna_lang", lang);
+    }
+
+    function bindLanguageSwitcher() {
+      document.querySelectorAll("[data-lang]").forEach(button => {
+        button.addEventListener("click", () => {
+          setLanguage(button.dataset.lang);
+        });
+      });
+
+      setLanguage(getCurrentLang());
+    }
+
+    function bindGoogleReviewLinks() {
+      document.querySelectorAll(".google-review-link, .btn-google").forEach(link => {
+        link.href = GOOGLE_REVIEWS_URL;
+      });
+    }
 
     function bindBookingButtons() {
       document.querySelectorAll("[data-open-booking]").forEach(button => {
@@ -4556,7 +5582,41 @@
     }
 
     function openMapsRoute() {
-      window.open("https://maps.google.com?q=Wrocław", "_blank");
+      window.open(MAPS_URL, "_blank");
+    }
+
+    function openFaq(key) {
+      const lang = getCurrentLang();
+      const data = faqAnswers[lang]?.[key] || faqAnswers.pl[key];
+
+      if (!faqSheet || !data) return;
+
+      faqSheetTitle.textContent = data.title;
+      faqSheetAnswer.textContent = data.answer;
+
+      faqSheet.classList.add("open");
+      faqSheet.setAttribute("aria-hidden", "false");
+      document.body.classList.add("faq-open");
+    }
+
+    function closeFaq() {
+      if (!faqSheet) return;
+
+      faqSheet.classList.remove("open");
+      faqSheet.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("faq-open");
+    }
+
+    function bindFaq() {
+      document.querySelectorAll("[data-faq]").forEach(button => {
+        button.addEventListener("click", () => {
+          openFaq(button.dataset.faq);
+        });
+      });
+
+      document.querySelectorAll("[data-close-faq]").forEach(button => {
+        button.addEventListener("click", closeFaq);
+      });
     }
 
     function bindMobileNavigation() {
@@ -4598,6 +5658,31 @@
       });
     }
 
+    function bindMobileSmartHeader() {
+      const scrollables = document.querySelectorAll(
+        ".reviews-mobile-list, .faq-mobile-list, .services-list, .masters-mobile-list, .gallery-mobile-list"
+      );
+
+      scrollables.forEach(scroller => {
+        scroller.addEventListener("scroll", () => {
+          if (!mobileVersion || window.innerWidth > 900) return;
+
+          const current = scroller.scrollTop || scroller.scrollLeft || 0;
+          const delta = current - lastMobileScrollTop;
+
+          if (delta > 8 && current > 40) {
+            mobileVersion.classList.add("mobile-header-hidden");
+          }
+
+          if (delta < -4 || current < 20) {
+            mobileVersion.classList.remove("mobile-header-hidden");
+          }
+
+          lastMobileScrollTop = Math.max(current, 0);
+        }, { passive: true });
+      });
+    }
+
     function handleDesktopScroll() {
       const currentY = window.scrollY;
 
@@ -4627,11 +5712,18 @@
     }, { passive: true });
 
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeBooking();
+      if (event.key === "Escape") {
+        closeBooking();
+        closeFaq();
+      }
     });
 
+    bindLanguageSwitcher();
+    bindGoogleReviewLinks();
     bindBookingButtons();
     bindMobileNavigation();
+    bindMobileSmartHeader();
+    bindFaq();
   </script>
 
   <script src="./script.js"></script>
