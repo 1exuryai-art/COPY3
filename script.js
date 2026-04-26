@@ -9,194 +9,202 @@ const DISCOUNT_END_MINUTES = 16 * 60;
 const stepMeta = [
   {
     title: "Dane kontaktowe",
-    subtitle: "Wpisz swoje dane, aby rozpocząć rezerwację."
+    subtitle: "Wpisz swoje dane, aby rozpocząć rezerwację wizyty."
   },
   {
     title: "Wybór usługi",
-    subtitle: "Wybierz usługę, która Cię interesuje."
+    subtitle: "Wybierz stylizację lub pielęgnację, która Cię interesuje."
   },
   {
-    title: "Wybrać barbera?",
-    subtitle: "Możesz wybrać konkretnego barbera lub przejść dalej."
+    title: "Wybrać stylistkę?",
+    subtitle: "Możesz wybrać konkretną stylistkę albo zostawić dobór salonowi."
   },
   {
-    title: "Wybór barbera",
-    subtitle: "Wybierz barbera, do którego chcesz się umówić."
+    title: "Wybór stylistki",
+    subtitle: "Wybierz osobę, do której chcesz się umówić."
   },
   {
     title: "Wybór daty",
-    subtitle: "Wybierz dogodny dzień wizyty."
+    subtitle: "Wybierz dogodny dzień wizyty w salonie."
   },
   {
     title: "Wybór godziny",
-    subtitle: "Wybierz dogodną godzinę wizyty."
+    subtitle: "Wybierz wolną godzinę, która pasuje do Twojego planu."
   },
   {
     title: "Potwierdzenie danych",
-    subtitle: "Sprawdź dane przed potwierdzeniem wizyty."
+    subtitle: "Sprawdź szczegóły wizyty przed zapisaniem terminu."
   },
   {
     title: "Rezerwacja zapisana",
-    subtitle: "Twoja wizyta została zapisana."
+    subtitle: "Twoja wizyta została zapisana. Do zobaczenia w salonie."
   }
 ];
 
 const serviceCategories = [
   {
     id: "popular",
-    title: "Popularne usługi",
-    description: "Najczęściej wybierane opcje."
+    title: "Najczęściej wybierane",
+    description: "Najpopularniejsze stylizacje wybierane przez klientki."
   },
   {
-    id: "premium",
-    title: "Strzyżenie premium",
-    description: "Klasyczne i bardziej rozbudowane usługi włosów."
+    id: "classic",
+    title: "Manicure",
+    description: "Klasyczne i hybrydowe usługi paznokci."
   },
   {
-    id: "beard",
-    title: "Broda i golenie",
-    description: "Usługi brody i golenia."
+    id: "extension",
+    title: "Przedłużanie paznokci",
+    description: "Budowa, uzupełnienie i korekta paznokci żelowych."
   },
   {
-    id: "gray",
-    title: "Koloryzacja i odsiwianie",
-    description: "Usługi premium z odsiwianiem."
+    id: "design",
+    title: "Zdobienia i efekt",
+    description: "Delikatne dodatki, french, babyboomer i stylizacje premium."
   },
   {
-    id: "extras",
-    title: "Dodatki",
-    description: "Szybkie dodatkowe usługi."
+    id: "care",
+    title: "Pielęgnacja",
+    description: "Zabiegi dla dłoni, skórek i naturalnej płytki."
   }
 ];
 
 const services = [
   {
-    id: "haircut",
+    id: "hybrid-manicure",
     category: "popular",
-    name: "Strzyżenie / Haircut",
-    basePrice: 90,
-    duration: "1h",
-    durationMinutes: 60
+    name: "Manicure hybrydowy",
+    basePrice: 120,
+    duration: "1h 30min",
+    durationMinutes: 90
   },
   {
-    id: "combo",
+    id: "gel-extension",
     category: "popular",
-    name: "Combo (Strzyżenie + Broda)",
+    name: "Przedłużanie paznokci żelem",
+    basePrice: 180,
+    duration: "2h",
+    durationMinutes: 120
+  },
+  {
+    id: "hybrid-removal-new",
+    category: "popular",
+    name: "Ściągnięcie + nowa hybryda",
     basePrice: 140,
-    duration: "1h 30min",
-    durationMinutes: 90
+    duration: "1h 45min",
+    durationMinutes: 105
   },
   {
-    id: "scissors",
-    category: "premium",
-    name: "Strzyżenie nożyczkami",
-    basePrice: 130,
-    duration: "1h 30min",
-    durationMinutes: 90
-  },
-  {
-    id: "kids",
-    category: "premium",
-    name: "Fryzjer dla dzieci (4–12 lat)",
-    basePrice: 80,
-    duration: "1h",
-    durationMinutes: 60
-  },
-  {
-    id: "buzz",
-    category: "premium",
-    name: "Buzz cut / tylko boki",
-    basePrice: 80,
-    duration: "1h",
-    durationMinutes: 60
-  },
-  {
-    id: "beard-zero",
-    category: "beard",
-    name: "Broda + Golenie głowy na zero",
+    id: "classic-manicure",
+    category: "classic",
+    name: "Manicure klasyczny",
     basePrice: 90,
-    duration: "50min",
-    durationMinutes: 50
+    duration: "1h",
+    durationMinutes: 60
   },
   {
-    id: "beard-trim",
-    category: "beard",
-    name: "Strzyżenie brody",
-    basePrice: 70,
+    id: "japanese-manicure",
+    category: "classic",
+    name: "Manicure japoński",
+    basePrice: 110,
+    duration: "1h",
+    durationMinutes: 60
+  },
+  {
+    id: "hybrid-french",
+    category: "classic",
+    name: "Manicure hybrydowy French",
+    basePrice: 150,
+    duration: "1h 45min",
+    durationMinutes: 105
+  },
+  {
+    id: "gel-refill",
+    category: "extension",
+    name: "Uzupełnienie paznokci żelowych",
+    basePrice: 160,
+    duration: "2h",
+    durationMinutes: 120
+  },
+  {
+    id: "gel-correction",
+    category: "extension",
+    name: "Korekta paznokci żelowych",
+    basePrice: 170,
+    duration: "2h",
+    durationMinutes: 120
+  },
+  {
+    id: "nail-repair",
+    category: "extension",
+    name: "Naprawa jednego paznokcia",
+    basePrice: 25,
+    duration: "20min",
+    durationMinutes: 20
+  },
+  {
+    id: "babyboomer",
+    category: "design",
+    name: "Babyboomer",
+    basePrice: 160,
+    duration: "1h 45min",
+    durationMinutes: 105
+  },
+  {
+    id: "nail-art",
+    category: "design",
+    name: "Zdobienia paznokci",
+    basePrice: 35,
+    duration: "20min",
+    durationMinutes: 20
+  },
+  {
+    id: "premium-styling",
+    category: "design",
+    name: "Stylizacja premium",
+    basePrice: 190,
+    duration: "2h",
+    durationMinutes: 120
+  },
+  {
+    id: "spa-hands",
+    category: "care",
+    name: "Pielęgnacja dłoni SPA",
+    basePrice: 80,
+    duration: "45min",
+    durationMinutes: 45
+  },
+  {
+    id: "cuticle-care",
+    category: "care",
+    name: "Opracowanie skórek",
+    basePrice: 60,
     duration: "40min",
     durationMinutes: 40
-  },
-  {
-    id: "shaving",
-    category: "beard",
-    name: "Golenie głowy golarką",
-    basePrice: 50,
-    duration: "30min",
-    durationMinutes: 30
-  },
-  {
-    id: "gray-beard",
-    category: "gray",
-    name: "Strzyżenie brody + Odsiwianie",
-    basePrice: 150,
-    duration: "1h 30min",
-    durationMinutes: 90
-  },
-  {
-    id: "gray-hair",
-    category: "gray",
-    name: "Strzyżenie + Odsiwianie włosów",
-    basePrice: 150,
-    duration: "1h 30min",
-    durationMinutes: 90
-  },
-  {
-    id: "gray-combo-beard",
-    category: "gray",
-    name: "Combo: włosy + broda + Odsiwianie brody",
-    basePrice: 210,
-    duration: "2h",
-    durationMinutes: 120
-  },
-  {
-    id: "gray-combo-full",
-    category: "gray",
-    name: "Combo Odsiwianie: włosy + broda + strzyżenie",
-    basePrice: 260,
-    duration: "2h",
-    durationMinutes: 120
-  },
-  {
-    id: "wax",
-    category: "extras",
-    name: "Depilacja woskiem",
-    basePrice: 20,
-    duration: "5min",
-    durationMinutes: 5
   }
 ];
 
 const barbers = [
   {
     id: "tymur",
-    name: "Tymur",
-    photo: "/tymur.png",
-    description: "Młody i ambitny barber z pasją do klasycznych strzyżeń.",
-    languages: ["🇺🇦 Ukraiński", "🇵🇱 Polski", "🇬🇧 English"]
+    name: "Julia",
+    photo: "/stylistka-julia.png",
+    description: "Stylistka paznokci specjalizująca się w czystej hybrydzie, delikatnym frenchu i eleganckich stylizacjach.",
+    languages: ["🇵🇱 Polski", "🇺🇦 Ukraiński", "🇬🇧 English"]
   },
   {
     id: "dima",
-    name: "Dima",
-    photo: "/dima.png",
-    description: "Doświadczony barber z 3-letnim stażem. Mistrz klasyki i nowoczesnych stylów.",
-    languages: ["🇺🇦 Ukraiński", "🇵🇱 Polski", "🇬🇧 English"]
+    name: "Marta",
+    photo: "/stylistka-marta.png",
+    description: "Dokładna stylistka od przedłużeń żelowych, uzupełnień i naturalnych kształtów dopasowanych do dłoni.",
+    languages: ["🇵🇱 Polski", "🇬🇧 English"]
   },
   {
     id: "vlad",
-    name: "Vlad",
-    photo: "/vlad.png",
-    description: "Młody talent z energią i świeżym podejściem do strzyżeń.",
-    languages: ["🇺🇦 Ukraiński", "🇷🇺 Rosyjski", "🇵🇱 Polski"]
+    name: "Sofia",
+    photo: "/stylistka-sofia.png",
+    description: "Tworzy subtelne zdobienia, babyboomer i stylizacje premium dla klientek, które lubią dopracowany detal.",
+    languages: ["🇺🇦 Ukraiński", "🇵🇱 Polski", "🇷🇺 Rosyjski"]
   }
 ];
 
@@ -287,10 +295,7 @@ function formatDateText(dateStr) {
 function normalizePhone(value) {
   let digits = String(value || "").replace(/\D/g, "");
 
-  if (digits.startsWith("48")) {
-    digits = digits.slice(2);
-  }
-
+  if (digits.startsWith("48")) digits = digits.slice(2);
   digits = digits.slice(0, 9);
 
   let result = "+48";
@@ -325,11 +330,7 @@ function getWeekday(dateStr) {
 
 function getWorkingHoursForDate(dateStr) {
   const day = getWeekday(dateStr);
-
-  if (day === 0) {
-    return { openHour: 10, closeHour: 18 };
-  }
-
+  if (day === 0) return { openHour: 10, closeHour: 18 };
   return { openHour: 10, closeHour: 20 };
 }
 
@@ -414,14 +415,14 @@ function buildSlotsFromBusy(dateStr, busyIntervals, serviceDurationMinutes) {
 
 async function loadAvailabilityForDate(dateStr) {
   const service = getSelectedService();
-  const barber = getSelectedBarber();
+  const stylist = getSelectedBarber();
 
   if (!dateStr || !service) return;
 
-  slotsStatus.textContent = "Ładowanie godzin...";
+  slotsStatus.textContent = "Ładowanie dostępnych godzin...";
   slotsGrid.innerHTML = "";
 
-  const barberId = state.barberDecision === "no" ? "auto" : barber?.id || "";
+  const barberId = state.barberDecision === "no" ? "auto" : stylist?.id || "";
   if (!barberId) return;
 
   const response = await fetch(
@@ -431,7 +432,7 @@ async function loadAvailabilityForDate(dateStr) {
   const data = await response.json().catch(() => null);
 
   if (!response.ok || !data?.ok) {
-    throw new Error(data?.error || "Nie udało się pobrać dostępności.");
+    throw new Error(data?.error || "Nie udało się pobrać wolnych godzin.");
   }
 
   if (state.barberDecision === "no") {
@@ -449,7 +450,7 @@ async function loadAvailabilityForDate(dateStr) {
 
 function updateBindings() {
   const service = getSelectedService();
-  const barber = getSelectedBarber();
+  const stylist = getSelectedBarber();
   const priceDetails = getServicePriceDetails(service, state.selectedDate, state.selectedTime);
 
   document.querySelectorAll('[data-bind="name"]').forEach((el) => {
@@ -484,11 +485,11 @@ function updateBindings() {
 
   document.querySelectorAll('[data-bind="barberName"]').forEach((el) => {
     if (state.barberDecision === "no") {
-      el.textContent = state.resolvedBarberName || "Dobierzemy barbera";
+      el.textContent = state.resolvedBarberName || "Dobierzemy stylistkę";
       return;
     }
 
-    el.textContent = barber?.name || "—";
+    el.textContent = stylist?.name || "—";
   });
 
   document.querySelectorAll('[data-bind="dateText"]').forEach((el) => {
@@ -533,7 +534,7 @@ function updateNav() {
   nextBtn.classList.remove("pulse");
 
   if (state.step === 7) {
-    nextBtn.textContent = state.submitting ? "Zapisywanie..." : "Zarezerwuj termin";
+    nextBtn.textContent = state.submitting ? "Zapisywanie..." : "Potwierdź wizytę";
   } else {
     nextBtn.textContent = "Dalej";
   }
@@ -578,10 +579,11 @@ function showStep(step) {
 
 function getServicePriceMarkup(service) {
   const discounted = getDiscountedPrice(service.basePrice);
+
   return `
     <div class="service-option-price-line">
       <span class="price-main">${formatPrice(service.basePrice)}</span>
-      <span class="price-discount">lub ${formatPrice(discounted)} z rabatem</span>
+      <span class="price-discount">lub ${formatPrice(discounted)} w godzinach promocyjnych</span>
     </div>
   `;
 }
@@ -642,7 +644,7 @@ function renderServiceAccordion() {
 
         <div class="service-inline-next">
           <button class="nav-btn nav-btn-primary service-next-btn" type="button">
-            Dalej
+            Wybierz i przejdź dalej
           </button>
         </div>
       `;
@@ -694,18 +696,18 @@ function renderBarberDecision() {
 }
 
 function renderBarberSlider() {
-  const barber = barbers[state.barberSlideIndex];
-  if (!barber) return;
+  const stylist = barbers[state.barberSlideIndex];
+  if (!stylist) return;
 
   barberSlidePhoto.innerHTML = `
-    <img src="${barber.photo}" alt="${barber.name}" class="barber-photo-img" />
+    <img src="${stylist.photo}" alt="${stylist.name}" class="barber-photo-img" />
   `;
 
-  barberSlideName.textContent = barber.name;
-  barberSlideDescription.textContent = barber.description;
+  barberSlideName.textContent = stylist.name;
+  barberSlideDescription.textContent = stylist.description;
 
   barberSlideLangs.innerHTML = "";
-  barber.languages.forEach((lang) => {
+  stylist.languages.forEach((lang) => {
     const tag = document.createElement("span");
     tag.textContent = lang;
     barberSlideLangs.appendChild(tag);
@@ -713,8 +715,8 @@ function renderBarberSlider() {
 
   barberCounter.textContent = `${state.barberSlideIndex + 1} / ${barbers.length}`;
 
-  const isSelected = state.selectedBarberId === barber.id;
-  selectBarberBtn.textContent = isSelected ? "Barber wybrany" : "Wybierz tego barbera";
+  const isSelected = state.selectedBarberId === stylist.id;
+  selectBarberBtn.textContent = isSelected ? "Stylistka wybrana" : "Wybierz tę stylistkę";
   selectBarberBtn.classList.toggle("selected", isSelected);
 }
 
@@ -901,7 +903,7 @@ async function submitBooking() {
   updateNav();
 
   const service = getSelectedService();
-  const barber = getSelectedBarber();
+  const stylist = getSelectedBarber();
 
   const payload = {
     name: state.name.trim(),
@@ -909,8 +911,8 @@ async function submitBooking() {
     serviceName: service?.name || "",
     serviceDuration: service?.duration || "",
     servicePrice: getServicePriceText(service, state.selectedDate, state.selectedTime),
-    barberName: state.barberDecision === "no" ? "" : (barber?.name || ""),
-    barberId: state.barberDecision === "no" ? "auto" : (barber?.id || ""),
+    barberName: state.barberDecision === "no" ? "" : (stylist?.name || ""),
+    barberId: state.barberDecision === "no" ? "auto" : (stylist?.id || ""),
     date: state.selectedDate,
     time: state.selectedTime
   };
@@ -931,7 +933,7 @@ async function submitBooking() {
     }
 
     if (state.barberDecision === "no") {
-      state.resolvedBarberName = data?.resolvedBarberName || "Dobierzemy barbera";
+      state.resolvedBarberName = data?.resolvedBarberName || "Dobierzemy stylistkę";
     }
 
     updateBindings();
