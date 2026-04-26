@@ -314,6 +314,17 @@
       -webkit-backdrop-filter: blur(20px) saturate(135%);
       border-bottom: 1px solid var(--line);
       box-shadow: 0 18px 36px rgba(148, 163, 184, 0.12);
+      transform: translateY(0);
+      transition:
+        transform 260ms cubic-bezier(.2, .8, .2, 1),
+        opacity 260ms cubic-bezier(.2, .8, .2, 1);
+      will-change: transform;
+    }
+
+    .site-header.header-hidden {
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
     }
 
     .desktop-header {
@@ -1643,6 +1654,14 @@
         var(--glass-highlight);
     }
 
+    .social-icon svg,
+    .icon-btn svg,
+    .social-row svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
     .section-button-full {
       width: 100%;
       position: relative;
@@ -1675,38 +1694,38 @@
     }
 
     .booking-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 220;
-  display: none;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 24px;
-  overflow-y: auto;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(219, 234, 254, 0.74), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(239, 246, 255, 0.92));
-  backdrop-filter: blur(22px) saturate(140%);
-  -webkit-backdrop-filter: blur(22px) saturate(140%);
-}
+      position: fixed;
+      inset: 0;
+      z-index: 220;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px;
+      overflow-y: auto;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(219, 234, 254, 0.74), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(239, 246, 255, 0.92));
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+    }
 
     .booking-overlay.open {
       display: flex;
     }
 
     .booking-shell {
-  width: min(1180px, 100%);
-  max-height: calc(100vh - 48px);
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 14px;
-  align-content: start;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  z-index: 2;
-  padding-right: 4px;
-}
+      width: min(1180px, 100%);
+      max-height: calc(100vh - 48px);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+      align-content: start;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 2;
+      padding-right: 4px;
+    }
 
     .booking-topbar {
       display: flex;
@@ -1906,11 +1925,6 @@
         -webkit-backdrop-filter: blur(20px) saturate(140%);
       }
 
-      .top-spacer {
-        width: 52px;
-        height: 52px;
-      }
-
       .icon-btn {
         width: 52px;
         height: 52px;
@@ -2011,21 +2025,6 @@
         gap: 12px;
       }
 
-      .page.active .page-head > *,
-      .page.active .screen-body > *,
-      .page.active .services-list > *,
-      .page.active .visit-grid > *,
-      .page.active .contact-layout > *,
-      .page.active .masters-mobile-list > *,
-      .page.active .gallery-mobile-list > * {
-        animation: rise 0.44s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-      }
-
-      .page-head {
-        display: grid;
-        gap: 8px;
-      }
-
       .kicker {
         width: fit-content;
         min-height: 34px;
@@ -2051,6 +2050,11 @@
         border-radius: 50%;
         background: var(--accent-strong);
         box-shadow: 0 0 14px rgba(37, 99, 235, 0.38);
+      }
+
+      .page-head {
+        display: grid;
+        gap: 8px;
       }
 
       .page-title {
@@ -2515,7 +2519,6 @@
     }
   </style>
 </head>
-
 <body>
   <a href="/index.html" class="portfolio-back">← Wróć do wyboru</a>
 
@@ -2530,7 +2533,6 @@
       <div class="landing-container desktop-header">
         <div class="desktop-left">
           <nav class="desktop-nav">
-            <a href="/index.html">Wybór demo</a>
             <a href="#hero">Start</a>
             <a href="#experience">Rezerwacja</a>
             <a href="#manifest">Studio</a>
@@ -2613,17 +2615,16 @@
         </div>
       </section>
 
-      <section id="experience">
+            <section id="experience">
         <div class="landing-container">
           <div class="section-card reveal">
             <div class="section-wrap">
               <div class="section-head">
                 <div class="section-chip">REZERWACJA</div>
-                <h2>
-                  Umów wizytę <span>bez pisania wiadomości</span>
-                </h2>
+                <h2>Umów wizytę <span>bez pisania wiadomości</span></h2>
                 <p>
-                  Strona nie udaje zwykłej wizytówki. To prosty system, który prowadzi klientkę od decyzji do terminu — z jasną ceną, czasem usługi i przyciskiem rezerwacji zawsze pod ręką.
+                  Strona prowadzi klientkę od decyzji do terminu — z jasną ceną,
+                  czasem usługi i przyciskiem rezerwacji zawsze pod ręką.
                 </p>
               </div>
 
@@ -2668,7 +2669,7 @@
                     <div class="feature-number">1</div>
                     <div>
                       <strong>Oferta bez chaosu</strong>
-                      <p>Klientka od razu widzi usługi, ceny i czas trwania. Nie trzeba tłumaczyć wszystkiego w DM.</p>
+                      <p>Klientka od razu widzi usługi, ceny i czas trwania.</p>
                     </div>
                   </article>
 
@@ -2676,7 +2677,7 @@
                     <div class="feature-number">2</div>
                     <div>
                       <strong>Termin zamiast rozmowy</strong>
-                      <p>Przycisk prowadzi do gotowego booking flow, który już masz. Landing tylko podgrzewa decyzję.</p>
+                      <p>Landing otwiera gotowy booking flow w overlay.</p>
                     </div>
                   </article>
 
@@ -2684,7 +2685,7 @@
                     <div class="feature-number">3</div>
                     <div>
                       <strong>Premium pierwsze wrażenie</strong>
-                      <p>Strona wygląda jak spokojny, nowoczesny salon — nie jak przypadkowa lista usług.</p>
+                      <p>Strona wygląda jak spokojny, nowoczesny salon.</p>
                     </div>
                   </article>
                 </div>
@@ -2709,24 +2710,23 @@
                 <div class="manifest-copy">
                   <div class="section-head">
                     <div class="section-chip">STUDIO</div>
-                    <h2>
-                      Spokojne miejsce, gdzie <span>liczy się detal</span>
-                    </h2>
+                    <h2>Spokojne miejsce, gdzie <span>liczy się detal</span></h2>
                     <p>
-                      LUNA NAIL STUDIO to estetyka czystych dłoni, miękkich kolorów i dokładnej pracy. Bez nadęcia, bez pośpiechu, bez przypadkowych efektów.
+                      LUNA NAIL STUDIO to estetyka czystych dłoni, miękkich kolorów
+                      i dokładnej pracy. Bez nadęcia, pośpiechu i przypadkowych efektów.
                     </p>
                   </div>
 
                   <article class="glass-card manifest-line">
-                    <p><strong>Nie robimy paznokci “na szybko”.</strong> Robimy stylizacje, które dobrze wyglądają w pracy, na zdjęciach i w codziennym życiu.</p>
+                    <p><strong>Nie robimy paznokci “na szybko”.</strong> Robimy stylizacje, które dobrze wyglądają w codziennym życiu.</p>
                   </article>
 
                   <article class="glass-card manifest-line">
-                    <p>Stawiamy na czysty kształt, estetyczną linię światła, delikatne kolory, higienę pracy i komfort podczas całej wizyty.</p>
+                    <p>Stawiamy na czysty kształt, estetyczną linię światła, delikatne kolory i komfort podczas całej wizyty.</p>
                   </article>
 
                   <article class="glass-card manifest-line">
-                    <p>To studio dla osób, które lubią efekt premium, ale bez przesady i przypadkowego chaosu. Ma być lekko, świeżo i dopracowanie.</p>
+                    <p>To studio dla osób, które lubią efekt premium, ale bez przesady i przypadkowego chaosu.</p>
                   </article>
                 </div>
               </div>
@@ -2742,7 +2742,7 @@
               <div class="section-head center">
                 <div class="section-chip">USŁUGI</div>
                 <h2>To nie lista wiadomości. <span>To konkretna oferta.</span></h2>
-                <p>Najczęściej wybierane usługi w LUNA NAIL STUDIO. Ceny i nazwy możesz później podmienić pod realny salon.</p>
+                <p>Najczęściej wybierane usługi w LUNA NAIL STUDIO.</p>
               </div>
 
               <div class="pricing-grid">
@@ -2752,12 +2752,10 @@
                       <strong>Manicure hybrydowy</strong>
                       <span class="pricing-card__price">120 zł</span>
                     </div>
-                    <p>Klasyczna stylizacja z opracowaniem skórek i eleganckim kolorem. Idealna opcja, gdy chcesz czysty efekt bez przesady.</p>
+                    <p>Klasyczna stylizacja z opracowaniem skórek i eleganckim kolorem.</p>
                   </div>
                   <div class="service-tags">
-                    <span>90 min</span>
-                    <span>clean look</span>
-                    <span>hybryda</span>
+                    <span>90 min</span><span>clean look</span><span>hybryda</span>
                   </div>
                 </article>
 
@@ -2767,12 +2765,10 @@
                       <strong>Przedłużanie żelowe</strong>
                       <span class="pricing-card__price">180 zł</span>
                     </div>
-                    <p>Budowa paznokci, kształt i stylizacja dopasowana do dłoni. Dla osób, które chcą mocniejszego, ale nadal eleganckiego efektu.</p>
+                    <p>Budowa paznokci, kształt i stylizacja dopasowana do dłoni.</p>
                   </div>
                   <div class="service-tags">
-                    <span>150 min</span>
-                    <span>żel</span>
-                    <span>premium</span>
+                    <span>150 min</span><span>żel</span><span>premium</span>
                   </div>
                 </article>
 
@@ -2782,12 +2778,10 @@
                       <strong>Zdobienia</strong>
                       <span class="pricing-card__price">+20 zł</span>
                     </div>
-                    <p>Delikatne detale, french, baby boomer lub subtelny akcent. Bez przeładowania — detal ma podbić stylizację, nie ją zabić.</p>
+                    <p>French, baby boomer albo subtelny akcent bez przeładowania.</p>
                   </div>
                   <div class="service-tags">
-                    <span>detail</span>
-                    <span>french</span>
-                    <span>soft art</span>
+                    <span>detail</span><span>french</span><span>soft art</span>
                   </div>
                 </article>
               </div>
@@ -2807,7 +2801,7 @@
               <div class="section-head">
                 <div class="section-chip">STYLISTKI</div>
                 <h2>Wybierz osobę, która rozumie <span>Twój styl</span></h2>
-                <p>Landing może pokazywać zespół, ale sam wybór stylistki zostaje w Twoim gotowym systemie rezerwacji.</p>
+                <p>Landing pokazuje zespół, a sam wybór stylistki zostaje w systemie rezerwacji.</p>
               </div>
 
               <div class="masters-grid">
@@ -2815,39 +2809,27 @@
                   <div class="master-photo">MAJA</div>
                   <div>
                     <h3>Maja</h3>
-                    <p>Delikatne stylizacje, clean manicure i naturalny efekt. Idealna dla osób, które lubią jasne kolory i spokojną estetykę.</p>
+                    <p>Clean manicure, subtelne kolory i naturalny efekt.</p>
                   </div>
-                  <div class="master-tags">
-                    <span>clean look</span>
-                    <span>hybryda</span>
-                    <span>soft colors</span>
-                  </div>
+                  <div class="master-tags"><span>clean look</span><span>hybryda</span><span>soft colors</span></div>
                 </article>
 
                 <article class="glass-card master-card">
                   <div class="master-photo">OLA</div>
                   <div>
                     <h3>Ola</h3>
-                    <p>French, baby boomer i minimalistyczne zdobienia. Lubi dopracowany detal i bardzo czystą linię stylizacji.</p>
+                    <p>French, baby boomer i minimalistyczne zdobienia.</p>
                   </div>
-                  <div class="master-tags">
-                    <span>french</span>
-                    <span>baby boomer</span>
-                    <span>detail</span>
-                  </div>
+                  <div class="master-tags"><span>french</span><span>baby boomer</span><span>detail</span></div>
                 </article>
 
                 <article class="glass-card master-card">
                   <div class="master-photo">NINA</div>
                   <div>
                     <h3>Nina</h3>
-                    <p>Żel, przedłużanie i mocniejsze stylizacje premium. Dla osób, które chcą zauważalnego efektu bez taniego przepychu.</p>
+                    <p>Żel, przedłużanie i mocniejsze stylizacje premium.</p>
                   </div>
-                  <div class="master-tags">
-                    <span>żel</span>
-                    <span>premium shape</span>
-                    <span>extensions</span>
-                  </div>
+                  <div class="master-tags"><span>żel</span><span>premium shape</span><span>extensions</span></div>
                 </article>
               </div>
             </div>
@@ -2862,7 +2844,7 @@
               <div class="section-head center">
                 <div class="section-chip">EFEKT</div>
                 <h2>Estetyka, która wygląda dobrze <span>z bliska</span></h2>
-                <p>Ten blok możesz później zamienić na prawdziwe zdjęcia realizacji. Na razie działa jako premium visual placeholder.</p>
+                <p>Ten blok możesz później zamienić na prawdziwe zdjęcia realizacji.</p>
               </div>
 
               <div class="gallery-grid">
@@ -2884,25 +2866,25 @@
               <div class="section-head">
                 <div class="section-chip">OPINIE</div>
                 <h2>Klientki wracają, gdy efekt jest <span>spokojnie dopracowany</span></h2>
-                <p>Teksty opinii są przykładowe — podmień je później na realne recenzje z Google albo Booksy.</p>
+                <p>Teksty opinii są przykładowe — później podmień na realne recenzje.</p>
               </div>
 
               <div class="reviews-grid">
                 <article class="glass-card review-card">
                   <div class="stars">★★★★★</div>
-                  <p>“Bardzo spokojna atmosfera i dokładna praca. Paznokcie wyglądają świeżo, ale nie są przesadzone.”</p>
+                  <p>“Bardzo spokojna atmosfera i dokładna praca.”</p>
                   <strong>— Julia</strong>
                 </article>
 
                 <article class="glass-card review-card">
                   <div class="stars">★★★★★</div>
-                  <p>“Najbardziej lubię to, że wszystko jest czyste, jasne i bez pośpiechu. Rezerwacja online też mega wygodna.”</p>
+                  <p>“Wszystko czyste, jasne i bez pośpiechu.”</p>
                   <strong>— Natalia</strong>
                 </article>
 
                 <article class="glass-card review-card">
                   <div class="stars">★★★★★</div>
-                  <p>“French wyszedł bardzo równo. W końcu studio, gdzie detal naprawdę ma znaczenie.”</p>
+                  <p>“French wyszedł bardzo równo. Detal ma znaczenie.”</p>
                   <strong>— Karolina</strong>
                 </article>
               </div>
@@ -2930,7 +2912,7 @@
                   </div>
                   <div class="location-copy">
                     <strong>Wrocław, spokojna okolica i szybki dojazd.</strong>
-                    <p>Dokładny adres możesz podmienić w kodzie. Ten blok zostawiłem jako gotowy pod realny salon, z mapą, opisem i przyciskiem do trasy.</p>
+                    <p>Dokładny adres możesz podmienić w kodzie.</p>
                   </div>
                   <button class="btn btn-primary section-button-full" type="button" onclick="openMapsRoute()">Otwórz mapę</button>
                 </article>
@@ -2947,28 +2929,28 @@
               <div class="section-head center">
                 <div class="section-chip">FAQ</div>
                 <h2>Przed wizytą <span>warto wiedzieć</span></h2>
-                <p>Krótka sekcja, która zmniejsza ilość pytań w wiadomościach i domyka decyzję przed rezerwacją.</p>
+                <p>Krótka sekcja, która zmniejsza ilość pytań w wiadomościach.</p>
               </div>
 
               <div class="faq-grid">
                 <article class="glass-card faq-item">
                   <strong>Czy muszę pisać wiadomość?</strong>
-                  <p>Nie. Klikasz rezerwację, wybierasz usługę, termin i przechodzisz przez gotowy booking flow.</p>
+                  <p>Nie. Klikasz rezerwację i przechodzisz przez booking flow.</p>
                 </article>
 
                 <article class="glass-card faq-item">
                   <strong>Czy mogę wybrać stylistkę?</strong>
-                  <p>Tak, jeśli Twój system rezerwacji ma taki krok. Ten landing jest przygotowany pod taki scenariusz.</p>
+                  <p>Tak, jeśli system rezerwacji ma taki krok.</p>
                 </article>
 
                 <article class="glass-card faq-item">
                   <strong>Ile trwa stylizacja?</strong>
-                  <p>Zależy od usługi. Manicure hybrydowy zwykle około 90 minut, a przedłużanie około 150 minut.</p>
+                  <p>Manicure hybrydowy zwykle około 90 minut, przedłużanie około 150 minut.</p>
                 </article>
 
                 <article class="glass-card faq-item">
                   <strong>Czy ceny są finalne?</strong>
-                  <p>Ceny są pokazane jako przykładowe. Możesz podmienić je na realne ceny salonu w sekcji usług.</p>
+                  <p>Ceny są przykładowe. Podmień je pod realny salon.</p>
                 </article>
               </div>
             </div>
@@ -2986,16 +2968,16 @@
 
                   <div class="contact-lead">
                     <strong>Wpadnij do studia LUNA</strong>
-                    <p>Rezerwacje przyjmujemy online. Wybierz termin, a my przygotujemy stanowisko na Twoją stylizację.</p>
+                    <p>Rezerwacje przyjmujemy online. Wybierz termin, a my przygotujemy stanowisko.</p>
                   </div>
 
                   <p class="contact-note">
-                    Ten landing prowadzi do Twojego gotowego booking.html. Możesz zostawić overlay z iframe albo zmienić przycisk tak, żeby przenosił bezpośrednio na osobną stronę rezerwacji.
+                    Ten landing prowadzi do gotowego booking flow w środku strony.
                   </p>
 
                   <div class="social-icons">
-                    <a class="social-icon" href="#" aria-label="Instagram">IG</a>
-                    <a class="social-icon" href="#" aria-label="TikTok">TT</a>
+                    <a class="social-icon" href="#" aria-label="Instagram">◎</a>
+                    <a class="social-icon" href="#" aria-label="TikTok">♪</a>
                     <a class="social-icon" href="tel:+48532377701" aria-label="Telefon">☎</a>
                   </div>
 
@@ -3019,14 +3001,16 @@
       </section>
     </main>
 
-    <button class="btn btn-primary floating-book" id="floatingBook" type="button" data-open-booking>Zarezerwuj wizytę</button>
+    <button class="btn btn-primary floating-book" id="floatingBook" type="button" data-open-booking>
+      Zarezerwuj wizytę
+    </button>
   </div>
 
   <div class="mobile-version" id="mobile-version">
     <header class="app-top">
       <a class="icon-btn" href="/index.html" aria-label="Wróć do wyboru">←</a>
       <div class="logo-pill"><span class="logo-word">LUNA<br />NAIL</span></div>
-      <button class="icon-btn" type="button" data-open-booking aria-label="Otwórz rezerwację">＋</button>
+      <a class="icon-btn" href="tel:+48532377701" aria-label="Zadzwoń">☎</a>
     </header>
 
     <nav class="section-nav" aria-label="Nawigacja mobilna">
@@ -3044,7 +3028,7 @@
         <div class="page-head">
           <div class="kicker">LUNA NAIL STUDIO</div>
           <h1 class="page-title">Lekki manicure. <span class="gold">Czysty efekt.</span></h1>
-          <p class="page-sub">Wybierz usługę, stylistkę i termin online — bez pisania wiadomości.</p>
+          <p class="page-sub">Wybierz usługę, stylistkę i termin online.</p>
         </div>
 
         <div class="screen-body">
@@ -3093,24 +3077,13 @@
         <div class="page-head">
           <div class="kicker">PROCES</div>
           <h2 class="page-title">Bez chaosu. <span class="gold">Po kolei.</span></h2>
-          <p class="page-sub">Tak landing prowadzi klientkę do Twojego gotowego booking.html.</p>
+          <p class="page-sub">Landing prowadzi klientkę do bookingu.</p>
         </div>
 
         <div class="visit-grid">
-          <article class="info-card">
-            <div class="num">1</div>
-            <div><strong>Wybiera usługę</strong><p>Na stronie widzi ofertę i wie, czego się spodziewać.</p></div>
-          </article>
-
-          <article class="info-card">
-            <div class="num">2</div>
-            <div><strong>Klika rezerwację</strong><p>Landing otwiera gotowy booking flow w overlay.</p></div>
-          </article>
-
-          <article class="info-card">
-            <div class="num">3</div>
-            <div><strong>Potwierdza termin</strong><p>Cała logika zostaje w Twoim istniejącym systemie.</p></div>
-          </article>
+          <article class="info-card"><div class="num">1</div><div><strong>Wybiera usługę</strong><p>Widzi ofertę i cenę.</p></div></article>
+          <article class="info-card"><div class="num">2</div><div><strong>Klika rezerwację</strong><p>Otwiera booking flow.</p></div></article>
+          <article class="info-card"><div class="num">3</div><div><strong>Potwierdza termin</strong><p>System zapisuje wizytę.</p></div></article>
         </div>
       </section>
 
@@ -3122,23 +3095,9 @@
         </div>
 
         <div class="masters-mobile-list">
-          <article class="mobile-master-card">
-            <strong>Maja</strong>
-            <p>Clean manicure, subtelne kolory i naturalny efekt.</p>
-            <div class="tags"><span>hybryda</span><span>soft</span></div>
-          </article>
-
-          <article class="mobile-master-card">
-            <strong>Ola</strong>
-            <p>French, baby boomer i delikatne zdobienia.</p>
-            <div class="tags"><span>french</span><span>detail</span></div>
-          </article>
-
-          <article class="mobile-master-card">
-            <strong>Nina</strong>
-            <p>Żel, przedłużanie i mocniejszy efekt premium.</p>
-            <div class="tags"><span>żel</span><span>shape</span></div>
-          </article>
+          <article class="mobile-master-card"><strong>Maja</strong><p>Clean manicure i subtelne kolory.</p><div class="tags"><span>hybryda</span><span>soft</span></div></article>
+          <article class="mobile-master-card"><strong>Ola</strong><p>French, baby boomer i detale.</p><div class="tags"><span>french</span><span>detail</span></div></article>
+          <article class="mobile-master-card"><strong>Nina</strong><p>Żel i przedłużanie premium.</p><div class="tags"><span>żel</span><span>shape</span></div></article>
         </div>
       </section>
 
@@ -3150,9 +3109,9 @@
         </div>
 
         <div class="gallery-mobile-list">
-          <article class="mobile-gallery-card"><strong>Clean manicure</strong><p>Jasny, czysty efekt na co dzień.</p></article>
-          <article class="mobile-gallery-card"><strong>Soft french</strong><p>Delikatna linia i naturalne wykończenie.</p></article>
-          <article class="mobile-gallery-card"><strong>Minimal art</strong><p>Detal, który nie przejmuje całej stylizacji.</p></article>
+          <article class="mobile-gallery-card"><strong>Clean manicure</strong><p>Jasny efekt na co dzień.</p></article>
+          <article class="mobile-gallery-card"><strong>Soft french</strong><p>Naturalne wykończenie.</p></article>
+          <article class="mobile-gallery-card"><strong>Minimal art</strong><p>Detal bez przesady.</p></article>
         </div>
       </section>
 
@@ -3188,7 +3147,7 @@
         <div class="contact-layout">
           <article class="contact-mobile-card">
             <strong>+48 532 377 701</strong>
-            <p>Rezerwacje przez formularz online. Telefon zostawiony jako kontakt do salonu.</p>
+            <p>Rezerwacje przez formularz online.</p>
           </article>
 
           <div class="hours-list">
@@ -3198,9 +3157,9 @@
           </div>
 
           <div class="social-row">
-            <a href="#">IG</a>
-            <a href="#">TT</a>
-            <a href="tel:+48532377701">☎</a>
+            <a href="#" aria-label="Instagram">◎</a>
+            <a href="#" aria-label="TikTok">♪</a>
+            <a href="tel:+48532377701" aria-label="Telefon">☎</a>
           </div>
         </div>
       </section>
@@ -3211,286 +3170,226 @@
     </div>
   </div>
 
- <div class="bottom-cta">
-  <button class="cta-btn" type="button" data-open-booking>
-    Zarezerwuj wizytę online
-  </button>
-</div>
-
   <section class="booking-overlay" id="bookingOverlay" aria-hidden="true">
-  <div class="booking-shell">
-    <div class="booking-topbar">
-      <div class="booking-topbar__left">
-        <div class="booking-logo-text">LUNA<br />NAIL</div>
-
-        <div class="booking-topbar__copy">
-          <span>LUNA NAIL STUDIO</span>
-          <strong>Rezerwacja online</strong>
+    <div class="booking-shell">
+      <div class="booking-topbar">
+        <div class="booking-topbar__left">
+          <div class="booking-logo-text">LUNA<br />NAIL</div>
+          <div class="booking-topbar__copy">
+            <span>LUNA NAIL STUDIO</span>
+            <strong>Rezerwacja online</strong>
+          </div>
         </div>
+
+        <button class="btn booking-close" type="button" onclick="closeBooking()" aria-label="Zamknij booking">×</button>
       </div>
 
-      <button class="btn booking-close" type="button" onclick="closeBooking()" aria-label="Zamknij booking">
-        ×
-      </button>
-    </div>
-
-    <div class="wizard-host">
-      <main class="app-shell">
-        <section class="wizard-frame">
-          <header class="wizard-top">
-            <div class="wizard-top-row">
-              <div class="wizard-top-copy">
-                <div class="eyebrow">LUNA NAIL STUDIO</div>
-                <h1 id="stepTitle">Dane kontaktowe</h1>
-                <p id="stepSubtitle">Wpisz swoje dane, aby rozpocząć rezerwację.</p>
+      <div class="wizard-host">
+        <main class="app-shell">
+          <section class="wizard-frame">
+            <header class="wizard-top">
+              <div class="wizard-top-row">
+                <div class="wizard-top-copy">
+                  <div class="eyebrow">LUNA NAIL STUDIO</div>
+                  <h1 id="stepTitle">Dane kontaktowe</h1>
+                  <p id="stepSubtitle">Wpisz swoje dane, aby rozpocząć rezerwację.</p>
+                </div>
+                <div class="step-pill" id="stepPill">1 / 8</div>
               </div>
 
-              <div class="step-pill" id="stepPill">1 / 8</div>
-            </div>
-
-            <div class="progress-wrap">
-              <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
+              <div class="progress-wrap">
+                <div class="progress-track">
+                  <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">13%</div>
               </div>
-              <div class="progress-text" id="progressText">13%</div>
-            </div>
-          </header>
+            </header>
 
-          <section class="wizard-card">
-            <section class="step active" data-step="1">
-              <div class="step-content narrow">
-                <div class="intro-card">
-                  <div class="intro-top">
-                    <div class="logo-box">
-                      LUNA<br />NAIL
+            <section class="wizard-card">
+              <section class="step active" data-step="1">
+                <div class="step-content narrow">
+                  <div class="intro-card">
+                    <div class="intro-top">
+                      <div class="logo-box">LUNA<br />NAIL</div>
+                      <div class="intro-copy">
+                        <span class="section-kicker">LUNA NAIL STUDIO</span>
+                        <strong>Umów wizytę szybko i wygodnie</strong>
+                      </div>
                     </div>
 
-                    <div class="intro-copy">
-                      <span class="section-kicker">LUNA NAIL STUDIO</span>
-                      <strong>Umów wizytę szybko i wygodnie</strong>
+                    <div class="intro-divider"></div>
+
+                    <div class="card-head">
+                      <h2>Wpisz imię i telefon</h2>
+                      <p>Zostaw swoje dane, a potem wybierz usługę i termin wizyty.</p>
+                    </div>
+
+                    <div class="intro-benefits">
+                      <div class="intro-benefit">Szybko</div>
+                      <div class="intro-benefit">Wygodnie</div>
+                      <div class="intro-benefit">Online</div>
                     </div>
                   </div>
 
-                  <div class="intro-divider"></div>
-
-                  <div class="card-head">
-                    <h2>Wpisz imię i telefon</h2>
-                    <p>Zostaw swoje dane, a potem wybierz usługę i termin wizyty.</p>
-                  </div>
-
-                  <div class="intro-benefits">
-                    <div class="intro-benefit">Szybko</div>
-                    <div class="intro-benefit">Wygodnie</div>
-                    <div class="intro-benefit">Online</div>
-                  </div>
-                </div>
-
-                <label class="field">
-                  <span>Imię</span>
-                  <input id="nameInput" type="text" placeholder="Np. Anna" autocomplete="name" />
-                  <small class="error" id="nameError"></small>
-                </label>
-
-                <label class="field">
-                  <span>Telefon</span>
-                  <input id="phoneInput" type="tel" placeholder="+48 123 456 789" autocomplete="tel" />
-                  <small class="error" id="phoneError"></small>
-                </label>
-              </div>
-            </section>
-
-            <section class="step" data-step="2">
-              <div class="step-content">
-                <div class="card-head">
-                  <h2>Wybór usługi</h2>
-                  <p>Najpierw wybierz kategorię, potem konkretną usługę.</p>
-                </div>
-
-                <div class="accordion-list" id="categoryAccordion"></div>
-              </div>
-            </section>
-
-            <section class="step" data-step="3">
-              <div class="step-content narrow">
-                <div class="card-head">
-                  <h2>Wybrać specjalistkę?</h2>
-                  <p>Możesz wybrać konkretną osobę albo przejść dalej bez wyboru.</p>
-                </div>
-
-                <div class="summary-list">
-                  <div class="summary-row">
+                  <label class="field">
                     <span>Imię</span>
-                    <strong data-bind="name">—</strong>
-                  </div>
-                  <div class="summary-row">
+                    <input id="nameInput" type="text" placeholder="Np. Anna" autocomplete="name" />
+                    <small class="error" id="nameError"></small>
+                  </label>
+
+                  <label class="field">
                     <span>Telefon</span>
-                    <strong data-bind="phone">—</strong>
-                  </div>
-                  <div class="summary-row">
-                    <span>Usługa</span>
-                    <strong data-bind="serviceName">—</strong>
-                  </div>
+                    <input id="phoneInput" type="tel" placeholder="+48 123 456 789" autocomplete="tel" />
+                    <small class="error" id="phoneError"></small>
+                  </label>
                 </div>
+              </section>
 
-                <div class="choice-actions">
-                  <button class="choice-btn choice-btn-strong" id="chooseBarberYes" type="button">Tak</button>
-                  <button class="choice-btn choice-btn-strong" id="chooseBarberNo" type="button">Nie</button>
+              <section class="step" data-step="2">
+                <div class="step-content">
+                  <div class="card-head">
+                    <h2>Wybór usługi</h2>
+                    <p>Najpierw wybierz kategorię, potem konkretną usługę.</p>
+                  </div>
+                  <div class="accordion-list" id="categoryAccordion"></div>
                 </div>
+              </section>
 
-                <div class="barber-skip-box hidden" id="barberSkipBox">
+              <section class="step" data-step="3">
+                <div class="step-content narrow">
+                  <div class="card-head">
+                    <h2>Wybrać specjalistkę?</h2>
+                    <p>Możesz wybrać konkretną osobę albo przejść dalej bez wyboru.</p>
+                  </div>
+
                   <div class="summary-list">
-                    <div class="summary-row">
-                      <span>Specjalistka</span>
-                      <strong>Bez wyboru</strong>
+                    <div class="summary-row"><span>Imię</span><strong data-bind="name">—</strong></div>
+                    <div class="summary-row"><span>Telefon</span><strong data-bind="phone">—</strong></div>
+                    <div class="summary-row"><span>Usługa</span><strong data-bind="serviceName">—</strong></div>
+                  </div>
+
+                  <div class="choice-actions">
+                    <button class="choice-btn choice-btn-strong" id="chooseBarberYes" type="button">Tak</button>
+                    <button class="choice-btn choice-btn-strong" id="chooseBarberNo" type="button">Nie</button>
+                  </div>
+
+                  <div class="barber-skip-box hidden" id="barberSkipBox">
+                    <div class="summary-list">
+                      <div class="summary-row"><span>Specjalistka</span><strong>Bez wyboru</strong></div>
+                      <div class="summary-row"><span>Status</span><strong>System dobierze dostępną osobę</strong></div>
                     </div>
-                    <div class="summary-row">
-                      <span>Status</span>
-                      <strong>System dobierze dostępną osobę</strong>
-                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <section class="step" data-step="4">
-              <div class="step-content narrow">
-                <div class="card-head">
-                  <h2>Wybór specjalistki</h2>
-                  <p>Przeglądaj osoby strzałkami i wybierz konkretną specjalistkę.</p>
-                </div>
-
-                <div class="barber-slider-card">
-                  <div class="barber-slide-photo" id="barberSlidePhoto"></div>
-
-                  <div class="barber-slide-info">
-                    <strong id="barberSlideName">—</strong>
-                    <p id="barberSlideDescription">—</p>
-                    <div class="barber-langs" id="barberSlideLangs"></div>
+              <section class="step" data-step="4">
+                <div class="step-content narrow">
+                  <div class="card-head">
+                    <h2>Wybór specjalistki</h2>
+                    <p>Przeglądaj osoby strzałkami i wybierz konkretną specjalistkę.</p>
                   </div>
 
-                  <div class="barber-slider-controls">
-                    <button class="slider-arrow" id="barberPrevBtn" type="button">←</button>
-                    <div class="slider-counter" id="barberCounter">1 / 3</div>
-                    <button class="slider-arrow" id="barberNextBtn" type="button">→</button>
-                  </div>
-
-                  <button class="select-barber-btn" id="selectBarberBtn" type="button">
-                    Wybierz tę osobę
-                  </button>
-                </div>
-              </div>
-            </section>
-
-            <section class="step" data-step="5">
-              <div class="step-content">
-                <div class="card-head">
-                  <h2>Wybór daty</h2>
-                  <p>Wybierz dogodny dzień wizyty.</p>
-                </div>
-
-                <div class="calendar-box">
-                  <div class="calendar-header">
-                    <button class="calendar-nav-btn" id="calendarPrevBtn" type="button">←</button>
-
-                    <div class="calendar-title-wrap">
-                      <strong id="monthLabel">Miesiąc</strong>
-                      <span id="calendarStatus">Dostępne terminy</span>
+                  <div class="barber-slider-card">
+                    <div class="barber-slide-photo" id="barberSlidePhoto"></div>
+                    <div class="barber-slide-info">
+                      <strong id="barberSlideName">—</strong>
+                      <p id="barberSlideDescription">—</p>
+                      <div class="barber-langs" id="barberSlideLangs"></div>
                     </div>
 
-                    <button class="calendar-nav-btn" id="calendarNextBtn" type="button">→</button>
+                    <div class="barber-slider-controls">
+                      <button class="slider-arrow" id="barberPrevBtn" type="button">←</button>
+                      <div class="slider-counter" id="barberCounter">1 / 3</div>
+                      <button class="slider-arrow" id="barberNextBtn" type="button">→</button>
+                    </div>
+
+                    <button class="select-barber-btn" id="selectBarberBtn" type="button">Wybierz tę osobę</button>
                   </div>
+                </div>
+              </section>
 
-                  <div class="calendar-weekdays">
-                    <span>Pn</span>
-                    <span>Wt</span>
-                    <span>Śr</span>
-                    <span>Cz</span>
-                    <span>Pt</span>
-                    <span>Sb</span>
-                    <span>Nd</span>
+              <section class="step" data-step="5">
+                <div class="step-content">
+                  <div class="card-head"><h2>Wybór daty</h2><p>Wybierz dogodny dzień wizyty.</p></div>
+                  <div class="calendar-box">
+                    <div class="calendar-header">
+                      <button class="calendar-nav-btn" id="calendarPrevBtn" type="button">←</button>
+                      <div class="calendar-title-wrap">
+                        <strong id="monthLabel">Miesiąc</strong>
+                        <span id="calendarStatus">Dostępne terminy</span>
+                      </div>
+                      <button class="calendar-nav-btn" id="calendarNextBtn" type="button">→</button>
+                    </div>
+                    <div class="calendar-weekdays"><span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>Sb</span><span>Nd</span></div>
+                    <div class="calendar-month-grid" id="calendarGrid"></div>
+                    <small class="error" id="dateError"></small>
                   </div>
-
-                  <div class="calendar-month-grid" id="calendarGrid"></div>
-                  <small class="error" id="dateError"></small>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <section class="step" data-step="6">
-              <div class="step-content">
-                <div class="card-head">
-                  <h2>Wybór godziny</h2>
-                  <p>Wybierz dogodną godzinę wizyty.</p>
-                </div>
-
-                <div class="slots-box">
-                  <div class="calendar-top">
-                    <strong>Godziny</strong>
-                    <span id="slotsStatus">Wybierz datę</span>
+              <section class="step" data-step="6">
+                <div class="step-content">
+                  <div class="card-head"><h2>Wybór godziny</h2><p>Wybierz dogodną godzinę wizyty.</p></div>
+                  <div class="slots-box">
+                    <div class="calendar-top"><strong>Godziny</strong><span id="slotsStatus">Wybierz datę</span></div>
+                    <div class="slots-grid" id="slotsGrid"></div>
+                    <small class="error" id="timeError"></small>
                   </div>
-
-                  <div class="slots-grid" id="slotsGrid"></div>
-                  <small class="error" id="timeError"></small>
                 </div>
-              </div>
+              </section>
+
+              <section class="step" data-step="7">
+                <div class="step-content">
+                  <div class="card-head"><h2>Potwierdzenie danych</h2><p>Sprawdź wszystko przed zapisaniem wizyty.</p></div>
+                  <div class="summary-list">
+                    <div class="summary-row"><span>Imię</span><strong data-bind="name">—</strong></div>
+                    <div class="summary-row"><span>Telefon</span><strong data-bind="phone">—</strong></div>
+                    <div class="summary-row"><span>Usługa</span><strong data-bind="serviceName">—</strong></div>
+                    <div class="summary-row"><span>Specjalistka</span><strong data-bind="barberName">—</strong></div>
+                    <div class="summary-row"><span>Data</span><strong data-bind="dateText">—</strong></div>
+                    <div class="summary-row"><span>Godzina</span><strong data-bind="time">—</strong></div>
+                    <div class="summary-row"><span>Czas trwania</span><strong data-bind="serviceDuration">—</strong></div>
+                    <div class="summary-row"><span>Cena</span><strong data-bind="servicePrice">—</strong></div>
+                  </div>
+                  <div class="info-note">Sprawdź dane i potwierdź, aby zapisać wizytę.</div>
+                  <small class="error" id="submitError"></small>
+                </div>
+              </section>
+
+              <section class="step" data-step="8">
+                <div class="step-content narrow center">
+                  <div class="success-icon">✓</div>
+                  <div class="card-head center">
+                    <h2>Rezerwacja zapisana</h2>
+                    <p>Wizyta została pomyślnie dodana do systemu.</p>
+                  </div>
+                  <div class="summary-list">
+                    <div class="summary-row"><span>Usługa</span><strong data-bind="serviceName">—</strong></div>
+                    <div class="summary-row"><span>Specjalistka</span><strong data-bind="barberName">—</strong></div>
+                    <div class="summary-row"><span>Data</span><strong data-bind="dateText">—</strong></div>
+                    <div class="summary-row"><span>Godzina</span><strong data-bind="time">—</strong></div>
+                  </div>
+                </div>
+              </section>
             </section>
 
-            <section class="step" data-step="7">
-              <div class="step-content">
-                <div class="card-head">
-                  <h2>Potwierdzenie danych</h2>
-                  <p>Sprawdź wszystko przed zapisaniem wizyty.</p>
-                </div>
-
-                <div class="summary-list">
-                  <div class="summary-row"><span>Imię</span><strong data-bind="name">—</strong></div>
-                  <div class="summary-row"><span>Telefon</span><strong data-bind="phone">—</strong></div>
-                  <div class="summary-row"><span>Usługa</span><strong data-bind="serviceName">—</strong></div>
-                  <div class="summary-row"><span>Specjalistka</span><strong data-bind="barberName">—</strong></div>
-                  <div class="summary-row"><span>Data</span><strong data-bind="dateText">—</strong></div>
-                  <div class="summary-row"><span>Godzina</span><strong data-bind="time">—</strong></div>
-                  <div class="summary-row"><span>Czas trwania</span><strong data-bind="serviceDuration">—</strong></div>
-                  <div class="summary-row"><span>Cena</span><strong data-bind="servicePrice">—</strong></div>
-                </div>
-
-                <div class="info-note">Sprawdź dane i potwierdź, aby zapisać wizytę.</div>
-                <small class="error" id="submitError"></small>
-              </div>
-            </section>
-
-            <section class="step" data-step="8">
-              <div class="step-content narrow center">
-                <div class="success-icon">✓</div>
-
-                <div class="card-head center">
-                  <h2>Rezerwacja zapisana</h2>
-                  <p>Wizyta została pomyślnie dodana do systemu.</p>
-                </div>
-
-                <div class="summary-list">
-                  <div class="summary-row"><span>Usługa</span><strong data-bind="serviceName">—</strong></div>
-                  <div class="summary-row"><span>Specjalistka</span><strong data-bind="barberName">—</strong></div>
-                  <div class="summary-row"><span>Data</span><strong data-bind="dateText">—</strong></div>
-                  <div class="summary-row"><span>Godzina</span><strong data-bind="time">—</strong></div>
-                </div>
-              </div>
-            </section>
+            <footer class="wizard-nav">
+              <button class="nav-btn" id="backBtn" type="button">Wstecz</button>
+              <button class="nav-btn nav-btn-primary" id="nextBtn" type="button">Dalej</button>
+            </footer>
           </section>
-
-          <footer class="wizard-nav">
-            <button class="nav-btn" id="backBtn" type="button">Wstecz</button>
-            <button class="nav-btn nav-btn-primary" id="nextBtn" type="button">Dalej</button>
-          </footer>
-        </section>
-      </main>
+        </main>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <script>
     const overlay = document.getElementById("bookingOverlay");
     const flash = document.getElementById("screenFlash");
     const floatingBook = document.getElementById("floatingBook");
+    const siteHeader = document.querySelector(".site-header");
+
+    let lastScrollY = window.scrollY;
 
     document.querySelectorAll("[data-open-booking]").forEach(button => {
       button.addEventListener("click", openBooking);
@@ -3532,22 +3431,35 @@
     });
 
     window.addEventListener("scroll", () => {
-      if (!floatingBook) return;
+      const currentY = window.scrollY;
 
-      const show = window.scrollY > 520;
-      floatingBook.classList.toggle("is-visible", show);
+      if (floatingBook) {
+        const show = currentY > 520;
+        floatingBook.classList.toggle("is-visible", show);
 
-      const contact = document.getElementById("contact");
-      if (contact) {
-        const rect = contact.getBoundingClientRect();
-        floatingBook.classList.toggle("hidden-on-contact", rect.top < window.innerHeight * 0.8);
+        const contact = document.getElementById("contact");
+        if (contact) {
+          const rect = contact.getBoundingClientRect();
+          floatingBook.classList.toggle("hidden-on-contact", rect.top < window.innerHeight * 0.8);
+        }
       }
+
+      if (siteHeader && window.innerWidth > 900) {
+        if (currentY > lastScrollY && currentY > 140) {
+          siteHeader.classList.add("header-hidden");
+        } else {
+          siteHeader.classList.remove("header-hidden");
+        }
+      }
+
+      lastScrollY = Math.max(currentY, 0);
     }, { passive: true });
 
     document.addEventListener("keydown", event => {
       if (event.key === "Escape") closeBooking();
     });
   </script>
+
   <script src="./script.js"></script>
 </body>
 </html>
