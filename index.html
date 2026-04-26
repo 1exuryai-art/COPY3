@@ -4093,6 +4093,29 @@
   pointer-events: none !important;
 }
 }
+    @media (min-width: 901px) {
+  html,
+  body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  body.booking-open {
+    overflow: hidden !important;
+  }
+
+  .desktop-version {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+
+  .landing-wrap {
+    overflow: visible !important;
+  }
+}
   </style>
 </head>
 
