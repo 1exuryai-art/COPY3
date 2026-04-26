@@ -5897,23 +5897,27 @@ overlay?.addEventListener("click", (e) => {
     }
 
     function handleDesktopScroll() {
-      if (window.innerWidth <= 900) return;
+  if (window.innerWidth <= 900) {
+    if (siteHeader) siteHeader.classList.remove("header-hidden");
+    ticking = false;
+    return;
+  }
 
-      const currentY = window.scrollY;
+  const currentY = window.scrollY;
 
-      if (siteHeader && window.innerWidth > 900) {
-        const delta = currentY - lastScrollY;
-        const goingDown = delta > 4;
-        const goingUp = delta < -2;
+  if (siteHeader) {
+    const delta = currentY - lastScrollY;
+    const goingDown = delta > 4;
+    const goingUp = delta < -2;
 
-        if (goingDown && currentY > 120) {
-          siteHeader.classList.add("header-hidden");
-        }
+    if (goingDown && currentY > 120) {
+      siteHeader.classList.add("header-hidden");
+    }
 
-        if (goingUp || currentY < 70) {
-          siteHeader.classList.remove("header-hidden");
-        }
-      }
+    if (goingUp || currentY < 70) {
+      siteHeader.classList.remove("header-hidden");
+    }
+  }
 
       lastScrollY = Math.max(currentY, 0);
       ticking = false;
