@@ -12,77 +12,116 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Sora:wght@500;600;700;800;900&display=swap"
     rel="stylesheet"
   />
-
-  <link rel="stylesheet" href="./style.css" />
 
   <style>
     :root {
       --landing-max: 1240px;
 
-      --bg-0: #fff7fb;
-      --bg-1: #fffafd;
-      --bg-2: #f8edf4;
-      --bg-3: #f1deea;
-      --bg-4: #ead1df;
+      --bg-0: #f5f7fb;
+      --bg-1: #f8faff;
+      --bg-2: #eef4ff;
+      --bg-3: #e7eefc;
+      --bg-4: #dde7fb;
 
-      --panel: rgba(255, 255, 255, 0.58);
-      --panel-strong: rgba(255, 255, 255, 0.74);
-      --panel-heavy: rgba(255, 255, 255, 0.9);
+      --panel: rgba(255, 255, 255, 0.78);
+      --panel-strong: rgba(255, 255, 255, 0.9);
+      --panel-heavy: rgba(255, 255, 255, 0.96);
 
-      --line: rgba(93, 41, 70, 0.10);
-      --line-strong: rgba(93, 41, 70, 0.16);
-      --line-soft: rgba(93, 41, 70, 0.055);
-      --line-rose: rgba(218, 116, 165, 0.24);
-      --line-rose-strong: rgba(218, 116, 165, 0.38);
+      --surface: #ffffff;
+      --surface-soft: #fbfdff;
+      --surface-muted: #f8fbff;
+      --surface-accent: #f2f7ff;
+      --surface-deep: #eef4ff;
 
-      --text: #2d1723;
-      --text-strong: #1e0f18;
-      --muted: #8a6478;
-      --soft: #b08ca0;
+      --text: #0f172a;
+      --text-strong: #0b1220;
+      --text-soft: #1e293b;
+      --muted: #64748b;
+      --soft: #94a3b8;
 
-      --rose: #dd76a8;
-      --rose-2: #c45a8e;
-      --rose-3: #f7b8d2;
-      --rose-4: #ffdce9;
-      --cream: #fff8f1;
+      --accent: #2563eb;
+      --accent-strong: #3b82f6;
+      --accent-deep: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --accent-faint: rgba(37, 99, 235, 0.08);
+      --accent-line: rgba(37, 99, 235, 0.16);
+      --accent-line-strong: rgba(37, 99, 235, 0.24);
 
-      --shadow-xl: 0 34px 100px rgba(119, 70, 96, 0.24);
-      --shadow-lg: 0 24px 70px rgba(119, 70, 96, 0.19);
-      --shadow-md: 0 18px 46px rgba(119, 70, 96, 0.15);
-      --shadow-sm: 0 12px 28px rgba(119, 70, 96, 0.11);
+      --line: rgba(15, 23, 42, 0.08);
+      --line-strong: rgba(15, 23, 42, 0.12);
+      --line-soft: rgba(15, 23, 42, 0.05);
+      --line-white: rgba(255, 255, 255, 0.8);
+
+      --hover-glow: rgba(37, 99, 235, 0.12);
+      --hover-glow-strong: rgba(37, 99, 235, 0.18);
+
+      --shadow-ambient: 0 28px 90px rgba(148, 163, 184, 0.18);
+      --shadow-xl: 0 30px 70px rgba(148, 163, 184, 0.18);
+      --shadow-lg: 0 20px 40px rgba(148, 163, 184, 0.14);
+      --shadow-md: 0 14px 28px rgba(148, 163, 184, 0.12);
+      --shadow-sm: 0 10px 18px rgba(148, 163, 184, 0.1);
+      --shadow-xs: 0 6px 12px rgba(148, 163, 184, 0.08);
+
+      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      --glass-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 1);
+      --glass-border: rgba(255, 255, 255, 0.7);
+
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --error: #dc2626;
+      --error-soft: #fee2e2;
+      --warning: #f59e0b;
+      --warning-soft: #fef3c7;
+
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --radius-xs: 10px;
+
+      --transition: 260ms cubic-bezier(.2, .8, .2, 1);
+      --transition-fast: 160ms ease;
+      --transition-slow: 420ms cubic-bezier(.2, .8, .2, 1);
 
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
-
       --desktop-header-h: 92px;
     }
 
-    * { box-sizing: border-box; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
 
     html {
       scroll-behavior: smooth;
-      background: var(--bg-0);
-      height: auto;
-      min-height: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.06), transparent 28%),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.04), transparent 24%),
+        linear-gradient(180deg, #f8fbff 0%, #f5f7fb 100%);
       overflow-x: hidden;
       overflow-y: auto;
     }
 
     body {
-      margin: 0;
-      min-height: 100%;
       font-family: "Manrope", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 0% 0%, rgba(247, 184, 210, 0.54), transparent 25%),
-        radial-gradient(circle at 100% 8%, rgba(255, 220, 233, 0.58), transparent 28%),
-        radial-gradient(circle at 50% 100%, rgba(221, 118, 168, 0.22), transparent 34%),
-        linear-gradient(180deg, #fffafd 0%, #fff7fb 42%, #f8edf4 100%);
+        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.08), transparent 24%),
+        radial-gradient(circle at 100% 0%, rgba(37, 99, 235, 0.05), transparent 20%),
+        radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.04), transparent 30%),
+        linear-gradient(180deg, #f9fbff 0%, #f5f7fb 35%, #f4f7fb 100%);
       overflow-x: hidden;
       overflow-y: auto;
       position: relative;
@@ -99,13 +138,13 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
       background:
-        linear-gradient(rgba(255, 255, 255, 0.68), rgba(255, 248, 252, 0.30)),
-        linear-gradient(rgba(93, 41, 70, 0.026) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(93, 41, 70, 0.026) 1px, transparent 1px);
-      background-size: auto, 34px 34px, 34px 34px;
-      mask-image: radial-gradient(circle at 50% 18%, black 18%, transparent 82%);
+        linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.28)),
+        linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: auto, 32px 32px, 32px 32px;
+      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9), transparent 100%);
+      z-index: 0;
     }
 
     body::after {
@@ -113,16 +152,43 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
       background:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.62), transparent 62%),
-        linear-gradient(120deg, transparent 0 48%, rgba(221, 118, 168, 0.05) 48% 52%, transparent 52% 100%);
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.36), transparent 64%);
+      z-index: 0;
     }
 
-    h1, h2, h3, p { margin: 0; }
-    img { max-width: 100%; display: block; }
-    a, button { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; }
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", sans-serif;
+      color: var(--text-strong);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: rgba(37, 99, 235, 0.14);
+      color: var(--text-strong);
+    }
 
     .desktop-version,
     .mobile-version,
@@ -131,15 +197,20 @@
       z-index: 2;
     }
 
+    .desktop-version {
+      display: block;
+    }
+
+    .mobile-version {
+      display: none;
+    }
+
     .landing-container {
       width: min(var(--landing-max), calc(100% - 28px));
       margin: 0 auto;
       position: relative;
       z-index: 2;
     }
-
-    .desktop-version { display: block; }
-    .mobile-version { display: none; }
 
     .landing-bg-orb,
     .landing-noise,
@@ -152,7 +223,7 @@
       z-index: 1;
       border-radius: 999px;
       filter: blur(90px);
-      opacity: 0.95;
+      opacity: 1;
       animation: orbMove 12s ease-in-out infinite alternate;
     }
 
@@ -161,7 +232,8 @@
       height: 440px;
       left: -160px;
       top: -120px;
-      background: rgba(247, 184, 210, 0.56);
+      background:
+        radial-gradient(circle at center, rgba(59, 130, 246, 0.14), rgba(59, 130, 246, 0.08) 44%, transparent 72%);
     }
 
     .landing-bg-orb.two {
@@ -169,7 +241,8 @@
       height: 520px;
       right: -220px;
       top: 220px;
-      background: rgba(221, 118, 168, 0.26);
+      background:
+        radial-gradient(circle at center, rgba(96, 165, 250, 0.16), rgba(37, 99, 235, 0.06) 42%, transparent 74%);
       animation-delay: -3s;
     }
 
@@ -178,7 +251,8 @@
       height: 500px;
       left: 20%;
       bottom: -260px;
-      background: rgba(255, 220, 233, 0.62);
+      background:
+        radial-gradient(circle at center, rgba(219, 234, 254, 0.72), rgba(191, 219, 254, 0.22) 42%, transparent 72%);
       animation-delay: -6s;
     }
 
@@ -186,10 +260,10 @@
       position: fixed;
       inset: 0;
       z-index: 1;
-      opacity: 0.42;
+      opacity: 0.34;
       background-image:
         radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1px),
-        radial-gradient(circle at 75% 75%, rgba(221, 118, 168, 0.12) 0 1px, transparent 1px);
+        radial-gradient(circle at 75% 75%, rgba(37, 99, 235, 0.08) 0 1px, transparent 1px);
       background-size: 34px 34px, 48px 48px;
       mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
@@ -200,22 +274,45 @@
       z-index: 300;
       opacity: 0;
       background:
-        radial-gradient(circle at center, rgba(247, 184, 210, 0.26), transparent 36%),
+        radial-gradient(circle at center, rgba(59, 130, 246, 0.16), transparent 36%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent 45%);
       transition: opacity 160ms ease;
     }
 
-    .screen-flash.active { opacity: 1; }
+    .screen-flash.active {
+      opacity: 1;
+    }
+
+    .portfolio-back {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 9999;
+      height: 42px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text-strong);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 8px 20px rgba(148, 163, 184, 0.12);
+    }
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 160;
-      background: linear-gradient(180deg, rgba(255, 250, 253, 0.94), rgba(255, 247, 251, 0.78));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.78));
       backdrop-filter: blur(20px) saturate(135%);
       -webkit-backdrop-filter: blur(20px) saturate(135%);
-      border-bottom: 1px solid rgba(93, 41, 70, 0.08);
-      box-shadow: 0 18px 36px rgba(119, 70, 96, 0.12);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 18px 36px rgba(148, 163, 184, 0.12);
     }
 
     .desktop-header {
@@ -234,74 +331,14 @@
       flex: 1;
     }
 
-    .desktop-right { justify-content: flex-end; }
-    .desktop-center { display: flex; justify-content: center; flex-shrink: 0; }
-
-    .desktop-logo,
-    .logo-pill,
-    .mini-logo,
-    .brand-logo-box,
-    .booking-logo-text {
-      position: relative;
-      overflow: hidden;
+    .desktop-right {
+      justify-content: flex-end;
     }
 
-    .desktop-logo {
-      width: 132px;
-      min-height: 58px;
-      display: grid;
-      place-items: center;
-      border-radius: 20px;
-      padding: 8px 12px;
-      border: 1px solid rgba(93, 41, 70, 0.09);
-      background:
-        radial-gradient(circle at top, rgba(247, 184, 210, 0.42), transparent 44%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 251, 0.82));
-      box-shadow:
-        0 16px 34px rgba(119, 70, 96, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.92);
-      text-decoration: none;
-      color: var(--text-strong);
-      animation: logoBreath 5.4s ease-in-out infinite;
-    }
-
-    .brand-logo-img {
-      width: 100%;
-      max-width: 104px;
-      max-height: 44px;
-      object-fit: contain;
-      display: block;
-      position: relative;
-      z-index: 2;
-      filter: drop-shadow(0 10px 20px rgba(119, 70, 96, 0.14));
-    }
-
-    .brand-logo-img[src=""],
-    .brand-logo-img:not([src]) {
-      display: none;
-    }
-
-    .logo-word,
-    .desktop-logo-text,
-    .logo-text {
-      font-family: "Sora", sans-serif;
-      font-weight: 900;
-      letter-spacing: -0.075em;
-      line-height: 0.84;
-      color: var(--text-strong);
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .desktop-logo-text { font-size: 19px; }
-
-    .desktop-logo .desktop-logo-text {
-      display: none;
-    }
-
-    .desktop-logo .brand-logo-img[src=""] + .desktop-logo-text,
-    .desktop-logo .brand-logo-img:not([src]) + .desktop-logo-text {
-      display: block;
+    .desktop-center {
+      display: flex;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .desktop-nav {
@@ -313,7 +350,7 @@
 
     .desktop-nav a {
       position: relative;
-      color: rgba(45, 23, 35, 0.72);
+      color: rgba(15, 23, 42, 0.68);
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
@@ -329,23 +366,65 @@
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--rose-3), var(--rose-2));
+      background: linear-gradient(90deg, var(--accent-strong), var(--accent));
       transition: width 0.22s ease;
     }
 
-    .desktop-nav a:hover { color: var(--text-strong); }
-    .desktop-nav a:hover::after { width: 100%; }
+    .desktop-nav a:hover {
+      color: var(--text-strong);
+    }
+
+    .desktop-nav a:hover::after {
+      width: 100%;
+    }
+
+    .desktop-logo {
+      width: 132px;
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.14), transparent 44%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+      box-shadow:
+        var(--shadow-sm),
+        var(--glass-highlight);
+      text-decoration: none;
+      color: var(--text-strong);
+      animation: logoBreath 5.4s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .desktop-logo-text,
+    .logo-word,
+    .booking-logo-text {
+      font-family: "Sora", sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.075em;
+      line-height: 0.84;
+      color: var(--text-strong);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .desktop-logo-text {
+      font-size: 19px;
+    }
 
     .desktop-call-btn {
       min-height: 46px;
       padding: 0 17px;
       border-radius: 999px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
-      background: rgba(255, 255, 255, 0.58);
-      color: var(--rose-2);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--accent-deep);
       box-shadow:
-        0 14px 28px rgba(119, 70, 96, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        var(--shadow-xs),
+        var(--glass-highlight);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -359,11 +438,11 @@
 
     .desktop-call-btn:hover {
       transform: translateY(-1px);
-      border-color: rgba(221, 118, 168, 0.28);
+      border-color: var(--accent-line-strong);
       box-shadow:
-        0 20px 42px rgba(119, 70, 96, 0.16),
-        0 0 0 4px rgba(221, 118, 168, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 20px 42px rgba(148, 163, 184, 0.16),
+        0 0 0 4px var(--accent-faint),
+        var(--glass-highlight);
     }
 
     .landing-wrap {
@@ -374,25 +453,36 @@
       z-index: 2;
     }
 
-    #hero, #experience, #manifest, #pricing, #location, #contact {
+    #hero,
+    #experience,
+    #manifest,
+    #pricing,
+    #masters,
+    #gallery,
+    #reviews,
+    #location,
+    #faq,
+    #contact {
       scroll-margin-top: 124px;
     }
 
-    .hero-section { min-height: calc(100vh - var(--desktop-header-h) - 20px); }
+    .hero-section {
+      min-height: calc(100vh - var(--desktop-header-h) - 20px);
+    }
 
     .hero-card,
     .section-card {
       border-radius: 36px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38)),
-        radial-gradient(circle at 16% 0%, rgba(247, 184, 210, 0.34), transparent 30%),
-        radial-gradient(circle at 100% 12%, rgba(221, 118, 168, 0.13), transparent 26%),
-        linear-gradient(135deg, #fffefd, #fff3fa 48%, #f8e5f0);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.48)),
+        radial-gradient(circle at 16% 0%, rgba(59, 130, 246, 0.12), transparent 30%),
+        radial-gradient(circle at 100% 12%, rgba(37, 99, 235, 0.07), transparent 26%),
+        linear-gradient(135deg, #ffffff, #f8fbff 48%, #eef4ff);
       box-shadow:
         var(--shadow-xl),
-        inset 0 1px 0 rgba(255, 255, 255, 0.92),
-        inset 0 -1px 0 rgba(93, 41, 70, 0.03);
+        var(--glass-highlight-strong),
+        inset 0 -1px 0 rgba(15, 23, 42, 0.02);
       overflow: hidden;
       position: relative;
       isolation: isolate;
@@ -406,8 +496,8 @@
       pointer-events: none;
       z-index: 0;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.8), transparent 38%),
-        radial-gradient(circle at top, rgba(255, 255, 255, 0.66), transparent 42%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), transparent 38%),
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.72), transparent 42%);
     }
 
     .hero-card::after,
@@ -448,16 +538,16 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(221, 118, 168, 0.20);
-      background: rgba(255, 255, 255, 0.64);
-      color: var(--rose-2);
+      border: 1px solid var(--accent-line);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--accent-deep);
       font-size: 12px;
       font-weight: 900;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       box-shadow:
-        0 12px 26px rgba(119, 70, 96, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.92);
+        var(--shadow-xs),
+        var(--glass-highlight);
       position: relative;
       z-index: 1;
     }
@@ -467,13 +557,11 @@
       width: 9px;
       height: 9px;
       border-radius: 999px;
-      background: var(--rose);
-      box-shadow: 0 0 16px rgba(221, 118, 168, 0.42);
+      background: var(--accent-strong);
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.42);
     }
 
     .hero-title {
-      margin: 0;
-      font-family: "Sora", sans-serif;
       font-size: clamp(52px, 8vw, 104px);
       line-height: 0.92;
       letter-spacing: -0.08em;
@@ -484,12 +572,11 @@
 
     .hero-title span {
       display: inline-block;
-      color: var(--rose-2);
-      text-shadow: 0 18px 50px rgba(221, 118, 168, 0.20);
+      color: var(--accent-deep);
+      text-shadow: 0 18px 50px rgba(37, 99, 235, 0.14);
     }
 
     .hero-sub {
-      margin: 0;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.78;
@@ -518,14 +605,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(93, 41, 70, 0.09);
-      background: rgba(255, 255, 255, 0.64);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
       color: var(--muted);
       font-size: 13px;
       font-weight: 800;
       box-shadow:
-        0 18px 38px rgba(119, 70, 96, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        var(--shadow-xs),
+        var(--glass-highlight);
     }
 
     .trust-pill::before {
@@ -533,8 +620,8 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: var(--rose);
-      box-shadow: 0 0 16px rgba(221, 118, 168, 0.40);
+      background: var(--accent-strong);
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.38);
     }
 
     .hero-side {
@@ -545,13 +632,13 @@
 
     .glass-card {
       border-radius: 28px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.42)),
-        rgba(255, 255, 255, 0.42);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.56)),
+        rgba(255, 255, 255, 0.55);
       box-shadow:
-        0 20px 48px rgba(119, 70, 96, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        var(--shadow-lg),
+        var(--glass-highlight);
       backdrop-filter: blur(14px) saturate(125%);
       -webkit-backdrop-filter: blur(14px) saturate(125%);
       position: relative;
@@ -566,34 +653,16 @@
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.36), transparent 45%);
     }
 
-    .hero-photo {
+    .hero-logo-panel {
       min-height: 440px;
-      overflow: hidden;
+      display: grid;
+      place-items: center;
+      padding: 34px;
       background:
-        radial-gradient(circle at 34% 20%, rgba(255,255,255,.9), transparent 30%),
-        linear-gradient(160deg, #ffeaf3, #f5d4e4 50%, #cfa6ba);
-    }
-
-    .hero-photo::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(45, 23, 35, 0.34)),
-        radial-gradient(circle at 28% 18%, rgba(255, 231, 243, 0.35), transparent 32%),
-        radial-gradient(circle at 62% 42%, rgba(221, 118, 168, 0.22), transparent 38%);
-      pointer-events: none;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-      filter: contrast(1.05) brightness(1.04) saturate(1.08);
-      transform: scale(1.01);
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.9), transparent 34%),
+        radial-gradient(circle at 50% 50%, rgba(219, 234, 254, 0.9), transparent 42%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(239, 246, 255, 0.82));
+      animation: floatSoft 7s ease-in-out infinite;
     }
 
     .image-fallback {
@@ -606,31 +675,9 @@
       font-size: clamp(42px, 6vw, 72px);
       line-height: 0.86;
       letter-spacing: -0.08em;
-      color: rgba(45, 23, 35, 0.16);
+      color: rgba(15, 23, 42, 0.11);
       z-index: 0;
       pointer-events: none;
-    }
-
-    .hero-logo-panel,
-    .manifest-logo-panel {
-      min-height: 440px;
-      display: grid;
-      place-items: center;
-      padding: 34px;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.84), transparent 34%),
-        radial-gradient(circle at 50% 50%, rgba(247, 184, 210, 0.48), transparent 42%),
-        linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(255, 229, 241, 0.58));
-    }
-
-    .hero-logo-panel .brand-logo-img,
-    .manifest-logo-panel .brand-logo-img {
-      max-width: min(340px, 78%);
-      max-height: 250px;
-      object-fit: contain;
-      filter:
-        drop-shadow(0 24px 46px rgba(119, 70, 96, 0.18))
-        drop-shadow(0 0 34px rgba(247, 184, 210, 0.32));
     }
 
     .hero-photo-badge {
@@ -640,18 +687,18 @@
       z-index: 2;
       padding: 12px 16px;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.78);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.7);
-      box-shadow: 0 16px 34px rgba(119, 70, 96, 0.18);
-      max-width: 220px;
+      box-shadow: var(--shadow-sm);
+      max-width: 230px;
       display: grid;
       gap: 8px;
     }
 
     .hero-photo-badge span {
-      color: var(--rose-2);
+      color: var(--accent-deep);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.14em;
@@ -707,75 +754,59 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       text-decoration: none;
       cursor: pointer;
       color: var(--text);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 250, 253, 0.58));
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.72));
       font: inherit;
       font-size: 14px;
       font-weight: 900;
       letter-spacing: 0.03em;
       text-transform: uppercase;
       box-shadow:
-        0 14px 30px rgba(119, 70, 96, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.86);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease, filter 0.2s ease;
+        var(--shadow-sm),
+        var(--glass-highlight);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        filter 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(221, 118, 168, 0.28);
+      border-color: var(--accent-line-strong);
       box-shadow:
-        0 20px 42px rgba(119, 70, 96, 0.16),
-        0 0 0 4px rgba(221, 118, 168, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 20px 42px rgba(148, 163, 184, 0.16),
+        0 0 0 4px var(--accent-faint),
+        var(--glass-highlight);
     }
 
     .btn-primary {
-      color: #321521;
-      border-color: rgba(221, 118, 168, 0.34);
-      background: linear-gradient(180deg, var(--rose-3), var(--rose));
+      color: #ffffff;
+      border-color: rgba(37, 99, 235, 0.18);
+      background:
+        linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
       box-shadow:
-        0 18px 38px rgba(221, 118, 168, 0.24),
-        0 0 30px rgba(247, 184, 210, 0.20),
-        inset 0 1px 0 rgba(255, 255, 255, 0.48);
+        0 16px 30px rgba(37, 99, 235, 0.22),
+        0 0 0 1px rgba(37, 99, 235, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
     }
 
     .btn-primary:hover {
-      filter: brightness(1.03) saturate(1.03);
+      filter: brightness(1.03) saturate(1.02);
       box-shadow:
-        0 22px 44px rgba(221, 118, 168, 0.30),
-        0 0 0 5px rgba(221, 118, 168, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.52);
+        0 18px 34px rgba(37, 99, 235, 0.26),
+        0 0 0 4px rgba(37, 99, 235, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
 
     .btn-ghost {
-      color: var(--rose-2);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 247, 251, 0.52));
+      color: var(--accent-deep);
     }
-
-    .btn-back-home {
-      color: var(--rose-2);
-      min-height: 52px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
-      background: rgba(255, 255, 255, 0.64);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      box-shadow:
-        0 14px 28px rgba(119, 70, 96, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.86);
-    }
-
-    .section { padding: 0; }
 
     .section-wrap {
       padding: 28px;
@@ -788,6 +819,8 @@
       gap: 11px;
       max-width: 880px;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
     }
 
     .section-head.center {
@@ -798,20 +831,22 @@
     }
 
     .section-head h2 {
-      margin: 0;
-      font-family: "Sora", sans-serif;
       font-size: clamp(34px, 5vw, 68px);
       line-height: 0.97;
       letter-spacing: -0.065em;
-      color: var(--text-strong);
       max-width: 13ch;
       text-wrap: balance;
     }
 
-    .section-head.center h2 { max-width: 16ch; }
+    .section-head h2 span {
+      color: var(--accent-deep);
+    }
+
+    .section-head.center h2 {
+      max-width: 16ch;
+    }
 
     .section-head p {
-      margin: 0;
       color: var(--muted);
       line-height: 1.75;
       font-size: 16px;
@@ -820,23 +855,18 @@
 
     .experience-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 16px;
       align-items: stretch;
+      position: relative;
+      z-index: 1;
     }
 
-    .experience-showcase {
-      min-height: 520px;
+    .showcase-phone-wrap {
+      min-height: 560px;
       padding: 22px;
       display: grid;
-      align-content: end;
-      border-color: rgba(93, 41, 70, 0.10);
-      background:
-        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.34), transparent 30%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.44));
-      box-shadow:
-        0 24px 60px rgba(119, 70, 96, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      place-items: center;
     }
 
     .showcase-phone {
@@ -844,27 +874,26 @@
       margin: 0 auto;
       border-radius: 38px;
       padding: 12px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       background:
-        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.30), transparent 30%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(239, 246, 255, 0.72));
       box-shadow:
-        0 24px 60px rgba(119, 70, 96, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        var(--shadow-lg),
+        var(--glass-highlight);
       transform: rotate(-2deg);
     }
 
     .showcase-screen {
       border-radius: 30px;
-      min-height: 500px;
+      min-height: 510px;
       overflow: hidden;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       background:
-        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.28), transparent 30%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58));
+        radial-gradient(circle at 20% 0%, rgba(59, 130, 246, 0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.82));
       box-shadow:
-        0 24px 60px rgba(119, 70, 96, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.88);
+        var(--shadow-lg),
+        var(--glass-highlight);
       padding: 18px;
       display: grid;
       align-content: start;
@@ -886,18 +915,13 @@
       display: grid;
       place-items: center;
       background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(93, 41, 70, 0.08);
-      box-shadow: 0 12px 24px rgba(119, 70, 96, 0.10);
-      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-xs);
       font-family: "Sora", sans-serif;
-      color: var(--rose-2);
+      color: var(--accent-deep);
       font-weight: 900;
       letter-spacing: -0.08em;
-    }
-
-    .mini-logo .brand-logo-img {
-      max-width: 38px;
-      max-height: 38px;
+      overflow: hidden;
     }
 
     .mini-pill {
@@ -906,9 +930,9 @@
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
-      color: var(--rose-2);
-      background: rgba(247, 184, 210, 0.30);
-      border: 1px solid rgba(221, 118, 168, 0.18);
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
       font-size: 11px;
       font-weight: 900;
     }
@@ -925,11 +949,11 @@
     .mini-card {
       min-height: 68px;
       border-radius: 18px;
-      border: 1px solid rgba(93, 41, 70, 0.09);
-      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
       box-shadow:
-        0 18px 38px rgba(119, 70, 96, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        var(--shadow-xs),
+        var(--glass-highlight);
       padding: 12px;
       display: flex;
       align-items: center;
@@ -953,18 +977,15 @@
     .mini-cta {
       min-height: 56px;
       border-radius: 18px;
-      background: linear-gradient(180deg, var(--rose-3), var(--rose));
-      color: #321521;
+      background: linear-gradient(180deg, #3b82f6, #2563eb);
+      color: #fff;
       display: grid;
       place-items: center;
       font-size: 13px;
       font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      box-shadow:
-        0 18px 38px rgba(221, 118, 168, 0.24),
-        0 0 30px rgba(247, 184, 210, 0.20),
-        inset 0 1px 0 rgba(255, 255, 255, 0.46);
+      box-shadow: 0 18px 38px rgba(37, 99, 235, 0.22);
     }
 
     .experience-stack {
@@ -974,7 +995,7 @@
 
     .feature-card {
       padding: 22px;
-      min-height: 160px;
+      min-height: 170px;
       display: grid;
       align-content: space-between;
       gap: 14px;
@@ -983,11 +1004,11 @@
 
     .feature-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(221, 118, 168, 0.28);
+      border-color: var(--accent-line-strong);
       box-shadow:
-        0 20px 42px rgba(119, 70, 96, 0.16),
-        0 0 0 4px rgba(221, 118, 168, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 20px 42px rgba(148, 163, 184, 0.16),
+        0 0 0 4px var(--accent-faint),
+        var(--glass-highlight);
     }
 
     .feature-number {
@@ -996,12 +1017,9 @@
       border-radius: 16px;
       display: grid;
       place-items: center;
-      color: #321521;
-      background: linear-gradient(180deg, var(--rose-3), var(--rose));
-      box-shadow:
-        0 18px 38px rgba(221, 118, 168, 0.22),
-        0 0 30px rgba(247, 184, 210, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.46);
+      color: #fff;
+      background: linear-gradient(180deg, #3b82f6, #2563eb);
+      box-shadow: 0 18px 38px rgba(37, 99, 235, 0.2);
       font-weight: 900;
       position: relative;
       z-index: 1;
@@ -1020,7 +1038,6 @@
     }
 
     .feature-card p {
-      margin: 0;
       color: var(--muted);
       line-height: 1.65;
       font-size: 15px;
@@ -1028,29 +1045,22 @@
       z-index: 1;
     }
 
-        .manifest-grid {
+    .manifest-grid {
       display: grid;
       grid-template-columns: 0.72fr 1.28fr;
       gap: 18px;
-    }
-
-    .manifest-vertical {
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-color: rgba(93, 41, 70, 0.10);
-      background:
-        radial-gradient(circle at 50% 12%, rgba(247, 184, 210, 0.34), transparent 30%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 247, 251, 0.52));
-      box-shadow:
-        0 24px 60px rgba(119, 70, 96, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.88);
+      position: relative;
+      z-index: 1;
     }
 
     .manifest-logo-panel {
       min-height: 560px;
+      display: grid;
+      place-items: center;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(219, 234, 254, 0.82), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(239, 246, 255, 0.72));
     }
 
     .manifest-logo-mark {
@@ -1068,7 +1078,7 @@
       line-height: 0.82;
       letter-spacing: -0.09em;
       color: var(--text-strong);
-      text-shadow: 0 20px 60px rgba(221, 118, 168, 0.18);
+      text-shadow: 0 20px 60px rgba(37, 99, 235, 0.12);
     }
 
     .manifest-logo-mark span:last-child {
@@ -1077,7 +1087,7 @@
       font-weight: 900;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--rose-2);
+      color: var(--accent-deep);
       text-align: center;
     }
 
@@ -1091,7 +1101,6 @@
     }
 
     .manifest-line p {
-      margin: 0;
       color: var(--muted);
       font-size: 16px;
       line-height: 1.82;
@@ -1100,18 +1109,20 @@
     }
 
     .manifest-line strong {
-      color: var(--rose-2);
+      color: var(--accent-deep);
     }
 
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .pricing-card {
       padding: 24px;
-      min-height: 330px;
+      min-height: 350px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1121,11 +1132,11 @@
 
     .pricing-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(221, 118, 168, 0.28);
+      border-color: var(--accent-line-strong);
       box-shadow:
-        0 20px 42px rgba(119, 70, 96, 0.16),
-        0 0 0 4px rgba(221, 118, 168, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 20px 42px rgba(148, 163, 184, 0.16),
+        0 0 0 4px var(--accent-faint),
+        var(--glass-highlight);
     }
 
     .pricing-card__top {
@@ -1149,13 +1160,12 @@
     .pricing-card__price {
       font-family: "Sora", sans-serif;
       font-size: 18px;
-      color: var(--rose-2);
+      color: var(--accent-deep);
       font-weight: 800;
       white-space: nowrap;
     }
 
     .pricing-card p {
-      margin: 0;
       color: var(--muted);
       line-height: 1.75;
       font-size: 15px;
@@ -1178,18 +1188,199 @@
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
-      background: rgba(247, 184, 210, 0.28);
-      border: 1px solid rgba(221, 118, 168, 0.18);
-      color: var(--rose-2);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+      color: var(--accent-deep);
       font-size: 12px;
       font-weight: 900;
     }
 
-    .location-grid {
+    .masters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .master-card {
+      min-height: 430px;
+      padding: 18px;
+      display: grid;
+      align-content: space-between;
+      gap: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .master-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-line-strong);
+      box-shadow:
+        0 20px 42px rgba(148, 163, 184, 0.16),
+        0 0 0 4px var(--accent-faint),
+        var(--glass-highlight);
+    }
+
+    .master-photo {
+      min-height: 220px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 32% 16%, rgba(255, 255, 255, 0.92), transparent 28%),
+        radial-gradient(circle at 66% 74%, rgba(59, 130, 246, 0.14), transparent 34%),
+        linear-gradient(160deg, #ffffff, #eef4ff);
+      display: grid;
+      place-items: center;
+      font-family: "Sora", sans-serif;
+      font-size: 38px;
+      letter-spacing: -0.08em;
+      line-height: 0.86;
+      color: rgba(15, 23, 42, 0.16);
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-xs), var(--glass-highlight);
+      overflow: hidden;
+    }
+
+    .master-card h3 {
+      font-size: 28px;
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .master-card p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .master-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .master-tags span {
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      grid-auto-rows: 220px;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery-tile {
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.96), transparent 28%),
+        radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.12), transparent 32%),
+        linear-gradient(135deg, #ffffff, #eef4ff);
+      box-shadow: var(--shadow-sm), var(--glass-highlight);
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      align-content: end;
+      padding: 18px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .gallery-tile:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-line-strong);
+    }
+
+    .gallery-tile.large {
+      grid-row: span 2;
+    }
+
+    .gallery-tile.wide {
+      grid-column: span 2;
+    }
+
+    .gallery-tile span {
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+      min-height: 34px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      color: var(--accent-deep);
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: var(--glass-highlight);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .review-card {
+      min-height: 290px;
+      padding: 22px;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+    }
+
+    .review-card p {
+      color: var(--muted);
+      line-height: 1.78;
+      font-size: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .review-card strong {
+      color: var(--text-strong);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stars {
+      color: var(--accent-deep);
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .location-grid,
+    .contact-grid {
       display: grid;
       grid-template-columns: 1.06fr 0.94fr;
       gap: 16px;
       align-items: stretch;
+      position: relative;
+      z-index: 1;
     }
 
     .location-map {
@@ -1203,7 +1394,7 @@
       height: 100%;
       border: 0;
       display: block;
-      filter: grayscale(0.18) contrast(1.02) brightness(1.06) saturate(0.78);
+      filter: grayscale(0.12) contrast(1.02) brightness(1.06) saturate(0.82);
       opacity: 0.96;
     }
 
@@ -1212,12 +1403,14 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 247, 251, 0.18)),
-        radial-gradient(circle at center, transparent 42%, rgba(221, 118, 168, 0.08) 100%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(239, 246, 255, 0.18)),
+        radial-gradient(circle at center, transparent 42%, rgba(37, 99, 235, 0.08) 100%);
       pointer-events: none;
     }
 
-    .location-side {
+    .location-side,
+    .contact-card,
+    .status-card {
       padding: 22px;
       display: grid;
       gap: 18px;
@@ -1228,16 +1421,16 @@
       min-height: 280px;
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       display: grid;
       place-items: center;
       position: relative;
       background:
-        radial-gradient(circle at 50% 28%, rgba(247, 184, 210, 0.36), transparent 34%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.56));
+        radial-gradient(circle at 50% 28%, rgba(219, 234, 254, 0.72), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(239, 246, 255, 0.72));
       box-shadow:
-        0 24px 60px rgba(119, 70, 96, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.88);
+        var(--shadow-md),
+        var(--glass-highlight);
     }
 
     .location-preview__inner {
@@ -1247,12 +1440,6 @@
       gap: 10px;
       justify-items: center;
       text-align: center;
-    }
-
-    .location-preview__inner .brand-logo-img {
-      max-width: 220px;
-      max-height: 160px;
-      object-fit: contain;
     }
 
     .location-preview__inner strong {
@@ -1278,32 +1465,52 @@
       z-index: 1;
     }
 
-    .location-copy strong {
+    .location-copy strong,
+    .contact-lead strong {
       font-family: "Sora", sans-serif;
       font-size: 30px;
       line-height: 0.98;
       letter-spacing: -0.06em;
       color: var(--text-strong);
-      max-width: 14ch;
     }
 
-    .location-copy p {
-      margin: 0;
+    .location-copy p,
+    .contact-lead p,
+    .contact-note {
       color: var(--muted);
       line-height: 1.78;
       font-size: 15px;
     }
 
-    .contact-grid {
+    .faq-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 16px;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
     }
 
-    .contact-card,
-    .status-card {
+    .faq-item {
       padding: 22px;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      color: var(--text-strong);
+      font-size: 22px;
+      letter-spacing: -0.055em;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      line-height: 1.74;
+      font-size: 15px;
+      position: relative;
+      z-index: 1;
     }
 
     .contact-card {
@@ -1314,44 +1521,19 @@
     .contact-lead {
       padding: 20px;
       border-radius: 24px;
-      border: 1px solid rgba(221, 118, 168, 0.18);
+      border: 1px solid var(--accent-line);
       background:
-        radial-gradient(circle at top left, rgba(247, 184, 210, 0.34), transparent 32%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        radial-gradient(circle at top left, rgba(219, 234, 254, 0.72), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(239, 246, 255, 0.68));
+      box-shadow: var(--glass-highlight);
       position: relative;
       z-index: 1;
     }
 
     .contact-lead strong {
       display: block;
-      font-family: "Sora", sans-serif;
-      color: var(--text-strong);
       font-size: 28px;
-      line-height: 1;
-      letter-spacing: -0.06em;
       margin-bottom: 10px;
-    }
-
-    .contact-lead p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    .contact-note {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      position: relative;
-      z-index: 1;
-    }
-
-    .status-card {
-      display: grid;
-      gap: 16px;
-      align-content: start;
     }
 
     .status-pill {
@@ -1362,15 +1544,15 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
-      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
       font-size: 13px;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       box-shadow:
-        0 18px 38px rgba(119, 70, 96, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        var(--shadow-xs),
+        var(--glass-highlight);
       position: relative;
       z-index: 1;
     }
@@ -1384,8 +1566,13 @@
       box-shadow: 0 0 14px currentColor;
     }
 
-    .status-pill.open { color: #16a34a; }
-    .status-pill.closed { color: #dc5a79; }
+    .status-pill.open {
+      color: #16a34a;
+    }
+
+    .status-pill.closed {
+      color: #dc2626;
+    }
 
     .status-list {
       list-style: none;
@@ -1401,65 +1588,58 @@
       min-height: 56px;
       padding: 0 16px;
       border-radius: 18px;
-      border: 1px solid rgba(93, 41, 70, 0.09);
+      border: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.68);
+      background: rgba(255, 255, 255, 0.72);
       color: var(--muted);
       font-size: 14px;
       font-weight: 800;
       box-shadow:
-        0 18px 38px rgba(119, 70, 96, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        var(--shadow-xs),
+        var(--glass-highlight);
     }
 
     .status-list strong {
       color: var(--text-strong);
     }
 
-    .social-icons,
-    .social-row {
-      position: relative;
-      z-index: 1;
-    }
-
     .social-icons {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .social-icon {
       width: 56px;
       height: 56px;
       border-radius: 18px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
-      color: var(--rose-2);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.72));
+      color: var(--accent-deep);
       text-decoration: none;
+      font-weight: 900;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       box-shadow:
-        0 14px 28px rgba(119, 70, 96, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        var(--shadow-xs),
+        var(--glass-highlight);
     }
 
     .social-icon:hover {
       transform: translateY(-2px);
-      border-color: rgba(221, 118, 168, 0.28);
+      border-color: var(--accent-line-strong);
       box-shadow:
-        0 20px 42px rgba(119, 70, 96, 0.16),
-        0 0 0 4px rgba(221, 118, 168, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    }
-
-    .social-icon svg {
-      width: 22px;
-      height: 22px;
+        0 20px 42px rgba(148, 163, 184, 0.16),
+        0 0 0 4px var(--accent-faint),
+        var(--glass-highlight);
     }
 
     .section-button-full {
@@ -1502,8 +1682,8 @@
       justify-content: center;
       padding: 24px;
       background:
-        radial-gradient(circle at 20% 0%, rgba(247, 184, 210, 0.36), transparent 34%),
-        linear-gradient(180deg, rgba(255, 250, 253, 0.78), rgba(248, 237, 244, 0.92));
+        radial-gradient(circle at 20% 0%, rgba(219, 234, 254, 0.74), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(239, 246, 255, 0.92));
       backdrop-filter: blur(22px) saturate(140%);
       -webkit-backdrop-filter: blur(22px) saturate(140%);
     }
@@ -1515,10 +1695,10 @@
     .booking-shell {
       width: min(1180px, 100%);
       display: grid;
+      grid-template-rows: auto 1fr;
       gap: 14px;
       align-content: start;
-      overflow: auto;
-      padding-right: 4px;
+      overflow: hidden;
       position: relative;
       z-index: 2;
     }
@@ -1530,13 +1710,13 @@
       gap: 14px;
       padding: 14px;
       border-radius: 28px;
-      border: 1px solid rgba(93, 41, 70, 0.10);
+      border: 1px solid var(--line);
       background:
-        radial-gradient(circle at 18% 0%, rgba(247, 184, 210, 0.34), transparent 30%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 247, 251, 0.58));
+        radial-gradient(circle at 18% 0%, rgba(219, 234, 254, 0.72), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.72));
       box-shadow:
-        0 24px 60px rgba(119, 70, 96, 0.14),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        var(--shadow-lg),
+        var(--glass-highlight);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
@@ -1554,18 +1734,10 @@
       display: grid;
       place-items: center;
       padding: 0 12px;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(93, 41, 70, 0.08);
-      font-family: "Sora", sans-serif;
-      font-weight: 900;
-      letter-spacing: -0.07em;
-      color: var(--rose-2);
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      color: var(--accent-deep);
       text-align: center;
-    }
-
-    .booking-logo-text .brand-logo-img {
-      max-width: 66px;
-      max-height: 38px;
     }
 
     .booking-topbar__copy {
@@ -1574,7 +1746,7 @@
     }
 
     .booking-topbar__copy span {
-      color: var(--rose-2);
+      color: var(--accent-deep);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -1599,15 +1771,24 @@
       line-height: 1;
     }
 
-    .wizard-host .app-shell {
-      min-height: auto;
-      padding: 0;
-      place-items: center;
+    .booking-frame-wrap {
+      min-height: 0;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow:
+        var(--shadow-xl),
+        var(--glass-highlight);
     }
 
-    .wizard-host .wizard-frame {
-      max-width: 960px;
-      margin: 0 auto;
+    .booking-frame {
+      width: 100%;
+      height: 100%;
+      min-height: calc(100vh - 150px);
+      border: 0;
+      display: block;
+      background: #fff;
     }
 
     @keyframes floatSoft {
@@ -1633,15 +1814,14 @@
     @keyframes logoBreath {
       0%, 100% {
         box-shadow:
-          0 14px 34px rgba(119, 70, 96, 0.12),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          var(--shadow-sm),
+          var(--glass-highlight);
       }
-
       50% {
         box-shadow:
-          0 18px 44px rgba(221, 118, 168, 0.20),
-          0 0 28px rgba(247, 184, 210, 0.24),
-          inset 0 1px 0 rgba(255, 255, 255, 0.94);
+          0 18px 44px rgba(37, 99, 235, 0.14),
+          0 0 28px rgba(59, 130, 246, 0.14),
+          var(--glass-highlight);
       }
     }
 
@@ -1654,35 +1834,50 @@
       animation: fadeUp 680ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
 
-    .hero-side .hero-photo,
-    .hero-side .hero-logo-panel {
-      animation: floatSoft 7s ease-in-out infinite;
-    }
-
     @media (max-width: 1120px) {
       .hero-grid,
       .experience-grid,
       .manifest-grid,
       .pricing-grid,
+      .masters-grid,
+      .reviews-grid,
       .location-grid,
-      .contact-grid {
+      .contact-grid,
+      .faq-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-grid { min-height: auto; }
-      .manifest-vertical,
-      .manifest-logo-panel { min-height: 280px; }
-      .location-copy strong { max-width: none; }
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .manifest-logo-panel {
+        min-height: 280px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-tile.wide {
+        grid-column: span 1;
+      }
     }
 
-        @media (max-width: 900px) {
-      html, body {
+    @media (max-width: 900px) {
+      html,
+      body {
         height: 100%;
         overflow: hidden;
       }
 
-      .desktop-version { display: none !important; }
-      .mobile-version { display: grid !important; }
+      .desktop-version {
+        display: none !important;
+      }
+
+      .mobile-version {
+        display: grid !important;
+      }
 
       .mobile-version {
         position: relative;
@@ -1700,13 +1895,16 @@
         grid-template-columns: 52px 1fr 52px;
         align-items: center;
         gap: 10px;
-        border-bottom: 1px solid rgba(93, 41, 70, 0.08);
-        background: linear-gradient(180deg, rgba(255, 250, 253, 0.92), rgba(255, 247, 251, 0.72));
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.72));
         backdrop-filter: blur(20px) saturate(140%);
         -webkit-backdrop-filter: blur(20px) saturate(140%);
       }
 
-      .top-spacer { width: 52px; height: 52px; }
+      .top-spacer {
+        width: 52px;
+        height: 52px;
+      }
 
       .icon-btn {
         width: 52px;
@@ -1715,9 +1913,9 @@
         border-radius: 18px;
         display: grid;
         place-items: center;
-        color: var(--rose-2);
-        background: rgba(255, 255, 255, 0.62);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        color: var(--accent-deep);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: var(--glass-highlight);
         text-decoration: none;
         font: inherit;
         transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
@@ -1725,11 +1923,9 @@
 
       .icon-btn:active {
         transform: scale(0.94);
-        border-color: rgba(221, 118, 168, 0.34);
-        background: rgba(247, 184, 210, 0.20);
+        border-color: var(--accent-line-strong);
+        background: rgba(219, 234, 254, 0.44);
       }
-
-      .icon-btn svg { width: 22px; height: 22px; }
 
       .logo-pill {
         height: 58px;
@@ -1740,17 +1936,12 @@
         display: grid;
         place-items: center;
         background:
-          radial-gradient(circle at 50% 0%, rgba(247, 184, 210, 0.46), transparent 46%),
-          rgba(255, 255, 255, 0.64);
+          radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.16), transparent 46%),
+          rgba(255, 255, 255, 0.72);
         box-shadow:
-          0 14px 34px rgba(119, 70, 96, 0.12),
-          inset 0 1px 0 rgba(255, 255, 255, 0.88);
+          var(--shadow-sm),
+          var(--glass-highlight);
         animation: logoBreath 4.6s ease-in-out infinite;
-      }
-
-      .logo-pill .brand-logo-img {
-        max-width: 112px;
-        max-height: 42px;
       }
 
       .logo-pill .logo-word {
@@ -1763,13 +1954,15 @@
         overflow-x: auto;
         padding: 10px 12px;
         scrollbar-width: none;
-        border-bottom: 1px solid rgba(93, 41, 70, 0.08);
-        background: rgba(255, 250, 253, 0.72);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
       }
 
-      .section-nav::-webkit-scrollbar { display: none; }
+      .section-nav::-webkit-scrollbar {
+        display: none;
+      }
 
       .nav-chip {
         flex: 0 0 auto;
@@ -1777,22 +1970,19 @@
         padding: 0 15px;
         border: 1px solid var(--line);
         border-radius: 999px;
-        color: rgba(45, 23, 35, 0.72);
-        background: rgba(255, 255, 255, 0.58);
+        color: rgba(15, 23, 42, 0.72);
+        background: rgba(255, 255, 255, 0.68);
         font: inherit;
         font-size: 13px;
         font-weight: 900;
         letter-spacing: -0.02em;
-        transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .nav-chip:active { transform: scale(0.94); }
-
       .nav-chip.active {
-        color: #321521;
-        background: linear-gradient(180deg, var(--rose-3), var(--rose));
-        border-color: rgba(221, 118, 168, 0.34);
-        box-shadow: 0 12px 28px rgba(221, 118, 168, 0.22);
+        color: #fff;
+        background: linear-gradient(180deg, #3b82f6, #2563eb);
+        border-color: rgba(37, 99, 235, 0.22);
+        box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
       }
 
       .pages {
@@ -1820,12 +2010,11 @@
       .page.active .screen-body > *,
       .page.active .services-list > *,
       .page.active .visit-grid > *,
-      .page.active .contact-layout > * {
+      .page.active .contact-layout > *,
+      .page.active .masters-mobile-list > *,
+      .page.active .gallery-mobile-list > * {
         animation: rise 0.44s cubic-bezier(0.2, 0.8, 0.2, 1) both;
       }
-
-      .page.active .page-head > *:nth-child(2) { animation-delay: 0.04s; }
-      .page.active .page-head > *:nth-child(3) { animation-delay: 0.08s; }
 
       .page-head {
         display: grid;
@@ -1837,9 +2026,9 @@
         min-height: 34px;
         padding: 0 12px;
         border-radius: 999px;
-        border: 1px solid rgba(221, 118, 168, 0.22);
-        background: rgba(255, 255, 255, 0.62);
-        color: var(--rose-2);
+        border: 1px solid var(--accent-line);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--accent-deep);
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -1847,7 +2036,7 @@
         font-weight: 900;
         letter-spacing: 0.13em;
         text-transform: uppercase;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        box-shadow: var(--glass-highlight);
       }
 
       .kicker::before {
@@ -1855,8 +2044,8 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: var(--rose);
-        box-shadow: 0 0 14px rgba(221, 118, 168, 0.42);
+        background: var(--accent-strong);
+        box-shadow: 0 0 14px rgba(37, 99, 235, 0.38);
       }
 
       .page-title {
@@ -1869,9 +2058,9 @@
       }
 
       .page-title .gold {
-        color: var(--rose-2);
+        color: var(--accent-deep);
         display: inline-block;
-        text-shadow: 0 16px 42px rgba(221, 118, 168, 0.18);
+        text-shadow: 0 16px 42px rgba(37, 99, 235, 0.14);
       }
 
       .page-sub {
@@ -1896,32 +2085,19 @@
         position: relative;
         background:
           radial-gradient(circle at 34% 18%, rgba(255,255,255,.9), transparent 34%),
-          linear-gradient(160deg, #ffeaf3, #f5d4e4 50%, #cfa6ba);
+          linear-gradient(160deg, #ffffff, #eef4ff 50%, #dbeafe);
         box-shadow:
           var(--shadow-lg),
-          inset 0 1px 0 rgba(255, 255, 255, 0.86);
+          var(--glass-highlight);
+        display: grid;
+        place-items: center;
       }
 
-      .hero-photo-card img {
-        width: 100%;
-        height: 100%;
+      .hero-photo-card .image-fallback {
+        position: static;
         min-height: 270px;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-        filter: contrast(1.04) brightness(1.05) saturate(1.08);
-        transform: scale(1.03);
-      }
-
-      .hero-photo-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(45, 23, 35, 0.18)),
-          radial-gradient(circle at 26% 20%, rgba(255, 231, 243, 0.26), transparent 32%),
-          radial-gradient(circle at 64% 48%, rgba(221, 118, 168, 0.16), transparent 36%);
-        pointer-events: none;
+        display: grid;
+        place-items: center;
       }
 
       .mini-stats {
@@ -1936,14 +2112,16 @@
       .location-card,
       .contact-mobile-card,
       .hour-row,
-      .map-glass {
+      .map-glass,
+      .mobile-master-card,
+      .mobile-gallery-card {
         border: 1px solid var(--line);
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.80), rgba(255, 247, 251, 0.58)),
-          rgba(255, 255, 255, 0.66);
+          linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.68)),
+          rgba(255, 255, 255, 0.72);
         box-shadow:
-          0 18px 46px rgba(119, 70, 96, 0.13),
-          inset 0 1px 0 rgba(255, 255, 255, 0.88);
+          var(--shadow-md),
+          var(--glass-highlight);
         border-radius: 24px;
         position: relative;
         overflow: hidden;
@@ -1970,11 +2148,13 @@
         letter-spacing: -0.07em;
       }
 
-      .services-list {
+      .services-list,
+      .masters-mobile-list,
+      .gallery-mobile-list {
         min-height: 0;
         display: grid;
         gap: 10px;
-        grid-template-rows: repeat(3, 1fr);
+        overflow: hidden;
       }
 
       .service-card {
@@ -1993,7 +2173,7 @@
       }
 
       .price {
-        color: var(--rose-2);
+        color: var(--accent-deep);
         font-weight: 900;
         font-size: 15px;
         white-space: nowrap;
@@ -2017,9 +2197,9 @@
         min-height: 27px;
         padding: 0 9px;
         border-radius: 999px;
-        border: 1px solid rgba(221, 118, 168, 0.18);
-        background: rgba(247, 184, 210, 0.22);
-        color: var(--rose-2);
+        border: 1px solid var(--accent-line);
+        background: var(--accent-soft);
+        color: var(--accent-deep);
         display: inline-flex;
         align-items: center;
         font-size: 11px;
@@ -2047,10 +2227,10 @@
         border-radius: 15px;
         display: grid;
         place-items: center;
-        background: linear-gradient(180deg, var(--rose-3), var(--rose));
-        color: #321521;
+        background: linear-gradient(180deg, #3b82f6, #2563eb);
+        color: #fff;
         font-weight: 900;
-        box-shadow: 0 14px 26px rgba(221, 118, 168, 0.22);
+        box-shadow: 0 14px 26px rgba(37, 99, 235, 0.2);
       }
 
       .info-card strong {
@@ -2068,6 +2248,28 @@
         line-height: 1.32;
       }
 
+      .mobile-master-card,
+      .mobile-gallery-card {
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .mobile-master-card strong,
+      .mobile-gallery-card strong {
+        font-family: "Sora", sans-serif;
+        font-size: 22px;
+        letter-spacing: -0.06em;
+        line-height: 0.95;
+      }
+
+      .mobile-master-card p,
+      .mobile-gallery-card p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.42;
+      }
+
       .location-card {
         padding: 14px;
         display: grid;
@@ -2081,14 +2283,18 @@
         gap: 4px;
       }
 
-      .address-box strong {
+      .address-box strong,
+      .contact-mobile-card strong {
         font-family: "Sora", sans-serif;
         font-size: 28px;
         line-height: 0.95;
         letter-spacing: -0.07em;
+        display: block;
+        margin-bottom: 8px;
       }
 
-      .address-box p {
+      .address-box p,
+      .contact-mobile-card p {
         color: var(--muted);
         font-size: 13px;
         line-height: 1.38;
@@ -2101,43 +2307,15 @@
         overflow: hidden;
         isolation: isolate;
         cursor: pointer;
-      }
-
-      .map-image {
-        width: 100%;
-        height: 100%;
-        min-height: 174px;
-        object-fit: cover;
-        border-radius: 18px;
-        display: block;
-        filter: grayscale(0.12) contrast(1.02) brightness(1.06) saturate(0.82);
-        opacity: 0.94;
-      }
-
-      .map-logo-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: none;
-        background:
-          radial-gradient(circle at center, rgba(247, 184, 210, 0.28), transparent 40%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(45, 23, 35, 0.12));
-      }
-
-      .map-logo-overlay .brand-logo-img {
-        max-width: 130px;
-        max-height: 92px;
-        opacity: 0.72;
+        display: grid;
+        place-items: center;
       }
 
       .map-logo-overlay span {
         font-family: "Sora", sans-serif;
         font-size: 42px;
         letter-spacing: -0.08em;
-        color: rgba(45, 23, 35, 0.18);
+        color: rgba(15, 23, 42, 0.16);
       }
 
       .dual-actions {
@@ -2150,17 +2328,16 @@
         min-height: 54px;
         border: 0;
         border-radius: 999px;
-        background: linear-gradient(180deg, var(--rose-3), var(--rose));
-        color: #321521;
+        background: linear-gradient(180deg, #3b82f6, #2563eb);
+        color: #fff;
         font: inherit;
         font-size: 12px;
         font-weight: 1000;
         letter-spacing: 0.055em;
         text-transform: uppercase;
         box-shadow:
-          0 18px 34px rgba(221, 118, 168, 0.24),
-          0 0 22px rgba(247, 184, 210, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.48);
+          0 18px 34px rgba(37, 99, 235, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28);
       }
 
       .ghost-btn {
@@ -2168,8 +2345,8 @@
         padding: 0 16px;
         border-radius: 999px;
         border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.62);
-        color: var(--rose-2);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--accent-deep);
         font: inherit;
         font-size: 12px;
         font-weight: 900;
@@ -2190,21 +2367,6 @@
 
       .contact-mobile-card {
         padding: 16px;
-      }
-
-      .contact-mobile-card strong {
-        display: block;
-        font-family: "Sora", sans-serif;
-        font-size: 28px;
-        line-height: 0.95;
-        letter-spacing: -0.07em;
-        margin-bottom: 8px;
-      }
-
-      .contact-mobile-card p {
-        color: var(--muted);
-        line-height: 1.45;
-        font-size: 14px;
       }
 
       .hours-list {
@@ -2241,19 +2403,15 @@
         border: 1px solid var(--line);
         display: grid;
         place-items: center;
-        color: var(--rose-2);
-        background: rgba(255, 255, 255, 0.62);
+        color: var(--accent-deep);
+        background: rgba(255, 255, 255, 0.72);
         text-decoration: none;
-      }
-
-      .social-row svg {
-        width: 21px;
-        height: 21px;
+        font-weight: 900;
       }
 
       .bottom-cta {
         padding: 8px 12px calc(10px + var(--safe-bottom));
-        background: linear-gradient(180deg, transparent, rgba(255, 250, 253, 0.94) 38%);
+        background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.94) 38%);
         position: relative;
         z-index: 20;
       }
@@ -2263,27 +2421,66 @@
         min-height: 58px;
       }
 
-      .booking-overlay { padding: 8px; }
-      .booking-shell { width: min(420px, 100%); }
-      .booking-topbar { border-radius: 22px; padding: 10px; }
-      .booking-topbar__copy strong { font-size: 18px; }
+      .booking-overlay {
+        padding: 8px;
+      }
+
+      .booking-shell {
+        width: min(420px, 100%);
+      }
+
+      .booking-topbar {
+        border-radius: 22px;
+        padding: 10px;
+      }
+
+      .booking-topbar__copy strong {
+        font-size: 18px;
+      }
+
+      .booking-frame-wrap {
+        border-radius: 24px;
+      }
+
+      .booking-frame {
+        min-height: calc(100svh - 96px);
+      }
+
+      .portfolio-back {
+        display: none;
+      }
     }
 
     @media (max-width: 390px) {
-      .page { padding: 12px 10px 10px; }
-      .page-title { font-size: 37px; }
-      .page-sub { font-size: 13px; line-height: 1.48; }
-      .service-card strong { font-size: 22px; }
-      .info-card { padding: 12px; }
-      .info-card strong { font-size: 18px; }
-      .info-card p { font-size: 12px; line-height: 1.32; }
-      .map-glass { min-height: 140px; }
-      .map-image { min-height: 124px; }
-      .nav-chip { padding: 0 12px; }
+      .page {
+        padding: 12px 10px 10px;
+      }
+
+      .page-title {
+        font-size: 37px;
+      }
+
+      .page-sub {
+        font-size: 13px;
+        line-height: 1.48;
+      }
+
+      .service-card strong {
+        font-size: 22px;
+      }
+
+      .map-glass {
+        min-height: 140px;
+      }
+
+      .nav-chip {
+        padding: 0 12px;
+      }
     }
 
     @media (min-width: 901px) {
-      html, body {
+      html,
+      body {
         height: auto !important;
         min-height: 100% !important;
         overflow-x: hidden !important;
@@ -2297,11 +2494,15 @@
         overflow: visible !important;
       }
 
-      .mobile-version { display: none !important; }
+      .mobile-version {
+        display: none !important;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         animation: none !important;
         transition: none !important;
         scroll-behavior: auto !important;
@@ -2311,6 +2512,8 @@
 </head>
 
 <body>
+  <a href="/index.html" class="portfolio-back">← Wróć do wyboru</a>
+
   <div class="desktop-version" id="desktop-version">
     <div class="landing-bg-orb one"></div>
     <div class="landing-bg-orb two"></div>
@@ -2325,20 +2528,20 @@
             <a href="/index.html">Wybór demo</a>
             <a href="#hero">Start</a>
             <a href="#experience">Rezerwacja</a>
+            <a href="#manifest">Studio</a>
           </nav>
         </div>
 
         <div class="desktop-center">
           <a href="#top" class="desktop-logo" aria-label="LUNA NAIL STUDIO start">
-            <img class="brand-logo-img" src="/luna-logo.png" alt="LUNA NAIL STUDIO logo" />
             <span class="desktop-logo-text">LUNA<br />NAIL</span>
           </a>
         </div>
 
         <div class="desktop-right">
           <nav class="desktop-nav">
-            <a href="#manifest">Studio</a>
             <a href="#pricing">Usługi</a>
+            <a href="#masters">Stylistki</a>
             <a href="#contact">Kontakt</a>
           </nav>
           <a href="tel:+48532377701" class="desktop-call-btn">Zadzwoń</a>
@@ -2380,9 +2583,8 @@
               </div>
 
               <div class="hero-side">
-                <article class="glass-card hero-photo hero-logo-panel">
+                <article class="glass-card hero-logo-panel">
                   <div class="image-fallback">LUNA<br />NAIL</div>
-                  <img src="/luna-logo.png" alt="LUNA NAIL STUDIO logo" />
                   <div class="hero-photo-badge">
                     <span>MANICURE • BEAUTY • CARE</span>
                     <strong>LUNA</strong>
@@ -2392,7 +2594,7 @@
                 <div class="hero-info-grid">
                   <article class="glass-card metric-card">
                     <span>Najczęściej wybierane stylizacje</span>
-                    <strong>3+</strong>
+                    <strong>12+</strong>
                   </article>
 
                   <article class="glass-card metric-card">
@@ -2406,41 +2608,81 @@
         </div>
       </section>
 
-            </section>
-
       <section id="experience">
         <div class="landing-container">
           <div class="section-card reveal">
-            <div class="section-head">
-              <div class="section-chip">REZERWACJA</div>
-              <h2 class="section-title">
-                Umów wizytę <span>bez pisania wiadomości</span>
-              </h2>
-              <p class="section-sub">
-                Wybierz usługę, stylistkę i godzinę w kilka kliknięć — spokojnie, jasno i bez czekania na odpowiedź.
-              </p>
-            </div>
-
-            <div class="experience-grid">
-              <div class="experience-copy">
-                <div class="experience-item">
-                  <strong>1. Wybór usługi</strong>
-                  <p>Widzisz dokładnie co wybierasz — bez chaosu wiadomości.</p>
-                </div>
-
-                <div class="experience-item">
-                  <strong>2. Stylistka i termin</strong>
-                  <p>Dostępne godziny od razu — bez pytania “czy jest miejsce”.</p>
-                </div>
-
-                <div class="experience-item">
-                  <strong>3. Potwierdzenie</strong>
-                  <p>Rezerwacja zapisuje się automatycznie. Ty masz spokój.</p>
-                </div>
+            <div class="section-wrap">
+              <div class="section-head">
+                <div class="section-chip">REZERWACJA</div>
+                <h2>
+                  Umów wizytę <span>bez pisania wiadomości</span>
+                </h2>
+                <p>
+                  Strona nie udaje zwykłej wizytówki. To prosty system, który prowadzi klientkę od decyzji do terminu — z jasną ceną, czasem usługi i przyciskiem rezerwacji zawsze pod ręką.
+                </p>
               </div>
 
-              <div class="experience-visual">
-                <img src="/luna-logo.png" alt="Luna Studio Logo" />
+              <div class="experience-grid">
+                <article class="glass-card showcase-phone-wrap">
+                  <div class="showcase-phone">
+                    <div class="showcase-screen">
+                      <div class="mini-top">
+                        <div class="mini-logo">LN</div>
+                        <div class="mini-pill">ONLINE</div>
+                      </div>
+
+                      <div class="mini-title">Rezerwacja manicure</div>
+
+                      <div class="mini-card">
+                        <strong>Manicure hybrydowy</strong>
+                        <span>120 zł</span>
+                      </div>
+
+                      <div class="mini-card">
+                        <strong>Przedłużanie żelowe</strong>
+                        <span>180 zł</span>
+                      </div>
+
+                      <div class="mini-card">
+                        <strong>Zdobienia delikatne</strong>
+                        <span>+20 zł</span>
+                      </div>
+
+                      <div class="mini-card">
+                        <strong>Stylistka</strong>
+                        <span>Maja</span>
+                      </div>
+
+                      <div class="mini-cta">Wybierz termin</div>
+                    </div>
+                  </div>
+                </article>
+
+                <div class="experience-stack">
+                  <article class="glass-card feature-card">
+                    <div class="feature-number">1</div>
+                    <div>
+                      <strong>Oferta bez chaosu</strong>
+                      <p>Klientka od razu widzi usługi, ceny i czas trwania. Nie trzeba tłumaczyć wszystkiego w DM.</p>
+                    </div>
+                  </article>
+
+                  <article class="glass-card feature-card">
+                    <div class="feature-number">2</div>
+                    <div>
+                      <strong>Termin zamiast rozmowy</strong>
+                      <p>Przycisk prowadzi do gotowego booking flow, który już masz. Landing tylko podgrzewa decyzję.</p>
+                    </div>
+                  </article>
+
+                  <article class="glass-card feature-card">
+                    <div class="feature-number">3</div>
+                    <div>
+                      <strong>Premium pierwsze wrażenie</strong>
+                      <p>Strona wygląda jak spokojny, nowoczesny salon — nie jak przypadkowa lista usług.</p>
+                    </div>
+                  </article>
+                </div>
               </div>
             </div>
           </div>
@@ -2450,14 +2692,39 @@
       <section id="manifest">
         <div class="landing-container">
           <div class="section-card reveal">
-            <div class="section-head">
-              <div class="section-chip">STUDIO</div>
-              <h2 class="section-title">
-                Spokojne miejsce, gdzie <span>liczy się detal</span>
-              </h2>
-              <p class="section-sub">
-                Bez pośpiechu. Bez hałasu. Każda stylizacja jest przemyślana i dopracowana.
-              </p>
+            <div class="section-wrap">
+              <div class="manifest-grid">
+                <article class="glass-card manifest-logo-panel">
+                  <div class="manifest-logo-mark">
+                    <span>LUNA<br />NAIL</span>
+                    <span>DETAIL • LIGHT • CARE</span>
+                  </div>
+                </article>
+
+                <div class="manifest-copy">
+                  <div class="section-head">
+                    <div class="section-chip">STUDIO</div>
+                    <h2>
+                      Spokojne miejsce, gdzie <span>liczy się detal</span>
+                    </h2>
+                    <p>
+                      LUNA NAIL STUDIO to estetyka czystych dłoni, miękkich kolorów i dokładnej pracy. Bez nadęcia, bez pośpiechu, bez przypadkowych efektów.
+                    </p>
+                  </div>
+
+                  <article class="glass-card manifest-line">
+                    <p><strong>Nie robimy paznokci “na szybko”.</strong> Robimy stylizacje, które dobrze wyglądają w pracy, na zdjęciach i w codziennym życiu.</p>
+                  </article>
+
+                  <article class="glass-card manifest-line">
+                    <p>Stawiamy na czysty kształt, estetyczną linię światła, delikatne kolory, higienę pracy i komfort podczas całej wizyty.</p>
+                  </article>
+
+                  <article class="glass-card manifest-line">
+                    <p>To studio dla osób, które lubią efekt premium, ale bez przesady i przypadkowego chaosu. Ma być lekko, świeżo i dopracowanie.</p>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2466,27 +2733,238 @@
       <section id="pricing">
         <div class="landing-container">
           <div class="section-card reveal">
-            <div class="section-head">
-              <div class="section-chip">USŁUGI</div>
-              <h2 class="section-title">
-                To nie lista wiadomości. <span>To konkretna oferta.</span>
-              </h2>
+            <div class="section-wrap">
+              <div class="section-head center">
+                <div class="section-chip">USŁUGI</div>
+                <h2>To nie lista wiadomości. <span>To konkretna oferta.</span></h2>
+                <p>Najczęściej wybierane usługi w LUNA NAIL STUDIO. Ceny i nazwy możesz później podmienić pod realny salon.</p>
+              </div>
+
+              <div class="pricing-grid">
+                <article class="glass-card pricing-card">
+                  <div>
+                    <div class="pricing-card__top">
+                      <strong>Manicure hybrydowy</strong>
+                      <span class="pricing-card__price">120 zł</span>
+                    </div>
+                    <p>Klasyczna stylizacja z opracowaniem skórek i eleganckim kolorem. Idealna opcja, gdy chcesz czysty efekt bez przesady.</p>
+                  </div>
+                  <div class="service-tags">
+                    <span>90 min</span>
+                    <span>clean look</span>
+                    <span>hybryda</span>
+                  </div>
+                </article>
+
+                <article class="glass-card pricing-card">
+                  <div>
+                    <div class="pricing-card__top">
+                      <strong>Przedłużanie żelowe</strong>
+                      <span class="pricing-card__price">180 zł</span>
+                    </div>
+                    <p>Budowa paznokci, kształt i stylizacja dopasowana do dłoni. Dla osób, które chcą mocniejszego, ale nadal eleganckiego efektu.</p>
+                  </div>
+                  <div class="service-tags">
+                    <span>150 min</span>
+                    <span>żel</span>
+                    <span>premium</span>
+                  </div>
+                </article>
+
+                <article class="glass-card pricing-card">
+                  <div>
+                    <div class="pricing-card__top">
+                      <strong>Zdobienia</strong>
+                      <span class="pricing-card__price">+20 zł</span>
+                    </div>
+                    <p>Delikatne detale, french, baby boomer lub subtelny akcent. Bez przeładowania — detal ma podbić stylizację, nie ją zabić.</p>
+                  </div>
+                  <div class="service-tags">
+                    <span>detail</span>
+                    <span>french</span>
+                    <span>soft art</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="section-actions" style="justify-content:center;margin-top:18px;">
+                <button class="btn btn-primary" type="button" data-open-booking>Zarezerwuj online</button>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="pricing-grid">
-              <div class="price-card">
-                <strong>Manicure hybrydowy</strong>
-                <span>120 zł</span>
+      <section id="masters">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="section-head">
+                <div class="section-chip">STYLISTKI</div>
+                <h2>Wybierz osobę, która rozumie <span>Twój styl</span></h2>
+                <p>Landing może pokazywać zespół, ale sam wybór stylistki zostaje w Twoim gotowym systemie rezerwacji.</p>
               </div>
 
-              <div class="price-card">
-                <strong>Przedłużanie paznokci</strong>
-                <span>180 zł</span>
+              <div class="masters-grid">
+                <article class="glass-card master-card">
+                  <div class="master-photo">MAJA</div>
+                  <div>
+                    <h3>Maja</h3>
+                    <p>Delikatne stylizacje, clean manicure i naturalny efekt. Idealna dla osób, które lubią jasne kolory i spokojną estetykę.</p>
+                  </div>
+                  <div class="master-tags">
+                    <span>clean look</span>
+                    <span>hybryda</span>
+                    <span>soft colors</span>
+                  </div>
+                </article>
+
+                <article class="glass-card master-card">
+                  <div class="master-photo">OLA</div>
+                  <div>
+                    <h3>Ola</h3>
+                    <p>French, baby boomer i minimalistyczne zdobienia. Lubi dopracowany detal i bardzo czystą linię stylizacji.</p>
+                  </div>
+                  <div class="master-tags">
+                    <span>french</span>
+                    <span>baby boomer</span>
+                    <span>detail</span>
+                  </div>
+                </article>
+
+                <article class="glass-card master-card">
+                  <div class="master-photo">NINA</div>
+                  <div>
+                    <h3>Nina</h3>
+                    <p>Żel, przedłużanie i mocniejsze stylizacje premium. Dla osób, które chcą zauważalnego efektu bez taniego przepychu.</p>
+                  </div>
+                  <div class="master-tags">
+                    <span>żel</span>
+                    <span>premium shape</span>
+                    <span>extensions</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="section-head center">
+                <div class="section-chip">EFEKT</div>
+                <h2>Estetyka, która wygląda dobrze <span>z bliska</span></h2>
+                <p>Ten blok możesz później zamienić na prawdziwe zdjęcia realizacji. Na razie działa jako premium visual placeholder.</p>
               </div>
 
-              <div class="price-card">
-                <strong>Zdobienia</strong>
-                <span>+20 zł</span>
+              <div class="gallery-grid">
+                <article class="gallery-tile large"><span>clean manicure</span></article>
+                <article class="gallery-tile"><span>soft french</span></article>
+                <article class="gallery-tile"><span>milk white</span></article>
+                <article class="gallery-tile wide"><span>premium nail shape</span></article>
+                <article class="gallery-tile"><span>subtle art</span></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="section-head">
+                <div class="section-chip">OPINIE</div>
+                <h2>Klientki wracają, gdy efekt jest <span>spokojnie dopracowany</span></h2>
+                <p>Teksty opinii są przykładowe — podmień je później na realne recenzje z Google albo Booksy.</p>
+              </div>
+
+              <div class="reviews-grid">
+                <article class="glass-card review-card">
+                  <div class="stars">★★★★★</div>
+                  <p>“Bardzo spokojna atmosfera i dokładna praca. Paznokcie wyglądają świeżo, ale nie są przesadzone.”</p>
+                  <strong>— Julia</strong>
+                </article>
+
+                <article class="glass-card review-card">
+                  <div class="stars">★★★★★</div>
+                  <p>“Najbardziej lubię to, że wszystko jest czyste, jasne i bez pośpiechu. Rezerwacja online też mega wygodna.”</p>
+                  <strong>— Natalia</strong>
+                </article>
+
+                <article class="glass-card review-card">
+                  <div class="stars">★★★★★</div>
+                  <p>“French wyszedł bardzo równo. W końcu studio, gdzie detal naprawdę ma znaczenie.”</p>
+                  <strong>— Karolina</strong>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="location">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="location-grid">
+                <article class="glass-card location-map">
+                  <iframe title="Mapa Wrocław" loading="lazy" src="https://www.google.com/maps?q=Wroc%C5%82aw&output=embed"></iframe>
+                </article>
+
+                <article class="glass-card location-side">
+                  <div class="section-chip">LOKALIZACJA</div>
+                  <div class="location-preview">
+                    <div class="location-preview__inner">
+                      <strong>LUNA<br />NAIL</strong>
+                      <span>Wrocław • beauty studio</span>
+                    </div>
+                  </div>
+                  <div class="location-copy">
+                    <strong>Wrocław, spokojna okolica i szybki dojazd.</strong>
+                    <p>Dokładny adres możesz podmienić w kodzie. Ten blok zostawiłem jako gotowy pod realny salon, z mapą, opisem i przyciskiem do trasy.</p>
+                  </div>
+                  <button class="btn btn-primary section-button-full" type="button" onclick="openMapsRoute()">Otwórz mapę</button>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="landing-container">
+          <div class="section-card reveal">
+            <div class="section-wrap">
+              <div class="section-head center">
+                <div class="section-chip">FAQ</div>
+                <h2>Przed wizytą <span>warto wiedzieć</span></h2>
+                <p>Krótka sekcja, która zmniejsza ilość pytań w wiadomościach i domyka decyzję przed rezerwacją.</p>
+              </div>
+
+              <div class="faq-grid">
+                <article class="glass-card faq-item">
+                  <strong>Czy muszę pisać wiadomość?</strong>
+                  <p>Nie. Klikasz rezerwację, wybierasz usługę, termin i przechodzisz przez gotowy booking flow.</p>
+                </article>
+
+                <article class="glass-card faq-item">
+                  <strong>Czy mogę wybrać stylistkę?</strong>
+                  <p>Tak, jeśli Twój system rezerwacji ma taki krok. Ten landing jest przygotowany pod taki scenariusz.</p>
+                </article>
+
+                <article class="glass-card faq-item">
+                  <strong>Ile trwa stylizacja?</strong>
+                  <p>Zależy od usługi. Manicure hybrydowy zwykle około 90 minut, a przedłużanie około 150 minut.</p>
+                </article>
+
+                <article class="glass-card faq-item">
+                  <strong>Czy ceny są finalne?</strong>
+                  <p>Ceny są pokazane jako przykładowe. Możesz podmienić je na realne ceny salonu w sekcji usług.</p>
+                </article>
               </div>
             </div>
           </div>
@@ -2496,76 +2974,322 @@
       <section id="contact">
         <div class="landing-container">
           <div class="section-card reveal">
-            <div class="section-head">
-              <div class="section-chip">KONTAKT</div>
-              <h2 class="section-title">
-                Wpadnij do studia <span>LUNA</span>
-              </h2>
-            </div>
+            <div class="section-wrap">
+              <div class="contact-grid">
+                <article class="glass-card contact-card">
+                  <div class="section-chip">KONTAKT</div>
 
-            <div class="contact-grid">
-              <div>
-                <strong>Wrocław</strong>
-                <p>ul. Przykładowa 12</p>
-                <p>+48 532 377 701</p>
-              </div>
+                  <div class="contact-lead">
+                    <strong>Wpadnij do studia LUNA</strong>
+                    <p>Rezerwacje przyjmujemy online. Wybierz termin, a my przygotujemy stanowisko na Twoją stylizację.</p>
+                  </div>
 
-              <div class="contact-logo">
-                <img src="/luna-logo.png" alt="Luna logo" />
+                  <p class="contact-note">
+                    Ten landing prowadzi do Twojego gotowego booking.html. Możesz zostawić overlay z iframe albo zmienić przycisk tak, żeby przenosił bezpośrednio na osobną stronę rezerwacji.
+                  </p>
+
+                  <div class="social-icons">
+                    <a class="social-icon" href="#" aria-label="Instagram">IG</a>
+                    <a class="social-icon" href="#" aria-label="TikTok">TT</a>
+                    <a class="social-icon" href="tel:+48532377701" aria-label="Telefon">☎</a>
+                  </div>
+
+                  <button class="btn btn-primary section-button-full" type="button" data-open-booking>Zarezerwuj wizytę</button>
+                </article>
+
+                <article class="glass-card status-card">
+                  <div class="status-pill open" id="desktopStatus">Otwarte dzisiaj</div>
+                  <ul class="status-list">
+                    <li><span>Pon — Pt</span><strong>10:00 — 20:00</strong></li>
+                    <li><span>Sobota</span><strong>10:00 — 18:00</strong></li>
+                    <li><span>Niedziela</span><strong>zamknięte</strong></li>
+                    <li><span>Telefon</span><strong>+48 532 377 701</strong></li>
+                    <li><span>Adres</span><strong>ul. Przykładowa 12</strong></li>
+                  </ul>
+                </article>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
+
+    <button class="btn btn-primary floating-book" id="floatingBook" type="button" data-open-booking>Zarezerwuj wizytę</button>
   </div>
 
-  <!-- BOOKING OVERLAY -->
-  <div class="booking-overlay" id="bookingOverlay">
-    <div class="booking-shell">
-      <div class="booking-topbar">
-        <button class="icon-btn" onclick="closeBooking()">
-          ←
-        </button>
+  <div class="mobile-version" id="mobile-version">
+    <header class="app-top">
+      <a class="icon-btn" href="/index.html" aria-label="Wróć do wyboru">←</a>
+      <div class="logo-pill"><span class="logo-word">LUNA<br />NAIL</span></div>
+      <button class="icon-btn" type="button" data-open-booking aria-label="Otwórz rezerwację">＋</button>
+    </header>
 
-        <div class="booking-logo">
-          <img src="/luna-logo.png" alt="Luna logo" />
+    <nav class="section-nav" aria-label="Nawigacja mobilna">
+      <button class="nav-chip active" type="button" data-page="home">Start</button>
+      <button class="nav-chip" type="button" data-page="services">Usługi</button>
+      <button class="nav-chip" type="button" data-page="visit">Proces</button>
+      <button class="nav-chip" type="button" data-page="masters">Stylistki</button>
+      <button class="nav-chip" type="button" data-page="gallery">Efekt</button>
+      <button class="nav-chip" type="button" data-page="where">Dojazd</button>
+      <button class="nav-chip" type="button" data-page="hello">Kontakt</button>
+    </nav>
+
+    <main class="pages">
+      <section class="page active" data-page-view="home">
+        <div class="page-head">
+          <div class="kicker">LUNA NAIL STUDIO</div>
+          <h1 class="page-title">Lekki manicure. <span class="gold">Czysty efekt.</span></h1>
+          <p class="page-sub">Wybierz usługę, stylistkę i termin online — bez pisania wiadomości.</p>
         </div>
 
-        <div class="top-spacer"></div>
+        <div class="screen-body">
+          <div class="hero-photo-card">
+            <div class="image-fallback">LUNA<br />NAIL</div>
+          </div>
+          <div class="mini-stats">
+            <div class="stat-card"><span>Stylizacje</span><strong>12+</strong></div>
+            <div class="stat-card"><span>Godziny</span><strong>10–20</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page-view="services">
+        <div class="page-head">
+          <div class="kicker">USŁUGI</div>
+          <h2 class="page-title">Wybierz <span class="gold">stylizację.</span></h2>
+          <p class="page-sub">Najpopularniejsze usługi studia.</p>
+        </div>
+
+        <div class="services-list">
+          <article class="service-card">
+            <strong>Manicure hybrydowy</strong>
+            <span class="price">120 zł</span>
+            <p>Clean look, opracowanie skórek i kolor.</p>
+            <div class="tags"><span>90 min</span><span>hybryda</span></div>
+          </article>
+
+          <article class="service-card">
+            <strong>Przedłużanie żelowe</strong>
+            <span class="price">180 zł</span>
+            <p>Budowa, kształt i eleganckie wykończenie.</p>
+            <div class="tags"><span>150 min</span><span>żel</span></div>
+          </article>
+
+          <article class="service-card">
+            <strong>Zdobienia</strong>
+            <span class="price">+20 zł</span>
+            <p>French, baby boomer lub subtelny detal.</p>
+            <div class="tags"><span>detail</span><span>soft art</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page-view="visit">
+        <div class="page-head">
+          <div class="kicker">PROCES</div>
+          <h2 class="page-title">Bez chaosu. <span class="gold">Po kolei.</span></h2>
+          <p class="page-sub">Tak landing prowadzi klientkę do Twojego gotowego booking.html.</p>
+        </div>
+
+        <div class="visit-grid">
+          <article class="info-card">
+            <div class="num">1</div>
+            <div><strong>Wybiera usługę</strong><p>Na stronie widzi ofertę i wie, czego się spodziewać.</p></div>
+          </article>
+
+          <article class="info-card">
+            <div class="num">2</div>
+            <div><strong>Klika rezerwację</strong><p>Landing otwiera gotowy booking flow w overlay.</p></div>
+          </article>
+
+          <article class="info-card">
+            <div class="num">3</div>
+            <div><strong>Potwierdza termin</strong><p>Cała logika zostaje w Twoim istniejącym systemie.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page-view="masters">
+        <div class="page-head">
+          <div class="kicker">STYLISTKI</div>
+          <h2 class="page-title">Każda ma <span class="gold">swój styl.</span></h2>
+          <p class="page-sub">Krótko, konkretnie, bez ściany tekstu.</p>
+        </div>
+
+        <div class="masters-mobile-list">
+          <article class="mobile-master-card">
+            <strong>Maja</strong>
+            <p>Clean manicure, subtelne kolory i naturalny efekt.</p>
+            <div class="tags"><span>hybryda</span><span>soft</span></div>
+          </article>
+
+          <article class="mobile-master-card">
+            <strong>Ola</strong>
+            <p>French, baby boomer i delikatne zdobienia.</p>
+            <div class="tags"><span>french</span><span>detail</span></div>
+          </article>
+
+          <article class="mobile-master-card">
+            <strong>Nina</strong>
+            <p>Żel, przedłużanie i mocniejszy efekt premium.</p>
+            <div class="tags"><span>żel</span><span>shape</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page-view="gallery">
+        <div class="page-head">
+          <div class="kicker">EFEKT</div>
+          <h2 class="page-title">Detale robią <span class="gold">całość.</span></h2>
+          <p class="page-sub">Miejsca pod zdjęcia realizacji.</p>
+        </div>
+
+        <div class="gallery-mobile-list">
+          <article class="mobile-gallery-card"><strong>Clean manicure</strong><p>Jasny, czysty efekt na co dzień.</p></article>
+          <article class="mobile-gallery-card"><strong>Soft french</strong><p>Delikatna linia i naturalne wykończenie.</p></article>
+          <article class="mobile-gallery-card"><strong>Minimal art</strong><p>Detal, który nie przejmuje całej stylizacji.</p></article>
+        </div>
+      </section>
+
+      <section class="page" data-page-view="where">
+        <div class="page-head">
+          <div class="kicker">DOJAZD</div>
+          <h2 class="page-title">Studio we <span class="gold">Wrocławiu.</span></h2>
+          <p class="page-sub">Adres możesz podmienić w kodzie.</p>
+        </div>
+
+        <div class="screen-body">
+          <article class="location-card">
+            <div class="address-box">
+              <strong>LUNA NAIL STUDIO</strong>
+              <p>ul. Przykładowa 12, Wrocław</p>
+            </div>
+            <div class="map-glass" onclick="openMapsRoute()"><div class="map-logo-overlay"><span>LUNA</span></div></div>
+            <div class="dual-actions">
+              <button class="cta-btn" type="button" data-open-booking>Rezerwuj</button>
+              <button class="ghost-btn" type="button" onclick="openMapsRoute()">Mapa</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page-view="hello">
+        <div class="page-head">
+          <div class="kicker">KONTAKT</div>
+          <h2 class="page-title">Napisz albo <span class="gold">zarezerwuj.</span></h2>
+          <p class="page-sub">Online jest najszybciej.</p>
+        </div>
+
+        <div class="contact-layout">
+          <article class="contact-mobile-card">
+            <strong>+48 532 377 701</strong>
+            <p>Rezerwacje przez formularz online. Telefon zostawiony jako kontakt do salonu.</p>
+          </article>
+
+          <div class="hours-list">
+            <div class="hour-row"><span>Pon — Pt</span><strong>10–20</strong></div>
+            <div class="hour-row"><span>Sobota</span><strong>10–18</strong></div>
+            <div class="hour-row"><span>Niedziela</span><strong>zamknięte</strong></div>
+          </div>
+
+          <div class="social-row">
+            <a href="#">IG</a>
+            <a href="#">TT</a>
+            <a href="tel:+48532377701">☎</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="bottom-cta">
+      <button class="cta-btn" type="button" data-open-booking>Zarezerwuj wizytę online</button>
+    </div>
+  </div>
+
+  <div class="booking-overlay" id="bookingOverlay" aria-hidden="true">
+    <div class="booking-shell">
+      <div class="booking-topbar">
+        <div class="booking-topbar__left">
+          <div class="booking-logo-text">LUNA<br />NAIL</div>
+          <div class="booking-topbar__copy">
+            <span>Rezerwacja online</span>
+            <strong>Twój gotowy booking.html</strong>
+          </div>
+        </div>
+
+        <button class="btn booking-close" type="button" onclick="closeBooking()" aria-label="Zamknij rezerwację">×</button>
       </div>
 
-      <iframe
-        src="/booking.html"
-        class="booking-frame"
-        frameborder="0"
-      ></iframe>
+      <div class="booking-frame-wrap">
+        <iframe
+          src="/booking.html"
+          class="booking-frame"
+          title="Rezerwacja online LUNA NAIL STUDIO"
+        ></iframe>
+      </div>
     </div>
   </div>
 
   <script>
     const overlay = document.getElementById("bookingOverlay");
     const flash = document.getElementById("screenFlash");
+    const floatingBook = document.getElementById("floatingBook");
 
-    document.querySelectorAll("[data-open-booking]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        overlay.classList.add("active");
-        document.body.classList.add("booking-open");
-
-        flash.classList.add("active");
-        setTimeout(() => flash.classList.remove("active"), 180);
-      });
+    document.querySelectorAll("[data-open-booking]").forEach(button => {
+      button.addEventListener("click", openBooking);
     });
 
+    function openBooking() {
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.classList.add("booking-open");
+
+      if (flash) {
+        flash.classList.add("active");
+        setTimeout(() => flash.classList.remove("active"), 180);
+      }
+    }
+
     function closeBooking() {
-      overlay.classList.remove("active");
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
       document.body.classList.remove("booking-open");
     }
 
     function openMapsRoute() {
       window.open("https://maps.google.com?q=Wrocław", "_blank");
     }
+
+    document.querySelectorAll(".nav-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        const page = chip.dataset.page;
+
+        document.querySelectorAll(".nav-chip").forEach(item => {
+          item.classList.toggle("active", item === chip);
+        });
+
+        document.querySelectorAll(".page").forEach(item => {
+          item.classList.toggle("active", item.dataset.pageView === page);
+        });
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      if (!floatingBook) return;
+
+      const show = window.scrollY > 520;
+      floatingBook.classList.toggle("is-visible", show);
+
+      const contact = document.getElementById("contact");
+      if (contact) {
+        const rect = contact.getBoundingClientRect();
+        floatingBook.classList.toggle("hidden-on-contact", rect.top < window.innerHeight * 0.8);
+      }
+    }, { passive: true });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeBooking();
+    });
   </script>
 </body>
 </html>
-      
