@@ -1859,3 +1859,25 @@ a:focus-visible {
     font-size: 12px;
   }
 }
+
+.booking-overlay.open {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.booking-shell {
+  min-height: 100%;
+  overflow: visible;
+}
+
+.wizard-host .app-shell {
+  min-height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.wizard-host .wizard-frame {
+  margin: 0 auto 32px;
+}
