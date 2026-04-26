@@ -5900,13 +5900,10 @@ overlay?.addEventListener("click", (e) => {
       }, { passive: true });
     }
 
-    function handleDesktopScroll() {
-  if (window.innerWidth <= 900) {
-    if (siteHeader) siteHeader.classList.remove("header-hidden");
-    ticking = false;
-    return;
-  }
 
+    function handleDesktopScroll() {
+  if (window.innerWidth <= 900) return;
+      
   const currentY = window.scrollY;
 
   if (siteHeader) {
