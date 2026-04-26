@@ -4072,6 +4072,23 @@
     width: 100% !important;
   }
 }
+    @media (max-width: 900px) {
+  .site-header,
+  .app-top,
+  .section-nav,
+  .booking-topbar {
+    transform: none !important;
+    translate: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+
+  .site-header.header-hidden {
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
   </style>
 </head>
 
