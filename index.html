@@ -1675,34 +1675,38 @@
     }
 
     .booking-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 220;
-      display: none;
-      align-items: stretch;
-      justify-content: center;
-      padding: 24px;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(219, 234, 254, 0.74), transparent 34%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(239, 246, 255, 0.92));
-      backdrop-filter: blur(22px) saturate(140%);
-      -webkit-backdrop-filter: blur(22px) saturate(140%);
-    }
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(219, 234, 254, 0.74), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(239, 246, 255, 0.92));
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+}
 
     .booking-overlay.open {
       display: flex;
     }
 
     .booking-shell {
-      width: min(1180px, 100%);
-      display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 14px;
-      align-content: start;
-      overflow: hidden;
-      position: relative;
-      z-index: 2;
-    }
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 48px);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 14px;
+  align-content: start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 2;
+  padding-right: 4px;
+}
 
     .booking-topbar {
       display: flex;
