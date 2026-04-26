@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>LUNA NAIL STUDIO — Beauty Booking App</title>
+  <title>LUNA NAIL STUDIO — Manicure i rezerwacja online</title>
   <meta
     name="description"
-    content="LUNA NAIL STUDIO — manicure hybrydowy, przedłużanie paznokci, zdobienia i wygodna rezerwacja online we Wrocławiu."
+    content="LUNA NAIL STUDIO we Wrocławiu — manicure hybrydowy, przedłużanie żelowe, french, zdobienia i wygodna rezerwacja online."
   />
 
   <link rel="stylesheet" href="./style.css" />
@@ -23,10 +23,10 @@
     :root {
       --landing-max: 1240px;
 
-      --bg-0: #f6f9ff;
+      --bg-0: #f7fbff;
       --bg-1: #ffffff;
-      --bg-2: #eef6ff;
-      --bg-3: #e3f0ff;
+      --bg-2: #eef7ff;
+      --bg-3: #e3f1ff;
       --bg-4: #d8eaff;
 
       --surface: rgba(255, 255, 255, 0.84);
@@ -61,6 +61,7 @@
       --shadow-sm: 0 14px 28px rgba(80, 112, 158, 0.10);
       --shadow-md: 0 22px 48px rgba(80, 112, 158, 0.13);
       --shadow-lg: 0 34px 84px rgba(80, 112, 158, 0.16);
+      --shadow-xl: 0 44px 110px rgba(80, 112, 158, 0.18);
       --shadow-blue: 0 22px 52px rgba(47, 125, 244, 0.18);
 
       --glass: blur(22px) saturate(145%);
@@ -303,6 +304,10 @@
       letter-spacing: -0.02em;
     }
 
+    /* =========================
+       DESKTOP HEADER — SMART HIDE
+       ========================= */
+
     .site-header {
       position: sticky;
       top: 0;
@@ -317,7 +322,7 @@
       box-shadow: 0 18px 44px rgba(80, 112, 158, 0.10);
       transition:
         transform 360ms var(--ease-spring),
-        opacity 260ms ease,
+        opacity 240ms ease,
         box-shadow 260ms ease,
         background 260ms ease;
       will-change: transform;
@@ -487,9 +492,9 @@
       scroll-margin-top: 126px;
     }
 
-    .hero-section {
-      min-height: calc(100vh - var(--header-h) - 20px);
-    }
+    /* =========================
+       SHARED DESKTOP CARDS
+       ========================= */
 
     .hero-card,
     .section-card {
@@ -532,23 +537,74 @@
       border: 1px solid rgba(255,255,255,.72);
     }
 
-    .hero-grid {
+    .glass-card {
       position: relative;
-      z-index: 1;
-      min-height: 742px;
-      display: grid;
-      grid-template-columns: 1.02fr .98fr;
-      align-items: stretch;
-      gap: 18px;
-      padding: 30px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(15, 23, 42, 0.075);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.58)),
+        rgba(255,255,255,.58);
+      box-shadow: var(--shadow-md), var(--glass-highlight);
+      backdrop-filter: var(--glass-light);
+      -webkit-backdrop-filter: var(--glass-light);
     }
 
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 18px;
-      max-width: 690px;
+    .glass-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.42), transparent 46%),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.38), transparent 48%);
+    }
+
+    .section-wrap {
+      position: relative;
+      z-index: 1;
+      padding: 28px;
+    }
+
+    .section-head {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      display: grid;
+      gap: 11px;
+      margin-bottom: 20px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .section-head h2 {
+      max-width: 13.5ch;
+      font-size: clamp(34px, 5vw, 68px);
+      line-height: .965;
+      letter-spacing: -.067em;
+      text-wrap: balance;
+    }
+
+    .section-head.center h2 {
+      max-width: 16ch;
+    }
+
+    .section-head h2 span {
+      color: var(--accent-deep);
+    }
+
+    .section-head p {
+      max-width: 790px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.74;
+      letter-spacing: -0.01em;
     }
 
     .section-chip {
@@ -578,37 +634,6 @@
       border-radius: 999px;
       background: var(--accent-2);
       box-shadow: 0 0 16px rgba(47, 125, 244, 0.42);
-    }
-
-    .hero-title {
-      max-width: 11.5ch;
-      color: var(--text-strong);
-      font-size: clamp(52px, 8.2vw, 106px);
-      line-height: .91;
-      letter-spacing: -0.082em;
-      text-wrap: balance;
-    }
-
-    .hero-title span {
-      display: inline-block;
-      color: var(--accent-deep);
-      text-shadow: 0 18px 54px rgba(47, 125, 244, .16);
-    }
-
-    .hero-sub {
-      max-width: 610px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.76;
-      letter-spacing: -0.015em;
-    }
-
-    .hero-actions,
-    .section-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 6px;
     }
 
     .btn {
@@ -670,6 +695,64 @@
       color: var(--accent-deep);
     }
 
+    /* =========================
+       HERO / START
+       ========================= */
+
+    .hero-section {
+      min-height: calc(100vh - var(--header-h) - 20px);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      min-height: 742px;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: stretch;
+      gap: 18px;
+      padding: 30px;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      max-width: 690px;
+    }
+
+    .hero-title {
+      max-width: 11.5ch;
+      color: var(--text-strong);
+      font-size: clamp(52px, 8.2vw, 106px);
+      line-height: .91;
+      letter-spacing: -0.082em;
+      text-wrap: balance;
+    }
+
+    .hero-title span {
+      display: inline-block;
+      color: var(--accent-deep);
+      text-shadow: 0 18px 54px rgba(47, 125, 244, .16);
+    }
+
+    .hero-sub {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.76;
+      letter-spacing: -0.015em;
+    }
+
+    .hero-actions,
+    .section-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
     .hero-trust-row {
       display: flex;
       flex-wrap: wrap;
@@ -708,30 +791,6 @@
       align-content: stretch;
     }
 
-    .glass-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(15, 23, 42, 0.075);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.58)),
-        rgba(255,255,255,.58);
-      box-shadow: var(--shadow-md), var(--glass-highlight);
-      backdrop-filter: var(--glass-light);
-      -webkit-backdrop-filter: var(--glass-light);
-    }
-
-    .glass-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.42), transparent 46%),
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.38), transparent 48%);
-    }
-
     .hero-logo-panel {
       min-height: 448px;
       display: grid;
@@ -747,7 +806,7 @@
 
     .hero-salon-photo {
       background-image:
-        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(232,243,255,0.20)),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(232,243,255,0.16)),
         url("./images/nails/studio-interior.jpg");
       background-size: cover;
       background-position: center;
@@ -762,11 +821,12 @@
       place-items: center;
       text-align: center;
       font-family: "Sora", sans-serif;
-      color: rgba(15, 23, 42, .105);
-      font-size: clamp(42px, 6vw, 76px);
+      color: rgba(255, 255, 255, .52);
+      text-shadow: 0 18px 46px rgba(7, 17, 31, .10);
+      font-size: clamp(48px, 7vw, 92px);
       font-weight: 900;
       line-height: .84;
-      letter-spacing: -.09em;
+      letter-spacing: -.095em;
       pointer-events: none;
     }
 
@@ -775,12 +835,12 @@
       left: 18px;
       bottom: 18px;
       z-index: 2;
-      max-width: 245px;
-      padding: 13px 16px;
+      max-width: 285px;
+      padding: 14px 16px;
       display: grid;
       gap: 8px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.76);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.78);
       background: rgba(255,255,255,.78);
       backdrop-filter: var(--glass-light);
       -webkit-backdrop-filter: var(--glass-light);
@@ -799,7 +859,7 @@
       color: var(--text-strong);
       font-family: "Sora", sans-serif;
       font-size: 30px;
-      line-height: .9;
+      line-height: .92;
       letter-spacing: -.075em;
     }
 
@@ -838,133 +898,8 @@
       letter-spacing: -.075em;
     }
 
-    .section-wrap {
-      position: relative;
-      z-index: 1;
-      padding: 28px;
-    }
-
-    .section-head {
-      position: relative;
-      z-index: 1;
-      max-width: 880px;
-      display: grid;
-      gap: 11px;
-      margin-bottom: 20px;
-    }
-
-    .section-head.center {
-      margin-left: auto;
-      margin-right: auto;
-      justify-items: center;
-      text-align: center;
-    }
-
-    .section-head h2 {
-      max-width: 13.5ch;
-      font-size: clamp(34px, 5vw, 68px);
-      line-height: .965;
-      letter-spacing: -.067em;
-      text-wrap: balance;
-    }
-
-    .section-head.center h2 {
-      max-width: 16ch;
-    }
-
-    .section-head h2 span {
-      color: var(--accent-deep);
-    }
-
-    .section-head p {
-      max-width: 790px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.74;
-      letter-spacing: -0.01em;
-    }
-
-    @keyframes floatSoft {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pageIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px) scale(.988);
-        filter: blur(4px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-    }
-
-    @keyframes logoBreath {
-      0%, 100% {
-        box-shadow: var(--shadow-sm), var(--glass-highlight);
-      }
-
-      50% {
-        box-shadow:
-          0 20px 48px rgba(47, 125, 244, 0.15),
-          0 0 34px rgba(97, 168, 255, 0.16),
-          var(--glass-highlight);
-      }
-    }
-
-    @keyframes logoShine {
-      0%, 72%, 100% {
-        transform: translateX(-72%) rotate(8deg);
-        opacity: 0;
-      }
-
-      82% {
-        opacity: .9;
-      }
-
-      92% {
-        transform: translateX(72%) rotate(8deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes orbMove {
-      from {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-
-      to {
-        transform: translate3d(-42px, 62px, 0) scale(1.16);
-      }
-    }
-
-    .reveal {
-      animation: fadeUp 680ms var(--ease) both;
-    }
-
         /* =========================
-       DESKTOP — APP SHOWCASE
+       DESKTOP — REZERWACJA / APP PREVIEW
        ========================= */
 
     .experience-grid {
@@ -1332,7 +1267,7 @@
     }
 
     /* =========================
-       DESKTOP — SERVICES WITH IMAGES
+       DESKTOP — SERVICES
        ========================= */
 
     .pricing-grid {
@@ -1476,6 +1411,21 @@
       color: var(--accent-deep);
       font-size: 12px;
       font-weight: 1000;
+    }
+
+    .pricing-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.68);
+      box-shadow: var(--shadow-xs), var(--glass-highlight);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      text-align: center;
     }
 
     /* =========================
@@ -1731,7 +1681,7 @@
     }
 
     .review-card {
-      min-height: 292px;
+      min-height: 250px;
       padding: 22px;
       display: grid;
       align-content: space-between;
@@ -1743,7 +1693,7 @@
       z-index: 1;
       color: var(--muted);
       font-size: 15px;
-      line-height: 1.78;
+      line-height: 1.72;
     }
 
     .review-card strong {
@@ -1762,7 +1712,7 @@
     }
 
     /* =========================
-       DESKTOP — LOCATION / CONTACT / FAQ
+       DESKTOP — LOCATION / FAQ / CONTACT
        ========================= */
 
     .location-grid,
@@ -2058,30 +2008,7 @@
     }
 
     .floating-book {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 130;
-      min-width: 196px;
-      min-height: 60px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(20px);
-      transition:
-        opacity 220ms ease,
-        transform 260ms var(--ease-spring);
-    }
-
-    .floating-book.is-visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .floating-book.hidden-on-contact {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(20px);
+      display: none !important;
     }
 
     /* =========================
@@ -2198,8 +2125,7 @@
     }
 
         /* =========================
-       MOBILE — BOOKING APP EXPERIENCE
-       Главная часть: сайт должен ощущаться как приложение
+       MOBILE — APP EXPERIENCE BASE
        ========================= */
 
     @media (max-width: 1120px) {
@@ -2266,6 +2192,10 @@
         mask-image: linear-gradient(to bottom, black 0%, transparent 86%);
       }
 
+      .portfolio-back {
+        display: none;
+      }
+
       .desktop-version {
         display: none !important;
       }
@@ -2278,7 +2208,7 @@
         height: 100svh;
         min-height: 100svh;
         overflow: hidden;
-        grid-template-rows: auto auto 1fr auto;
+        grid-template-rows: auto auto 1fr;
         isolation: isolate;
       }
 
@@ -2293,7 +2223,13 @@
           linear-gradient(180deg, rgba(255,255,255,.20), rgba(232,243,255,.34));
       }
 
-      /* TOP BAR */
+      .bottom-cta {
+        display: none !important;
+      }
+
+      /* =========================
+         MOBILE TOP BAR
+         ========================= */
 
       .app-top {
         position: relative;
@@ -2367,18 +2303,6 @@
         animation: logoShine 5.5s ease-in-out infinite;
       }
 
-      .logo-pill .logo-word {
-        position: relative;
-        z-index: 1;
-        color: var(--text-strong);
-        font-family: "Sora", sans-serif;
-        font-size: 20px;
-        font-weight: 1000;
-        line-height: .82;
-        letter-spacing: -.075em;
-        text-align: center;
-      }
-
       .mobile-logo-img {
         position: relative;
         z-index: 1;
@@ -2388,7 +2312,9 @@
         filter: drop-shadow(0 10px 20px rgba(47,125,244,.10));
       }
 
-      /* HORIZONTAL APP TABS */
+      /* =========================
+         MOBILE NAV CHIPS
+         ========================= */
 
       .section-nav {
         position: relative;
@@ -2452,7 +2378,9 @@
           inset 0 1px 0 rgba(255,255,255,.30);
       }
 
-      /* PAGES — приложение, не лендинг */
+      /* =========================
+         MOBILE PAGES
+         ========================= */
 
       .pages {
         position: relative;
@@ -2543,7 +2471,57 @@
         overflow: hidden;
       }
 
-      /* HOME SCREEN */
+      /* =========================
+         MOBILE SHARED CARDS
+         ========================= */
+
+      .stat-card,
+      .service-card,
+      .info-card,
+      .location-card,
+      .contact-mobile-card,
+      .hour-row,
+      .map-glass,
+      .mobile-master-card,
+      .mobile-gallery-card,
+      .mobile-review-card,
+      .mobile-faq-card,
+      .google-review-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(15,23,42,.075);
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.90), rgba(248,252,255,.68)),
+          rgba(255,255,255,.72);
+        box-shadow: var(--shadow-sm), var(--glass-highlight);
+        border-radius: 26px;
+      }
+
+      .stat-card::after,
+      .service-card::after,
+      .info-card::after,
+      .location-card::after,
+      .contact-mobile-card::after,
+      .hour-row::after,
+      .map-glass::after,
+      .mobile-master-card::after,
+      .mobile-gallery-card::after,
+      .mobile-review-card::after,
+      .mobile-faq-card::after,
+      .google-review-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,.42), transparent 46%),
+          radial-gradient(circle at 50% 0%, rgba(255,255,255,.32), transparent 50%);
+      }
+
+      /* =========================
+         MOBILE START SCREEN
+         ========================= */
 
       .hero-photo-card {
         min-height: 0;
@@ -2633,48 +2611,6 @@
         gap: 10px;
       }
 
-      .stat-card,
-      .service-card,
-      .info-card,
-      .location-card,
-      .contact-mobile-card,
-      .hour-row,
-      .map-glass,
-      .mobile-master-card,
-      .mobile-gallery-card,
-      .mobile-review-card,
-      .mobile-faq-card {
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(15,23,42,.075);
-        background:
-          linear-gradient(180deg, rgba(255,255,255,.90), rgba(248,252,255,.68)),
-          rgba(255,255,255,.72);
-        box-shadow: var(--shadow-sm), var(--glass-highlight);
-        border-radius: 26px;
-      }
-
-      .stat-card::after,
-      .service-card::after,
-      .info-card::after,
-      .location-card::after,
-      .contact-mobile-card::after,
-      .hour-row::after,
-      .map-glass::after,
-      .mobile-master-card::after,
-      .mobile-gallery-card::after,
-      .mobile-review-card::after,
-      .mobile-faq-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background:
-          linear-gradient(135deg, rgba(255,255,255,.42), transparent 46%),
-          radial-gradient(circle at 50% 0%, rgba(255,255,255,.32), transparent 50%);
-      }
-
       .stat-card {
         min-height: 94px;
         padding: 14px;
@@ -2703,13 +2639,13 @@
         letter-spacing: -.075em;
       }
 
-      /* MOBILE SERVICES — карусель */
+      /* =========================
+         MOBILE HORIZONTAL CAROUSELS
+         ========================= */
 
       .services-list,
       .masters-mobile-list,
-      .gallery-mobile-list,
-      .reviews-mobile-list,
-      .faq-mobile-list {
+      .gallery-mobile-list {
         min-height: 0;
         display: flex;
         gap: 12px;
@@ -2723,11 +2659,13 @@
 
       .services-list::-webkit-scrollbar,
       .masters-mobile-list::-webkit-scrollbar,
-      .gallery-mobile-list::-webkit-scrollbar,
-      .reviews-mobile-list::-webkit-scrollbar,
-      .faq-mobile-list::-webkit-scrollbar {
+      .gallery-mobile-list::-webkit-scrollbar {
         display: none;
       }
+
+      /* =========================
+         MOBILE SERVICES
+         ========================= */
 
       .service-card {
         flex: 0 0 min(82vw, 330px);
@@ -2866,61 +2804,9 @@
         transform: scale(.97);
       }
 
-      /* MOBILE PROCESS */
-
-      .visit-grid {
-        min-height: 0;
-        display: grid;
-        gap: 10px;
-        grid-template-rows: repeat(3, minmax(0, 1fr));
-        overflow: hidden;
-      }
-
-      .info-card {
-        padding: 13px;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 11px;
-        align-items: start;
-      }
-
-      .num {
-        position: relative;
-        z-index: 1;
-        width: 44px;
-        height: 44px;
-        border-radius: 16px;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        background:
-          radial-gradient(circle at 50% 0%, rgba(255,255,255,.26), transparent 42%),
-          linear-gradient(180deg, #61a8ff, #2f7df4);
-        box-shadow: 0 14px 28px rgba(47,125,244,.22);
-        font-weight: 1000;
-      }
-
-      .info-card strong {
-        position: relative;
-        z-index: 1;
-        display: block;
-        margin-bottom: 5px;
-        color: var(--text-strong);
-        font-family: "Sora", sans-serif;
-        font-size: 20px;
-        line-height: .96;
-        letter-spacing: -.058em;
-      }
-
-      .info-card p {
-        position: relative;
-        z-index: 1;
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.36;
-      }
-
-      /* MOBILE MASTERS — карусель */
+      /* =========================
+         MOBILE MASTERS
+         ========================= */
 
       .mobile-master-card {
         flex: 0 0 min(82vw, 330px);
@@ -2990,7 +2876,9 @@
         line-height: 1.46;
       }
 
-      /* MOBILE GALLERY */
+      /* =========================
+         MOBILE GALLERY
+         ========================= */
 
       .mobile-gallery-card {
         flex: 0 0 min(78vw, 315px);
@@ -3035,28 +2923,143 @@
           linear-gradient(0deg, rgba(7,17,31,.20), transparent 52%);
       }
 
-      /* MOBILE REVIEWS / FAQ */
+      /* =========================
+         MOBILE REVIEWS — VERTICAL LIST
+         ========================= */
 
-      .mobile-review-card,
-      .mobile-faq-card {
-        flex: 0 0 min(82vw, 330px);
-        scroll-snap-align: center;
-        min-height: 250px;
-        padding: 18px;
+      .reviews-mobile-list {
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
         display: grid;
-        align-content: space-between;
-        gap: 14px;
+        gap: 10px;
+        padding: 2px 2px 12px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .reviews-mobile-list::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-review-card {
+        min-height: 142px;
+        padding: 15px;
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        border-radius: 22px;
+      }
+
+      .mobile-review-card p {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .mobile-review-card strong {
+        font-size: 14px;
+        letter-spacing: -0.03em;
       }
 
       .mobile-stars {
         position: relative;
         z-index: 1;
         color: var(--accent-deep);
-        font-size: 13px;
+        font-size: 12px;
         letter-spacing: .12em;
       }
 
-      /* MOBILE LOCATION */
+      .google-review-card {
+        min-height: 120px;
+        padding: 15px;
+        display: grid;
+        gap: 10px;
+        align-content: center;
+        border-radius: 22px;
+      }
+
+      .google-review-card strong {
+        position: relative;
+        z-index: 1;
+        color: var(--text-strong);
+        font-family: "Sora", sans-serif;
+        font-size: 22px;
+        line-height: .96;
+        letter-spacing: -.065em;
+      }
+
+      .google-review-card p {
+        position: relative;
+        z-index: 1;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .google-review-link {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        border: 1px solid rgba(22, 163, 74, .20);
+        background:
+          radial-gradient(circle at 50% 0%, rgba(255,255,255,.24), transparent 42%),
+          linear-gradient(180deg, #22c55e, #16a34a);
+        color: #ffffff;
+        text-decoration: none;
+        box-shadow: 0 16px 32px rgba(22, 163, 74, .18);
+        font-size: 12px;
+        font-weight: 1000;
+        letter-spacing: .055em;
+        text-transform: uppercase;
+      }
+
+      /* =========================
+         MOBILE FAQ — VERTICAL LIST
+         ========================= */
+
+      .faq-mobile-list {
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: grid;
+        gap: 10px;
+        padding: 2px 2px 12px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .faq-mobile-list::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-faq-card {
+        min-height: auto;
+        padding: 15px;
+        display: grid;
+        gap: 8px;
+        align-content: start;
+        border-radius: 22px;
+      }
+
+      .mobile-faq-card strong {
+        font-size: 18px;
+        line-height: 1;
+        letter-spacing: -.055em;
+      }
+
+      .mobile-faq-card p {
+        font-size: 13px;
+        line-height: 1.46;
+      }
+
+            /* =========================
+         MOBILE LOCATION
+         ========================= */
 
       .location-card {
         min-height: 0;
@@ -3086,6 +3089,8 @@
 
       .address-box p,
       .contact-mobile-card p {
+        position: relative;
+        z-index: 1;
         color: var(--muted);
         font-size: 13px;
         line-height: 1.38;
@@ -3189,7 +3194,9 @@
         transform: scale(.96);
       }
 
-      /* MOBILE CONTACT */
+      /* =========================
+         MOBILE CONTACT
+         ========================= */
 
       .contact-layout {
         min-height: 0;
@@ -3262,25 +3269,9 @@
         transform: scale(.96);
       }
 
-      /* BOTTOM CTA */
-
-      .bottom-cta {
-        position: relative;
-        z-index: 45;
-        padding: 8px 12px calc(10px + var(--safe-bottom));
-        background:
-          linear-gradient(180deg, transparent, rgba(255,255,255,.92) 38%, rgba(255,255,255,.96));
-      }
-
-      .bottom-cta .cta-btn {
-        width: 100%;
-        min-height: 58px;
-        box-shadow:
-          0 20px 42px rgba(47,125,244,.25),
-          inset 0 1px 0 rgba(255,255,255,.28);
-      }
-
-      /* MOBILE BOOKING OVERLAY WRAPPER */
+      /* =========================
+         MOBILE BOOKING OVERLAY WRAPPER
+         ========================= */
 
       .booking-overlay {
         padding: 8px;
@@ -3329,11 +3320,11 @@
         overflow: auto;
         border-radius: 26px;
       }
-
-      .portfolio-back {
-        display: none;
-      }
     }
+
+    /* =========================
+       SMALL MOBILE ADAPTATION
+       ========================= */
 
     @media (max-width: 430px) {
       .page {
@@ -3345,9 +3336,7 @@
       }
 
       .service-card,
-      .mobile-master-card,
-      .mobile-review-card,
-      .mobile-faq-card {
+      .mobile-master-card {
         flex-basis: min(84vw, 326px);
       }
 
@@ -3375,8 +3364,9 @@
         border-radius: 20px;
       }
 
-      .logo-pill .logo-word {
-        font-size: 18px;
+      .mobile-logo-img {
+        width: 106px;
+        max-height: 38px;
       }
 
       .section-nav {
@@ -3458,11 +3448,11 @@
       .contact-mobile-card strong {
         font-size: 25px;
       }
-
-      .bottom-cta .cta-btn {
-        min-height: 54px;
-      }
     }
+
+    /* =========================
+       DESKTOP RESET / MOTION
+       ========================= */
 
     @media (min-width: 901px) {
       html,
@@ -3495,10 +3485,93 @@
         scroll-behavior: auto !important;
       }
     }
+
+    /* =========================
+       KEYFRAMES
+       ========================= */
+
+    @keyframes floatSoft {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(.988);
+        filter: blur(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes logoBreath {
+      0%, 100% {
+        box-shadow: var(--shadow-sm), var(--glass-highlight);
+      }
+
+      50% {
+        box-shadow:
+          0 20px 48px rgba(47, 125, 244, 0.15),
+          0 0 34px rgba(97, 168, 255, 0.16),
+          var(--glass-highlight);
+      }
+    }
+
+    @keyframes logoShine {
+      0%, 72%, 100% {
+        transform: translateX(-72%) rotate(8deg);
+        opacity: 0;
+      }
+
+      82% {
+        opacity: .9;
+      }
+
+      92% {
+        transform: translateX(72%) rotate(8deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes orbMove {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(-42px, 62px, 0) scale(1.16);
+      }
+    }
+
+    .reveal {
+      animation: fadeUp 680ms var(--ease) both;
+    }
   </style>
 </head>
 
-  <body>
+<body>
   <a href="https://mrozowski-automation-production.up.railway.app/" class="portfolio-back">
     ← Wróć do wyboru
   </a>
@@ -3548,14 +3621,13 @@
                 <div class="section-chip">LUNA NAIL STUDIO</div>
 
                 <h1 class="hero-title">
-                  Beauty booking
-                  <span>jak aplikacja.</span>
+                  Manicure, który wygląda
+                  <span>lekko i czysto.</span>
                 </h1>
 
                 <p class="hero-sub">
-                  Manicure hybrydowy, przedłużanie żelowe i subtelne zdobienia
-                  w spokojnym studio we Wrocławiu. Wybierasz usługę, stylistkę
-                  i termin online — bez pisania wiadomości.
+                  Spokojne studio manicure we Wrocławiu. Hybryda, żel, french
+                  i subtelne zdobienia — z możliwością rezerwacji terminu online.
                 </p>
 
                 <div class="hero-actions">
@@ -3570,7 +3642,7 @@
                 <div class="hero-trust-row">
                   <div class="trust-pill">Manicure hybrydowy</div>
                   <div class="trust-pill">Przedłużanie żelowe</div>
-                  <div class="trust-pill">Zdobienia</div>
+                  <div class="trust-pill">French i zdobienia</div>
                 </div>
               </div>
 
@@ -3579,7 +3651,7 @@
                   <div class="image-fallback">LUNA<br />NAIL</div>
                   <div class="hero-photo-badge">
                     <span>MANICURE • BEAUTY • CARE</span>
-                    <strong>Premium studio we Wrocławiu</strong>
+                    <strong>LUNA NAIL STUDIO</strong>
                   </div>
                 </article>
 
@@ -3600,16 +3672,16 @@
         </div>
       </section>
 
-      <section id="experience">
+            <section id="experience">
         <div class="landing-container">
           <div class="section-card reveal">
             <div class="section-wrap">
               <div class="section-head">
                 <div class="section-chip">REZERWACJA</div>
-                <h2>Nie landing. <span>Mini aplikacja do zapisów.</span></h2>
+                <h2>Wybierasz usługę. <span>System prowadzi dalej.</span></h2>
                 <p>
-                  Strona prowadzi klientkę jak produkt mobilny: wybór usługi,
-                  stylistki, terminu i szybka rezerwacja w overlay.
+                  Klientka nie musi pisać wiadomości i czekać na odpowiedź.
+                  Widzi ofertę, wybiera termin i przechodzi przez rezerwację krok po kroku.
                 </p>
               </div>
 
@@ -3655,24 +3727,24 @@
                   <article class="glass-card feature-card">
                     <div class="feature-number">1</div>
                     <div>
-                      <strong>Oferta bez chaosu</strong>
-                      <p>Klientka od razu widzi usługi, ceny, czas i efekt.</p>
+                      <strong>Jasna oferta</strong>
+                      <p>Usługi, czas i cena są pokazane od razu — bez zgadywania.</p>
                     </div>
                   </article>
 
                   <article class="glass-card feature-card">
                     <div class="feature-number">2</div>
                     <div>
-                      <strong>Termin zamiast rozmowy</strong>
-                      <p>Booking otwiera się w środku strony jak część aplikacji.</p>
+                      <strong>Wybór stylistki</strong>
+                      <p>Klientka może wybrać osobę, do której chce się zapisać.</p>
                     </div>
                   </article>
 
                   <article class="glass-card feature-card">
                     <div class="feature-number">3</div>
                     <div>
-                      <strong>Premium pierwsze wrażenie</strong>
-                      <p>Całość wygląda jak nowoczesny beauty produkt, nie zwykły szablon.</p>
+                      <strong>Rezerwacja online</strong>
+                      <p>Cały proces odbywa się w środku strony, bez przełączania aplikacji.</p>
                     </div>
                   </article>
                 </div>
@@ -3700,8 +3772,8 @@
                     <div class="section-chip">STUDIO</div>
                     <h2>Spokojne miejsce, gdzie <span>liczy się detal.</span></h2>
                     <p>
-                      LUNA NAIL STUDIO to czyste dłonie, miękkie kolory,
-                      dokładna praca i atmosfera bez pośpiechu.
+                      LUNA NAIL STUDIO to jasne, czyste wnętrze, miękkie kolory
+                      i praca robiona bez pośpiechu.
                     </p>
                   </div>
 
@@ -3746,7 +3818,7 @@
             <div class="section-wrap">
               <div class="section-head center">
                 <div class="section-chip">USŁUGI</div>
-                <h2>Wybierz efekt. <span>Resztę prowadzi system.</span></h2>
+                <h2>Wybierz stylizację. <span>Termin dobierzesz dalej.</span></h2>
                 <p>Najczęściej wybierane usługi w LUNA NAIL STUDIO.</p>
               </div>
 
@@ -3800,11 +3872,9 @@
                 </article>
               </div>
 
-              <div class="section-actions" style="justify-content:center;margin-top:18px;">
-                <button class="btn btn-primary" type="button" data-open-booking>
-                  Zarezerwuj online
-                </button>
-              </div>
+              <p class="pricing-note">
+                Ceny i czas trwania są przykładowe — możesz je później podmienić pod realny cennik salonu.
+              </p>
             </div>
           </div>
         </div>
@@ -3818,8 +3888,8 @@
                 <div class="section-chip">STYLISTKI</div>
                 <h2>Wybierz osobę, która rozumie <span>Twój styl.</span></h2>
                 <p>
-                  Każda stylistka ma własną estetykę. Wybór możesz zrobić od razu
-                  z poziomu strony.
+                  Każda stylistka ma własną estetykę. Możesz wybrać konkretną osobę
+                  od razu z poziomu strony.
                 </p>
               </div>
 
@@ -3920,7 +3990,7 @@
               <div class="section-head">
                 <div class="section-chip">OPINIE</div>
                 <h2>Klientki wracają, gdy efekt jest <span>dopracowany.</span></h2>
-                <p>Przykładowe opinie — później możesz podmienić na realne recenzje.</p>
+                <p>Przykładowe opinie — później możesz podmienić na realne recenzje z Google.</p>
               </div>
 
               <div class="reviews-grid">
@@ -3992,7 +4062,7 @@
               <div class="section-head center">
                 <div class="section-chip">FAQ</div>
                 <h2>Przed wizytą <span>warto wiedzieć.</span></h2>
-                <p>Krótka sekcja, która zmniejsza ilość pytań w wiadomościach.</p>
+                <p>Krótka sekcja, która odpowiada na najczęstsze pytania.</p>
               </div>
 
               <div class="faq-grid">
@@ -4035,7 +4105,7 @@
                   </div>
 
                   <p class="contact-note">
-                    Ten landing działa jak wejście do gotowego booking flow w środku strony.
+                    Najszybciej zapiszesz się przez formularz rezerwacji w środku strony.
                   </p>
 
                   <div class="social-icons">
@@ -4065,10 +4135,6 @@
         </div>
       </section>
     </main>
-
-    <button class="btn btn-primary floating-book" id="floatingBook" type="button" data-open-booking>
-      Zarezerwuj wizytę
-    </button>
   </div>
 
   <div class="mobile-version" id="mobile-version">
@@ -4102,8 +4168,8 @@
       <section class="page active" data-page-view="home">
         <div class="page-head">
           <div class="kicker">LUNA NAIL STUDIO</div>
-          <h1 class="page-title">Booking app. <span class="gold">Nie zwykły site.</span></h1>
-          <p class="page-sub">Wybierz usługę, stylistkę i termin online — jak w aplikacji.</p>
+          <h1 class="page-title">Manicure <span class="gold">bez chaosu.</span></h1>
+          <p class="page-sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
         </div>
 
         <div class="screen-body">
@@ -4111,7 +4177,7 @@
             <div class="image-fallback">LUNA<br />NAIL</div>
             <div class="mobile-hero-floating">
               <span>MANICURE • BEAUTY • CARE</span>
-              <strong>Premium beauty booking we Wrocławiu</strong>
+              <strong>Jasne studio manicure we Wrocławiu</strong>
             </div>
           </div>
 
@@ -4132,7 +4198,7 @@
         <div class="page-head">
           <div class="kicker">USŁUGI</div>
           <h2 class="page-title">Wybierz <span class="gold">stylizację.</span></h2>
-          <p class="page-sub">Przesuń karty i wybierz usługę jak w aplikacji.</p>
+          <p class="page-sub">Przesuń karty i wybierz usługę.</p>
         </div>
 
         <div class="services-list">
@@ -4273,13 +4339,13 @@
         <div class="page-head">
           <div class="kicker">OPINIE</div>
           <h2 class="page-title">Spokój, detal, <span class="gold">efekt.</span></h2>
-          <p class="page-sub">Opinie spakowane jak karty w aplikacji.</p>
+          <p class="page-sub">Przewiń w dół i zobacz przykładowe opinie klientek.</p>
         </div>
 
         <div class="reviews-mobile-list">
           <article class="mobile-review-card">
             <div class="mobile-stars">★★★★★</div>
-            <p>“Bardzo spokojna atmosfera i dokładna praca.”</p>
+            <p>“Bardzo spokojna atmosfera i dokładna praca. Paznokcie wyglądają naturalnie i czysto.”</p>
             <strong>— Julia</strong>
           </article>
 
@@ -4291,8 +4357,40 @@
 
           <article class="mobile-review-card">
             <div class="mobile-stars">★★★★★</div>
-            <p>“French wyszedł bardzo równo. Detal ma znaczenie.”</p>
+            <p>“French wyszedł bardzo równo. Widać, że detal ma tutaj znaczenie.”</p>
             <strong>— Karolina</strong>
+          </article>
+
+          <article class="mobile-review-card">
+            <div class="mobile-stars">★★★★★</div>
+            <p>“Piękne miejsce, jasne wnętrze i bardzo przyjemna obsługa.”</p>
+            <strong>— Amelia</strong>
+          </article>
+
+          <article class="mobile-review-card">
+            <div class="mobile-stars">★★★★★</div>
+            <p>“Kolor dobrany idealnie, skórki opracowane bardzo dokładnie.”</p>
+            <strong>— Zuzanna</strong>
+          </article>
+
+          <article class="mobile-review-card">
+            <div class="mobile-stars">★★★★★</div>
+            <p>“Rezerwacja online jest mega wygodna. Kliknęłam, wybrałam termin i gotowe.”</p>
+            <strong>— Wiktoria</strong>
+          </article>
+
+          <article class="mobile-review-card">
+            <div class="mobile-stars">★★★★★</div>
+            <p>“Delikatny efekt, dokładnie taki, jak lubię. Bez przesady i bez tandety.”</p>
+            <strong>— Lena</strong>
+          </article>
+
+          <article class="google-review-card">
+            <strong>Zobacz więcej opinii</strong>
+            <p>Link możesz później podmienić na prawdziwy profil Google salonu.</p>
+            <a class="google-review-link" href="#" target="_blank" rel="noopener">
+              Zobacz opinie w Google
+            </a>
           </article>
         </div>
       </section>
@@ -4329,7 +4427,7 @@
         <div class="page-head">
           <div class="kicker">FAQ</div>
           <h2 class="page-title">Krótko. <span class="gold">Bez chaosu.</span></h2>
-          <p class="page-sub">Najważniejsze pytania przed wizytą.</p>
+          <p class="page-sub">Przewiń pytania przed wizytą.</p>
         </div>
 
         <div class="faq-mobile-list">
@@ -4346,6 +4444,31 @@
           <article class="mobile-faq-card">
             <strong>Ile trwa stylizacja?</strong>
             <p>Hybryda zwykle około 90 minut, przedłużanie około 150 minut.</p>
+          </article>
+
+          <article class="mobile-faq-card">
+            <strong>Czy można zrobić french?</strong>
+            <p>Tak, french i soft french możesz dodać jako zdobienie.</p>
+          </article>
+
+          <article class="mobile-faq-card">
+            <strong>Czy ceny są finalne?</strong>
+            <p>To przykładowy cennik. Finalne ceny podmienisz pod realny salon.</p>
+          </article>
+
+          <article class="mobile-faq-card">
+            <strong>Czy trzeba przyjść wcześniej?</strong>
+            <p>Wystarczy być kilka minut przed wizytą, żeby spokojnie zacząć.</p>
+          </article>
+
+          <article class="mobile-faq-card">
+            <strong>Czy mogę odwołać wizytę?</strong>
+            <p>Tak, najlepiej skontaktować się telefonicznie lub przez Instagram.</p>
+          </article>
+
+          <article class="mobile-faq-card">
+            <strong>Czy studio pracuje w weekend?</strong>
+            <p>W sobotę tak, niedziela jest ustawiona jako dzień zamknięty.</p>
           </article>
         </div>
       </section>
@@ -4386,12 +4509,6 @@
         </div>
       </section>
     </main>
-
-    <div class="bottom-cta">
-      <button class="cta-btn" type="button" data-open-booking>
-        Zarezerwuj wizytę online
-      </button>
-    </div>
   </div>
 
   <!-- 
@@ -4400,13 +4517,12 @@
       ...
     </section>
 
-    Nie zmieniaj wnętrza bookingu, jeśli już działa.
+    WNĘTRZA BOOKINGU NIE RUSZAMY, BO OBSŁUGUJE GO ./script.js + ./style.css
   -->
 
   <script>
     const overlay = document.getElementById("bookingOverlay");
     const flash = document.getElementById("screenFlash");
-    const floatingBook = document.getElementById("floatingBook");
     const siteHeader = document.querySelector(".site-header");
 
     let lastScrollY = window.scrollY;
@@ -4465,6 +4581,15 @@
             block: "nearest"
           });
 
+          const activePage = document.querySelector(`.page[data-page-view="${page}"]`);
+          const scrollables = activePage?.querySelectorAll(
+            ".reviews-mobile-list, .faq-mobile-list, .services-list, .masters-mobile-list, .gallery-mobile-list"
+          );
+
+          scrollables?.forEach(item => {
+            item.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          });
+
           if (flash && window.innerWidth <= 900) {
             flash.classList.add("active");
             setTimeout(() => flash.classList.remove("active"), 120);
@@ -4476,29 +4601,16 @@
     function handleDesktopScroll() {
       const currentY = window.scrollY;
 
-      if (floatingBook) {
-        const show = currentY > 520;
-        floatingBook.classList.toggle("is-visible", show);
-
-        const contact = document.getElementById("contact");
-        if (contact) {
-          const rect = contact.getBoundingClientRect();
-          floatingBook.classList.toggle(
-            "hidden-on-contact",
-            rect.top < window.innerHeight * 0.8
-          );
-        }
-      }
-
       if (siteHeader && window.innerWidth > 900) {
-        const goingDown = currentY > lastScrollY;
-        const goingUp = currentY < lastScrollY;
+        const delta = currentY - lastScrollY;
+        const goingDown = delta > 4;
+        const goingUp = delta < -2;
 
-        if (goingDown && currentY > 140) {
+        if (goingDown && currentY > 120) {
           siteHeader.classList.add("header-hidden");
         }
 
-        if (goingUp || currentY < 80) {
+        if (goingUp || currentY < 70) {
           siteHeader.classList.remove("header-hidden");
         }
       }
