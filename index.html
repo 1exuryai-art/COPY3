@@ -1904,7 +1904,45 @@
 .subtle-art-photo {
   background-image: url("/subtle-art.jpg");
 }
-    
+
+    /* === GALLERY IMAGES === */
+
+.gallery-tile {
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(255,255,255,0.55));
+  z-index: 0;
+}
+
+.gallery-tile span {
+  z-index: 2;
+}
+
+.gallery-clean {
+  background-image: url("./clean-manicure.jpg");
+}
+
+.gallery-soft {
+  background-image: url("./soft-french.jpg");
+}
+
+.gallery-milk {
+  background-image: url("./milk-white.jpg");
+}
+
+.gallery-shape {
+  background-image: url("./premium-nail-shape.jpg");
+}
+
+.gallery-art {
+  background-image: url("./subtle-art.jpg");
+}
     @media (max-width: 1120px) {
       .hero-grid,
       .experience-grid,
