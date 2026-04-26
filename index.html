@@ -3207,28 +3207,135 @@
   </div>
 
   <div class="booking-overlay" id="bookingOverlay" aria-hidden="true">
-    <div class="booking-shell">
-      <div class="booking-topbar">
-        <div class="booking-topbar__left">
-          <div class="booking-logo-text">LUNA<br />NAIL</div>
-          <div class="booking-topbar__copy">
-            <span>Rezerwacja online</span>
-            <strong>Twój gotowy booking.html</strong>
-          </div>
+  <div class="booking-shell">
+    <div class="booking-topbar">
+      <div class="booking-topbar__left">
+        <div class="booking-logo-text">LUNA<br />NAIL</div>
+        <div class="booking-topbar__copy">
+          <span>Rezerwacja online</span>
+          <strong id="stepTitle">Dane kontaktowe</strong>
         </div>
-
-        <button class="btn booking-close" type="button" onclick="closeBooking()" aria-label="Zamknij rezerwację">×</button>
       </div>
 
-      <div class="booking-frame-wrap">
-        <iframe
-          src="/booking.html"
-          class="booking-frame"
-          title="Rezerwacja online LUNA NAIL STUDIO"
-        ></iframe>
+      <button class="btn booking-close" type="button" onclick="closeBooking()">×</button>
+    </div>
+
+    <div class="booking-frame-wrap">
+      <div class="booking-app">
+        <div class="booking-progress">
+          <span id="stepPill">1 / 8</span>
+          <span id="progressText">13%</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p id="stepSubtitle">Wpisz swoje dane, aby rozpocząć rezerwację wizyty.</p>
+        </div>
+
+        <section class="step active" data-step="1">
+          <div class="form-grid">
+            <label>
+              Imię
+              <input id="nameInput" type="text" placeholder="Twoje imię" />
+              <small id="nameError"></small>
+            </label>
+
+            <label>
+              Telefon
+              <input id="phoneInput" type="tel" placeholder="+48 000 000 000" />
+              <small id="phoneError"></small>
+            </label>
+          </div>
+        </section>
+
+        <section class="step" data-step="2">
+          <div id="categoryAccordion" class="category-accordion"></div>
+        </section>
+
+        <section class="step" data-step="3">
+          <div class="choice-grid">
+            <button id="chooseBarberYes" class="choice-card" type="button">
+              <strong>Tak, wybieram stylistkę</strong>
+              <span>Chcę umówić się do konkretnej osoby.</span>
+            </button>
+
+            <button id="chooseBarberNo" class="choice-card" type="button">
+              <strong>Nie, dobierzcie stylistkę</strong>
+              <span>System znajdzie wolną stylistkę.</span>
+            </button>
+          </div>
+
+          <div id="barberSkipBox" class="info-box hidden">
+            Dobierzemy stylistkę automatycznie na podstawie wolnego terminu.
+          </div>
+        </section>
+
+        <section class="step" data-step="4">
+          <div class="barber-slider">
+            <button id="barberPrevBtn" type="button">←</button>
+
+            <div class="barber-slide">
+              <div id="barberSlidePhoto" class="barber-photo"></div>
+              <h3 id="barberSlideName"></h3>
+              <p id="barberSlideDescription"></p>
+              <div id="barberSlideLangs" class="barber-langs"></div>
+              <span id="barberCounter"></span>
+              <button id="selectBarberBtn" class="nav-btn nav-btn-primary" type="button">
+                Wybierz tę stylistkę
+              </button>
+            </div>
+
+            <button id="barberNextBtn" type="button">→</button>
+          </div>
+        </section>
+
+        <section class="step" data-step="5">
+          <div class="calendar-head">
+            <button id="calendarPrevBtn" type="button">←</button>
+            <strong id="monthLabel"></strong>
+            <button id="calendarNextBtn" type="button">→</button>
+          </div>
+
+          <p id="calendarStatus"></p>
+          <div id="calendarGrid" class="calendar-grid"></div>
+          <small id="dateError"></small>
+        </section>
+
+        <section class="step" data-step="6">
+          <p id="slotsStatus"></p>
+          <div id="slotsGrid" class="slots-grid"></div>
+          <small id="timeError"></small>
+        </section>
+
+        <section class="step" data-step="7">
+          <div class="summary-box">
+            <p>Imię: <strong data-bind="name">—</strong></p>
+            <p>Telefon: <strong data-bind="phone">—</strong></p>
+            <p>Usługa: <strong data-bind="serviceName">—</strong></p>
+            <p>Cena: <strong data-bind="servicePrice">—</strong></p>
+            <p>Czas: <strong data-bind="serviceDuration">—</strong></p>
+            <p>Stylistka: <strong data-bind="barberName">—</strong></p>
+            <p>Data: <strong data-bind="dateText">—</strong></p>
+            <p>Godzina: <strong data-bind="time">—</strong></p>
+          </div>
+
+          <small id="submitError"></small>
+        </section>
+
+        <section class="step" data-step="8">
+          <div class="success-box">
+            <h2>Rezerwacja zapisana</h2>
+            <p>Twoja wizyta została zapisana. Do zobaczenia w LUNA NAIL STUDIO.</p>
+          </div>
+        </section>
+
+        <div class="booking-nav">
+          <button id="backBtn" class="nav-btn" type="button">Wstecz</button>
+          <button id="nextBtn" class="nav-btn nav-btn-primary" type="button">Dalej</button>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
   <script>
     const overlay = document.getElementById("bookingOverlay");
