@@ -4116,6 +4116,44 @@
     overflow: visible !important;
   }
 }
+    @media (min-width: 901px) {
+  .desktop-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1.45fr;
+    gap: 18px;
+  }
+
+  .desktop-left,
+  .desktop-right {
+    min-width: 0;
+  }
+
+  .desktop-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .desktop-nav {
+    flex-wrap: nowrap;
+    gap: 18px;
+    white-space: nowrap;
+  }
+
+  .desktop-nav a {
+    font-size: 14px;
+  }
+
+  .lang-switcher {
+    flex-shrink: 0;
+    margin-left: 10px;
+  }
+
+  .desktop-call-btn {
+    flex-shrink: 0;
+  }
+}
   </style>
 </head>
 
