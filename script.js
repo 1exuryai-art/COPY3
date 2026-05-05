@@ -42,7 +42,13 @@ const BOOKING_I18N = {
     errPhone: "Podaj poprawny numer telefonu",
     errPickDate: "Wybierz datę",
     errPickTime: "Wybierz godzinę",
-    callFail: "Nie udało się otworzyć połączenia. Numer został skopiowany: 532 377 701"
+    callFail: "Nie udało się otworzyć połączenia. Numer został skopiowany: 532 377 701",
+    langTagPl: "Polski",
+    langTagUa: "Ukraiński",
+    langTagRu: "Rosyjski",
+    langTagEn: "Angielski",
+    availableDates: "Dostępne terminy",
+    timeSlots: "Godziny"
   },
   ru: {
     steps: [
@@ -79,7 +85,56 @@ const BOOKING_I18N = {
     errPhone: "Введите корректный номер телефона",
     errPickDate: "Выберите дату",
     errPickTime: "Выберите время",
-    callFail: "Не удалось открыть звонок. Номер скопирован: 532 377 701"
+    callFail: "Не удалось открыть звонок. Номер скопирован: 532 377 701",
+    langTagPl: "Польский",
+    langTagUa: "Украинский",
+    langTagRu: "Русский",
+    langTagEn: "Английский",
+    availableDates: "Доступные даты",
+    timeSlots: "Время"
+  },
+  ua: {
+    steps: [
+      { title: "Контактні дані", subtitle: "Вкажіть дані, щоб розпочати запис." },
+      { title: "Вибір послуги", subtitle: "Оберіть потрібну послугу або догляд." },
+      { title: "Обрати майстра?", subtitle: "Ви можете обрати майстра або довірити підбір студії." },
+      { title: "Вибір майстра", subtitle: "Оберіть фахівця, до якого хочете записатися." },
+      { title: "Вибір дати", subtitle: "Оберіть зручний день візиту." },
+      { title: "Вибір часу", subtitle: "Оберіть вільний час, що підходить вам." },
+      { title: "Підтвердження даних", subtitle: "Перевірте деталі перед підтвердженням запису." },
+      { title: "Запис збережено", subtitle: "Ваш запис підтверджено. До зустрічі у студії." }
+    ],
+    months: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+    loadingSlots: "Завантаження вільного часу...",
+    genericBarber: "Майстра підбере студія",
+    next: "Далі",
+    saving: "Збереження...",
+    confirmVisit: "Підтвердити запис",
+    serviceDiscountLine: "або {price} в акційні години",
+    serviceDiscountBadge: "Знижка 10% з понеділка по четвер, 10:00–16:00",
+    chooseServiceNext: "Обрати і продовжити",
+    stylistSelected: "Майстра обрано",
+    stylistChoose: "Обрати цього майстра",
+    calendarHours: "Години: пн-сб 10:00–20:00, нд 10:00–18:00",
+    errLoadSlots: "Не вдалося завантажити вільний час.",
+    errLoadSlotsShort: "Помилка завантаження часу",
+    chooseDateFirst: "Спочатку оберіть дату",
+    chooseDayToLoad: "Оберіть день, щоб завантажити час",
+    noFreeSlots: "Вільних вікон немає",
+    freeSlots: "{count} вільних вікон · {open}:00–{close}:00",
+    errBookingSave: "Не вдалося зберегти запис.",
+    errServer: "Помилка сервера.",
+    errName: "Введіть коректне ім’я",
+    errPhone: "Введіть коректний номер телефону",
+    errPickDate: "Оберіть дату",
+    errPickTime: "Оберіть час",
+    callFail: "Не вдалося відкрити дзвінок. Номер скопійовано: 532 377 701",
+    langTagPl: "Польська",
+    langTagUa: "Українська",
+    langTagRu: "Російська",
+    langTagEn: "Англійська",
+    availableDates: "Доступні дати",
+    timeSlots: "Час"
   },
   en: {
     steps: [
@@ -116,7 +171,92 @@ const BOOKING_I18N = {
     errPhone: "Enter a valid phone number",
     errPickDate: "Choose a date",
     errPickTime: "Choose a time",
-    callFail: "Could not start the call. Number copied: 532 377 701"
+    callFail: "Could not start the call. Number copied: 532 377 701",
+    langTagPl: "Polish",
+    langTagUa: "Ukrainian",
+    langTagRu: "Russian",
+    langTagEn: "English",
+    availableDates: "Available dates",
+    timeSlots: "Time slots"
+  }
+};
+
+const BOOKING_COPY = {
+  pl: {
+    chooseBarberYes: "Tak",
+    chooseBarberNo: "Nie",
+    skipBarberLabel: "Stylistka",
+    skipBarberValue: "Bez wyboru",
+    skipBarberStatusLabel: "Status",
+    skipBarberStatusValue: "Salon dobierze dostępną stylistkę",
+    introTitle: "Umów wizytę szybko i wygodnie",
+    contactCardTitle: "Wpisz imię i telefon",
+    contactCardSub: "Zostaw swoje dane, a potem wybierz usługę, stylistkę i termin wizyty.",
+    nameLabel: "Imię",
+    namePlaceholder: "Np. Anna",
+    phoneLabel: "Telefon",
+    phonePlaceholder: "+48 123 456 789",
+    serviceLabel: "Usługa",
+    closeBooking: "Zamknij booking",
+    bookingTopbarTitle: "Rezerwacja online",
+    weekdays: ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"]
+  },
+  ru: {
+    chooseBarberYes: "Да",
+    chooseBarberNo: "Нет",
+    skipBarberLabel: "Мастер",
+    skipBarberValue: "Без выбора",
+    skipBarberStatusLabel: "Статус",
+    skipBarberStatusValue: "Студия подберет доступного мастера",
+    introTitle: "Запишитесь быстро и удобно",
+    contactCardTitle: "Введите имя и телефон",
+    contactCardSub: "Оставьте данные, затем выберите услугу, мастера и время визита.",
+    nameLabel: "Имя",
+    namePlaceholder: "Например, Анна",
+    phoneLabel: "Телефон",
+    phonePlaceholder: "+48 123 456 789",
+    serviceLabel: "Услуга",
+    closeBooking: "Закрыть booking",
+    bookingTopbarTitle: "Онлайн-запись",
+    weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+  },
+  ua: {
+    chooseBarberYes: "Так",
+    chooseBarberNo: "Ні",
+    skipBarberLabel: "Майстер",
+    skipBarberValue: "Без вибору",
+    skipBarberStatusLabel: "Статус",
+    skipBarberStatusValue: "Студія підбере доступного майстра",
+    introTitle: "Запишіться швидко та зручно",
+    contactCardTitle: "Вкажіть ім’я та телефон",
+    contactCardSub: "Залиште дані, потім оберіть послугу, майстра і час візиту.",
+    nameLabel: "Ім’я",
+    namePlaceholder: "Наприклад, Анна",
+    phoneLabel: "Телефон",
+    phonePlaceholder: "+48 123 456 789",
+    serviceLabel: "Послуга",
+    closeBooking: "Закрити booking",
+    bookingTopbarTitle: "Онлайн-запис",
+    weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"]
+  },
+  en: {
+    chooseBarberYes: "Yes",
+    chooseBarberNo: "No",
+    skipBarberLabel: "Artist",
+    skipBarberValue: "No preference",
+    skipBarberStatusLabel: "Status",
+    skipBarberStatusValue: "The studio will assign an available artist",
+    introTitle: "Book your visit quickly and easily",
+    contactCardTitle: "Enter your name and phone",
+    contactCardSub: "Leave your details, then choose a service, artist and visit time.",
+    nameLabel: "Name",
+    namePlaceholder: "e.g. Anna",
+    phoneLabel: "Phone",
+    phonePlaceholder: "+48 123 456 789",
+    serviceLabel: "Service",
+    closeBooking: "Close booking",
+    bookingTopbarTitle: "Online booking",
+    weekdays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
   }
 };
 
@@ -134,31 +274,64 @@ function t(key, params = {}) {
   return value;
 }
 
+function pickLocalized(value) {
+  if (value && typeof value === "object") {
+    const lang = getCurrentLang();
+    return value[lang] || value.pl || value.ru || value.en || value.ua || "";
+  }
+  return value || "";
+}
+
 const serviceCategories = [
   {
     id: "popular",
-    title: "Najczęściej wybierane",
-    description: "Najpopularniejsze stylizacje wybierane przez klientki."
+    title: { pl: "Najczęściej wybierane", ua: "Найпопулярніше", ru: "Популярные", en: "Most popular" },
+    description: {
+      pl: "Najczęściej wybierane usługi w LUNA NAIL STUDIO.",
+      ua: "Найчастіше обирають у LUNA NAIL STUDIO.",
+      ru: "Самые востребованные услуги в LUNA NAIL STUDIO.",
+      en: "Most requested services at LUNA NAIL STUDIO."
+    }
   },
   {
     id: "classic",
-    title: "Manicure",
-    description: "Klasyczne i hybrydowe usługi paznokci."
+    title: { pl: "Manicure", ua: "Манікюр", ru: "Маникюр", en: "Manicure" },
+    description: {
+      pl: "Klasyczne i hybrydowe usługi paznokci.",
+      ua: "Класичні та гібридні послуги.",
+      ru: "Классические и гибридные услуги.",
+      en: "Classic and gel polish treatments."
+    }
   },
   {
     id: "extension",
-    title: "Przedłużanie paznokci",
-    description: "Budowa, uzupełnienie i korekta paznokci żelowych."
+    title: { pl: "Przedłużanie paznokci", ua: "Нарощення нігтів", ru: "Наращивание ногтей", en: "Extensions" },
+    description: {
+      pl: "Budowa, uzupełnienie i korekta paznokci żelowych.",
+      ua: "Моделювання, корекція та доповнення гелем.",
+      ru: "Моделирование, коррекция и укрепление гелем.",
+      en: "Gel build-up, refill and correction."
+    }
   },
   {
     id: "design",
-    title: "Zdobienia i efekt",
-    description: "Delikatne dodatki, french, babyboomer i stylizacje premium."
+    title: { pl: "Zdobienia i efekt", ua: "Дизайн", ru: "Дизайн", en: "Design" },
+    description: {
+      pl: "French, babyboomer i subtelne zdobienia.",
+      ua: "French, babyboomer та делікатний декор.",
+      ru: "French, babyboomer и деликатный декор.",
+      en: "French, baby boomer and detail art."
+    }
   },
   {
     id: "care",
-    title: "Pielęgnacja",
-    description: "Zabiegi dla dłoni, skórek i naturalnej płytki."
+    title: { pl: "Pielęgnacja", ua: "Догляд", ru: "Уход", en: "Care" },
+    description: {
+      pl: "Zabiegi dla dłoni, skórek i naturalnej płytki.",
+      ua: "Догляд за руками, кутикулою та нігтями.",
+      ru: "Уход за руками, кутикулой и ногтями.",
+      en: "Hand, cuticle and natural nail care."
+    }
   }
 ];
 
@@ -166,23 +339,43 @@ const services = [
   {
     id: "hybrid-manicure",
     category: "popular",
-    name: "Manicure hybrydowy",
+    name: { pl: "Manicure hybrydowy", ua: "Гібридний манікюр", ru: "Гибридный маникюр", en: "Gel polish manicure" },
+    description: {
+      pl: "Czysty manicure z trwałym kolorem dopasowanym do Twojego stylu.",
+      ua: "Акуратний манікюр зі стійким покриттям під ваш стиль.",
+      ru: "Аккуратный маникюр со стойким покрытием под ваш стиль.",
+      en: "Clean manicure with durable color matched to your style."
+    },
     basePrice: 120,
     duration: "1h 30min",
-    durationMinutes: 90
+    durationMinutes: 90,
+    image: "/assets/booking/services/haircut.jpg"
   },
   {
     id: "gel-extension",
     category: "popular",
-    name: "Przedłużanie paznokci żelem",
+    name: { pl: "Przedłużanie paznokci żelem", ua: "Гелеве нарощення", ru: "Гелевое наращивание", en: "Gel extension" },
+    description: {
+      pl: "Budowa i kształt paznokci z mocnym, estetycznym wykończeniem.",
+      ua: "Моделювання і форма нігтів з міцним та естетичним фінішем.",
+      ru: "Моделирование и форма ногтей с прочным аккуратным финишем.",
+      en: "Nail build-up and shape with a strong, polished finish."
+    },
     basePrice: 180,
     duration: "2h",
-    durationMinutes: 120
+    durationMinutes: 120,
+    image: "/assets/booking/services/combo.jpg"
   },
   {
     id: "hybrid-removal-new",
     category: "popular",
-    name: "Ściągnięcie + nowa hybryda",
+    name: { pl: "Ściągnięcie + nowa hybryda", ua: "Зняття + нове покриття", ru: "Снятие + новое покрытие", en: "Removal + new gel polish" },
+    description: {
+      pl: "Bezpieczne usunięcie poprzedniej stylizacji i świeża nowa hybryda.",
+      ua: "Делікатне зняття старого покриття та нова гібридна стилізація.",
+      ru: "Бережное снятие старого покрытия и новое гибридное нанесение.",
+      en: "Safe removal of previous styling and a fresh gel polish set."
+    },
     basePrice: 140,
     duration: "1h 45min",
     durationMinutes: 105
@@ -190,7 +383,13 @@ const services = [
   {
     id: "classic-manicure",
     category: "classic",
-    name: "Manicure klasyczny",
+    name: { pl: "Manicure klasyczny", ua: "Класичний манікюр", ru: "Классический маникюр", en: "Classic manicure" },
+    description: {
+      pl: "Opracowanie skórek i naturalny, zadbany efekt bez koloru hybrydowego.",
+      ua: "Обробка кутикули та природний доглянутий вигляд без гелю.",
+      ru: "Обработка кутикулы и аккуратный натуральный вид без геля.",
+      en: "Cuticle care and a neat natural finish without gel polish."
+    },
     basePrice: 90,
     duration: "1h",
     durationMinutes: 60
@@ -198,7 +397,13 @@ const services = [
   {
     id: "japanese-manicure",
     category: "classic",
-    name: "Manicure japoński",
+    name: { pl: "Manicure japoński", ua: "Японський манікюр", ru: "Японский маникюр", en: "Japanese manicure" },
+    description: {
+      pl: "Wzmocnienie naturalnej płytki i zdrowy połysk bez lakieru.",
+      ua: "Зміцнення натурального нігтя та здоровий блиск без лаку.",
+      ru: "Укрепление натуральной пластины и естественный блеск без лака.",
+      en: "Natural nail strengthening with healthy shine and no polish."
+    },
     basePrice: 110,
     duration: "1h",
     durationMinutes: 60
@@ -206,7 +411,13 @@ const services = [
   {
     id: "hybrid-french",
     category: "classic",
-    name: "Manicure hybrydowy French",
+    name: { pl: "Manicure hybrydowy French", ua: "Гібридний French", ru: "Гибридный French", en: "Gel polish French" },
+    description: {
+      pl: "Klasyczny french w nowoczesnym, estetycznym wykonaniu.",
+      ua: "Класичний french у сучасному акуратному виконанні.",
+      ru: "Классический french в аккуратной современной подаче.",
+      en: "Classic French style with a clean modern finish."
+    },
     basePrice: 150,
     duration: "1h 45min",
     durationMinutes: 105
@@ -214,7 +425,13 @@ const services = [
   {
     id: "gel-refill",
     category: "extension",
-    name: "Uzupełnienie paznokci żelowych",
+    name: { pl: "Uzupełnienie paznokci żelowych", ua: "Корекція гелю", ru: "Коррекция геля", en: "Gel refill" },
+    description: {
+      pl: "Odświeżenie odrostu i korekta kształtu bez pełnej przebudowy.",
+      ua: "Оновлення зони відросту та корекція форми без повного перенарощення.",
+      ru: "Обновление зоны отрастания и коррекция формы без полного снятия.",
+      en: "Regrowth refresh and shape correction without a full rebuild."
+    },
     basePrice: 160,
     duration: "2h",
     durationMinutes: 120
@@ -222,7 +439,13 @@ const services = [
   {
     id: "gel-correction",
     category: "extension",
-    name: "Korekta paznokci żelowych",
+    name: { pl: "Korekta paznokci żelowych", ua: "Виправлення форми гелю", ru: "Коррекция формы геля", en: "Gel shape correction" },
+    description: {
+      pl: "Dopracowanie architektury paznokci i poprawa proporcji stylizacji.",
+      ua: "Корекція архітектури нігтів і вирівнювання пропорцій.",
+      ru: "Коррекция архитектуры ногтей и выравнивание пропорций.",
+      en: "Nail architecture correction and improved shape balance."
+    },
     basePrice: 170,
     duration: "2h",
     durationMinutes: 120
@@ -230,7 +453,13 @@ const services = [
   {
     id: "nail-repair",
     category: "extension",
-    name: "Naprawa jednego paznokcia",
+    name: { pl: "Naprawa jednego paznokcia", ua: "Ремонт одного нігтя", ru: "Ремонт одного ногтя", en: "Single nail repair" },
+    description: {
+      pl: "Szybka naprawa uszkodzonego paznokcia bez pełnej stylizacji.",
+      ua: "Швидкий ремонт пошкодженого нігтя без повної процедури.",
+      ru: "Быстрый ремонт поврежденного ногтя без полной процедуры.",
+      en: "Quick repair of a damaged nail without a full service."
+    },
     basePrice: 25,
     duration: "20min",
     durationMinutes: 20
@@ -238,7 +467,13 @@ const services = [
   {
     id: "babyboomer",
     category: "design",
-    name: "Babyboomer",
+    name: { pl: "Babyboomer", ua: "Babyboomer", ru: "Babyboomer", en: "Baby boomer" },
+    description: {
+      pl: "Delikatne cieniowanie dla miękkiego, eleganckiego efektu.",
+      ua: "М’який градієнт для витонченого й акуратного ефекту.",
+      ru: "Мягкий градиент для элегантного аккуратного результата.",
+      en: "Soft gradient styling for an elegant, natural effect."
+    },
     basePrice: 160,
     duration: "1h 45min",
     durationMinutes: 105
@@ -246,15 +481,28 @@ const services = [
   {
     id: "nail-art",
     category: "design",
-    name: "Zdobienia paznokci",
+    name: { pl: "Zdobienia paznokci", ua: "Дизайн нігтів", ru: "Дизайн ногтей", en: "Nail art" },
+    description: {
+      pl: "Subtelne detale, akcenty i zdobienia dopasowane do stylizacji.",
+      ua: "Делікатні акценти та декор, підібрані до вашого стилю.",
+      ru: "Деликатные акценты и декор, подобранные под ваш стиль.",
+      en: "Elegant accents and detail work tailored to your styling."
+    },
     basePrice: 35,
     duration: "20min",
-    durationMinutes: 20
+    durationMinutes: 20,
+    image: "/assets/booking/services/beard.jpg"
   },
   {
     id: "premium-styling",
     category: "design",
-    name: "Stylizacja premium",
+    name: { pl: "Stylizacja premium", ua: "Преміум-стилізація", ru: "Премиум-стилизация", en: "Premium styling" },
+    description: {
+      pl: "Pełna stylizacja z dopracowanym wykończeniem i efektem premium.",
+      ua: "Повна стилізація з ретельним виконанням і преміум-фінішем.",
+      ru: "Полная стилизация с детальной проработкой и премиум-финишем.",
+      en: "Full styling session with refined premium finish."
+    },
     basePrice: 190,
     duration: "2h",
     durationMinutes: 120
@@ -262,7 +510,13 @@ const services = [
   {
     id: "spa-hands",
     category: "care",
-    name: "Pielęgnacja dłoni SPA",
+    name: { pl: "Pielęgnacja dłoni SPA", ua: "SPA-догляд для рук", ru: "SPA-уход для рук", en: "Hand SPA care" },
+    description: {
+      pl: "Relaksujący zabieg dla skóry dłoni z wygładzeniem i nawilżeniem.",
+      ua: "Розслаблювальний догляд для шкіри рук із живленням і зволоженням.",
+      ru: "Расслабляющий уход для кожи рук с питанием и увлажнением.",
+      en: "Relaxing hand care treatment for smoother, hydrated skin."
+    },
     basePrice: 80,
     duration: "45min",
     durationMinutes: 45
@@ -270,34 +524,56 @@ const services = [
   {
     id: "cuticle-care",
     category: "care",
-    name: "Opracowanie skórek",
+    name: { pl: "Opracowanie skórek", ua: "Догляд за кутикулою", ru: "Обработка кутикулы", en: "Cuticle care" },
+    description: {
+      pl: "Precyzyjna pielęgnacja skórek dla czystego i zadbanego efektu.",
+      ua: "Точний догляд за кутикулою для чистого акуратного результату.",
+      ru: "Точная обработка кутикулы для чистого аккуратного вида.",
+      en: "Precise cuticle care for a clean and polished look."
+    },
     basePrice: 60,
     duration: "40min",
-    durationMinutes: 40
+    durationMinutes: 40,
+    image: "/assets/booking/services/bio-perm.jpg"
   }
 ];
 
 const barbers = [
   {
     id: "tymur",
-    name: "Julia",
-    photo: "/stylistka-julia.png",
-    description: "Stylistka paznokci specjalizująca się w czystej hybrydzie, delikatnym frenchu i eleganckich stylizacjach.",
-    languages: ["🇵🇱 Polski", "🇺🇦 Ukraiński", "🇬🇧 English"]
+    name: { pl: "Julia", ua: "Юлія", ru: "Юлия", en: "Julia" },
+    photo: "/assets/barbers/tymur.png",
+    description: {
+      pl: "Specjalistka od czystej hybrydy, frenchu i subtelnych stylizacji codziennych.",
+      ua: "Спеціалістка з гібридного манікюру, french та делікатних повсякденних стилізацій.",
+      ru: "Специалист по гибридному маникюру, french и аккуратным повседневным стилям.",
+      en: "Specialist in gel polish manicure, French and clean everyday styling."
+    },
+    languages: ["pl", "ua", "en"]
   },
   {
     id: "dima",
-    name: "Marta",
-    photo: "/stylistka-marta.png",
-    description: "Dokładna stylistka od przedłużeń żelowych, uzupełnień i naturalnych kształtów dopasowanych do dłoni.",
-    languages: ["🇵🇱 Polski", "🇬🇧 English"]
+    name: { pl: "Marta", ua: "Марта", ru: "Марта", en: "Marta" },
+    photo: "/assets/barbers/dima.png",
+    description: {
+      pl: "Precyzyjnie wykonuje przedłużenia żelowe, korekty i naturalne kształty paznokci.",
+      ua: "Точно виконує гелеве нарощення, корекцію та природні форми нігтів.",
+      ru: "Точно выполняет гелевое наращивание, коррекцию и натуральные формы ногтей.",
+      en: "Focused on gel extensions, refills and natural nail shapes."
+    },
+    languages: ["pl", "en"]
   },
   {
     id: "vlad",
-    name: "Sofia",
-    photo: "/stylistka-sofia.png",
-    description: "Tworzy subtelne zdobienia, babyboomer i stylizacje premium dla klientek, które lubią dopracowany detal.",
-    languages: ["🇺🇦 Ukraiński", "🇵🇱 Polski", "🇷🇺 Rosyjski"]
+    name: { pl: "Sofia", ua: "Софія", ru: "София", en: "Sofia" },
+    photo: "/assets/barbers/vlad.png",
+    description: {
+      pl: "Tworzy subtelne zdobienia, babyboomer i stylizacje premium z dopracowanym detalem.",
+      ua: "Створює делікатний дизайн, babyboomer і преміум-стилізації з увагою до деталей.",
+      ru: "Создает деликатный дизайн, babyboomer и премиум-стилизации с вниманием к деталям.",
+      en: "Creates refined nail art, baby boomer and premium detailed styling."
+    },
+    languages: ["ua", "pl", "ru"]
   }
 ];
 
@@ -378,7 +654,14 @@ function formatDateText(dateStr) {
   if (!dateStr) return "—";
 
   const date = new Date(`${dateStr}T00:00:00`);
-  const locale = getCurrentLang() === "ru" ? "ru-RU" : getCurrentLang() === "en" ? "en-GB" : "pl-PL";
+  const currentLang = getCurrentLang();
+  const locale = currentLang === "ru"
+    ? "ru-RU"
+    : currentLang === "ua"
+      ? "uk-UA"
+      : currentLang === "en"
+        ? "en-GB"
+        : "pl-PL";
   return new Intl.DateTimeFormat(locale, {
     day: "2-digit",
     month: "long",
@@ -556,7 +839,7 @@ function updateBindings() {
   });
 
   document.querySelectorAll('[data-bind="serviceName"]').forEach((el) => {
-    el.textContent = service?.name || "—";
+    el.textContent = service ? pickLocalized(service.name) : "—";
   });
 
   document.querySelectorAll('[data-bind="servicePrice"]').forEach((el) => {
@@ -583,7 +866,7 @@ function updateBindings() {
       return;
     }
 
-    el.textContent = stylist?.name || "—";
+    el.textContent = stylist ? pickLocalized(stylist.name) : "—";
   });
 
   document.querySelectorAll('[data-bind="dateText"]').forEach((el) => {
@@ -696,8 +979,8 @@ function renderServiceAccordion() {
     trigger.className = "accordion-trigger";
     trigger.innerHTML = `
       <div class="accordion-trigger-main">
-        <strong>${category.title}</strong>
-        <span>${category.description}</span>
+        <strong>${pickLocalized(category.title)}</strong>
+        <span>${pickLocalized(category.description)}</span>
       </div>
       <div class="accordion-arrow">⌄</div>
     `;
@@ -724,9 +1007,10 @@ function renderServiceAccordion() {
 
       card.innerHTML = `
         <div class="service-option-top">
-          <strong class="service-option-title">${service.name}</strong>
+          <strong class="service-option-title">${pickLocalized(service.name)}</strong>
           <span class="service-option-duration">${service.duration}</span>
         </div>
+        <p class="service-option-description">${pickLocalized(service.description)}</p>
 
         <div class="service-option-prices">
           ${getServicePriceMarkup(service)}
@@ -793,17 +1077,22 @@ function renderBarberSlider() {
   const stylist = barbers[state.barberSlideIndex];
   if (!stylist) return;
 
+  const stylistName = pickLocalized(stylist.name);
   barberSlidePhoto.innerHTML = `
-    <img src="${stylist.photo}" alt="${stylist.name}" class="barber-photo-img" />
+    <img src="${stylist.photo}" alt="${stylistName}" class="barber-photo-img" />
   `;
 
-  barberSlideName.textContent = stylist.name;
-  barberSlideDescription.textContent = stylist.description;
+  barberSlideName.textContent = stylistName;
+  barberSlideDescription.textContent = pickLocalized(stylist.description);
 
   barberSlideLangs.innerHTML = "";
   stylist.languages.forEach((lang) => {
     const tag = document.createElement("span");
-    tag.textContent = lang;
+    if (lang === "pl") tag.textContent = `PL · ${t("langTagPl")}`;
+    else if (lang === "ua") tag.textContent = `UA · ${t("langTagUa")}`;
+    else if (lang === "ru") tag.textContent = `RU · ${t("langTagRu")}`;
+    else if (lang === "en") tag.textContent = `EN · ${t("langTagEn")}`;
+    else tag.textContent = lang;
     barberSlideLangs.appendChild(tag);
   });
 
@@ -1003,10 +1292,10 @@ async function submitBooking() {
   const payload = {
     name: state.name.trim(),
     phone: state.phone.trim(),
-    serviceName: service?.name || "",
+    serviceName: service ? pickLocalized(service.name) : "",
     serviceDuration: service?.duration || "",
     servicePrice: getServicePriceText(service, state.selectedDate, state.selectedTime),
-    barberName: state.barberDecision === "no" ? "" : (stylist?.name || ""),
+    barberName: state.barberDecision === "no" ? "" : (stylist ? pickLocalized(stylist.name) : ""),
     barberId: state.barberDecision === "no" ? "auto" : (stylist?.id || ""),
     date: state.selectedDate,
     time: state.selectedTime
@@ -1135,6 +1424,84 @@ function callDogma() {
 
 window.callDogma = callDogma;
 
+function applyBookingStaticCopy() {
+  const lang = getCurrentLang();
+  const copy = BOOKING_COPY[lang] || BOOKING_COPY.pl;
+  const dict = BOOKING_I18N[lang] || BOOKING_I18N.pl;
+  const stepOne = document.querySelector('[data-step="1"]');
+  const stepThree = document.querySelector('[data-step="3"]');
+
+  const bookingTopbarTitle = document.querySelector(".booking-topbar__copy strong");
+  if (bookingTopbarTitle) bookingTopbarTitle.textContent = copy.bookingTopbarTitle;
+
+  const closeBtn = document.getElementById("bookingCloseBtn");
+  if (closeBtn) closeBtn.setAttribute("aria-label", copy.closeBooking);
+
+  const introTitle = stepOne?.querySelector(".intro-copy strong");
+  if (introTitle) introTitle.textContent = copy.introTitle;
+
+  const contactTitle = stepOne?.querySelector(".card-head h2");
+  if (contactTitle) contactTitle.textContent = copy.contactCardTitle;
+
+  const contactSub = stepOne?.querySelector(".card-head p");
+  if (contactSub) contactSub.textContent = copy.contactCardSub;
+
+  for (let stepNumber = 2; stepNumber <= 7; stepNumber += 1) {
+    const step = document.querySelector(`[data-step="${stepNumber}"]`);
+    const headTitle = step?.querySelector(".card-head h2");
+    const headSub = step?.querySelector(".card-head p");
+    const stepMeta = dict.steps?.[stepNumber - 1];
+    if (headTitle && stepMeta?.title) headTitle.textContent = stepMeta.title;
+    if (headSub && stepMeta?.subtitle) headSub.textContent = stepMeta.subtitle;
+  }
+
+  const nameField = nameInput?.closest("label.field")?.querySelector("span");
+  if (nameField) nameField.textContent = copy.nameLabel;
+  if (nameInput) nameInput.placeholder = copy.namePlaceholder;
+
+  const phoneField = phoneInput?.closest("label.field")?.querySelector("span");
+  if (phoneField) phoneField.textContent = copy.phoneLabel;
+  if (phoneInput) phoneInput.placeholder = copy.phonePlaceholder;
+
+  if (chooseBarberYes) chooseBarberYes.textContent = copy.chooseBarberYes;
+  if (chooseBarberNo) chooseBarberNo.textContent = copy.chooseBarberNo;
+
+  const skipRows = stepThree?.querySelectorAll("#barberSkipBox .summary-row");
+  if (skipRows?.[0]) {
+    const label = skipRows[0].querySelector("span");
+    const value = skipRows[0].querySelector("strong");
+    if (label) label.textContent = copy.skipBarberLabel;
+    if (value) value.textContent = copy.skipBarberValue;
+  }
+  if (skipRows?.[1]) {
+    const label = skipRows[1].querySelector("span");
+    const value = skipRows[1].querySelector("strong");
+    if (label) label.textContent = copy.skipBarberStatusLabel;
+    if (value) value.textContent = copy.skipBarberStatusValue;
+  }
+
+  const weekdays = document.querySelectorAll(".calendar-weekdays span");
+  weekdays.forEach((el, idx) => {
+    el.textContent = copy.weekdays[idx] || el.textContent;
+  });
+
+  if (calendarStatus) calendarStatus.textContent = t("availableDates");
+  const slotsTitle = document.querySelector(".slots-box .calendar-top strong");
+  if (slotsTitle) slotsTitle.textContent = t("timeSlots");
+
+  const summaryRows = document.querySelectorAll('[data-step="7"] .summary-row');
+  const summaryLabels = [
+    copy.nameLabel,
+    copy.phoneLabel,
+    copy.serviceLabel
+  ];
+  summaryRows.forEach((row, idx) => {
+    if (idx > 2) return;
+    const label = row.querySelector("span");
+    if (label) label.textContent = summaryLabels[idx];
+  });
+}
+
 nameInput.addEventListener("input", (e) => {
   state.name = e.target.value;
   nameError.textContent = "";
@@ -1218,6 +1585,7 @@ calendarNextBtn.addEventListener("click", () => {
 });
 
 function rerenderLocalizedBookingUI() {
+  applyBookingStaticCopy();
   renderServiceAccordion();
   renderBarberSlider();
   renderCalendar();
@@ -1236,6 +1604,7 @@ document.querySelectorAll("[data-lang]").forEach((button) => {
 renderServiceAccordion();
 renderBarberDecision();
 renderBarberSlider();
+applyBookingStaticCopy();
 renderCalendar();
 renderSlots();
 updateBindings();
