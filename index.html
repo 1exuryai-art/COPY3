@@ -347,9 +347,9 @@
     .desktop-header {
       min-height: var(--header-h);
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: center;
-      gap: 22px;
+      gap: clamp(10px, 1.6vw, 22px);
     }
 
     .desktop-left,
@@ -375,6 +375,8 @@
       align-items: center;
       gap: 18px;
       flex-wrap: nowrap;
+      min-width: 0;
+      overflow: hidden;
     }
 
     .desktop-nav a {
@@ -382,6 +384,7 @@
       min-height: 38px;
       display: inline-flex;
       align-items: center;
+      white-space: nowrap;
       color: rgba(15, 23, 42, 0.66);
       text-decoration: none;
       font-size: 13px;
@@ -411,7 +414,7 @@
     }
 
     .desktop-logo {
-      width: 142px;
+      width: 152px;
       min-height: 62px;
       padding: 8px 14px;
       display: grid;
@@ -438,9 +441,9 @@
     }
 
     .site-logo-img {
-      width: 114px;
+      width: 122px;
       height: auto;
-      max-height: 46px;
+      max-height: 48px;
       object-fit: contain;
       display: block;
       position: relative;
@@ -972,10 +975,10 @@
     }
     .hero-icon-btn,
     .hero-route-btn {
-      width: 44px;
-      min-height: 44px;
+      width: 48px;
+      min-height: 48px;
       padding: 0;
-      border-radius: 999px;
+      border-radius: 14px;
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.8);
       color: var(--accent-deep);
@@ -2153,7 +2156,8 @@
 
       .map-glass {
         position: relative;
-        min-height: 205px;
+        min-height: 0;
+        aspect-ratio: 1 / 1;
         padding: 8px;
         overflow: hidden;
         isolation: isolate;
@@ -2164,7 +2168,7 @@
           linear-gradient(180deg, rgba(255,255,255,.08), rgba(232,243,255,.22)),
           url("./images/nails/map-preview.jpg");
         background-size: cover;
-        background-position: center;
+        background-position: center center;
       }
 
       .map-glass::before {
@@ -3233,7 +3237,8 @@
     }
 
     .location-map {
-      min-height: 540px;
+      min-height: 0;
+      aspect-ratio: 1 / 1;
       overflow: hidden;
       position: relative;
       background:
@@ -3244,7 +3249,7 @@
     .location-map iframe {
       width: 100%;
       height: 100%;
-      min-height: 540px;
+      min-height: 0;
       border: 0;
       display: block;
       filter: grayscale(.14) contrast(1.02) brightness(1.07) saturate(.82);
@@ -4300,13 +4305,14 @@
     @media (min-width: 901px) {
   .desktop-header {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 14px;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: clamp(8px, 1.2vw, 14px);
   }
 
   .desktop-left,
   .desktop-right {
     min-width: 0;
+    overflow: hidden;
   }
 
   .desktop-right {
@@ -4318,17 +4324,17 @@
 
   .desktop-nav {
     flex-wrap: nowrap;
-    gap: 14px;
+    gap: clamp(8px, 1vw, 14px);
     white-space: nowrap;
   }
 
   .desktop-nav a {
-    font-size: 12px;
+    font-size: clamp(11px, .9vw, 12px);
   }
 
   .lang-switcher {
     flex-shrink: 0;
-    margin-left: 10px;
+    margin-left: 6px;
   }
 
   .desktop-call-btn {
@@ -4439,8 +4445,7 @@
     gap: 12px;
   }
 
-  .mobile-social-card strong,
-  .mobile-social-card p,
+  .mobile-home-media-frame,
   .mobile-social-row,
   .mobile-social-card .mobile-card-btn,
   .mobile-compact-info {
@@ -4448,18 +4453,22 @@
     z-index: 1;
   }
 
-  .mobile-social-card strong {
-    color: var(--text-strong);
-    font-family: "Sora", sans-serif;
-    font-size: 30px;
-    line-height: .94;
-    letter-spacing: -.075em;
+  .mobile-home-media-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: rgba(255,255,255,.7);
+    box-shadow: var(--shadow-xs), var(--glass-highlight);
   }
 
-  .mobile-social-card p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.45;
+  .mobile-home-media-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
   }
 
   .mobile-social-row {
@@ -4544,6 +4553,67 @@
     font-family: "Sora", sans-serif;
     font-size: 14px;
     letter-spacing: -.03em;
+  }
+
+  .services-list,
+  .masters-mobile-list,
+  .gallery-mobile-list,
+  .reviews-mobile-list,
+  .faq-mobile-list {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: max-content !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    touch-action: pan-y !important;
+    scroll-snap-type: none !important;
+  }
+
+  .service-card,
+  .mobile-master-card,
+  .mobile-gallery-photo,
+  .review-mobile-card {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .service-img,
+  .mobile-master-photo,
+  .mobile-gallery-photo .media-frame {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+
+  .mobile-gallery-photo img,
+  .mobile-gallery-photo video,
+  .mobile-master-photo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .mobile-lang-switcher {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    align-self: center !important;
+  }
+
+  .logo-pill {
+    flex: 0 1 180px !important;
+  }
+
+  .mobile-logo-img {
+    width: min(82px, 22vw) !important;
+    max-height: 34px !important;
   }
 }
   </style>
@@ -5245,8 +5315,9 @@
             <div class="hero-photo-card"></div>
 
             <article class="mobile-social-card">
-              <strong data-i18n="mobile.home.card">Jasne studio manicure we Wrocławiu</strong>
-              <p data-i18n="mobile.home.sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
+              <div class="mobile-home-media-frame">
+                <img src="./images/nails/studio-interior.jpg" alt="LUNA NAIL studio" />
+              </div>
 
               <div class="mobile-social-row">
                 <a class="mobile-social-icon" href="tel:+48532377701" aria-label="Telefon">
@@ -5958,9 +6029,9 @@
 </section>
 
 <div id="siteSettingsPop" class="site-settings-pop" role="menu" aria-label="Menu ustawień">
-  <button type="button" id="openProductInfoBtn" data-i18n="settings.more">Więcej informacji</button>
   <a href="https://mrozowski-automation-production.up.railway.app/?page=demos#demos" target="_blank" rel="noopener" data-i18n="settings.demo">Powrót do demo</a>
   <button type="button" id="openAdminAccessBtn" data-i18n="settings.admin">Panel administratora</button>
+  <button type="button" id="openProductInfoBtn" data-i18n="settings.more">Więcej informacji</button>
 </div>
 
 <section class="product-info-sheet" id="adminAccessSheet" aria-hidden="true">
@@ -6675,12 +6746,15 @@ overlay?.addEventListener("click", (e) => {
     function closeAdminAccess() {
       adminAccessSheet?.classList.remove("open");
       adminAccessSheet?.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("admin-login-open");
     }
 
     function openAdminAccess() {
       closeSettingsPop();
+      closeProductInfo();
       adminAccessSheet?.classList.add("open");
       adminAccessSheet?.setAttribute("aria-hidden", "false");
+      document.body.classList.add("admin-login-open");
     }
 
     function closeProductInfo() {
@@ -6690,6 +6764,7 @@ overlay?.addEventListener("click", (e) => {
 
     function openProductInfo() {
       closeSettingsPop();
+      closeAdminAccess();
       productInfoSheet?.classList.add("open");
       productInfoSheet?.setAttribute("aria-hidden", "false");
     }
@@ -6708,41 +6783,46 @@ overlay?.addEventListener("click", (e) => {
       settingsPop.style.left = `${Math.round(rect.left)}px`;
     }
 
-    function toggleSettingsPop(button) {
-      if (!settingsPop) return;
-      const wasOpen = settingsPop.classList.contains("open");
-      if (wasOpen) {
-        closeSettingsPop();
-        return;
-      }
-      positionSettingsPop(button);
-      settingsPop.classList.add("open");
-      document.querySelectorAll("[data-site-settings-btn]").forEach((btn) => {
-        btn.setAttribute("aria-expanded", "true");
-      });
-    }
-
     function bindSettingsMenu() {
       document.querySelectorAll("[data-site-settings-btn]").forEach((button) => {
         button.addEventListener("click", (event) => {
+          event.preventDefault();
           event.stopPropagation();
-          toggleSettingsPop(button);
+          const wasOpen = settingsPop?.classList.contains("open");
+          const thisIsActive = button.getAttribute("aria-expanded") === "true";
+          if (wasOpen && thisIsActive) {
+            closeSettingsPop();
+            return;
+          }
+          closeSettingsPop();
+          settingsPop?.classList.add("open");
+          document.querySelectorAll("[data-site-settings-btn]").forEach((btn) => {
+            btn.setAttribute("aria-expanded", btn === button ? "true" : "false");
+          });
+          positionSettingsPop(button);
         });
       });
 
-      document.getElementById("openAdminAccessBtn")?.addEventListener("click", openAdminAccess);
-      document.getElementById("openProductInfoBtn")?.addEventListener("click", openProductInfo);
+      document.getElementById("openAdminAccessBtn")?.addEventListener("click", (event) => {
+        event.preventDefault();
+        openAdminAccess();
+      });
+      document.getElementById("openProductInfoBtn")?.addEventListener("click", (event) => {
+        event.preventDefault();
+        openProductInfo();
+      });
       document.querySelectorAll("[data-close-admin-access]").forEach((el) => el.addEventListener("click", closeAdminAccess));
       document.querySelectorAll("[data-close-product-info]").forEach((el) => el.addEventListener("click", closeProductInfo));
 
       document.addEventListener("click", (event) => {
+        if (!settingsPop?.classList.contains("open")) return;
         const target = event.target;
         if (target && target.closest && (target.closest("#siteSettingsPop") || target.closest("[data-site-settings-btn]"))) return;
         closeSettingsPop();
       });
       window.addEventListener("resize", () => {
         const openBtn = document.querySelector('[data-site-settings-btn][aria-expanded="true"]');
-        if (openBtn && settingsPop?.classList.contains("open")) {
+        if (settingsPop?.classList.contains("open") && openBtn) {
           positionSettingsPop(openBtn);
         }
       });
