@@ -4837,17 +4837,19 @@
     overflow-x: auto !important;
     overflow-y: hidden !important;
     scroll-snap-type: x proximity !important;
-    margin-top: 0 !important;
+    margin-top: -6px !important;
     padding-top: 0 !important;
-    padding-bottom: 4px !important;
+    padding-bottom: 2px !important;
+    border-top: 0 !important;
+    box-shadow: none !important;
   }
 
   .nav-chip {
     flex: 0 0 auto !important;
     scroll-snap-align: start !important;
-    min-height: 38px !important;
-    padding: 0 12px !important;
-    font-size: 12px !important;
+    min-height: 36px !important;
+    padding: 0 11px !important;
+    font-size: 11px !important;
   }
 
   .pages {
@@ -4884,11 +4886,13 @@
     min-height: 0 !important;
     max-height: none !important;
     gap: 12px !important;
-    padding: 14px 12px calc(12px + var(--safe-bottom, 0px)) !important;
+    padding: 22px 12px calc(12px + var(--safe-bottom, 0px)) !important;
   }
 
   .page.active .page-head {
     flex: 0 0 auto !important;
+    position: static !important;
+    margin-top: 0 !important;
   }
 
   .page.active .screen-body {
@@ -5019,6 +5023,17 @@
 }
 
 @media (max-width: 900px) {
+  .app-top {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .page-head,
+  .page-head * {
+    position: static !important;
+    top: auto !important;
+  }
+
   .contact-layout .social-row a {
     min-height: 46px !important;
     height: 46px !important;
