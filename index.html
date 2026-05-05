@@ -1221,7 +1221,10 @@
       .app-top {
         position: relative;
         z-index: 40;
-        padding: calc(10px + var(--safe-top)) 12px 8px;
+        padding-top: calc(10px + var(--safe-top, 0px)) !important;
+        padding-bottom: 8px !important;
+        padding-left: 12px;
+        padding-right: 12px;
         display: flex;
         align-items: center;
         gap: clamp(6px, 1.6vw, 10px);
@@ -1339,7 +1342,10 @@
         gap: 8px;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 6px 12px 8px;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 12px;
+        padding-right: 12px;
         scrollbar-width: none;
         scroll-snap-type: x proximity;
         border-bottom: 1px solid rgba(15,23,42,.065);
@@ -4776,7 +4782,10 @@
     transform: none !important;
     opacity: 1 !important;
     margin: 0 !important;
-    padding: calc(3px + var(--safe-top, 0px)) 12px 3px !important;
+    padding-top: calc(10px + var(--safe-top, 0px)) !important;
+    padding-bottom: 8px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
     min-height: auto !important;
   }
 
@@ -4821,7 +4830,10 @@
     transform: none !important;
     opacity: 1 !important;
     margin: 0 !important;
-    padding: 2px 12px 7px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     scroll-snap-type: x proximity !important;
