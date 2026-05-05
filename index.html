@@ -511,39 +511,55 @@
       top: 84px;
       z-index: 9999;
       min-width: 220px;
-      border-radius: 14px;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 24px 56px rgba(30, 64, 175, 0.22);
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      background:
+        radial-gradient(circle at 24% -10%, rgba(255,255,255,.22), transparent 48%),
+        linear-gradient(180deg, rgba(12,18,34,.94), rgba(8,12,24,.92));
+      backdrop-filter: blur(18px) saturate(130%);
+      -webkit-backdrop-filter: blur(18px) saturate(130%);
+      box-shadow: 0 26px 62px rgba(2, 6, 23, 0.52);
       padding: 10px;
       display: none;
       gap: 8px;
       pointer-events: auto;
+      transform-origin: top left;
+      transform: translateY(-6px) scale(.98);
+      opacity: 0;
+      transition: transform 180ms ease, opacity 180ms ease;
     }
     .site-settings-pop.open {
       display: grid;
+      transform: translateY(0) scale(1);
+      opacity: 1;
     }
     .site-settings-pop a,
     .site-settings-pop button {
       border: 0;
-      background: #eff6ff;
-      color: #1e3a8a;
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(241, 245, 249, 0.95);
+      border-radius: 11px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
       padding: 10px 12px;
       text-align: left;
       text-decoration: none;
       font-weight: 700;
       cursor: pointer;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
     }
     .site-settings-pop a:hover,
     .site-settings-pop button:hover {
-      background: #dbeafe;
+      background: rgba(59, 130, 246, 0.22);
+      border-color: rgba(147, 197, 253, 0.45);
+      transform: translateY(-1px);
     }
     .product-info-sheet {
       position: fixed;
       inset: 0;
       z-index: 1400;
       display: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .product-info-sheet.open {
       display: block;
@@ -557,24 +573,48 @@
       position: relative;
       max-width: 520px;
       margin: 8vh auto 0;
-      background: #ffffff;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      border-radius: 16px;
+      border-radius: 20px;
       padding: 20px;
-      box-shadow: 0 28px 56px rgba(30, 64, 175, 0.24);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background:
+        radial-gradient(circle at 24% -12%, rgba(255,255,255,.2), transparent 48%),
+        linear-gradient(180deg, rgba(9,14,28,.96), rgba(4,8,18,.94));
+      box-shadow: 0 30px 70px rgba(2, 6, 23, 0.55);
+      color: #f8fafc;
+      transform: translateY(8px) scale(.985);
+      opacity: 0;
+      animation: settingsSheetIn 180ms ease forwards;
     }
     .product-info-sheet__close {
       position: absolute;
       top: 10px;
       right: 10px;
-      border: 0;
+      border: 1px solid rgba(148, 163, 184, 0.25);
       width: 30px;
       height: 30px;
       border-radius: 8px;
-      background: #dbeafe;
-      color: #1e3a8a;
+      background: rgba(255,255,255,.06);
+      color: #f8fafc;
       font-size: 20px;
       cursor: pointer;
+    }
+    .product-info-sheet__panel h2 {
+      margin: 0 0 10px;
+      color: #f8fafc;
+    }
+    .product-info-sheet__panel p,
+    .product-info-sheet__panel li {
+      color: rgba(226, 232, 240, 0.95);
+      line-height: 1.6;
+      margin: 0 0 8px;
+    }
+    .product-info-sheet__panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    @keyframes settingsSheetIn {
+      from { opacity: 0; transform: translateY(8px) scale(.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .admin-access-form {
       display: grid;
@@ -4378,7 +4418,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
   }
 
   .desktop-nav {
@@ -4393,12 +4433,12 @@
 
   .lang-switcher {
     flex-shrink: 0;
-    margin-left: 14px;
+    margin-left: 8px;
   }
 
   .desktop-call-btn {
     flex-shrink: 0;
-    margin-left: 6px;
+    margin-left: 2px;
   }
 }
 
@@ -6398,6 +6438,16 @@
     <h2 id="productInfoTitle" data-i18n="productInfo.title">Więcej informacji o produkcie</h2>
     <p data-i18n="productInfo.p1">Wersja MONARCH dla Luna Nail Studio: witryna, rezerwacja i panel administracyjny.</p>
     <p data-i18n="productInfo.p2">Panel pozwala zarządzać treściami, usługami, galerią, stylistkami oraz kontaktami.</p>
+    <p data-i18n="productInfo.p3">Rezerwację online można połączyć z Google Calendar. Klient otrzymuje potwierdzenie, a właściciel powiadomienie o nowej wizycie.</p>
+    <p><strong data-i18n="productInfo.listIntro">W rozszerzonych wersjach mogą pojawić się m.in.:</strong></p>
+    <ul>
+      <li data-i18n="productInfo.li1">indywidualne kolory i styl marki,</li>
+      <li data-i18n="productInfo.li2">automatyzacja Instagrama,</li>
+      <li data-i18n="productInfo.li3">powiadomienia Telegram o nowej rezerwacji,</li>
+      <li data-i18n="productInfo.li4">SMS do klienta,</li>
+      <li data-i18n="productInfo.li5">rozbudowana automatyzacja lejka,</li>
+      <li data-i18n="productInfo.li6">dodatkowe sekcje i integracje.</li>
+    </ul>
   </div>
 </section>
 
@@ -6470,6 +6520,14 @@ overlay?.addEventListener("click", (e) => {
         "productInfo.title": "Więcej informacji o produkcie",
         "productInfo.p1": "Wersja MONARCH dla Luna Nail Studio: witryna, rezerwacja i panel administracyjny.",
         "productInfo.p2": "Panel pozwala zarządzać treściami, usługami, galerią, stylistkami oraz kontaktami.",
+        "productInfo.p3": "Rezerwację online można połączyć z Google Calendar. Klient otrzymuje potwierdzenie, a właściciel powiadomienie o nowej wizycie.",
+        "productInfo.listIntro": "W rozszerzonych wersjach mogą pojawić się m.in.:",
+        "productInfo.li1": "indywidualne kolory i styl marki,",
+        "productInfo.li2": "automatyzacja Instagrama,",
+        "productInfo.li3": "powiadomienia Telegram o nowej rezerwacji,",
+        "productInfo.li4": "SMS do klienta,",
+        "productInfo.li5": "rozbudowana automatyzacja lejka,",
+        "productInfo.li6": "dodatkowe sekcje i integracje.",
         "hero.chip": "LUNA NAIL STUDIO",
         "hero.titleA": "Manicure, który wygląda",
         "hero.titleB": "lekko i czysto.",
@@ -6640,6 +6698,14 @@ overlay?.addEventListener("click", (e) => {
       "productInfo.title": "Подробнее о продукте",
       "productInfo.p1": "Версия MONARCH для Luna Nail Studio: витрина, запись и админ-панель.",
       "productInfo.p2": "Панель позволяет управлять услугами, галереей, мастерами и контактами.",
+      "productInfo.p3": "Онлайн-запись можно связать с Google Calendar. Клиент получает подтверждение, а владелец — уведомление о новой записи.",
+      "productInfo.listIntro": "В расширенных версиях могут появиться, например:",
+      "productInfo.li1": "индивидуальные цвета и стиль бренда,",
+      "productInfo.li2": "автоматизация Instagram,",
+      "productInfo.li3": "уведомления в Telegram о новой записи,",
+      "productInfo.li4": "SMS клиенту,",
+      "productInfo.li5": "расширенная автоматизация воронки,",
+      "productInfo.li6": "дополнительные секции и интеграции.",
       "hero.chip": "LUNA NAIL STUDIO",
       "hero.titleA": "Маникюр, который выглядит",
       "hero.titleB": "легко и чисто.",
@@ -6809,6 +6875,14 @@ overlay?.addEventListener("click", (e) => {
       "productInfo.title": "More about product",
       "productInfo.p1": "MONARCH version for Luna Nail Studio: storefront, booking and admin panel.",
       "productInfo.p2": "The panel lets you manage services, gallery, artists and contact details.",
+      "productInfo.p3": "Online booking can be connected to Google Calendar. The client gets confirmation, and the owner receives a new booking alert.",
+      "productInfo.listIntro": "Extended versions may include, among others:",
+      "productInfo.li1": "custom brand colors and style,",
+      "productInfo.li2": "Instagram automation,",
+      "productInfo.li3": "Telegram notifications for new bookings,",
+      "productInfo.li4": "SMS to the client,",
+      "productInfo.li5": "extended funnel automation,",
+      "productInfo.li6": "additional sections and integrations.",
       "hero.chip": "LUNA NAIL STUDIO",
       "hero.titleA": "Manicure that looks",
       "hero.titleB": "light and clean.",
@@ -7466,6 +7540,24 @@ overlay?.addEventListener("click", (e) => {
         settingsButtons.forEach((btn) => btn.setAttribute("aria-expanded", btn === gearBtn ? "true" : "false"));
         positionSettings(gearBtn);
       }, true);
+
+      document.addEventListener("pointerdown", (event) => {
+        const target = event.target;
+        const inSettings = target?.closest?.("#siteSettingsPop");
+        const inGear = target?.closest?.("[data-site-settings-btn]");
+        const inAdminPanel = target?.closest?.("#adminAccessSheet .product-info-sheet__panel");
+        const inProductPanel = target?.closest?.("#productInfoSheet .product-info-sheet__panel");
+
+        if (settingsPop.classList.contains("open") && !inSettings && !inGear) {
+          closeSettings();
+        }
+        if (adminAccessSheet?.classList.contains("open") && !inAdminPanel) {
+          closeAdminAccess();
+        }
+        if (productInfoSheet?.classList.contains("open") && !inProductPanel) {
+          closeProductInfo();
+        }
+      });
     })();
   </script>
 </body>
