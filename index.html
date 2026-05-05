@@ -7285,5 +7285,170 @@ overlay?.addEventListener("click", (e) => {
   </script>
 
   <script src="./script.js"></script>
+  <script>
+    (function initSettingsMenuFallback() {
+      if (window.__lunaSettingsFallbackBound) return;
+      window.__lunaSettingsFallbackBound = true;
+
+      const settingsPop = document.getElementById("siteSettingsPop");
+      const adminAccessSheet = document.getElementById("adminAccessSheet");
+      const productInfoSheet = document.getElementById("productInfoSheet");
+      const settingsButtons = Array.from(document.querySelectorAll("[data-site-settings-btn]"));
+      const openAdminAccessBtn = document.getElementById("openAdminAccessBtn");
+      const openProductInfoBtn = document.getElementById("openProductInfoBtn");
+
+      if (!settingsPop || settingsButtons.length === 0) return;
+
+      const DEMO_URL = "https://mrozowski-automation-production.up.railway.app/?page=demos#demos";
+      const demoBackLink = settingsPop.querySelector('a[data-i18n="settings.demo"]');
+      if (demoBackLink && !demoBackLink.getAttribute("href")) {
+        demoBackLink.setAttribute("href", DEMO_URL);
+      }
+
+      function positionSettings(anchor) {
+        if (!anchor) return;
+        const rect = anchor.getBoundingClientRect();
+        settingsPop.style.top = `${Math.round(rect.bottom + 8)}px`;
+        settingsPop.style.left = `${Math.round(rect.left)}px`;
+      }
+
+      function closeSettings() {
+        settingsPop.classList.remove("open");
+        settingsButtons.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
+      }
+
+      function closeAdminAccess() {
+        adminAccessSheet?.classList.remove("open");
+        adminAccessSheet?.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("admin-login-open");
+      }
+
+      function closeProductInfo() {
+        productInfoSheet?.classList.remove("open");
+        productInfoSheet?.setAttribute("aria-hidden", "true");
+      }
+
+      function openAdminAccess() {
+        closeSettings();
+        closeProductInfo();
+        adminAccessSheet?.classList.add("open");
+        adminAccessSheet?.setAttribute("aria-hidden", "false");
+        document.body.classList.add("admin-login-open");
+      }
+
+      function openProductInfo() {
+        closeSettings();
+        closeAdminAccess();
+        productInfoSheet?.classList.add("open");
+        productInfoSheet?.setAttribute("aria-hidden", "false");
+      }
+
+      settingsButtons.forEach((button) => {
+        if (button.dataset.settingsBound === "1") return;
+        button.dataset.settingsBound = "1";
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const isOpen = settingsPop.classList.contains("open");
+          const isThisOpen = button.getAttribute("aria-expanded") === "true";
+          if (isOpen && isThisOpen) {
+            closeSettings();
+            return;
+          }
+          closeSettings();
+          settingsPop.classList.add("open");
+          settingsButtons.forEach((btn) => btn.setAttribute("aria-expanded", btn === button ? "true" : "false"));
+          positionSettings(button);
+        });
+      });
+
+      if (openAdminAccessBtn && openAdminAccessBtn.dataset.settingsBound !== "1") {
+        openAdminAccessBtn.dataset.settingsBound = "1";
+        openAdminAccessBtn.addEventListener("click", (event) => {
+          event.preventDefault();
+          openAdminAccess();
+        });
+      }
+
+      if (openProductInfoBtn && openProductInfoBtn.dataset.settingsBound !== "1") {
+        openProductInfoBtn.dataset.settingsBound = "1";
+        openProductInfoBtn.addEventListener("click", (event) => {
+          event.preventDefault();
+          openProductInfo();
+        });
+      }
+
+      document.querySelectorAll("[data-close-admin-access]").forEach((el) => {
+        if (el.dataset.settingsBound === "1") return;
+        el.dataset.settingsBound = "1";
+        el.addEventListener("click", closeAdminAccess);
+      });
+
+      document.querySelectorAll("[data-close-product-info]").forEach((el) => {
+        if (el.dataset.settingsBound === "1") return;
+        el.dataset.settingsBound = "1";
+        el.addEventListener("click", closeProductInfo);
+      });
+
+      const adminForm = document.getElementById("adminAccessForm");
+      const adminStatus = document.getElementById("adminAccessStatus");
+      const adminSubmit = document.getElementById("adminAccessSubmit");
+      if (adminForm && adminForm.dataset.settingsBound !== "1") {
+        adminForm.dataset.settingsBound = "1";
+        adminForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const login = document.getElementById("adminAccessLogin")?.value?.trim() || "";
+          const password = document.getElementById("adminAccessPassword")?.value || "";
+          if (!login || !password) {
+            if (adminStatus) adminStatus.textContent = "Wpisz login i hasło.";
+            return;
+          }
+          if (adminSubmit) {
+            adminSubmit.disabled = true;
+          }
+          if (adminStatus) adminStatus.textContent = "";
+          try {
+            const response = await fetch("/api/admin/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ login, password })
+            });
+            if (!response.ok) {
+              if (adminStatus) adminStatus.textContent = "Błędny login lub hasło.";
+              return;
+            }
+            const payload = await response.json().catch(() => ({}));
+            localStorage.setItem("dogma_admin_token", payload.token || "");
+            window.location.href = "/admin/";
+          } catch (_error) {
+            if (adminStatus) adminStatus.textContent = "Błąd połączenia. Spróbuj ponownie.";
+          } finally {
+            if (adminSubmit) adminSubmit.disabled = false;
+          }
+        });
+      }
+
+      document.addEventListener("click", (event) => {
+        if (!settingsPop.classList.contains("open")) return;
+        const target = event.target;
+        if (target?.closest?.("#siteSettingsPop") || target?.closest?.("[data-site-settings-btn]")) return;
+        closeSettings();
+      });
+
+      window.addEventListener("resize", () => {
+        const activeBtn = document.querySelector('[data-site-settings-btn][aria-expanded="true"]');
+        if (settingsPop.classList.contains("open") && activeBtn) {
+          positionSettings(activeBtn);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        closeSettings();
+        closeAdminAccess();
+        closeProductInfo();
+      });
+    })();
+  </script>
 </body>
 </html>
