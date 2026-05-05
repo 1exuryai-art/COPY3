@@ -28,11 +28,28 @@
     return "";
   }
 
+  function pickAlt(item, lang) {
+    const m = item && item.media && item.media.alt;
+    if (typeof m === "string" && m.trim()) return m.trim();
+    if (m && typeof m === "object") {
+      const t = pickLoc(m, lang);
+      if (t) return t;
+    }
+    const a = item && item.alt;
+    if (typeof a === "string" && a.trim()) return a.trim();
+    if (a && typeof a === "object") return pickLoc(a, lang);
+    return "";
+  }
+
   function normSrc(src) {
     if (!src || typeof src !== "string") return "";
     const value = src.trim();
     if (!value) return "";
     return value.startsWith("/") ? value : `/${value}`;
+  }
+
+  function isVideoItem(item) {
+    return item && (item.type === "video" || (item.media && item.media.type === "video"));
   }
 
   function prepareItems(list) {
@@ -62,8 +79,21 @@
         if (!src) return "";
         const title = esc(pickLoc(item.title, lang) || item.title || "");
         const desc = esc(pickLoc(item.description, lang) || item.description || "");
-        const alt = esc(pickLoc(item?.media?.alt, lang) || item.alt || title);
+        const alt = esc(pickAlt(item, lang) || pickLoc(item.title, lang) || item.title || "");
         const tilt = tiltDeg(idx);
+        if (isVideoItem(item)) {
+          const poster = normSrc(item?.media?.poster || "");
+          const posterAttr = poster ? ` poster="${esc(poster)}"` : "";
+          return `<figure class="sticker-card sticker-card--video" style="--tilt:${tilt}deg">
+  <div class="media-frame media-frame--portrait media-frame--video">
+    <video src="${esc(src)}"${posterAttr} controls playsinline preload="metadata" aria-label="${alt}"></video>
+  </div>
+  <figcaption>
+    <strong>${title}</strong>
+    <p>${desc}</p>
+  </figcaption>
+</figure>`;
+        }
         return `<figure class="sticker-card" style="--tilt:${tilt}deg">
   <div class="media-frame media-frame--portrait" style="--media-url:url('${esc(src)}')">
     <img src="${esc(src)}" alt="${alt}">
@@ -84,7 +114,18 @@
         if (!src) return "";
         const title = esc(pickLoc(item.title, lang) || item.title || "");
         const desc = esc(pickLoc(item.description, lang) || item.description || "");
-        const alt = esc(pickLoc(item?.media?.alt, lang) || item.alt || title);
+        const alt = esc(pickAlt(item, lang) || pickLoc(item.title, lang) || item.title || "");
+        if (isVideoItem(item)) {
+          const poster = normSrc(item?.media?.poster || "");
+          const posterAttr = poster ? ` poster="${esc(poster)}"` : "";
+          return `<article class="mobile-gallery-card mobile-gallery-card--video">
+  <div class="media-frame media-frame--portrait media-frame--video">
+    <video src="${esc(src)}"${posterAttr} controls playsinline preload="metadata" aria-label="${alt}"></video>
+  </div>
+  <strong>${title}</strong>
+  <p>${desc}</p>
+</article>`;
+        }
         return `<article class="mobile-gallery-card">
   <div class="media-frame media-frame--portrait" style="--media-url:url('${esc(src)}')">
     <img src="${esc(src)}" alt="${alt}">

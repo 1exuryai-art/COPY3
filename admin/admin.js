@@ -190,11 +190,13 @@ function loc() {
 }
 
 function newGalleryItem(mediaType = "image") {
+  const mt = mediaType === "video" ? "video" : "image";
   return {
     id: newId(),
+    type: mt,
     title: loc(),
     description: loc(),
-    media: { type: mediaType, src: "", alt: loc() },
+    media: { type: mt, src: "", poster: "", alt: loc() },
     visible: true,
     order: 0
   };
@@ -281,6 +283,18 @@ function normalizeState(raw) {
     Object.keys(node).forEach((k) => ensureRuFromUa(node[k]));
   }
   ensureRuFromUa(o);
+
+  if (Array.isArray(o.worksGallery)) {
+    o.worksGallery.forEach((it) => {
+      if (!it.media || typeof it.media !== "object") it.media = {};
+      if (typeof it.media.src !== "string") it.media.src = "";
+      if (it.media.poster === undefined || it.media.poster === null) it.media.poster = "";
+      if (typeof it.media.poster !== "string") it.media.poster = String(it.media.poster);
+      const mt = it.media.type === "video" ? "video" : "image";
+      it.media.type = mt;
+      it.type = it.type === "video" || mt === "video" ? "video" : "image";
+    });
+  }
 
   return o;
 }
@@ -619,13 +633,15 @@ function cardTitleLine(item, lang) {
 
 function updateGalleryCardPreviews(wrap, item) {
   const lang = wrap.dataset.previewLang || "pl";
-  const type = item.media?.type || "image";
+  const type = item.media?.type || item.type || "image";
   const src = item.media?.src || "";
+  const posterRaw = (item.media?.poster && String(item.media.poster).trim()) || "";
+  const posterAttr = posterRaw ? ` poster="${esc(posterRaw)}"` : "";
   const heroBox = wrap.querySelector(".dogma-card-hero__media");
   if (heroBox) {
     if (!src) heroBox.innerHTML = `<span class="dogma-preview-placeholder">Brak zdjęcia</span>`;
     else if (type === "video") {
-      heroBox.innerHTML = `<video class="dogma-preview" src="${esc(src)}" muted loop playsinline controls></video>`;
+      heroBox.innerHTML = `<video class="dogma-preview" src="${esc(src)}"${posterAttr} playsinline controls preload="metadata"></video>`;
     } else {
       heroBox.innerHTML = `<img alt="" src="${esc(src)}" />`;
     }
@@ -634,7 +650,7 @@ function updateGalleryCardPreviews(wrap, item) {
   if (box) {
     if (!src) box.innerHTML = "";
     else if (type === "video") {
-      box.innerHTML = `<video class="dogma-preview" src="${esc(src)}" muted loop playsinline controls></video>`;
+      box.innerHTML = `<video class="dogma-preview" src="${esc(src)}"${posterAttr} playsinline controls preload="metadata"></video>`;
     } else {
       box.innerHTML = `<img alt="" src="${esc(src)}" />`;
     }
@@ -643,7 +659,7 @@ function updateGalleryCardPreviews(wrap, item) {
   if (mini) {
     if (!src) mini.innerHTML = "";
     else if (type === "video") {
-      mini.innerHTML = `<video class="dogma-preview" src="${esc(src)}" muted loop playsinline></video>`;
+      mini.innerHTML = `<video class="dogma-preview" src="${esc(src)}"${posterAttr} playsinline preload="metadata"></video>`;
     } else {
       mini.innerHTML = `<img alt="" src="${esc(src)}" />`;
     }
@@ -680,13 +696,21 @@ function renderGalleryEditor(container, listKey, options) {
 
       const typeSelect = allowVideoToggle
         ? `<div class="dogma-field">
-        <label>To zdjęcie czy krótki film?</label>
+        <label>Typ</label>
         <select data-field="mediaType">
           <option value="image" ${type === "image" ? "selected" : ""}>Zdjęcie</option>
-          <option value="video" ${type === "video" ? "selected" : ""}>Film</option>
+          <option value="video" ${type === "video" ? "selected" : ""}>Video</option>
         </select>
       </div>`
         : `<input type="hidden" data-field="mediaType" value="${esc(type)}" />`;
+
+      const posterField = allowVideoToggle
+        ? `<div class="dogma-field dogma-works-poster" data-works-poster-row style="display: ${type === "video" ? "block" : "none"}">
+        <label>Poster (obrazek podglądu wideo)</label>
+        <input type="text" data-field="poster" value="${esc(item.media?.poster || "")}" placeholder="/images/nails/soft-french.jpg" />
+        <p class="dogma-field-hint">Opcjonalnie: ścieżka JPG/WEBP z <code>/images/...</code>. Filmy najlepiej jako krótkie <code>.mp4</code> lub <code>.webm</code> w <code>/videos/gallery/...</code>.</p>
+      </div>`
+        : "";
 
       return `
       <div class="dogma-item dogma-card" data-list="${esc(listKey)}" data-index="${idx}" data-preview-lang="pl">
@@ -714,6 +738,7 @@ function renderGalleryEditor(container, listKey, options) {
         <h4 class="dogma-section-title">2. Zdjęcie albo video</h4>
         <p class="dogma-field-hint dogma-field-hint--above">Wgraj plik z telefonu lub komputera. Po wgraniu pojawi się tutaj automatycznie.</p>
         ${typeSelect}
+        ${posterField}
         <div class="dogma-field">
           <label>Wgraj zdjęcie albo video</label>
           <input type="file" class="dogma-file-input" data-upload="${esc(listKey)}" data-index="${idx}" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov" />
@@ -808,14 +833,23 @@ function renderGalleryEditor(container, listKey, options) {
       updateDirtyBanner();
     });
     wrap.querySelector("[data-field=src]")?.addEventListener("input", (e) => {
-      if (!item.media) item.media = { type: "image", src: "", alt: loc() };
+      if (!item.media) item.media = { type: "image", src: "", poster: "", alt: loc() };
       item.media.src = e.target.value;
       updateGalleryCardPreviews(wrap, item);
       updateDirtyBanner();
     });
+    wrap.querySelector("[data-field=poster]")?.addEventListener("input", (e) => {
+      if (!item.media) item.media = { type: "image", src: "", poster: "", alt: loc() };
+      item.media.poster = e.target.value.trim();
+      updateGalleryCardPreviews(wrap, item);
+      updateDirtyBanner();
+    });
     wrap.querySelector("[data-field=mediaType]")?.addEventListener("change", (e) => {
-      if (!item.media) item.media = { type: "image", src: "", alt: loc() };
+      if (!item.media) item.media = { type: "image", src: "", poster: "", alt: loc() };
       item.media.type = e.target.value;
+      item.type = e.target.value === "video" ? "video" : "image";
+      const posterRow = wrap.querySelector("[data-works-poster-row]");
+      if (posterRow) posterRow.style.display = e.target.value === "video" ? "block" : "none";
       updateGalleryCardPreviews(wrap, item);
       updateDirtyBanner();
     });
@@ -850,15 +884,18 @@ function renderGalleryEditor(container, listKey, options) {
       if (!file) return;
       try {
         const path = await uploadFile(file);
-        if (!item.media) item.media = { type: "image", src: "", alt: loc() };
+        if (!item.media) item.media = { type: "image", src: "", poster: "", alt: loc() };
         item.media.src = path;
         const low = file.name.toLowerCase();
         if (low.endsWith(".mp4") || low.endsWith(".webm") || low.endsWith(".mov")) item.media.type = "video";
+        item.type = item.media.type === "video" ? "video" : "image";
         const inp = wrap.querySelector("[data-field=src]");
         if (inp) inp.value = path;
         if (allowVideoToggle) {
           const sel = wrap.querySelector("[data-field=mediaType]");
           if (sel) sel.value = item.media.type;
+          const posterRow = wrap.querySelector("[data-works-poster-row]");
+          if (posterRow) posterRow.style.display = item.media.type === "video" ? "block" : "none";
         }
         updateGalleryCardPreviews(wrap, item);
         showSave("Wgrano plik", "ok");
