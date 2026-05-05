@@ -1,10 +1,20 @@
 const API_BASE = "";
 const TOTAL_STEPS = 8;
 
-const DISCOUNT_PERCENT = 10;
-const DISCOUNT_WEEKDAYS = [1, 2, 3, 4]; // pn-czw
-const DISCOUNT_START_MINUTES = 10 * 60;
-const DISCOUNT_END_MINUTES = 16 * 60;
+const BOOKING_BARBER_API_IDS = ["tymur", "dima", "vlad"];
+
+const bookingRuntime = {
+  discountEnabled: true,
+  discountPercent: 10,
+  discountWeekdays: [1, 2, 3, 4],
+  discountStartMinutes: 10 * 60,
+  discountEndMinutes: 16 * 60,
+  openingHours: null
+};
+
+function cloneBookingData(value) {
+  return JSON.parse(JSON.stringify(value));
+}
 
 const BOOKING_I18N = {
   pl: {
@@ -282,7 +292,7 @@ function pickLocalized(value) {
   return value || "";
 }
 
-const serviceCategories = [
+const BOOKING_DEFAULT_SERVICE_CATEGORIES = [
   {
     id: "popular",
     title: { pl: "Najczęściej wybierane", ua: "Найпопулярніше", ru: "Популярные", en: "Most popular" },
@@ -335,7 +345,7 @@ const serviceCategories = [
   }
 ];
 
-const services = [
+const BOOKING_DEFAULT_SERVICES = [
   {
     id: "hybrid-manicure",
     category: "popular",
@@ -538,11 +548,11 @@ const services = [
   }
 ];
 
-const barbers = [
+const BOOKING_DEFAULT_BARBERS = [
   {
     id: "tymur",
     name: { pl: "Maja", ua: "Мая", ru: "Мая", en: "Maja" },
-    photo: "./images/masters/maja-1x1.png",
+    photo: "/images/masters/maja-1x1.png",
     description: {
       pl: "Clean manicure, subtelne kolory i naturalny efekt.",
       ua: "Clean manicure, делікатні кольори та натуральний ефект.",
@@ -554,7 +564,7 @@ const barbers = [
   {
     id: "dima",
     name: { pl: "Ola", ua: "Ола", ru: "Ола", en: "Ola" },
-    photo: "./images/masters/ola-1x1.png",
+    photo: "/images/masters/ola-1x1.png",
     description: {
       pl: "French, baby boomer i minimalistyczne zdobienia.",
       ua: "French, baby boomer і мінімалістичний дизайн.",
@@ -566,7 +576,7 @@ const barbers = [
   {
     id: "vlad",
     name: { pl: "Nina", ua: "Нина", ru: "Нина", en: "Nina" },
-    photo: "./images/masters/nina-1x1.png",
+    photo: "/images/masters/nina-1x1.png",
     description: {
       pl: "Żel, przedłużanie i mocniejsze stylizacje premium.",
       ua: "Гель, нарощення та виразніші преміум-стилізації.",
@@ -576,6 +586,141 @@ const barbers = [
     languages: ["ua", "pl", "ru"]
   }
 ];
+
+let serviceCategories = cloneBookingData(BOOKING_DEFAULT_SERVICE_CATEGORIES);
+let services = cloneBookingData(BOOKING_DEFAULT_SERVICES);
+let barbers = cloneBookingData(BOOKING_DEFAULT_BARBERS);
+
+function ensureLocaleObject(val, fallback = {}) {
+  if (val && typeof val === "object" && !Array.isArray(val)) {
+    return { ...fallback, ...val };
+  }
+  if (typeof val === "string" && val.trim()) {
+    const s = val.trim();
+    return { pl: s, ru: s, en: s, ua: s };
+  }
+  return { ...fallback };
+}
+
+function normalizeMediaPath(p) {
+  const s = String(p || "").trim();
+  if (!s) return "";
+  if (s.startsWith("/")) return s;
+  if (s.startsWith("./")) return s.slice(1);
+  return `/${s}`;
+}
+
+function normalizeBarberLanguages(raw, fallback = ["pl"]) {
+  if (!Array.isArray(raw) || raw.length === 0) return [...fallback];
+  return raw
+    .map((x) => {
+      const t = String(x).trim();
+      const u = t.replace(/\s.*/, "").toUpperCase();
+      if (u === "PL" || u === "POLSKI") return "pl";
+      if (u === "UA" || u === "UKRAIŃSKI" || u === "УКРАЇНСЬКА") return "ua";
+      if (u === "RU" || u === "ROSJSKI" || u === "РУССКИЙ") return "ru";
+      if (u === "EN" || u === "ANGIELSKI" || u === "ENGLISH") return "en";
+      const low = t.toLowerCase();
+      if (["pl", "ua", "ru", "en"].includes(low)) return low;
+      return "";
+    })
+    .filter(Boolean);
+}
+
+function applyBookingConfigFromContent(cfg, linkedBarberCards = null) {
+  if (!cfg || typeof cfg !== "object") return;
+
+  const fallbackServicesById = Object.fromEntries(BOOKING_DEFAULT_SERVICES.map((s) => [s.id, s]));
+  const fallbackBarbersByIndex = BOOKING_DEFAULT_BARBERS;
+
+  if (Array.isArray(cfg.serviceCategories) && cfg.serviceCategories.length > 0) {
+    serviceCategories = cfg.serviceCategories
+      .filter((c) => c && c.visible !== false)
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
+      .map((c) => ({
+        id: String(c.id || "").trim(),
+        title: ensureLocaleObject(c.title),
+        description: ensureLocaleObject(c.description)
+      }))
+      .filter((c) => c.id);
+  }
+
+  if (Array.isArray(cfg.services) && cfg.services.length > 0) {
+    services = cfg.services
+      .filter((s) => s && s.visible !== false && s.bookingEnabled !== false)
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
+      .map((s) => {
+        const id = String(s.id || "").trim();
+        const fb = fallbackServicesById[id] || {};
+        return {
+          id,
+          category: String(s.category || fb.category || "").trim(),
+          name: ensureLocaleObject(s.name, fb.name),
+          description: ensureLocaleObject(s.description, fb.description),
+          basePrice: Number(s.basePrice) || 0,
+          duration: String(s.duration || ""),
+          durationMinutes: Number(s.durationMinutes) || Number(fb.durationMinutes) || 60,
+          image: s.image || fb.image
+        };
+      })
+      .filter((s) => s.id);
+  }
+
+  const sourceBarbers =
+    Array.isArray(linkedBarberCards) && linkedBarberCards.length > 0
+      ? linkedBarberCards
+      : Array.isArray(cfg.barbers)
+        ? cfg.barbers
+        : [];
+
+  if (sourceBarbers.length > 0) {
+    const sorted = [...sourceBarbers]
+      .filter((b) => b && (b.visible === undefined || b.visible !== false))
+      .filter((b) => b.visibleInBooking === undefined || b.visibleInBooking !== false)
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+    barbers = sorted.map((b, i) => {
+      const apiId = BOOKING_BARBER_API_IDS[i] || String(b.id || "").trim();
+      const fb = fallbackBarbersByIndex[i] || {};
+      return {
+        id: apiId,
+        name: ensureLocaleObject(b.title || b.name, fb.name),
+        photo: normalizeMediaPath((b.media && b.media.src) || b.photo || b.avatar || fb.photo),
+        description: ensureLocaleObject(b.description, fb.description),
+        languages: normalizeBarberLanguages(b.languages, fb.languages)
+      };
+    });
+  }
+
+  if (cfg.discount && typeof cfg.discount === "object") {
+    const d = cfg.discount;
+    bookingRuntime.discountEnabled = d.enabled !== false;
+    bookingRuntime.discountPercent = Number(d.percent) || 10;
+    bookingRuntime.discountWeekdays = Array.isArray(d.weekdays) ? d.weekdays : [1, 2, 3, 4];
+    bookingRuntime.discountStartMinutes =
+      d.startMinutes !== undefined && d.startMinutes !== null ? Number(d.startMinutes) : 10 * 60;
+    bookingRuntime.discountEndMinutes =
+      d.endMinutes !== undefined && d.endMinutes !== null ? Number(d.endMinutes) : 16 * 60;
+  }
+
+  if (cfg.openingHours && typeof cfg.openingHours === "object") {
+    bookingRuntime.openingHours = cfg.openingHours;
+  } else {
+    bookingRuntime.openingHours = null;
+  }
+
+  if (!services.some((s) => s.id === state.selectedServiceId)) {
+    state.selectedServiceId = "";
+    state.selectedCategory = "";
+  }
+  if (state.barberDecision === "yes" && !barbers.some((b) => b.id === state.selectedBarberId)) {
+    state.selectedBarberId = "";
+  }
+  if (barbers.length === 0) {
+    barbers = cloneBookingData(BOOKING_DEFAULT_BARBERS);
+  } else {
+    state.barberSlideIndex = Math.min(state.barberSlideIndex, barbers.length - 1);
+  }
+}
 
 const state = {
   step: 1,
@@ -707,22 +852,36 @@ function getWeekday(dateStr) {
 
 function getWorkingHoursForDate(dateStr) {
   const day = getWeekday(dateStr);
+  const oh = bookingRuntime.openingHours;
+  const rule = oh && typeof oh === "object" ? oh[String(day)] : null;
+  if (rule && typeof rule === "object") {
+    if (rule.closed) return { openHour: 0, closeHour: 0 };
+    const openHour = Number(rule.openHour);
+    const closeHour = Number(rule.closeHour);
+    if (Number.isFinite(openHour) && Number.isFinite(closeHour)) {
+      return { openHour, closeHour };
+    }
+  }
   if (day === 0) return { openHour: 10, closeHour: 18 };
   return { openHour: 10, closeHour: 20 };
 }
 
 function isDiscountWindow(dateStr, timeStr) {
   if (!dateStr || !timeStr) return false;
+  if (!bookingRuntime.discountEnabled) return false;
 
   const day = getWeekday(dateStr);
-  if (!DISCOUNT_WEEKDAYS.includes(day)) return false;
+  if (!bookingRuntime.discountWeekdays.includes(day)) return false;
 
   const minutes = timeToMinutes(timeStr);
-  return minutes >= DISCOUNT_START_MINUTES && minutes < DISCOUNT_END_MINUTES;
+  return (
+    minutes >= bookingRuntime.discountStartMinutes && minutes < bookingRuntime.discountEndMinutes
+  );
 }
 
 function getDiscountedPrice(basePrice) {
-  return Number((basePrice * (1 - DISCOUNT_PERCENT / 100)).toFixed(2));
+  const pct = bookingRuntime.discountPercent || 0;
+  return Number((basePrice * (1 - pct / 100)).toFixed(2));
 }
 
 function getServicePriceDetails(service, dateStr = "", timeStr = "") {
@@ -849,7 +1008,7 @@ function updateBindings() {
     }
 
     if (priceDetails.hasDiscount) {
-      el.textContent = `${formatPrice(priceDetails.finalPrice)} • -${DISCOUNT_PERCENT}%`;
+      el.textContent = `${formatPrice(priceDetails.finalPrice)} • -${bookingRuntime.discountPercent}%`;
       return;
     }
 
@@ -1260,7 +1419,7 @@ function renderSlots() {
       btn.classList.add("discounted");
       btn.innerHTML = `
         <span class="slot-time">${slot.time}</span>
-        <span class="slot-discount">-${DISCOUNT_PERCENT}%</span>
+        <span class="slot-discount">-${bookingRuntime.discountPercent}%</span>
       `;
     } else {
       btn.textContent = slot.time;
@@ -1600,6 +1759,14 @@ document.querySelectorAll("[data-lang]").forEach((button) => {
     setTimeout(rerenderLocalizedBookingUI, 0);
   });
 });
+
+window.DOGMA_applyBookingConfigFromContent = function (contentOrCfg) {
+  const cfg = contentOrCfg && contentOrCfg.bookingConfig ? contentOrCfg.bookingConfig : contentOrCfg;
+  const linkedBarbers =
+    contentOrCfg && Array.isArray(contentOrCfg.barbers) ? contentOrCfg.barbers : null;
+  applyBookingConfigFromContent(cfg, linkedBarbers);
+  rerenderLocalizedBookingUI();
+};
 
 renderServiceAccordion();
 renderBarberDecision();

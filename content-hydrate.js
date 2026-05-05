@@ -164,6 +164,9 @@
       if (!data || typeof data !== "object") return;
       window.DOGMA_SITE_CONTENT = data;
       applyWorksGallery(data);
+      if (typeof window.DOGMA_applyBookingConfigFromContent === "function") {
+        window.DOGMA_applyBookingConfigFromContent(data);
+      }
     } catch (e) {
       console.warn("[LUNA] content hydrate unavailable", e);
     }
