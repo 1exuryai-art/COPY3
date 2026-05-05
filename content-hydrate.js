@@ -54,6 +54,15 @@
     return value.startsWith("/") ? value : `/${value}`;
   }
 
+  function itemPrimaryMediaSrc(item) {
+    if (!item) return "";
+    const a = item.media && typeof item.media.src === "string" ? item.media.src.trim() : "";
+    const b = typeof item.image === "string" ? item.image.trim() : "";
+    const c = typeof item.photo === "string" ? item.photo.trim() : "";
+    const d = typeof item.src === "string" ? item.src.trim() : "";
+    return normSrc(a || b || c || d);
+  }
+
   function isVideoItem(item) {
     return item && (item.type === "video" || (item.media && item.media.type === "video"));
   }
@@ -107,10 +116,17 @@
         const visual = esc(String(it.visualClass || "hybrid"));
         const tags = Array.isArray(it.tags) ? it.tags : [];
         const tagHtml = tags.map((t) => `<span>${esc(String(t))}</span>`).join("\n");
-        const src = normSrc(it.media && it.media.src);
-        const bgStyle = src ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center"` : "";
+        const src = itemPrimaryMediaSrc(it);
+        const isVideo = isVideoItem(it) && src;
+        const bgStyle =
+          src && !isVideo
+            ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center"`
+            : "";
+        const visualInner = isVideo
+          ? `<div class="service-visual ${visual} service-visual--video"><video src="${esc(src)}" autoplay muted loop playsinline preload="metadata"></video></div>`
+          : `<div class="service-visual ${visual}"${bgStyle}></div>`;
         return `<article class="glass-card pricing-card">
-  <div class="service-visual ${visual}"${bgStyle}></div>
+  ${visualInner}
   <div class="pricing-card__content">
     <div class="pricing-card__top">
       <strong>${title}</strong>
@@ -137,10 +153,17 @@
         const visual = esc(String(it.visualClass || "hybrid"));
         const tags = Array.isArray(it.tags) ? it.tags : [];
         const tagHtml = tags.map((t) => `<span>${esc(String(t))}</span>`).join("\n");
-        const src = normSrc(it.media && it.media.src);
-        const bgStyle = src ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center"` : "";
+        const src = itemPrimaryMediaSrc(it);
+        const isVideo = isVideoItem(it) && src;
+        const bgStyle =
+          src && !isVideo
+            ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center"`
+            : "";
+        const imgInner = isVideo
+          ? `<div class="service-img ${visual} service-img--video"><video src="${esc(src)}" autoplay muted loop playsinline preload="metadata"></video></div>`
+          : `<div class="service-img ${visual}"${bgStyle}></div>`;
         return `<article class="service-card">
-  <div class="service-img ${visual}"${bgStyle}></div>
+  ${imgInner}
   <div class="service-card-header">
     <strong>${title}</strong>
     <span class="price">${price}</span>
@@ -158,7 +181,7 @@
   function renderDesktopBarbers(items, lang) {
     return items
       .map((it) => {
-        const src = normSrc(it?.media?.src || "");
+        const src = itemPrimaryMediaSrc(it);
         const name = esc(pickLocalized(it.title, lang));
         const desc = esc(pickLocalized(it.description, lang));
         const alt = esc(pickAlt(it, lang) || pickLocalized(it.title, lang));
@@ -186,7 +209,7 @@
   function renderMobileBarbers(items, lang) {
     return items
       .map((it) => {
-        const src = normSrc(it?.media?.src || "");
+        const src = itemPrimaryMediaSrc(it);
         const name = esc(pickLocalized(it.title, lang));
         const desc = esc(pickLocalized(it.description, lang));
         const alt = esc(pickAlt(it, lang) || pickLocalized(it.title, lang));
@@ -212,7 +235,7 @@
   function renderStickerWall(items, lang) {
     return items
       .map((item, idx) => {
-        const src = normSrc(item?.media?.src || item?.image || "");
+        const src = itemPrimaryMediaSrc(item);
         if (!src) return "";
         const title = esc(pickLoc(item.title, lang) || item.title || "");
         const desc = esc(pickLoc(item.description, lang) || item.description || "");
@@ -247,7 +270,7 @@
   function renderMobileGallery(items, lang) {
     return items
       .map((item) => {
-        const src = normSrc(item?.media?.src || item?.image || "");
+        const src = itemPrimaryMediaSrc(item);
         if (!src) return "";
         const title = esc(pickLoc(item.title, lang) || item.title || "");
         const desc = esc(pickLoc(item.description, lang) || item.description || "");

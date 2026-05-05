@@ -6,6 +6,7 @@ import crypto from "crypto";
 import { fileURLToPath } from "url";
 import express from "express";
 import cors from "cors";
+import multer from "multer";
 import dotenv from "dotenv";
 import { google } from "googleapis";
 import axios from "axios";
@@ -36,6 +37,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD?.trim() || "monarch";
 const DATA_DIR = path.join(__dirname, "data");
 const CONTENT_FILE = path.join(DATA_DIR, "site-content.json");
 const ADMIN_DIR = path.join(__dirname, "admin");
+const ADMIN_UPLOADS_DIR = path.join(__dirname, "assets", "admin-uploads");
 const adminSessions = new Map();
 const ADMIN_SESSION_MS = 8 * 60 * 60 * 1000;
 const EMPTY_SITE_CONTENT = {
@@ -52,9 +54,37 @@ const EMPTY_SITE_CONTENT = {
   socials: {}
 };
 
+function safeUploadFilename(original) {
+  const ext = path.extname(original || "").toLowerCase();
+  const allowed = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif", ".mp4", ".webm", ".mov"]);
+  if (!allowed.has(ext)) {
+    throw new Error(`Invalid file type: ${ext || "missing extension"}`);
+  }
+  return `${Date.now()}-${crypto.randomBytes(8).toString("hex")}${ext}`;
+}
+
 async function ensureContentDir() {
   await mkdir(DATA_DIR, { recursive: true });
+  await mkdir(ADMIN_UPLOADS_DIR, { recursive: true });
 }
+
+const adminUploadStorage = multer.diskStorage({
+  destination: (_req, _file, cb) => {
+    cb(null, ADMIN_UPLOADS_DIR);
+  },
+  filename: (_req, file, cb) => {
+    try {
+      cb(null, safeUploadFilename(file.originalname));
+    } catch (e) {
+      cb(e);
+    }
+  }
+});
+
+const adminUpload = multer({
+  storage: adminUploadStorage,
+  limits: { fileSize: 80 * 1024 * 1024 }
+});
 
 async function readSiteContent() {
   await ensureContentDir();
@@ -143,6 +173,20 @@ app.get("/api/content", async (_req, res) => {
   }
 });
 
+app.post("/api/admin/upload", requireAdminAuth, (req, res) => {
+  adminUpload.single("file")(req, res, (err) => {
+    if (err) {
+      return res.status(400).json({ ok: false, error: err.message || "Upload failed" });
+    }
+    if (!req.file) {
+      return res.status(400).json({ ok: false, error: "No file" });
+    }
+    const publicPath = `/assets/admin-uploads/${req.file.filename}`;
+    return res.json({ ok: true, path: publicPath, url: publicPath, filename: req.file.filename });
+  });
+});
+
+app.use("/assets/admin-uploads", express.static(ADMIN_UPLOADS_DIR));
 app.use(express.static(__dirname));
 
 const BARBERS = {

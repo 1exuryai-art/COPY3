@@ -391,16 +391,16 @@
           "en": "Popular services"
         },
         "description": {
-          "pl": "Czysty manicure i trwaly kolor.",
-          "ru": "????? ?????????? ??????.",
-          "en": "Most booked nail services."
+          "pl": "Nowa kategoria",
+          "ru": "Nowa kategoria",
+          "en": "Nowa kategoria"
         },
         "visible": true,
         "order": 1,
         "name": {
           "pl": "Manicure hybrydowy",
-          "ru": "????????? ???????",
-          "en": "Gel polish manicure"
+          "ru": "Nowa kategoria",
+          "en": "Nowa kategoria"
         }
       }
     ],
@@ -494,6 +494,42 @@
         "discountedPrice": "",
         "duration": "20min",
         "durationMinutes": 20,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
+      },
+      {
+        "id": "svc-1778008960205",
+        "category": "popular",
+        "name": {
+          "pl": "Nowa usługa",
+          "ru": "Nowa kategoria",
+          "en": "Nowa kategoria"
+        },
+        "description": {
+          "pl": "Nowa kategoria",
+          "ru": "Nowa kategoria",
+          "en": "Nowa kategoria"
+        },
+        "basePrice": 100,
+        "discountedPrice": "",
+        "duration": "1h",
+        "durationMinutes": 60,
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],

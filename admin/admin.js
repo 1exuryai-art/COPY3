@@ -631,10 +631,21 @@ function cardTitleLine(item, lang) {
   return pickLocAdmin(item.title, lang) || "—";
 }
 
+function itemAdminPreviewSrc(item) {
+  const s = item?.media?.src || item?.image || item?.photo || item?.src;
+  return typeof s === "string" ? s : "";
+}
+
+function mediaKindFromFileName(fileName) {
+  const low = String(fileName || "").toLowerCase();
+  if (low.endsWith(".mp4") || low.endsWith(".webm") || low.endsWith(".mov")) return "video";
+  return "image";
+}
+
 function updateGalleryCardPreviews(wrap, item) {
   const lang = wrap.dataset.previewLang || "pl";
   const type = item.media?.type || item.type || "image";
-  const src = item.media?.src || "";
+  const src = itemAdminPreviewSrc(item);
   const posterRaw = (item.media?.poster && String(item.media.poster).trim()) || "";
   const posterAttr = posterRaw ? ` poster="${esc(posterRaw)}"` : "";
   const heroBox = wrap.querySelector(".dogma-card-hero__media");
@@ -692,7 +703,7 @@ function renderGalleryEditor(container, listKey, options) {
   const blocks = list
     .map((item, idx) => {
       const type = item.media?.type || mediaTypeDefault || "image";
-      const src = item.media?.src || "";
+      const src = itemAdminPreviewSrc(item);
 
       const typeSelect = allowVideoToggle
         ? `<div class="dogma-field">
@@ -883,14 +894,14 @@ function renderGalleryEditor(container, listKey, options) {
       const file = e.target.files && e.target.files[0];
       if (!file) return;
       try {
-        const path = await uploadFile(file);
-        if (!item.media) item.media = { type: "image", src: "", poster: "", alt: loc() };
-        item.media.src = path;
-        const low = file.name.toLowerCase();
-        if (low.endsWith(".mp4") || low.endsWith(".webm") || low.endsWith(".mov")) item.media.type = "video";
-        item.type = item.media.type === "video" ? "video" : "image";
+        const uploadedUrl = await uploadFile(file);
+        const kind = mediaKindFromFileName(file.name);
+        if (!item.media) item.media = { type: kind, src: "", poster: "", alt: loc() };
+        item.media.src = uploadedUrl;
+        item.media.type = kind;
+        item.type = kind;
         const inp = wrap.querySelector("[data-field=src]");
-        if (inp) inp.value = path;
+        if (inp) inp.value = uploadedUrl;
         if (allowVideoToggle) {
           const sel = wrap.querySelector("[data-field=mediaType]");
           if (sel) sel.value = item.media.type;
@@ -924,12 +935,15 @@ async function uploadFile(file) {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || "Nie udało się wgrać pliku.");
-  return data.path;
+  const uploaded =
+    (typeof data.url === "string" && data.url.trim()) || (typeof data.path === "string" && data.path.trim()) || "";
+  if (!uploaded) throw new Error("Serwer nie zwrócił adresu pliku.");
+  return uploaded.startsWith("/") ? uploaded : `/${uploaded.replace(/^\.?\//, "")}`;
 }
 
 function updateBarberCardPreviews(wrap, item) {
   const lang = wrap.dataset.previewLang || "pl";
-  const src = item.media?.src || "";
+  const src = itemAdminPreviewSrc(item);
   const heroBox = wrap.querySelector(".dogma-card-hero__media");
   if (heroBox) {
     if (!src) heroBox.innerHTML = `<span class="dogma-preview-placeholder">Brak zdjęcia</span>`;
@@ -973,7 +987,7 @@ function renderBarbersEditor(container) {
 
   const blocks = list
     .map((item, idx) => {
-      const src = item.media?.src || "";
+      const src = itemAdminPreviewSrc(item);
       const tagsStr = Array.isArray(item.tags) ? item.tags.join("\n") : "";
       const ids = Array.isArray(item.performedBookingServiceIds) ? item.performedBookingServiceIds : [];
       const checked = (id) => (ids.includes(id) ? "checked" : "");
@@ -1182,12 +1196,13 @@ function renderBarbersEditor(container) {
       const file = e.target.files && e.target.files[0];
       if (!file) return;
       try {
-        const path = await uploadFile(file);
+        const uploadedUrl = await uploadFile(file);
         if (!item.media) item.media = { type: "image", src: "", alt: loc() };
-        item.media.src = path;
+        item.media.src = uploadedUrl;
         item.media.type = "image";
+        item.type = "image";
         const inp = wrap.querySelector("[data-field=src]");
-        if (inp) inp.value = path;
+        if (inp) inp.value = uploadedUrl;
         updateBarberCardPreviews(wrap, item);
         showSave("Wgrano plik", "ok");
         updateDirtyBanner();
@@ -1213,7 +1228,7 @@ function renderLandingServicesEditor(container) {
 
   const blocks = list
     .map((item, idx) => {
-      const src = item.media?.src || "";
+      const src = itemAdminPreviewSrc(item);
       const tagsStr = Array.isArray(item.tags) ? item.tags.join("\n") : "";
       const bid = item.bookingServiceId != null ? String(item.bookingServiceId) : "";
       const opts = getBookingServiceSelectOptionsHtml(bid);
@@ -1341,8 +1356,8 @@ function renderLandingServicesEditor(container) {
     if (hp) hp.textContent = price;
     if (hd) hd.textContent = d;
     if (hb) hb.textContent = btn;
-    const src = item.media?.src || "";
-    const isVid = item.media?.type === "video";
+    const src = itemAdminPreviewSrc(item);
+    const isVid = item.media?.type === "video" || item.type === "video";
     const mini = wrap.querySelector(".dogma-card-preview-media");
     const hero = wrap.querySelector(".dogma-card-hero__media");
     const mainPrev = wrap.querySelector(".dogma-preview--main");
@@ -1418,7 +1433,13 @@ function renderLandingServicesEditor(container) {
       if (!item.media) item.media = { type: "image", src: "", alt: loc() };
       item.media.src = e.target.value;
       const low = item.media.src.toLowerCase();
-      if (low.includes(".mp4") || low.includes(".webm") || low.includes(".mov")) item.media.type = "video";
+      if (low.includes(".mp4") || low.includes(".webm") || low.includes(".mov")) {
+        item.media.type = "video";
+        item.type = "video";
+      } else {
+        item.media.type = "image";
+        item.type = "image";
+      }
       updateLandingPreview(wrap, item);
       updateDirtyBanner();
     });
@@ -1465,14 +1486,14 @@ function renderLandingServicesEditor(container) {
       const file = e.target.files && e.target.files[0];
       if (!file) return;
       try {
-        const path = await uploadFile(file);
+        const uploadedUrl = await uploadFile(file);
+        const kind = mediaKindFromFileName(file.name);
         if (!item.media) item.media = { type: "image", src: "", alt: loc() };
-        item.media.src = path;
-        const low = file.name.toLowerCase();
-        if (low.endsWith(".mp4") || low.endsWith(".webm") || low.endsWith(".mov")) item.media.type = "video";
-        else item.media.type = "image";
+        item.media.src = uploadedUrl;
+        item.media.type = kind;
+        item.type = kind;
         const inp = wrap.querySelector("[data-field=src]");
-        if (inp) inp.value = path;
+        if (inp) inp.value = uploadedUrl;
         updateLandingPreview(wrap, item);
         showSave("Wgrano plik", "ok");
         updateDirtyBanner();
@@ -1589,6 +1610,24 @@ function buildBookingServiceCardHtml(svc, svcIdx, cfg) {
       </div>`;
 }
 
+function getFallbackPopularBookingCategory() {
+  return {
+    id: "popular",
+    title: {
+      pl: "Popularne usługi",
+      ru: "Популярные услуги",
+      en: "Popular services"
+    },
+    description: {
+      pl: "Najczęściej wybierane opcje.",
+      ru: "Самые популярные услуги.",
+      en: "Most popular services."
+    },
+    visible: true,
+    order: 1
+  };
+}
+
 function renderBookingEditor(container) {
   if (state.bookingConfig == null) {
     state.bookingConfig = deepClone(getDefaultBookingConfig());
@@ -1648,6 +1687,9 @@ function renderBookingEditor(container) {
           <p class="dogma-field-hint">Wewnętrzny zapis kategorii.</p>
           <div class="dogma-field"><label>Wewnętrzny identyfikator</label><input type="text" readonly value="${esc(cat.id)}" /></div>
         </details>
+        <div class="dogma-field dogma-field--tight">
+          <button type="button" class="dogma-btn dogma-btn--danger dogma-btn--block-sm" data-cat-del="${idx}">Usuń kategorię</button>
+        </div>
         <div class="dogma-booking-cat-services">
           <h5 class="dogma-panel-subtitle dogma-panel-subtitle--nest">Usługi w tej kategorii</h5>
           <div class="dogma-stack dogma-stack--nest">${svcInner || `<p class="dogma-hint">Brak usług — dodaj nową poniżej lub przenieś tu istniejącą zmianą kategorii.</p>`}</div>
@@ -1770,6 +1812,35 @@ function renderBookingEditor(container) {
           const h = el.querySelector(".dogma-booking-cat-heading");
           if (h) h.textContent = `Kategoria: ${pickLocAdmin(cat.title, "pl") || "—"}`;
         });
+      });
+      el.querySelector("[data-cat-del]")?.addEventListener("click", () => {
+        if (
+          !window.confirm(
+            "Usunąć tę kategorię? Usługi z tej kategorii zostaną przeniesione do pierwszej pozostałej kategorii (albo do „Popularne usługi”, jeśli to ostatnia kategoria)."
+          )
+        ) {
+          return;
+        }
+        const removedId = cat.id;
+        const remainingAfterDelete = cfg.serviceCategories.filter((_, i) => i !== idx);
+        let targetId;
+        if (remainingAfterDelete.length > 0) {
+          const sorted = [...remainingAfterDelete].sort(
+            (a, b) => (Number(a.order) || 0) - (Number(b.order) || 0)
+          );
+          targetId = sorted[0].id;
+        } else {
+          targetId = "popular";
+        }
+        (cfg.services || []).forEach((s) => {
+          if (s && s.category === removedId) s.category = targetId;
+        });
+        cfg.serviceCategories.splice(idx, 1);
+        if (cfg.serviceCategories.length === 0) {
+          cfg.serviceCategories.push(deepClone(getFallbackPopularBookingCategory()));
+        }
+        renderBookingEditor(container);
+        updateDirtyBanner();
       });
     });
 
