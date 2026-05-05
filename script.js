@@ -541,37 +541,37 @@ const services = [
 const barbers = [
   {
     id: "tymur",
-    name: { pl: "Julia", ua: "Юлія", ru: "Юлия", en: "Julia" },
-    photo: "/assets/barbers/tymur.png",
+    name: { pl: "Maja", ua: "Мая", ru: "Мая", en: "Maja" },
+    photo: "./images/masters/maja-1x1.png",
     description: {
-      pl: "Specjalistka od czystej hybrydy, frenchu i subtelnych stylizacji codziennych.",
-      ua: "Спеціалістка з гібридного манікюру, french та делікатних повсякденних стилізацій.",
-      ru: "Специалист по гибридному маникюру, french и аккуратным повседневным стилям.",
-      en: "Specialist in gel polish manicure, French and clean everyday styling."
+      pl: "Clean manicure, subtelne kolory i naturalny efekt.",
+      ua: "Clean manicure, делікатні кольори та натуральний ефект.",
+      ru: "Clean manicure, деликатные цвета и натуральный эффект.",
+      en: "Clean manicure, subtle colors and a natural effect."
     },
     languages: ["pl", "ua", "en"]
   },
   {
     id: "dima",
-    name: { pl: "Marta", ua: "Марта", ru: "Марта", en: "Marta" },
-    photo: "/assets/barbers/dima.png",
+    name: { pl: "Ola", ua: "Ола", ru: "Ола", en: "Ola" },
+    photo: "./images/masters/ola-1x1.png",
     description: {
-      pl: "Precyzyjnie wykonuje przedłużenia żelowe, korekty i naturalne kształty paznokci.",
-      ua: "Точно виконує гелеве нарощення, корекцію та природні форми нігтів.",
-      ru: "Точно выполняет гелевое наращивание, коррекцию и натуральные формы ногтей.",
-      en: "Focused on gel extensions, refills and natural nail shapes."
+      pl: "French, baby boomer i minimalistyczne zdobienia.",
+      ua: "French, baby boomer і мінімалістичний дизайн.",
+      ru: "French, baby boomer и минималистичный дизайн.",
+      en: "French, baby boomer and minimalist details."
     },
     languages: ["pl", "en"]
   },
   {
     id: "vlad",
-    name: { pl: "Sofia", ua: "Софія", ru: "София", en: "Sofia" },
-    photo: "/assets/barbers/vlad.png",
+    name: { pl: "Nina", ua: "Нина", ru: "Нина", en: "Nina" },
+    photo: "./images/masters/nina-1x1.png",
     description: {
-      pl: "Tworzy subtelne zdobienia, babyboomer i stylizacje premium z dopracowanym detalem.",
-      ua: "Створює делікатний дизайн, babyboomer і преміум-стилізації з увагою до деталей.",
-      ru: "Создает деликатный дизайн, babyboomer и премиум-стилизации с вниманием к деталям.",
-      en: "Creates refined nail art, baby boomer and premium detailed styling."
+      pl: "Żel, przedłużanie i mocniejsze stylizacje premium.",
+      ua: "Гель, нарощення та виразніші преміум-стилізації.",
+      ru: "Гель, наращивание и более выразительные премиум-стилизации.",
+      en: "Gel, extensions and stronger premium styles."
     },
     languages: ["ua", "pl", "ru"]
   }

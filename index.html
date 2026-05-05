@@ -7314,6 +7314,10 @@ overlay?.addEventListener("click", (e) => {
 
       function closeSettings() {
         settingsPop.classList.remove("open");
+        settingsPop.style.removeProperty("display");
+        settingsPop.style.removeProperty("visibility");
+        settingsPop.style.removeProperty("opacity");
+        settingsPop.style.removeProperty("pointer-events");
         settingsButtons.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
       }
 
@@ -7353,6 +7357,10 @@ overlay?.addEventListener("click", (e) => {
           // with the legacy inline initializer.
           closeSettings();
           settingsPop.classList.add("open");
+          settingsPop.style.setProperty("display", "grid", "important");
+          settingsPop.style.setProperty("visibility", "visible", "important");
+          settingsPop.style.setProperty("opacity", "1", "important");
+          settingsPop.style.setProperty("pointer-events", "auto", "important");
           settingsButtons.forEach((btn) => btn.setAttribute("aria-expanded", btn === button ? "true" : "false"));
           positionSettings(button);
         });
@@ -7444,6 +7452,22 @@ overlay?.addEventListener("click", (e) => {
         closeAdminAccess();
         closeProductInfo();
       });
+
+      // Hard fallback: capture pointer down before legacy handlers.
+      document.addEventListener("pointerdown", (event) => {
+        const gearBtn = event.target?.closest?.("[data-site-settings-btn]");
+        if (!gearBtn) return;
+        event.preventDefault();
+        event.stopPropagation();
+        closeSettings();
+        settingsPop.classList.add("open");
+        settingsPop.style.setProperty("display", "grid", "important");
+        settingsPop.style.setProperty("visibility", "visible", "important");
+        settingsPop.style.setProperty("opacity", "1", "important");
+        settingsPop.style.setProperty("pointer-events", "auto", "important");
+        settingsButtons.forEach((btn) => btn.setAttribute("aria-expanded", btn === gearBtn ? "true" : "false"));
+        positionSettings(gearBtn);
+      }, true);
     })();
   </script>
 </body>
