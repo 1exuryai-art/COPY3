@@ -3,33 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Luna Nail Studio — Admin</title>
+  <title>Luna Nail Studio — Panel treści</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="/admin/admin.css" />
 </head>
-<body>
+<body class="dogma-admin-shell monarch-admin-body">
   <script>
     (function () {
-      const token = localStorage.getItem("dogma_admin_token");
-      if (!token) window.location.replace("/");
+      try {
+        var t = localStorage.getItem("dogma_admin_token");
+        if (!t || !String(t).trim()) window.location.replace("/");
+      } catch (_e) {
+        window.location.replace("/");
+      }
     })();
   </script>
-  <main class="admin-shell">
-    <header class="admin-head">
+
+  <div id="appView" class="dogma-admin admin-app">
+    <header class="dogma-admin__head">
       <div>
-        <h1>Panel administratora — Luna Nail Studio</h1>
-        <p>Architektura MONARCH: content/data/admin w bialo-niebieskim stylu.</p>
+        <h1>Panel treści — Luna Nail Studio</h1>
+        <p>Dodajesz zdjęcia i teksty — zapisujesz — klienci to widzą na stronie.</p>
       </div>
-      <div class="actions">
-        <span id="status"></span>
-        <button id="saveBtn" class="btn primary" type="button">Zapisz zmiany</button>
-        <button id="logoutBtn" class="btn" type="button">Wyloguj</button>
+      <div class="dogma-admin__actions">
+        <span class="dogma-dirty-banner" id="dirtyBanner" aria-live="polite"></span>
+        <span class="dogma-status" id="saveStatus" aria-live="polite"></span>
+        <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--save" id="saveBtn">Zapisz zmiany</button>
+        <button type="button" class="dogma-btn dogma-btn--ghost" id="logoutBtn">Wyloguj</button>
       </div>
     </header>
-    <section class="card">
-      <label for="payload">JSON tresci strony</label>
-      <textarea id="payload" spellcheck="false"></textarea>
-    </section>
-  </main>
+
+    <nav class="dogma-tabs" id="tabNav" aria-label="Sekcje"></nav>
+
+    <section class="dogma-panel" data-panel="works" id="panel-works"></section>
+    <section class="dogma-panel" data-panel="barbers" id="panel-barbers"></section>
+    <section class="dogma-panel" data-panel="services" id="panel-services"></section>
+    <section class="dogma-panel" data-panel="booking" id="panel-booking"></section>
+    <section class="dogma-panel" data-panel="contacts" id="panel-contacts"></section>
+
+    <div class="dogma-save-bar" aria-hidden="false">
+      <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--block-sm" id="saveBtnSticky">Zapisz zmiany</button>
+    </div>
+  </div>
+
   <script type="module" src="/admin/admin.js"></script>
 </body>
 </html>

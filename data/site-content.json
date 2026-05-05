@@ -5,9 +5,415 @@
   "effectPhotos": [],
   "effectVideos": [],
   "vibeGallery": [],
-  "barbers": [],
-  "landingServices": [],
-  "bookingConfig": null,
-  "contacts": {},
-  "socials": {}
+  "barbers": [
+    {
+      "id": "stylist-maja",
+      "order": 1,
+      "visible": true,
+      "barberId": "maja",
+      "title": {
+        "pl": "Maja",
+        "ru": "???",
+        "en": "Maja"
+      },
+      "description": {
+        "pl": "Clean manicure, subtelne kolory i naturalny efekt.",
+        "ru": "Clean manicure, ?????????? ????? ? ??????????? ??????.",
+        "en": "Clean manicure, subtle colors and a natural effect."
+      },
+      "tags": [
+        "clean look",
+        "hybryda",
+        "soft colors"
+      ],
+      "bookCta": {
+        "pl": "Zarezerwuj u Mai",
+        "ru": "?????????? ? ????",
+        "en": "Book with Maja"
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/masters/maja-1x1.png",
+        "alt": {
+          "pl": "Maja",
+          "ru": "???",
+          "en": "Maja"
+        }
+      },
+      "visibleInBooking": true,
+      "performedBookingServiceIds": [
+        "hybrid-manicure",
+        "nail-art"
+      ]
+    },
+    {
+      "id": "stylist-ola",
+      "order": 2,
+      "visible": true,
+      "barberId": "ola",
+      "title": {
+        "pl": "Ola",
+        "ru": "???",
+        "en": "Ola"
+      },
+      "description": {
+        "pl": "French, baby boomer i minimalistyczne zdobienia.",
+        "ru": "French, baby boomer ? ??????????????? ??????.",
+        "en": "French, baby boomer and minimalist details."
+      },
+      "tags": [
+        "french",
+        "baby boomer",
+        "detail"
+      ],
+      "bookCta": {
+        "pl": "Zarezerwuj u Oli",
+        "ru": "?????????? ? ???",
+        "en": "Book with Ola"
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/masters/ola-1x1.png",
+        "alt": {
+          "pl": "Ola",
+          "ru": "???",
+          "en": "Ola"
+        }
+      },
+      "visibleInBooking": true,
+      "performedBookingServiceIds": [
+        "hybrid-manicure",
+        "nail-art"
+      ]
+    },
+    {
+      "id": "stylist-nina",
+      "order": 3,
+      "visible": true,
+      "barberId": "nina",
+      "title": {
+        "pl": "Nina",
+        "ru": "????",
+        "en": "Nina"
+      },
+      "description": {
+        "pl": "Zel, przedluzanie i mocniejsze stylizacje premium.",
+        "ru": "????, ??????????? ? ????? ????????????? ???????-??????????.",
+        "en": "Gel, extensions and stronger premium styles."
+      },
+      "tags": [
+        "zel",
+        "extensions",
+        "premium shape"
+      ],
+      "bookCta": {
+        "pl": "Zarezerwuj u Niny",
+        "ru": "?????????? ? ????",
+        "en": "Book with Nina"
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/masters/nina-1x1.png",
+        "alt": {
+          "pl": "Nina",
+          "ru": "????",
+          "en": "Nina"
+        }
+      },
+      "visibleInBooking": true,
+      "performedBookingServiceIds": [
+        "gel-extension",
+        "nail-art"
+      ]
+    }
+  ],
+  "landingServices": [
+    {
+      "id": "svc-hybrid",
+      "order": 1,
+      "visible": true,
+      "title": {
+        "pl": "Manicure hybrydowy",
+        "ru": "????????? ???????",
+        "en": "Gel polish manicure"
+      },
+      "description": {
+        "pl": "Opracowanie sk?rek, czysty ksztalt i elegancki kolor na co dzien.",
+        "ru": "?????????? ????????? ? ??????? ???????? ?? ?????? ????.",
+        "en": "Cuticle care, clean shape and elegant color for everyday style."
+      },
+      "priceDisplay": "120 zl",
+      "buttonLabel": {
+        "pl": "Wybierz usluge",
+        "ru": "??????? ??????",
+        "en": "Choose service"
+      },
+      "visualClass": "haircut",
+      "bookingServiceId": "hybrid-manicure",
+      "tags": [
+        "90 min",
+        "hybryda",
+        "clean look"
+      ],
+      "media": {
+        "type": "image",
+        "src": "/assets/booking/services/haircut.jpg"
+      }
+    },
+    {
+      "id": "svc-gel",
+      "order": 2,
+      "visible": true,
+      "title": {
+        "pl": "Przedluzanie zelowe",
+        "ru": "??????? ???????????",
+        "en": "Gel extension"
+      },
+      "description": {
+        "pl": "Budowa paznokci, proporcja i estetyczne wykonczenie premium.",
+        "ru": "????????????? ????? ? ?????????? ???????-?????.",
+        "en": "Nail build-up, balanced shape and refined premium finish."
+      },
+      "priceDisplay": "180 zl",
+      "buttonLabel": {
+        "pl": "Wybierz usluge",
+        "ru": "??????? ??????",
+        "en": "Choose service"
+      },
+      "visualClass": "combo",
+      "bookingServiceId": "gel-extension",
+      "tags": [
+        "120 min",
+        "zel",
+        "shape"
+      ],
+      "media": {
+        "type": "image",
+        "src": "/assets/booking/services/combo.jpg"
+      }
+    },
+    {
+      "id": "svc-art",
+      "order": 3,
+      "visible": true,
+      "title": {
+        "pl": "Zdobienia",
+        "ru": "??????",
+        "en": "Nail art"
+      },
+      "description": {
+        "pl": "French, baby boomer i subtelne detale dopasowane do stylizacji.",
+        "ru": "French, baby boomer ? ?????????? ???????.",
+        "en": "French, baby boomer and subtle details matched to the set."
+      },
+      "priceDisplay": "+35 zl",
+      "buttonLabel": {
+        "pl": "Wybierz usluge",
+        "ru": "??????? ??????",
+        "en": "Choose service"
+      },
+      "visualClass": "beard",
+      "bookingServiceId": "nail-art",
+      "tags": [
+        "20 min",
+        "detail",
+        "french"
+      ],
+      "media": {
+        "type": "image",
+        "src": "/assets/booking/services/beard.jpg"
+      }
+    }
+  ],
+  "bookingConfig": {
+    "serviceCategories": [
+      {
+        "id": "popular",
+        "title": {
+          "pl": "Popularne uslugi",
+          "ru": "?????????? ??????",
+          "en": "Popular services"
+        },
+        "description": {
+          "pl": "Najczesciej wybierane stylizacje.",
+          "ru": "????? ?????????? ??????.",
+          "en": "Most booked nail services."
+        },
+        "visible": true,
+        "order": 1
+      }
+    ],
+    "services": [
+      {
+        "id": "hybrid-manicure",
+        "category": "popular",
+        "name": {
+          "pl": "Manicure hybrydowy",
+          "ru": "????????? ???????",
+          "en": "Gel polish manicure"
+        },
+        "description": {
+          "pl": "Czysty manicure i trwaly kolor.",
+          "ru": "?????????? ??????? ? ??????? ????????.",
+          "en": "Clean manicure with durable color."
+        },
+        "basePrice": 120,
+        "discountedPrice": "",
+        "duration": "1h 30min",
+        "durationMinutes": 90,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "gel-extension",
+        "category": "popular",
+        "name": {
+          "pl": "Przedluzanie zelowe",
+          "ru": "??????? ???????????",
+          "en": "Gel extension"
+        },
+        "description": {
+          "pl": "Budowa i modelowanie paznokci.",
+          "ru": "????????????? ? ??????????? ??????.",
+          "en": "Nail build-up and shaping."
+        },
+        "basePrice": 180,
+        "discountedPrice": "",
+        "duration": "2h",
+        "durationMinutes": 120,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "nail-art",
+        "category": "popular",
+        "name": {
+          "pl": "Zdobienia",
+          "ru": "??????",
+          "en": "Nail art"
+        },
+        "description": {
+          "pl": "French, baby boomer i detale.",
+          "ru": "French, baby boomer ? ??????.",
+          "en": "French, baby boomer and details."
+        },
+        "basePrice": 35,
+        "discountedPrice": "",
+        "duration": "20min",
+        "durationMinutes": 20,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      }
+    ],
+    "barbers": [
+      {
+        "id": "maja",
+        "name": "Maja",
+        "photo": "/images/masters/maja-1x1.png",
+        "description": "Clean manicure.",
+        "languages": [
+          "PL",
+          "UA",
+          "EN"
+        ]
+      },
+      {
+        "id": "ola",
+        "name": "Ola",
+        "photo": "/images/masters/ola-1x1.png",
+        "description": "French i baby boomer.",
+        "languages": [
+          "PL",
+          "EN"
+        ]
+      },
+      {
+        "id": "nina",
+        "name": "Nina",
+        "photo": "/images/masters/nina-1x1.png",
+        "description": "Zel i premium shape.",
+        "languages": [
+          "PL",
+          "UA",
+          "RU"
+        ]
+      }
+    ],
+    "discount": {
+      "enabled": true,
+      "name": "Znizka tygodniowa",
+      "clientMessage": "10% od poniedzialku do czwartku, 10:00-16:00.",
+      "percent": 10,
+      "weekdays": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "startMinutes": 600,
+      "endMinutes": 960
+    },
+    "openingHours": {
+      "0": {
+        "closed": false,
+        "openHour": 10,
+        "closeHour": 18
+      },
+      "1": {
+        "closed": false,
+        "openHour": 10,
+        "closeHour": 20
+      },
+      "2": {
+        "closed": false,
+        "openHour": 10,
+        "closeHour": 20
+      },
+      "3": {
+        "closed": false,
+        "openHour": 10,
+        "closeHour": 20
+      },
+      "4": {
+        "closed": false,
+        "openHour": 10,
+        "closeHour": 20
+      },
+      "5": {
+        "closed": false,
+        "openHour": 10,
+        "closeHour": 20
+      },
+      "6": {
+        "closed": false,
+        "openHour": 10,
+        "closeHour": 20
+      }
+    }
+  },
+  "contacts": {
+    "phoneDisplay": "+48 532 377 701",
+    "phoneE164": "+48532377701",
+    "hoursDisplay": "Pn-Sob 10:00-20:00, Nd 10:00-18:00",
+    "address": {
+      "pl": "ul. Przykladowa 12A, Wroclaw",
+      "ru": "ul. Przykladowa 12A, ???????",
+      "en": "ul. Przykladowa 12A, Wroclaw"
+    },
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ul.+Przyk%C5%82adowa+12A,+Wroc%C5%82aw",
+    "mapEmbedUrl": "https://www.google.com/maps?q=Wroc%C5%82aw&output=embed",
+    "mapImage": "",
+    "googleReviewsUrl": ""
+  },
+  "socials": {
+    "instagram": "https://www.instagram.com/",
+    "tiktok": "https://www.tiktok.com/",
+    "googleReviewsUrl": ""
+  }
 }
