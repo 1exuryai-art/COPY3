@@ -483,22 +483,29 @@
     .site-settings-btn {
       position: relative;
       z-index: 5;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border-radius: 14px;
       border: 1px solid rgba(37, 99, 235, 0.28);
       background: rgba(255, 255, 255, 0.82);
       color: #1d4ed8;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
-      display: inline-grid;
-      place-items: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       box-shadow: var(--shadow-xs);
+      align-self: center;
+      flex: 0 0 auto;
+    }
+    .desktop-left .site-settings-btn {
+      margin-right: 2px;
     }
     .site-settings-pop {
       position: fixed;
-      left: 14px;
+      left: 16px;
       top: 84px;
       z-index: 9999;
       min-width: 220px;
@@ -1086,6 +1093,7 @@
       color: var(--text-strong);
       text-decoration: none;
       font-weight: 900;
+      font-size: 14px;
       text-align: right;
     }
 
@@ -1209,10 +1217,9 @@
         position: relative;
         z-index: 40;
         padding: calc(10px + var(--safe-top)) 12px 8px;
-        display: grid;
-        grid-template-columns: 52px minmax(0, 1fr) 52px;
+        display: flex;
         align-items: center;
-        gap: 10px;
+        gap: clamp(6px, 1.6vw, 10px);
         border-bottom: 1px solid rgba(15, 23, 42, 0.07);
         background:
           linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,252,255,.74));
@@ -1251,11 +1258,23 @@
         box-shadow: var(--glass-highlight);
       }
 
+      .app-top > button.site-settings-btn:first-child {
+        order: 1;
+        flex: 0 0 auto;
+      }
+
+      .app-top > a.icon-btn:last-child {
+        order: 4;
+        flex: 0 0 auto;
+      }
+
       .logo-pill {
-        justify-self: center;
-        width: min(246px, 100%);
+        order: 2;
+        flex: 1 1 auto;
+        min-width: 0;
+        width: auto;
         height: 58px;
-        padding: 0 104px 0 14px;
+        padding: 0 12px;
         display: grid;
         place-items: center;
         border-radius: 23px;
@@ -1281,18 +1300,19 @@
       .mobile-logo-img {
         position: relative;
         z-index: 1;
-        width: 92px;
+        width: min(92px, 26vw);
         max-height: 38px;
         object-fit: contain;
-        transform: translateX(-34px);
+        transform: none;
         filter: drop-shadow(0 10px 20px rgba(47,125,244,.10));
       }
 
       .mobile-lang-switcher {
-        position: absolute;
-        right: 90px;
-        top: calc(19px + var(--safe-top));
+        order: 3;
+        position: relative;
+        inset: auto;
         z-index: 80;
+        flex: 0 0 auto;
         padding: 3px;
         gap: 2px;
         background: rgba(255,255,255,.88);
@@ -2277,6 +2297,10 @@
       .hour-row strong {
         color: var(--text-strong);
         font-weight: 1000;
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        line-height: 1.05;
+        letter-spacing: -.03em;
       }
 
       .social-row {
@@ -2288,11 +2312,11 @@
       }
 
       .social-row a {
-        min-height: 56px;
-        height: 56px;
+        min-height: 52px;
+        height: 52px;
         display: grid;
         place-items: center;
-        border-radius: 18px;
+        border-radius: 16px;
         border: 1px solid var(--line);
         background:
           radial-gradient(circle at 50% 0%, rgba(255,255,255,.92), transparent 42%),
@@ -2310,8 +2334,8 @@
       .social-icon-svg {
         position: relative;
         z-index: 1;
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         display: block;
         color: var(--accent-deep);
       }
@@ -3529,12 +3553,12 @@
     }
 
     .social-icon {
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 18px;
+      border-radius: 16px;
       border: 1px solid var(--line);
       background:
         linear-gradient(180deg, rgba(255,255,255,.90), rgba(248,252,255,.74));
@@ -4311,6 +4335,41 @@
     flex-shrink: 0;
   }
 }
+
+@media (max-width: 900px) {
+  .page.active .page-head {
+    flex: 0 0 auto !important;
+  }
+
+  .page.active .screen-body {
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    height: auto !important;
+  }
+
+  .page.active .services-list,
+  .page.active .masters-mobile-list,
+  .page.active .gallery-mobile-list {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: max-content !important;
+    gap: 14px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    scroll-snap-type: none !important;
+    touch-action: pan-y !important;
+    padding: 0 0 8px !important;
+  }
+}
   </style>
 </head>
 
@@ -4326,6 +4385,7 @@
     <header class="site-header" id="top">
       <div class="landing-container desktop-header">
         <div class="desktop-left">
+          <button class="site-settings-btn" type="button" data-site-settings-btn aria-expanded="false" aria-haspopup="menu" aria-controls="siteSettingsPop">⚙</button>
           <nav class="desktop-nav">
             <a href="#hero" data-i18n="nav.start">Start</a>
             <a href="#pricing" data-i18n="nav.services">Usługi</a>
@@ -4353,7 +4413,6 @@
             <button class="lang-btn" type="button" data-lang="ru">RU</button>
             <button class="lang-btn" type="button" data-lang="en">EN</button>
           </div>
-          <button class="site-settings-btn" type="button" data-site-settings-btn aria-expanded="false" aria-haspopup="menu" aria-controls="siteSettingsPop">⚙</button>
           <a href="tel:+48532377701" class="desktop-call-btn" data-i18n="common.call">Zadzwoń</a>
         </div>
       </div>
@@ -4970,17 +5029,17 @@
         <img class="mobile-logo-img" src="./images/logo-luna-nail.png" alt="LUNA NAIL" />
       </div>
 
-      <a class="icon-btn" href="tel:+48532377701" aria-label="Zadzwoń">
-        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M7.2 5.4 9 4.7c.9-.4 1.9 0 2.3.9l.9 2c.3.8.1 1.6-.5 2.1l-1 .8a10.6 10.6 0 0 0 4.8 4.8l.8-1c.5-.6 1.4-.8 2.1-.5l2 .9c.9.4 1.3 1.4.9 2.3l-.7 1.8c-.4.9-1.3 1.4-2.3 1.2C10.6 18.8 5.2 13.4 4 5.7c-.2-1 .3-1.9 1.2-2.3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-        </svg>
-      </a>
-
       <div class="lang-switcher mobile-lang-switcher" aria-label="Language switcher">
         <button class="lang-btn active" type="button" data-lang="pl">PL</button>
         <button class="lang-btn" type="button" data-lang="ru">RU</button>
         <button class="lang-btn" type="button" data-lang="en">EN</button>
       </div>
+
+      <a class="icon-btn" href="tel:+48532377701" aria-label="Zadzwoń">
+        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7.2 5.4 9 4.7c.9-.4 1.9 0 2.3.9l.9 2c.3.8.1 1.6-.5 2.1l-1 .8a10.6 10.6 0 0 0 4.8 4.8l.8-1c.5-.6 1.4-.8 2.1-.5l2 .9c.9.4 1.3 1.4.9 2.3l-.7 1.8c-.4.9-1.3 1.4-2.3 1.2C10.6 18.8 5.2 13.4 4 5.7c-.2-1 .3-1.9 1.2-2.3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </header>
 
     <nav class="section-nav" aria-label="Nawigacja mobilna">
