@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luna Nail Studio — Admin</title>
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+  <script>
+    (function () {
+      const token = localStorage.getItem("dogma_admin_token");
+      if (!token) window.location.replace("/");
+    })();
+  </script>
+  <main class="admin-shell">
+    <header class="admin-head">
+      <div>
+        <h1>Panel administratora — Luna Nail Studio</h1>
+        <p>Architektura MONARCH: content/data/admin w bialo-niebieskim stylu.</p>
+      </div>
+      <div class="actions">
+        <span id="status"></span>
+        <button id="saveBtn" class="btn primary" type="button">Zapisz zmiany</button>
+        <button id="logoutBtn" class="btn" type="button">Wyloguj</button>
+      </div>
+    </header>
+    <section class="card">
+      <label for="payload">JSON tresci strony</label>
+      <textarea id="payload" spellcheck="false"></textarea>
+    </section>
+  </main>
+  <script type="module" src="/admin/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+:root {
+  --bg: #f8fbff;
+  --card: rgba(255, 255, 255, 0.9);
+  --line: rgba(37, 99, 235, 0.2);
+  --text: #0f172a;
+  --muted: #475569;
+  --primary: #2563eb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #f8fbff, #eff6ff);
+}
+.admin-shell { max-width: 980px; margin: 0 auto; padding: 24px; }
+.admin-head {
+  display: flex; justify-content: space-between; gap: 16px; align-items: flex-end;
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px;
+  box-shadow: 0 14px 38px rgba(37, 99, 235, 0.12);
+}
+.admin-head h1 { margin: 0; font-size: 22px; }
+.admin-head p { margin: 6px 0 0; color: var(--muted); }
+.actions { display: flex; align-items: center; gap: 10px; }
+.btn {
+  border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: #fff; cursor: pointer;
+}
+.btn.primary {
+  background: var(--primary); color: #fff; border-color: var(--primary);
+}
+.card {
+  margin-top: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px;
+}
+label { display: block; margin-bottom: 8px; font-weight: 700; }
+textarea {
+  width: 100%; min-height: 62vh; border: 1px solid #bfdbfe; border-radius: 12px; padding: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;
+}
