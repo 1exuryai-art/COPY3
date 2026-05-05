@@ -4337,6 +4337,60 @@
 }
 
 @media (max-width: 900px) {
+  html,
+  body {
+    position: static !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .mobile-version {
+    display: block !important;
+    height: auto !important;
+    min-height: 100svh !important;
+    overflow: visible !important;
+  }
+
+  .app-top {
+    position: sticky !important;
+    top: 0 !important;
+  }
+
+  .section-nav {
+    position: sticky !important;
+    top: calc(var(--mobile-top-h, 72px) + var(--safe-top, 0px)) !important;
+  }
+  .mobile-version.mobile-header-hidden .app-top,
+  .mobile-version.mobile-header-hidden .section-nav {
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .pages {
+    position: relative !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding-bottom: calc(12px + var(--safe-bottom, 0px)) !important;
+  }
+
+  .page {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: 14px 12px 12px !important;
+    animation: none !important;
+  }
+
+  .page.active {
+    display: block !important;
+  }
+
   .page.active .page-head {
     flex: 0 0 auto !important;
   }
@@ -4368,6 +4422,128 @@
     scroll-snap-type: none !important;
     touch-action: pan-y !important;
     padding: 0 0 8px !important;
+  }
+
+  .mobile-home-body {
+    display: grid !important;
+    gap: 12px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .mobile-social-card {
+    padding: 14px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .mobile-social-card strong,
+  .mobile-social-card p,
+  .mobile-social-row,
+  .mobile-social-card .mobile-card-btn,
+  .mobile-compact-info {
+    position: relative;
+    z-index: 1;
+  }
+
+  .mobile-social-card strong {
+    color: var(--text-strong);
+    font-family: "Sora", sans-serif;
+    font-size: 30px;
+    line-height: .94;
+    letter-spacing: -.075em;
+  }
+
+  .mobile-social-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .mobile-social-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .mobile-social-icon {
+    min-height: 56px;
+    padding: 0 6px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255,255,255,.10), transparent 42%),
+      rgba(255,255,255,.78);
+    box-shadow: var(--shadow-xs), var(--glass-highlight);
+    color: var(--accent-deep);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 1000;
+    letter-spacing: .01em;
+  }
+
+  .mobile-social-icon svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+    color: currentColor;
+  }
+
+  .mobile-card-btn--primary {
+    width: 100%;
+    min-height: 54px;
+    border-radius: 999px;
+    border: 1px solid rgba(47,125,244,.22);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255,255,255,.24), transparent 42%),
+      linear-gradient(180deg, #61a8ff, #2f7df4 58%, #2563eb);
+    color: #fff;
+    box-shadow:
+      0 18px 34px rgba(47,125,244,.24),
+      inset 0 1px 0 rgba(255,255,255,.28);
+    font-size: 12px;
+    font-weight: 1000;
+    letter-spacing: .055em;
+    text-transform: uppercase;
+  }
+
+  .mobile-compact-info {
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.68);
+    box-shadow: var(--shadow-xs), var(--glass-highlight);
+    display: grid;
+    gap: 0;
+  }
+
+  .mobile-compact-info-row {
+    min-height: 44px;
+    display: grid;
+    align-content: center;
+    gap: 2px;
+    padding: 8px 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 900;
+    border-bottom: 1px solid rgba(15,23,42,.06);
+  }
+
+  .mobile-compact-info-row:last-child {
+    border-bottom: 0;
+  }
+
+  .mobile-compact-info-row strong {
+    color: var(--text-strong);
+    text-align: left;
+    font-family: "Sora", sans-serif;
+    font-size: 14px;
+    letter-spacing: -.03em;
   }
 }
   </style>
@@ -5064,39 +5240,53 @@
           <p class="page-sub" data-i18n="mobile.home.sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
         </div>
 
-        <div class="screen-body mobile-home-body">
-          <div class="hero-photo-card"></div>
-          <article class="contact-mobile-card">
-            <strong data-i18n="mobile.home.card">Jasne studio manicure we Wrocławiu</strong>
-            <p data-i18n="mobile.home.sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
-            <div class="social-row">
-              <a href="tel:+48532377701" aria-label="Telefon">
-                <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7.2 5.4 9 4.7c.9-.4 1.9 0 2.3.9l.9 2c.3.8.1 1.6-.5 2.1l-1 .8a10.6 10.6 0 0 0 4.8 4.8l.8-1c.5-.6 1.4-.8 2.1-.5l2 .9c.9.4 1.3 1.4.9 2.3l-.7 1.8c-.4.9-1.3 1.4-2.3 1.2C10.6 18.8 5.2 13.4 4 5.7c-.2-1 .3-1.9 1.2-2.3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href="#" aria-label="Instagram">
-                <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="#" aria-label="TikTok">
-                <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M14 4v10.2a4.2 4.2 0 1 1-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                  <path d="M14 5c1.1 3 3 4.6 6 4.8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                </svg>
-              </a>
-              <button class="ghost-btn" type="button" onclick="openMapsRoute()" data-i18n="mobile.location.map">Mapa</button>
-            </div>
-            <button class="cta-btn" type="button" data-open-booking data-i18n="common.book">Zarezerwuj wizytę</button>
-            <div class="hours-list">
-              <div class="hour-row"><span data-i18n="contact.address">Adres</span><strong>ul. Przykładowa 12A, Wrocław</strong></div>
-              <div class="hour-row"><span data-i18n="contact.monFri">Pon — Pt</span><strong>10:00-20:00</strong></div>
-              <div class="hour-row"><span data-i18n="contact.sun">Niedziela</span><strong>10:00-18:00</strong></div>
-            </div>
-          </article>
+        <div class="screen-body">
+          <div class="mobile-home-body">
+            <div class="hero-photo-card"></div>
+
+            <article class="mobile-social-card">
+              <strong data-i18n="mobile.home.card">Jasne studio manicure we Wrocławiu</strong>
+              <p data-i18n="mobile.home.sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
+
+              <div class="mobile-social-row">
+                <a class="mobile-social-icon" href="tel:+48532377701" aria-label="Telefon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.68 2.6a2 2 0 0 1-.45 2.11L8.1 9.91a16 16 0 0 0 6 6l1.48-1.24a2 2 0 0 1 2.11-.45c.83.34 1.7.56 2.6.68A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </a>
+                <a class="mobile-social-icon" href="#" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
+                  </svg>
+                </a>
+                <a class="mobile-social-icon" href="#" aria-label="TikTok">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M15.7 3c.2 1.6 1.1 3 2.4 3.8.8.5 1.7.8 2.7.8v3.1c-1.4 0-2.9-.4-4.1-1.2v6.4c0 3.1-2.5 5.6-5.6 5.6S5.5 19 5.5 15.9s2.5-5.6 5.6-5.6c.3 0 .7 0 1 .1v3.2a2.7 2.7 0 0 0-1-.2 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-2.5V3h2.1Z"></path>
+                  </svg>
+                </a>
+                <a class="mobile-social-icon" href="#" onclick="event.preventDefault(); openMapsRoute();" data-i18n="mobile.location.map" aria-label="Mapa">Mapa</a>
+              </div>
+
+              <button class="mobile-card-btn mobile-card-btn--primary" type="button" data-open-booking data-i18n="common.book">Zarezerwuj wizytę</button>
+
+              <div class="mobile-compact-info">
+                <div class="mobile-compact-info-row">
+                  <span data-i18n="contact.address">Adres</span>
+                  <strong>ul. Przykładowa 12A, Wrocław</strong>
+                </div>
+                <div class="mobile-compact-info-row">
+                  <span data-i18n="hero.metric2">Godziny pracy</span>
+                  <strong>Pn–Sob 10:00–20:00, Nd 10:00–18:00</strong>
+                </div>
+                <div class="mobile-compact-info-row">
+                  <span data-i18n="contact.phone">Telefon</span>
+                  <strong>+48 532 377 701</strong>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -5982,14 +6172,14 @@ overlay?.addEventListener("click", (e) => {
         "mobile.home.stat2": "Godziny",
         "mobile.services.titleA": "Wybierz",
         "mobile.services.titleB": "stylizację.",
-        "mobile.services.sub": "Przesuń karty i wybierz usługę.",
+        "mobile.services.sub": "Przewiń w dół i wybierz usługę.",
         "mobile.services.choose": "Wybierz usługę",
         "mobile.masters.titleA": "Każda ma",
         "mobile.masters.titleB": "swój styl.",
-        "mobile.masters.sub": "Przesuń karty i wybierz stylistkę.",
+        "mobile.masters.sub": "Przewiń w dół i wybierz stylistkę.",
         "mobile.gallery.titleA": "Detale robią",
         "mobile.gallery.titleB": "całość.",
-        "mobile.gallery.sub": "Przesuń realizacje i zobacz styl studia.",
+        "mobile.gallery.sub": "Przewiń w dół i zobacz realizacje studia.",
         "mobile.gallery.card1": "Jasny, spokojny efekt na co dzień.",
         "mobile.gallery.card2": "Naturalne wykończenie i czysta linia.",
         "mobile.gallery.card3": "Detal bez przesady, lekko i elegancko.",
@@ -6152,14 +6342,14 @@ overlay?.addEventListener("click", (e) => {
       "mobile.home.stat2": "Часы",
       "mobile.services.titleA": "Выбери",
       "mobile.services.titleB": "стилизацию.",
-      "mobile.services.sub": "Листай карточки и выбери услугу.",
+      "mobile.services.sub": "Прокрути вниз и выбери услугу.",
       "mobile.services.choose": "Выбрать услугу",
       "mobile.masters.titleA": "У каждой",
       "mobile.masters.titleB": "свой стиль.",
-      "mobile.masters.sub": "Листай карточки и выбери мастера.",
+      "mobile.masters.sub": "Прокрути вниз и выбери мастера.",
       "mobile.gallery.titleA": "Детали создают",
       "mobile.gallery.titleB": "целое.",
-      "mobile.gallery.sub": "Листай работы и смотри стиль студии.",
+      "mobile.gallery.sub": "Прокрути вниз и смотри работы студии.",
       "mobile.gallery.card1": "Светлый и спокойный результат на каждый день.",
       "mobile.gallery.card2": "Натуральный финиш и чистая линия.",
       "mobile.gallery.card3": "Деталь без перегруза, легко и элегантно.",
@@ -6321,14 +6511,14 @@ overlay?.addEventListener("click", (e) => {
       "mobile.home.stat2": "Hours",
       "mobile.services.titleA": "Choose",
       "mobile.services.titleB": "your style.",
-      "mobile.services.sub": "Swipe cards and choose your service.",
+      "mobile.services.sub": "Scroll down and choose your service.",
       "mobile.services.choose": "Choose service",
       "mobile.masters.titleA": "Each artist has",
       "mobile.masters.titleB": "her own style.",
-      "mobile.masters.sub": "Swipe cards and pick an artist.",
+      "mobile.masters.sub": "Scroll down and pick an artist.",
       "mobile.gallery.titleA": "Details build",
       "mobile.gallery.titleB": "the whole look.",
-      "mobile.gallery.sub": "Swipe through works and see the studio style.",
+      "mobile.gallery.sub": "Scroll down and view studio works.",
       "mobile.gallery.card1": "Bright and calm effect for everyday wear.",
       "mobile.gallery.card2": "Natural finish and clean line.",
       "mobile.gallery.card3": "Detail without overload, light and elegant.",
