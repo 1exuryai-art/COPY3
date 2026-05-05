@@ -5041,6 +5041,266 @@
     height: 18px !important;
   }
 }
+
+    /* =========================================================
+   FINAL MOBILE ARCHITECTURE LOCK
+   Header + nav stay on top.
+   Only .page.active scrolls.
+   Page title scrolls together with cards.
+   ========================================================= */
+
+@media (max-width: 900px) {
+  html,
+  body {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+  }
+
+  body {
+    position: fixed !important;
+    inset: 0 !important;
+  }
+
+  body.booking-open,
+  body.faq-open,
+  body.admin-login-open {
+    overflow: hidden !important;
+  }
+
+  .mobile-version {
+    display: grid !important;
+    grid-template-rows: auto auto minmax(0, 1fr) !important;
+    width: 100% !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+  }
+
+  .app-top {
+    position: relative !important;
+    z-index: 80 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    padding: calc(3px + var(--safe-top, 0px)) 12px 3px !important;
+    min-height: auto !important;
+  }
+
+  .app-top .icon-btn {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    border-radius: 17px !important;
+  }
+
+  .app-top .logo-pill {
+    height: 48px !important;
+    min-width: 0 !important;
+    width: auto !important;
+    flex: 1 1 auto !important;
+    padding: 0 8px !important;
+  }
+
+  .mobile-logo-img {
+    width: min(86px, 24vw) !important;
+    max-height: 34px !important;
+    transform: none !important;
+  }
+
+  .mobile-lang-switcher {
+    position: relative !important;
+    inset: auto !important;
+    margin: 0 !important;
+    padding: 3px !important;
+    transform: none !important;
+  }
+
+  .mobile-lang-switcher .lang-btn {
+    min-width: 34px !important;
+    height: 34px !important;
+    font-size: 10px !important;
+  }
+
+  .section-nav {
+    position: relative !important;
+    z-index: 70 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    padding: 2px 12px 7px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x proximity !important;
+  }
+
+  .nav-chip {
+    min-height: 42px !important;
+    height: 42px !important;
+    padding: 0 15px !important;
+    font-size: 13px !important;
+    border-radius: 999px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .pages {
+    position: relative !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  .page {
+    position: absolute !important;
+    inset: 0 !important;
+    display: none !important;
+    overflow: hidden !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+    animation: none !important;
+  }
+
+  .page.active {
+    display: block !important;
+    pointer-events: auto !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    overscroll-behavior-y: contain !important;
+    padding: 10px 12px calc(18px + var(--safe-bottom, 0px)) !important;
+  }
+
+  .page-head {
+    position: relative !important;
+    top: auto !important;
+    z-index: 1 !important;
+    transform: none !important;
+    margin: 0 0 12px !important;
+  }
+
+  .page-head,
+  .page-head * {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .screen-body,
+  .mobile-home-body,
+  .contact-layout {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .services-list,
+  .masters-mobile-list,
+  .gallery-mobile-list,
+  .reviews-mobile-list,
+  .faq-mobile-list {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: max-content !important;
+    gap: 14px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    touch-action: pan-y !important;
+    padding: 0 0 8px !important;
+  }
+
+  .service-card,
+  .mobile-master-card,
+  .mobile-gallery-card,
+  .mobile-review-card,
+  .google-review-card,
+  .mobile-faq-card,
+  .location-card {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .service-img,
+  .mobile-master-photo,
+  .mobile-gallery-photo {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+}
+
+/* =========================================================
+   FINAL DESKTOP MEDIA POLISH
+   Desktop services + stylists photos must be true 1:1.
+   ========================================================= */
+
+@media (min-width: 901px) {
+  .pricing-card {
+    grid-template-rows: auto 1fr auto !important;
+  }
+
+  .service-visual {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .service-visual::before {
+    transform: none !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .pricing-card:hover .service-visual::before {
+    transform: none !important;
+  }
+
+  .master-card {
+    grid-template-rows: auto 1fr auto auto !important;
+  }
+
+  .master-photo {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .maja-photo {
+    background-image: url("./images/masters/maja-1x1.png") !important;
+  }
+
+  .ola-photo {
+    background-image: url("./images/masters/ola-1x1.png") !important;
+  }
+
+  .nina-photo {
+    background-image: url("./images/masters/nina-1x1.png") !important;
+  }
+}
+    
   </style>
 </head>
 
