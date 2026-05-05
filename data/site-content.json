@@ -1,7 +1,158 @@
 {
   "bioGallery": [],
   "bioDesktopPreview": [],
-  "worksGallery": [],
+  "worksGallery": [
+    {
+      "id": "work-clean-manicure",
+      "order": 1,
+      "visible": true,
+      "type": "image",
+      "title": {
+        "pl": "Clean manicure",
+        "ru": "?????? ???????",
+        "en": "Clean manicure"
+      },
+      "description": {
+        "pl": "Jasny, spokojny efekt na co dzien.",
+        "ru": "??????? ? ?????????? ????????? ?? ?????? ????.",
+        "en": "A bright and clean look for everyday wear."
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/nails/clean-manicure.jpg",
+        "alt": {
+          "pl": "Clean manicure",
+          "ru": "?????? ???????",
+          "en": "Clean manicure"
+        }
+      },
+      "alt": {
+        "pl": "Clean manicure",
+        "ru": "?????? ???????",
+        "en": "Clean manicure"
+      }
+    },
+    {
+      "id": "work-soft-french",
+      "order": 2,
+      "visible": true,
+      "type": "image",
+      "title": {
+        "pl": "Soft french",
+        "ru": "Soft french",
+        "en": "Soft french"
+      },
+      "description": {
+        "pl": "Naturalne wykonczenie i czysta linia.",
+        "ru": "??????????? ????? ? ?????? ?????.",
+        "en": "Natural finish with a clean line."
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/nails/soft-french.jpg",
+        "alt": {
+          "pl": "Soft french",
+          "ru": "Soft french",
+          "en": "Soft french"
+        }
+      },
+      "alt": {
+        "pl": "Soft french",
+        "ru": "Soft french",
+        "en": "Soft french"
+      }
+    },
+    {
+      "id": "work-premium-french",
+      "order": 3,
+      "visible": true,
+      "type": "image",
+      "title": {
+        "pl": "Premium french",
+        "ru": "??????? french",
+        "en": "Premium french"
+      },
+      "description": {
+        "pl": "Dopracowany french i elegancki detal.",
+        "ru": "?????? french ? ?????????? ???????-??????.",
+        "en": "Refined French style with elegant detail."
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/nails/premium-french.jpg",
+        "alt": {
+          "pl": "Premium french",
+          "ru": "??????? french",
+          "en": "Premium french"
+        }
+      },
+      "alt": {
+        "pl": "Premium french",
+        "ru": "??????? french",
+        "en": "Premium french"
+      }
+    },
+    {
+      "id": "work-subtle-art",
+      "order": 4,
+      "visible": true,
+      "type": "image",
+      "title": {
+        "pl": "Subtle art",
+        "ru": "?????????? ??????",
+        "en": "Subtle art"
+      },
+      "description": {
+        "pl": "Delikatny detal bez przeladowania.",
+        "ru": "?????????? ?????? ??? ?????????.",
+        "en": "Subtle detail without overloading the look."
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/nails/subtle-art.jpg",
+        "alt": {
+          "pl": "Subtle art",
+          "ru": "?????????? ??????",
+          "en": "Subtle art"
+        }
+      },
+      "alt": {
+        "pl": "Subtle art",
+        "ru": "?????????? ??????",
+        "en": "Subtle art"
+      }
+    },
+    {
+      "id": "work-studio-interior",
+      "order": 5,
+      "visible": true,
+      "type": "image",
+      "title": {
+        "pl": "Studio interior",
+        "ru": "???????? ??????",
+        "en": "Studio interior"
+      },
+      "description": {
+        "pl": "Jasne wnetrze i spokojna atmosfera Luna.",
+        "ru": "??????? ???????? ? ????????? ????????? Luna.",
+        "en": "Bright interior and calm Luna atmosphere."
+      },
+      "media": {
+        "type": "image",
+        "src": "/images/nails/studio-interior.jpg",
+        "alt": {
+          "pl": "Studio interior",
+          "ru": "???????? ??????",
+          "en": "Studio interior"
+        }
+      },
+      "alt": {
+        "pl": "Studio interior",
+        "ru": "???????? ??????",
+        "en": "Studio interior"
+      }
+    }
+  ],
   "effectPhotos": [],
   "effectVideos": [],
   "vibeGallery": [],
