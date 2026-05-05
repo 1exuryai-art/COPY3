@@ -4708,6 +4708,239 @@
     top: auto !important;
   }
 }
+
+/* ===== COPY1 architecture transfer (layout behavior) ===== */
+@media (min-width: 901px) {
+  .site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 180 !important;
+  }
+
+  .landing-wrap {
+    padding-top: calc(var(--header-h) + 26px) !important;
+  }
+
+  .desktop-header {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1.45fr !important;
+    gap: 18px !important;
+  }
+
+  .desktop-center {
+    justify-content: center !important;
+    padding-left: 0 !important;
+  }
+
+  .desktop-nav {
+    flex-wrap: nowrap !important;
+    gap: 18px !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  .desktop-nav a {
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+
+  .desktop-left,
+  .desktop-right {
+    overflow: visible !important;
+  }
+
+  .lang-switcher {
+    margin-left: 10px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  html,
+  body {
+    width: 100% !important;
+    margin: 0 !important;
+    min-height: 100% !important;
+    min-height: 100dvh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .desktop-version {
+    display: none !important;
+  }
+
+  .mobile-version {
+    position: relative !important;
+    z-index: 2 !important;
+    display: grid !important;
+    width: 100% !important;
+    min-height: min(100dvh, 100svh) !important;
+    height: min(100dvh, 100svh) !important;
+    max-height: min(100dvh, 100svh) !important;
+    overflow: hidden !important;
+    grid-template-rows: auto auto minmax(0, 1fr) !important;
+  }
+
+  .app-top,
+  .section-nav {
+    position: relative !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .app-top {
+    z-index: 40 !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: clamp(5px, 1.4vw, 10px) !important;
+  }
+
+  .app-top .logo-pill {
+    order: 2 !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  .app-top .mobile-lang-switcher {
+    order: 3 !important;
+    position: relative !important;
+    inset: auto !important;
+    margin: 0 !important;
+  }
+
+  .section-nav {
+    z-index: 35 !important;
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x proximity !important;
+  }
+
+  .nav-chip {
+    flex: 0 0 auto !important;
+    scroll-snap-align: start !important;
+  }
+
+  .pages {
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    padding: 0 !important;
+  }
+
+  .page {
+    position: absolute !important;
+    inset: 0 !important;
+    display: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    padding: 14px 12px 12px !important;
+    animation: none !important;
+  }
+
+  .page.active {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    pointer-events: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    gap: 12px !important;
+    padding: 14px 12px calc(12px + var(--safe-bottom, 0px)) !important;
+  }
+
+  .page.active .page-head {
+    flex: 0 0 auto !important;
+  }
+
+  .page.active .screen-body {
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    height: auto !important;
+  }
+
+  .page.active .mobile-home-body {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 2px 2px calc(18px + var(--safe-bottom, 0px)) !important;
+  }
+
+  .page.active .services-list,
+  .page.active .masters-mobile-list,
+  .page.active .gallery-mobile-list,
+  .page.active .reviews-mobile-list,
+  .page.active .faq-mobile-list {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: max-content !important;
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    scroll-snap-type: none !important;
+    touch-action: pan-y !important;
+    padding: 0 0 8px !important;
+  }
+
+  .service-card,
+  .mobile-master-card,
+  .mobile-gallery-card,
+  .mobile-review-card,
+  .location-card {
+    min-height: 0 !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-rows: auto !important;
+    align-content: start !important;
+    gap: 12px !important;
+  }
+
+  .service-img,
+  .mobile-master-photo,
+  .mobile-gallery-photo {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+  }
+
+  .location-card {
+    grid-template-rows: auto auto auto !important;
+  }
+
+  .map-glass {
+    aspect-ratio: 1 / 1 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+}
   </style>
 </head>
 
@@ -6991,12 +7224,14 @@ overlay?.addEventListener("click", (e) => {
 
           const activePage = document.querySelector(`.page[data-page-view="${page}"]`);
           const scrollables = activePage?.querySelectorAll(
-            ".reviews-mobile-list, .faq-mobile-list"
+            ".mobile-home-body, .reviews-mobile-list, .faq-mobile-list, .services-list, .masters-mobile-list, .gallery-mobile-list, .bio-mobile-list"
           );
 
           scrollables?.forEach(item => {
             item.scrollTo({ top: 0, left: 0, behavior: "smooth" });
           });
+
+          activePage?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
           if (flash && window.innerWidth <= 900) {
             flash.classList.add("active");
@@ -7007,50 +7242,7 @@ overlay?.addEventListener("click", (e) => {
     }
 
     function bindMobileSmartHeader() {
-      document.addEventListener("touchstart", event => {
-        const touch = event.touches[0];
-        touchStartX = touch.clientX;
-        touchStartY = touch.clientY;
-      }, { passive: true });
-
-      const verticalScrollers = document.querySelectorAll(".reviews-mobile-list, .faq-mobile-list");
-
-      verticalScrollers.forEach(scroller => {
-        scroller.addEventListener("scroll", () => {
-          if (!mobileVersion || window.innerWidth > 900) return;
-
-          const current = scroller.scrollTop;
-          const delta = current - lastMobileScrollTop;
-
-          if (delta > 8 && current > 40) {
-            mobileVersion.classList.add("mobile-header-hidden");
-          }
-
-          if (delta < -4 || current < 20) {
-            mobileVersion.classList.remove("mobile-header-hidden");
-          }
-
-          lastMobileScrollTop = Math.max(current, 0);
-        }, { passive: true });
-      });
-
-      document.addEventListener("touchmove", event => {
-        if (!mobileVersion || window.innerWidth > 900) return;
-
-        const touch = event.touches[0];
-        const dx = Math.abs(touch.clientX - touchStartX);
-        const dy = Math.abs(touch.clientY - touchStartY);
-
-        if (dx > dy) return;
-
-        if (touch.clientY < touchStartY - 18) {
-          mobileVersion.classList.add("mobile-header-hidden");
-        }
-
-        if (touch.clientY > touchStartY + 12) {
-          mobileVersion.classList.remove("mobile-header-hidden");
-        }
-      }, { passive: true });
+      /* Scroll lives on .page.active (COPY1 behavior). Header stays pinned and visible. */
     }
 
 
@@ -7086,76 +7278,5 @@ overlay?.addEventListener("click", (e) => {
   </script>
 
   <script src="./script.js"></script>
-  <script>
-    (function initSettingsFallback() {
-      const pop = document.getElementById("siteSettingsPop");
-      if (!pop || pop.dataset.fallbackBound === "1") return;
-      pop.dataset.fallbackBound = "1";
-
-      const buttons = () => Array.from(document.querySelectorAll("[data-site-settings-btn]"));
-      const closeSettings = () => {
-        pop.classList.remove("open");
-        buttons().forEach((btn) => btn.setAttribute("aria-expanded", "false"));
-      };
-      const place = (btn) => {
-        const r = btn.getBoundingClientRect();
-        pop.style.top = `${Math.round(r.bottom + 8)}px`;
-        pop.style.left = `${Math.round(r.left)}px`;
-      };
-
-      document.addEventListener("click", (event) => {
-        const target = event.target;
-        const toggler = target && target.closest ? target.closest("[data-site-settings-btn]") : null;
-        if (toggler) {
-          event.preventDefault();
-          event.stopPropagation();
-          const isOpen = pop.classList.contains("open");
-          const isActive = toggler.getAttribute("aria-expanded") === "true";
-          if (isOpen && isActive) {
-            closeSettings();
-            return;
-          }
-          closeSettings();
-          pop.classList.add("open");
-          buttons().forEach((btn) => btn.setAttribute("aria-expanded", btn === toggler ? "true" : "false"));
-          place(toggler);
-          return;
-        }
-
-        if (target && target.closest && target.closest("#siteSettingsPop")) return;
-        closeSettings();
-      });
-
-      window.addEventListener("resize", () => {
-        const active = document.querySelector('[data-site-settings-btn][aria-expanded="true"]');
-        if (active && pop.classList.contains("open")) place(active);
-      });
-
-      const adminSheet = document.getElementById("adminAccessSheet");
-      const productSheet = document.getElementById("productInfoSheet");
-      const openAdmin = document.getElementById("openAdminAccessBtn");
-      const openInfo = document.getElementById("openProductInfoBtn");
-
-      openAdmin?.addEventListener("click", (event) => {
-        event.preventDefault();
-        closeSettings();
-        productSheet?.classList.remove("open");
-        productSheet?.setAttribute("aria-hidden", "true");
-        adminSheet?.classList.add("open");
-        adminSheet?.setAttribute("aria-hidden", "false");
-        document.body.classList.add("admin-login-open");
-      });
-
-      openInfo?.addEventListener("click", (event) => {
-        event.preventDefault();
-        closeSettings();
-        adminSheet?.classList.remove("open");
-        adminSheet?.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("admin-login-open");
-        productSheet?.classList.add("open");
-        productSheet?.setAttribute("aria-hidden", "false");
-      });
-    })();
-  </script>
 </body>
 </html>
