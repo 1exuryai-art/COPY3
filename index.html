@@ -4402,6 +4402,8 @@
 
   .page.active .page-head {
     flex: 0 0 auto !important;
+    position: relative !important;
+    top: auto !important;
   }
 
   .page.active .screen-body {
@@ -4789,6 +4791,7 @@
     position: relative !important;
     transform: none !important;
     opacity: 1 !important;
+    margin: 0 !important;
   }
 
   .app-top {
@@ -4798,7 +4801,7 @@
     align-items: center !important;
     gap: clamp(5px, 1.4vw, 10px) !important;
     padding-top: calc(6px + var(--safe-top, 0px)) !important;
-    padding-bottom: 6px !important;
+    padding-bottom: 0 !important;
   }
 
   .app-top .logo-pill {
@@ -4834,8 +4837,9 @@
     overflow-x: auto !important;
     overflow-y: hidden !important;
     scroll-snap-type: x proximity !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 4px !important;
   }
 
   .nav-chip {
@@ -4925,6 +4929,18 @@
     scroll-snap-type: none !important;
     touch-action: pan-y !important;
     padding: 0 0 8px !important;
+  }
+
+  .services-list,
+  .masters-mobile-list,
+  .gallery-mobile-list,
+  .reviews-mobile-list,
+  .faq-mobile-list {
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
   }
 
   .service-card,
