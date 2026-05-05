@@ -3219,6 +3219,7 @@
       border-radius: 0;
       border: 0;
       min-height: 250px;
+      overflow: hidden;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -3230,7 +3231,9 @@
       height: 100%;
       min-height: 250px;
       object-fit: cover;
+      object-position: center;
       display: block;
+      border: 0;
     }
 
     .sticker-card figcaption {
@@ -3257,15 +3260,55 @@
     .sticker-card .media-frame--video,
     .mobile-gallery-card .media-frame--video {
       background: #000;
+      overflow: hidden;
     }
 
-    .sticker-card .media-frame--video video,
-    .mobile-gallery-card .media-frame--video video {
+    .sticker-card .media-frame--video video {
       width: 100%;
+      height: 100%;
+      min-height: 250px;
       display: block;
       object-fit: cover;
-      min-height: 250px;
+      object-position: center;
       background: #000;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .mobile-gallery-card > .media-frame.media-frame--portrait {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 220px;
+      height: 220px;
+      max-height: 220px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.07);
+      box-shadow: var(--shadow-xs), var(--glass-highlight);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .mobile-gallery-card > .media-frame.media-frame--portrait img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .mobile-gallery-card .media-frame--video video {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      background: #000;
+      border: 0;
+      border-radius: 0;
     }
 
     /* =========================
@@ -4081,6 +4124,17 @@
         min-height: 190px;
       }
 
+      .mobile-gallery-card > .media-frame.media-frame--portrait {
+        min-height: 190px;
+        height: 190px;
+        max-height: 190px;
+      }
+
+      .mobile-gallery-card > .media-frame.media-frame--portrait img,
+      .mobile-gallery-card .media-frame--video video {
+        min-height: 190px;
+      }
+
       .map-glass {
         min-height: 150px;
       }
@@ -4403,12 +4457,18 @@
   .desktop-header {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    gap: clamp(8px, 1.2vw, 14px);
+    gap: clamp(6px, 1vw, 14px);
+  }
+
+  .desktop-left {
+    gap: 14px;
+    margin-left: -8px;
   }
 
   .desktop-center {
     justify-content: flex-start;
-    padding-left: 8px;
+    padding-left: 0;
+    margin-left: -12px;
   }
 
   .desktop-left,
@@ -4420,12 +4480,13 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    margin-right: -4px;
   }
 
   .desktop-nav {
     flex-wrap: nowrap;
-    gap: clamp(8px, 1vw, 14px);
+    gap: clamp(6px, 0.85vw, 12px);
     white-space: nowrap;
   }
 
@@ -4433,9 +4494,10 @@
     font-size: clamp(11px, .9vw, 12px);
   }
 
-  .lang-switcher {
+  .desktop-right .lang-switcher {
     flex-shrink: 0;
-    margin-left: 8px;
+    margin-left: 4px !important;
+    margin-right: 2px;
   }
 
   .desktop-call-btn {
@@ -4610,13 +4672,28 @@
 
   .service-img,
   .mobile-master-photo,
-  .mobile-gallery-photo {
+  .mobile-gallery-photo,
+  .mobile-gallery-card > .media-frame.media-frame--portrait {
     width: 100% !important;
     height: auto !important;
     min-height: 170px !important;
     aspect-ratio: 4 / 3 !important;
     border-radius: 18px !important;
     overflow: hidden !important;
+  }
+
+  .mobile-gallery-card > .media-frame.media-frame--video {
+    position: relative !important;
+  }
+
+  .mobile-gallery-card .media-frame--video video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+    background: #000 !important;
   }
 
   .mobile-lang-switcher {
@@ -5648,7 +5725,7 @@
                 </article>
 
                 <article class="glass-card status-card">
-                  <div class="status-pill open" id="desktopStatus" data-i18n="contact.open">Otwarte dzisiaj</div>
+                  <div class="status-pill closed" id="desktopStatus">Zamknięte teraz</div>
                   <ul class="status-list">
                     <li><span data-i18n="contact.monFri">Pon — Pt</span><strong>10:00 — 20:00</strong></li>
                     <li><span data-i18n="contact.sat">Sobota</span><strong>10:00 — 20:00</strong></li>
@@ -6643,6 +6720,8 @@ overlay?.addEventListener("click", (e) => {
         "contact.sub": "Rezerwacje przyjmujemy online. Wybierz termin, a my przygotujemy stanowisko.",
         "contact.note": "Rezerwacje przyjmujemy przez formularz online.",
         "contact.open": "Otwarte dzisiaj",
+        "contact.openNow": "Otwarte teraz",
+        "contact.closedNow": "Zamknięte teraz",
         "contact.monFri": "Pon — Pt",
         "contact.sat": "Sobota",
         "contact.sun": "Niedziela",
@@ -6821,6 +6900,8 @@ overlay?.addEventListener("click", (e) => {
       "contact.sub": "Записи принимаем онлайн. Выберите время, а мы подготовим рабочее место.",
       "contact.note": "Запись принимаем через онлайн-форму.",
       "contact.open": "Открыто сегодня",
+      "contact.openNow": "Сейчас открыто",
+      "contact.closedNow": "Сейчас закрыто",
       "contact.monFri": "Пн — Пт",
       "contact.sat": "Суббота",
       "contact.sun": "Воскресенье",
@@ -6998,6 +7079,8 @@ overlay?.addEventListener("click", (e) => {
       "contact.sub": "Bookings are accepted online. Choose a slot and we will prepare your station.",
       "contact.note": "Bookings are accepted through the online form.",
       "contact.open": "Open today",
+      "contact.openNow": "Open now",
+      "contact.closedNow": "Closed now",
       "contact.monFri": "Mon — Fri",
       "contact.sat": "Saturday",
       "contact.sun": "Sunday",
@@ -7089,6 +7172,54 @@ overlay?.addEventListener("click", (e) => {
       return localStorage.getItem("luna_lang") || "pl";
     }
 
+    function computeSalonOpenWarsaw(openingHours) {
+      const now = new Date();
+      if (!openingHours || typeof openingHours !== "object") return false;
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Europe/Warsaw",
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23"
+      }).formatToParts(now);
+      let wk = "";
+      let hour = 0;
+      let minute = 0;
+      for (const p of parts) {
+        if (p.type === "weekday") wk = p.value;
+        if (p.type === "hour") hour = parseInt(p.value, 10) || 0;
+        if (p.type === "minute") minute = parseInt(p.value, 10) || 0;
+      }
+      const map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      const dow = map[wk];
+      if (dow === undefined) return false;
+      const row = openingHours[String(dow)];
+      if (!row || row.closed) return false;
+      const openH = Number(row.openHour);
+      const closeH = Number(row.closeHour);
+      if (!Number.isFinite(openH) || !Number.isFinite(closeH)) return false;
+      const cur = hour * 60 + minute;
+      return cur >= openH * 60 && cur < closeH * 60;
+    }
+
+    function refreshLunaSalonStatusPill() {
+      const el = document.getElementById("desktopStatus");
+      if (!el) return;
+      let lang = getCurrentLang();
+      if (lang === "ua") lang = "ru";
+      if (lang !== "en" && lang !== "ru") lang = "pl";
+      const dict = translations[lang] || translations.pl;
+      const oh = window.DOGMA_SITE_CONTENT && window.DOGMA_SITE_CONTENT.bookingConfig
+        ? window.DOGMA_SITE_CONTENT.bookingConfig.openingHours
+        : null;
+      const isOpen = oh ? computeSalonOpenWarsaw(oh) : false;
+      el.classList.toggle("open", isOpen);
+      el.classList.toggle("closed", !isOpen);
+      el.textContent = isOpen ? dict["contact.openNow"] : dict["contact.closedNow"];
+    }
+
+    window.refreshLunaSalonStatusPill = refreshLunaSalonStatusPill;
+
     function setLanguage(lang) {
       const dictionary = translations[lang] || translations.pl;
 
@@ -7104,6 +7235,7 @@ overlay?.addEventListener("click", (e) => {
       });
 
       localStorage.setItem("luna_lang", lang);
+      refreshLunaSalonStatusPill();
     }
 
     function bindLanguageSwitcher() {

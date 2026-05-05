@@ -156,6 +156,32 @@
         "ru": "???????? ??????",
         "en": "Studio interior"
       }
+    },
+    {
+      "id": "282fa880-b3f9-4b83-afc1-c68b5f0a7f85",
+      "type": "video",
+      "title": {
+        "pl": "",
+        "ru": "",
+        "en": ""
+      },
+      "description": {
+        "pl": "",
+        "ru": "",
+        "en": ""
+      },
+      "media": {
+        "type": "video",
+        "src": "/assets/admin-uploads/1778018909298-16c5b4d49894e5e2.mp4",
+        "poster": "",
+        "alt": {
+          "pl": "",
+          "ru": "",
+          "en": ""
+        }
+      },
+      "visible": true,
+      "order": 5
     }
   ],
   "effectPhotos": [],

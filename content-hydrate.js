@@ -67,6 +67,19 @@
     return item && (item.type === "video" || (item.media && item.media.type === "video"));
   }
 
+  function worksGalleryPosterAttr(item) {
+    const raw =
+      (item &&
+        item.media &&
+        typeof item.media.poster === "string" &&
+        item.media.poster.trim()) ||
+      (item && typeof item.poster === "string" && item.poster.trim()) ||
+      "";
+    if (!raw) return "";
+    const p = normSrc(raw);
+    return p ? ` poster="${esc(p)}"` : "";
+  }
+
   function prepareItems(list) {
     if (!Array.isArray(list) || list.length === 0) return [];
     return list
@@ -242,11 +255,10 @@
         const alt = esc(pickAlt(item, lang) || pickLoc(item.title, lang) || item.title || "");
         const tilt = tiltDeg(idx);
         if (isVideoItem(item)) {
-          const poster = normSrc(item?.media?.poster || "");
-          const posterAttr = poster ? ` poster="${esc(poster)}"` : "";
+          const posterAttr = worksGalleryPosterAttr(item);
           return `<figure class="sticker-card sticker-card--video" style="--tilt:${tilt}deg">
   <div class="media-frame media-frame--portrait media-frame--video">
-    <video src="${esc(src)}"${posterAttr} controls playsinline preload="metadata" aria-label="${alt}"></video>
+    <video class="dogma-video" data-dogma-video src="${esc(src)}"${posterAttr} autoplay muted loop playsinline preload="metadata" aria-label="${alt}"></video>
   </div>
   <figcaption>
     <strong>${title}</strong>
@@ -276,11 +288,10 @@
         const desc = esc(pickLoc(item.description, lang) || item.description || "");
         const alt = esc(pickAlt(item, lang) || pickLoc(item.title, lang) || item.title || "");
         if (isVideoItem(item)) {
-          const poster = normSrc(item?.media?.poster || "");
-          const posterAttr = poster ? ` poster="${esc(poster)}"` : "";
+          const posterAttr = worksGalleryPosterAttr(item);
           return `<article class="mobile-gallery-card mobile-gallery-card--video">
   <div class="media-frame media-frame--portrait media-frame--video">
-    <video src="${esc(src)}"${posterAttr} controls playsinline preload="metadata" aria-label="${alt}"></video>
+    <video class="dogma-video" data-dogma-video src="${esc(src)}"${posterAttr} autoplay muted loop playsinline preload="metadata" aria-label="${alt}"></video>
   </div>
   <strong>${title}</strong>
   <p>${desc}</p>
@@ -373,6 +384,9 @@
       window.DOGMA_SITE_CONTENT = data;
       applyContent(data);
       tryApplyBookingFromContent(data);
+      if (typeof window.refreshLunaSalonStatusPill === "function") {
+        window.refreshLunaSalonStatusPill();
+      }
     } catch (e) {
       console.warn("[LUNA] content hydrate unavailable", e);
     }
