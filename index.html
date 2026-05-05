@@ -7349,12 +7349,8 @@ overlay?.addEventListener("click", (e) => {
         button.addEventListener("click", (event) => {
           event.preventDefault();
           event.stopPropagation();
-          const isOpen = settingsPop.classList.contains("open");
-          const isThisOpen = button.getAttribute("aria-expanded") === "true";
-          if (isOpen && isThisOpen) {
-            closeSettings();
-            return;
-          }
+          // Always force-open on gear click to avoid double-handler race
+          // with the legacy inline initializer.
           closeSettings();
           settingsPop.classList.add("open");
           settingsButtons.forEach((btn) => btn.setAttribute("aria-expanded", btn === button ? "true" : "false"));
