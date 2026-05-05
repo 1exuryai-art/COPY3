@@ -24,7 +24,8 @@
           "pl": "Clean manicure",
           "ru": "?????? ???????",
           "en": "Clean manicure"
-        }
+        },
+        "poster": ""
       },
       "alt": {
         "pl": "Clean manicure",
@@ -54,7 +55,8 @@
           "pl": "Soft french",
           "ru": "Soft french",
           "en": "Soft french"
-        }
+        },
+        "poster": ""
       },
       "alt": {
         "pl": "Soft french",
@@ -84,7 +86,8 @@
           "pl": "Premium french",
           "ru": "??????? french",
           "en": "Premium french"
-        }
+        },
+        "poster": ""
       },
       "alt": {
         "pl": "Premium french",
@@ -114,7 +117,8 @@
           "pl": "Subtle art",
           "ru": "?????????? ??????",
           "en": "Subtle art"
-        }
+        },
+        "poster": ""
       },
       "alt": {
         "pl": "Subtle art",
@@ -144,7 +148,8 @@
           "pl": "Studio interior",
           "ru": "???????? ??????",
           "en": "Studio interior"
-        }
+        },
+        "poster": ""
       },
       "alt": {
         "pl": "Studio interior",
@@ -386,12 +391,17 @@
           "en": "Popular services"
         },
         "description": {
-          "pl": "Najczesciej wybierane stylizacje.",
+          "pl": "Czysty manicure i trwaly kolor.",
           "ru": "????? ?????????? ??????.",
           "en": "Most booked nail services."
         },
         "visible": true,
-        "order": 1
+        "order": 1,
+        "name": {
+          "pl": "Manicure hybrydowy",
+          "ru": "????????? ???????",
+          "en": "Gel polish manicure"
+        }
       }
     ],
     "services": [
@@ -415,7 +425,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "gel-extension",
@@ -437,7 +461,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "nail-art",
@@ -459,7 +497,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       }
     ],
     "barbers": [

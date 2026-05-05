@@ -12,6 +12,7 @@
   }
 
   function pickLoc(obj, lang) {
+    if (typeof obj === "string") return obj.trim();
     if (!obj || typeof obj !== "object") return "";
     const order =
       lang === "ru"
@@ -39,6 +40,11 @@
     if (typeof a === "string" && a.trim()) return a.trim();
     if (a && typeof a === "object") return pickLoc(a, lang);
     return "";
+  }
+
+  function pickLocalized(value, lang) {
+    if (typeof value === "string") return value.trim();
+    return pickLoc(value, lang);
   }
 
   function normSrc(src) {
@@ -70,6 +76,137 @@
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/"/g, "&quot;");
+  }
+
+  function bindBookingButtonsInZone(zone) {
+    if (!zone) return;
+    zone.querySelectorAll("[data-open-booking]").forEach((btn) => {
+      if (btn.dataset.bookingBound === "1") return;
+      btn.dataset.bookingBound = "1";
+      btn.addEventListener("click", () => {
+        if (typeof window.openBooking === "function") {
+          window.openBooking();
+          return;
+        }
+        const overlay = document.getElementById("bookingOverlay");
+        if (!overlay) return;
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("booking-open");
+      });
+    });
+  }
+
+  function renderDesktopServices(items, lang) {
+    return items
+      .map((it) => {
+        const title = esc(pickLocalized(it.title, lang));
+        const desc = esc(pickLocalized(it.description, lang));
+        const price = esc(String(it.priceDisplay || ""));
+        const btn = esc(pickLocalized(it.buttonLabel, lang) || "Wybierz usługę");
+        const visual = esc(String(it.visualClass || "hybrid"));
+        const tags = Array.isArray(it.tags) ? it.tags : [];
+        const tagHtml = tags.map((t) => `<span>${esc(String(t))}</span>`).join("\n");
+        const src = normSrc(it.media && it.media.src);
+        const bgStyle = src ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center"` : "";
+        return `<article class="glass-card pricing-card">
+  <div class="service-visual ${visual}"${bgStyle}></div>
+  <div class="pricing-card__content">
+    <div class="pricing-card__top">
+      <strong>${title}</strong>
+      <span class="pricing-card__price">${price}</span>
+    </div>
+    <p>${desc}</p>
+  </div>
+  <div class="service-tags">
+    ${tagHtml}
+  </div>
+  <button class="master-book-btn" type="button" data-open-booking>${btn}</button>
+</article>`;
+      })
+      .join("\n");
+  }
+
+  function renderMobileServices(items, lang) {
+    return items
+      .map((it) => {
+        const title = esc(pickLocalized(it.title, lang));
+        const desc = esc(pickLocalized(it.description, lang));
+        const price = esc(String(it.priceDisplay || ""));
+        const btn = esc(pickLocalized(it.buttonLabel, lang) || "Wybierz usługę");
+        const visual = esc(String(it.visualClass || "hybrid"));
+        const tags = Array.isArray(it.tags) ? it.tags : [];
+        const tagHtml = tags.map((t) => `<span>${esc(String(t))}</span>`).join("\n");
+        const src = normSrc(it.media && it.media.src);
+        const bgStyle = src ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center"` : "";
+        return `<article class="service-card">
+  <div class="service-img ${visual}"${bgStyle}></div>
+  <div class="service-card-header">
+    <strong>${title}</strong>
+    <span class="price">${price}</span>
+  </div>
+  <p>${desc}</p>
+  <div class="tags">
+    ${tagHtml}
+  </div>
+  <button class="mobile-card-btn" type="button" data-open-booking>${btn}</button>
+</article>`;
+      })
+      .join("\n");
+  }
+
+  function renderDesktopBarbers(items, lang) {
+    return items
+      .map((it) => {
+        const src = normSrc(it?.media?.src || "");
+        const name = esc(pickLocalized(it.title, lang));
+        const desc = esc(pickLocalized(it.description, lang));
+        const alt = esc(pickAlt(it, lang) || pickLocalized(it.title, lang));
+        const tags = Array.isArray(it.tags) ? it.tags : [];
+        const tagHtml = tags.map((t) => `<span>${esc(String(t))}</span>`).join("\n");
+        const cta = esc(pickLocalized(it.bookCta, lang) || "Zarezerwuj");
+        const photoStyle = src
+          ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center 32%;" role="img" aria-label="${alt}"`
+          : "";
+        return `<article class="glass-card master-card master-card--hydrated">
+  <div class="master-photo master-photo--img"${photoStyle}></div>
+  <div>
+    <h3>${name}</h3>
+    <p>${desc}</p>
+  </div>
+  <div class="master-tags">
+    ${tagHtml}
+  </div>
+  <button class="master-book-btn" type="button" data-open-booking>${cta}</button>
+</article>`;
+      })
+      .join("\n");
+  }
+
+  function renderMobileBarbers(items, lang) {
+    return items
+      .map((it) => {
+        const src = normSrc(it?.media?.src || "");
+        const name = esc(pickLocalized(it.title, lang));
+        const desc = esc(pickLocalized(it.description, lang));
+        const alt = esc(pickAlt(it, lang) || pickLocalized(it.title, lang));
+        const tags = Array.isArray(it.tags) ? it.tags : [];
+        const tagHtml = tags.map((t) => `<span>${esc(String(t))}</span>`).join("\n");
+        const cta = esc(pickLocalized(it.bookCta, lang) || "Zarezerwuj");
+        const photoStyle = src
+          ? ` style="background-image:url('${esc(src)}');background-size:cover;background-position:center"`
+          : "";
+        return `<article class="mobile-master-card">
+  <div class="mobile-master-photo"${photoStyle} role="img" aria-label="${alt}"></div>
+  <strong>${name}</strong>
+  <p>${desc}</p>
+  <div class="tags">
+    ${tagHtml}
+  </div>
+  <button class="mobile-card-btn" type="button" data-open-booking>${cta}</button>
+</article>`;
+      })
+      .join("\n");
   }
 
   function renderStickerWall(items, lang) {
@@ -156,6 +293,54 @@
     }
   }
 
+  function applyLandingServices(data, lang) {
+    const raw = Array.isArray(data?.landingServices) ? data.landingServices : [];
+    const items = prepareItems(raw);
+    if (!items.length) return;
+    const desktop = document.querySelector('[data-admin-zone="desktop-services"]');
+    if (desktop) {
+      desktop.innerHTML = renderDesktopServices(items, lang);
+      bindBookingButtonsInZone(desktop);
+    }
+    const mobile = document.querySelector('[data-admin-zone="mobile-services"]');
+    if (mobile) {
+      mobile.innerHTML = renderMobileServices(items, lang);
+      bindBookingButtonsInZone(mobile);
+    }
+  }
+
+  function applyBarbers(data, lang) {
+    const raw = Array.isArray(data?.barbers) ? data.barbers : [];
+    const items = prepareItems(raw);
+    if (!items.length) return;
+    const desktop = document.querySelector('[data-admin-zone="desktop-barbers"]');
+    if (desktop) {
+      desktop.innerHTML = renderDesktopBarbers(items, lang);
+      bindBookingButtonsInZone(desktop);
+    }
+    const mobile = document.querySelector('[data-admin-zone="mobile-barbers"]');
+    if (mobile) {
+      mobile.innerHTML = renderMobileBarbers(items, lang);
+      bindBookingButtonsInZone(mobile);
+    }
+  }
+
+  function applyContent(data) {
+    const lang = getSiteLang();
+    applyLandingServices(data, lang);
+    applyBarbers(data, lang);
+    applyWorksGallery(data);
+  }
+
+  function tryApplyBookingFromContent(data, attemptsLeft = 12) {
+    if (typeof window.DOGMA_applyBookingConfigFromContent === "function") {
+      window.DOGMA_applyBookingConfigFromContent(data);
+      return;
+    }
+    if (attemptsLeft <= 0) return;
+    window.setTimeout(() => tryApplyBookingFromContent(data, attemptsLeft - 1), 150);
+  }
+
   async function loadContent() {
     try {
       const res = await fetch("/api/content", { headers: { Accept: "application/json" } });
@@ -163,14 +348,20 @@
       const data = await res.json();
       if (!data || typeof data !== "object") return;
       window.DOGMA_SITE_CONTENT = data;
-      applyWorksGallery(data);
-      if (typeof window.DOGMA_applyBookingConfigFromContent === "function") {
-        window.DOGMA_applyBookingConfigFromContent(data);
-      }
+      applyContent(data);
+      tryApplyBookingFromContent(data);
     } catch (e) {
       console.warn("[LUNA] content hydrate unavailable", e);
     }
   }
+
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (window.DOGMA_SITE_CONTENT) {
+        window.setTimeout(() => applyContent(window.DOGMA_SITE_CONTENT), 0);
+      }
+    });
+  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", loadContent);

@@ -1547,6 +1547,9 @@ function buildBookingServiceCardHtml(svc, svcIdx, cfg) {
   return `
       <div class="dogma-subcard dogma-subcard--booking-svc" data-b-svc="${svcIdx}">
         <h5 class="dogma-booking-svc-title">${esc(servicePlName(svc) || "Usługa")}</h5>
+        <div class="dogma-card-hero__actions" style="margin-bottom:8px;">
+          <button type="button" class="dogma-btn dogma-btn--danger" data-svc-del="${svcIdx}">Usuń usługę</button>
+        </div>
         ${fieldLocaleBlock(svc, "name", "bookingSvcName")}
         ${fieldLocaleBlock(svc, "description", "bookingSvcDesc")}
         <div class="dogma-field"><label>Cena normalna (zł)</label><input type="number" data-svc-price value="${Number(svc.basePrice) || 0}" min="0" step="1" /></div>
@@ -1813,6 +1816,12 @@ function renderBookingEditor(container) {
       });
       el.querySelector("[data-svc-any]")?.addEventListener("change", (e) => {
         svc.allowClientBarberChoice = e.target.checked;
+        updateDirtyBanner();
+      });
+      el.querySelector("[data-svc-del]")?.addEventListener("click", () => {
+        if (!confirmDeleteCard()) return;
+        cfg.services.splice(idx, 1);
+        renderBookingEditor(container);
         updateDirtyBanner();
       });
       el.querySelectorAll("[data-svc-barber]").forEach((cb) => {
