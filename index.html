@@ -206,6 +206,7 @@
 
     .desktop-version {
       display: block;
+      padding-top: var(--header-h);
     }
 
     .mobile-version {
@@ -316,8 +317,10 @@
        ========================= */
 
     .site-header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 180;
       transform: translateY(0);
       opacity: 1;
@@ -371,7 +374,7 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .desktop-nav a {
@@ -493,7 +496,7 @@
     }
     .site-settings-pop {
       position: fixed;
-      right: 14px;
+      left: 14px;
       top: 84px;
       z-index: 1200;
       min-width: 220px;
@@ -504,6 +507,7 @@
       padding: 10px;
       display: none;
       gap: 8px;
+      pointer-events: auto;
     }
     .site-settings-pop.open {
       display: grid;
@@ -951,6 +955,28 @@
       background: var(--accent-2);
       box-shadow: 0 0 14px rgba(47, 125, 244, .36);
     }
+    .hero-icon-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .hero-icon-btn,
+    .hero-route-btn {
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--accent-deep);
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-xs);
+    }
 
     .hero-side {
       display: grid;
@@ -1030,10 +1056,29 @@
       letter-spacing: -.075em;
     }
 
-    .hero-info-grid {
+    .hero-info-grid { display: none; }
+    .hero-contact-strip {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow-xs);
+    }
+    .hero-contact-strip__row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-contact-strip__row strong,
+    .hero-contact-strip__row a {
+      color: var(--text-strong);
+      text-decoration: none;
+      font-weight: 900;
+      text-align: right;
     }
 
     .metric-card {
@@ -1338,6 +1383,10 @@
         display: grid;
         grid-template-rows: auto 1fr;
         gap: 12px;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y !important;
       }
 
       .page-head {
@@ -1402,7 +1451,7 @@
         display: grid;
         align-content: stretch;
         gap: 10px;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .hero-photo-card {
@@ -1574,17 +1623,16 @@
       .masters-mobile-list,
       .gallery-mobile-list {
         min-height: 0;
-        display: flex;
+        display: grid;
         gap: 12px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
+        overflow-x: hidden;
+        overflow-y: visible;
         scrollbar-width: none;
         padding: 2px 2px 8px;
         align-items: stretch;
-        overscroll-behavior-x: contain;
-        overscroll-behavior-y: none;
-        touch-action: pan-x;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
+        max-height: none;
       }
 
       .services-list::-webkit-scrollbar,
@@ -1598,8 +1646,7 @@
          ========================= */
 
       .service-card {
-        flex: 0 0 min(82vw, 330px);
-        scroll-snap-align: center;
+        width: 100%;
         padding: 14px;
         display: grid;
         grid-template-rows: 160px auto auto auto;
@@ -1739,8 +1786,7 @@
          ========================= */
 
       .mobile-master-card {
-        flex: 0 0 min(82vw, 330px);
-        scroll-snap-align: center;
+        width: 100%;
         min-height: 430px;
         padding: 14px;
         display: grid;
@@ -1811,8 +1857,7 @@
          ========================= */
 
       .mobile-gallery-card {
-        flex: 0 0 min(78vw, 315px);
-        scroll-snap-align: center;
+        width: 100%;
         min-height: 360px;
         padding: 14px;
         display: grid;
@@ -2993,9 +3038,9 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.2fr .8fr 1fr;
-      grid-auto-rows: 220px;
-      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: minmax(220px, auto);
+      gap: 18px;
     }
 
     .gallery-tile {
@@ -3004,7 +3049,7 @@
       display: grid;
       align-content: end;
       padding: 18px;
-      border-radius: 30px;
+      border-radius: 22px;
       border: 1px solid rgba(15, 23, 42, 0.075);
       background:
         radial-gradient(circle at 30% 18%, rgba(255,255,255,.96), transparent 28%),
@@ -3018,6 +3063,10 @@
         border-color 190ms ease,
         box-shadow 190ms ease;
     }
+    .gallery-tile:nth-child(odd) { transform: rotate(-1deg); }
+    .gallery-tile:nth-child(even) { transform: rotate(1deg); }
+    .gallery-tile.large { grid-column: span 2; min-height: 290px; }
+    .gallery-tile.wide { grid-column: span 2; min-height: 260px; }
 
     .gallery-tile::before {
       content: "";
@@ -4258,9 +4307,6 @@
 </head>
 
 <body>
-  <a href="https://mrozowski-automation-production.up.railway.app/?page=demos#demos" class="portfolio-back">
-  ← Wróć do wyboru
-</a>
 
   <div class="desktop-version" id="desktop-version">
     <div class="landing-bg-orb one"></div>
@@ -4331,6 +4377,12 @@
                     Sprawdź dojazd
                   </button>
                 </div>
+                <div class="hero-icon-group">
+                  <a class="hero-icon-btn" href="tel:+48532377701" aria-label="Telefon">TEL</a>
+                  <a class="hero-icon-btn" href="#" aria-label="Instagram">IG</a>
+                  <a class="hero-icon-btn" href="#" aria-label="TikTok">TT</a>
+                  <button class="hero-route-btn" type="button" onclick="openMapsRoute()" data-i18n="common.route">Dojazd</button>
+                </div>
 
                 <div class="hero-trust-row">
                   <div class="trust-pill" data-i18n="hero.pill1">Manicure hybrydowy</div>
@@ -4341,24 +4393,21 @@
 
               <div class="hero-side">
                 <article class="glass-card hero-logo-panel hero-salon-photo">
-                  <div class="image-fallback">LUNA<br />NAIL</div>
-                  <div class="hero-photo-badge">
-                    <span>MANICURE • BEAUTY • CARE</span>
-                    <strong>LUNA NAIL STUDIO</strong>
+                </article>
+                <div class="hero-contact-strip glass-card">
+                  <div class="hero-contact-strip__row">
+                    <span data-i18n="contact.address">Adres</span>
+                    <strong>ul. Przykładowa 12A, Wrocław</strong>
+                  </div>
+                  <div class="hero-contact-strip__row">
+                    <span data-i18n="hero.metric2">Godziny pracy studia</span>
+                    <strong>Pn-Sob 10:00-20:00, Nd 10:00-18:00</strong>
+                  </div>
+                  <div class="hero-contact-strip__row">
+                    <span data-i18n="contact.phone">Telefon</span>
+                    <strong><a href="tel:+48532377701">+48 532 377 701</a></strong>
                   </div>
                 </article>
-
-                <div class="hero-info-grid">
-                  <article class="glass-card metric-card">
-                    <span data-i18n="hero.metric1">Najczęściej wybierane stylizacje</span>
-                    <strong>12+</strong>
-                  </article>
-
-                  <article class="glass-card metric-card">
-                    <span data-i18n="hero.metric2">Godziny pracy studia</span>
-                    <strong>10–20</strong>
-                  </article>
-                </div>
               </div>
             </div>
           </div>
@@ -4874,10 +4923,10 @@
                   <div class="status-pill open" id="desktopStatus" data-i18n="contact.open">Otwarte dzisiaj</div>
                   <ul class="status-list">
                     <li><span data-i18n="contact.monFri">Pon — Pt</span><strong>10:00 — 20:00</strong></li>
-                    <li><span data-i18n="contact.sat">Sobota</span><strong>10:00 — 18:00</strong></li>
-                    <li><span data-i18n="contact.sun">Niedziela</span><strong data-i18n="contact.closed">zamknięte</strong></li>
+                    <li><span data-i18n="contact.sat">Sobota</span><strong>10:00 — 20:00</strong></li>
+                    <li><span data-i18n="contact.sun">Niedziela</span><strong>10:00 — 18:00</strong></li>
                     <li><span data-i18n="contact.phone">Telefon</span><strong>+48 532 377 701</strong></li>
-                    <li><span data-i18n="contact.address">Adres</span><strong>ul. Przykładowa 12</strong></li>
+                    <li><span data-i18n="contact.address">Adres</span><strong>ul. Przykładowa 12A, Wrocław</strong></li>
                   </ul>
                 </article>
               </div>
@@ -4927,25 +4976,39 @@
           <p class="page-sub" data-i18n="mobile.home.sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
         </div>
 
-        <div class="screen-body">
-          <div class="hero-photo-card">
-            <div class="image-fallback">LUNA<br />NAIL</div>
-            <div class="mobile-hero-floating">
-              <span>MANICURE • BEAUTY • CARE</span>
-              <strong data-i18n="mobile.home.card">Jasne studio manicure we Wrocławiu</strong>
+        <div class="screen-body mobile-home-body">
+          <div class="hero-photo-card"></div>
+          <article class="contact-mobile-card">
+            <strong data-i18n="mobile.home.card">Jasne studio manicure we Wrocławiu</strong>
+            <p data-i18n="mobile.home.sub">Wybierz usługę, stylistkę i termin online — szybko, spokojnie, wygodnie.</p>
+            <div class="social-row">
+              <a href="tel:+48532377701" aria-label="Telefon">
+                <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7.2 5.4 9 4.7c.9-.4 1.9 0 2.3.9l.9 2c.3.8.1 1.6-.5 2.1l-1 .8a10.6 10.6 0 0 0 4.8 4.8l.8-1c.5-.6 1.4-.8 2.1-.5l2 .9c.9.4 1.3 1.4.9 2.3l-.7 1.8c-.4.9-1.3 1.4-2.3 1.2C10.6 18.8 5.2 13.4 4 5.7c-.2-1 .3-1.9 1.2-2.3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="TikTok">
+                <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M14 4v10.2a4.2 4.2 0 1 1-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                  <path d="M14 5c1.1 3 3 4.6 6 4.8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+              </a>
+              <button class="ghost-btn" type="button" onclick="openMapsRoute()" data-i18n="mobile.location.map">Mapa</button>
             </div>
-          </div>
-
-          <div class="mini-stats">
-            <div class="stat-card">
-              <span data-i18n="mobile.home.stat1">Stylizacje</span>
-              <strong>12+</strong>
+            <button class="cta-btn" type="button" data-open-booking data-i18n="common.book">Zarezerwuj wizytę</button>
+            <div class="hours-list">
+              <div class="hour-row"><span data-i18n="contact.address">Adres</span><strong>ul. Przykładowa 12A, Wrocław</strong></div>
+              <div class="hour-row"><span data-i18n="contact.monFri">Pon — Pt</span><strong>10:00-20:00</strong></div>
+              <div class="hour-row"><span data-i18n="contact.sun">Niedziela</span><strong>10:00-18:00</strong></div>
             </div>
-            <div class="stat-card">
-              <span data-i18n="mobile.home.stat2">Godziny</span>
-              <strong>10–20</strong>
-            </div>
-          </div>
+          </article>
         </div>
       </section>
 
@@ -4959,7 +5022,7 @@
           <p class="page-sub" data-i18n="mobile.services.sub">Przesuń karty i wybierz usługę.</p>
         </div>
 
-        <div class="services-list">
+        <div class="services-list" data-admin-zone="mobile-services">
           <article class="service-card">
             <div class="service-img hybrid"></div>
             <div class="service-card-header">
@@ -5023,7 +5086,7 @@
           <p class="page-sub" data-i18n="mobile.masters.sub">Przesuń karty i wybierz stylistkę.</p>
         </div>
 
-        <div class="masters-mobile-list">
+        <div class="masters-mobile-list" data-admin-zone="mobile-barbers">
           <article class="mobile-master-card">
             <div class="mobile-master-photo maja"></div>
             <strong>Maja</strong>
@@ -5078,7 +5141,7 @@
           <p class="page-sub" data-i18n="mobile.gallery.sub">Przesuń realizacje i zobacz styl studia.</p>
         </div>
 
-        <div class="gallery-mobile-list">
+        <div class="gallery-mobile-list" data-admin-zone="mobile-gallery">
           <article class="mobile-gallery-card">
             <div class="mobile-gallery-photo clean"></div>
             <strong>Clean manicure</strong>
@@ -5164,7 +5227,7 @@
           <article class="location-card">
             <div class="address-box">
               <strong>LUNA NAIL STUDIO</strong>
-              <p>ul. Przykładowa 12, Wrocław</p>
+              <p>ul. Przykładowa 12A, Wrocław</p>
             </div>
 
             <div class="map-glass" onclick="openMapsRoute()">
@@ -5257,11 +5320,11 @@
             </div>
             <div class="hour-row">
               <span data-i18n="contact.sat">Sobota</span>
-              <strong>10–18</strong>
+              <strong>10-20</strong>
             </div>
             <div class="hour-row">
               <span data-i18n="contact.sun">Niedziela</span>
-              <strong data-i18n="contact.closed">zamknięte</strong>
+              <strong>10-18</strong>
             </div>
           </div>
 
@@ -5284,12 +5347,6 @@
             <a href="tel:+48532377701" aria-label="Telefon">
               <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M7.2 5.4 9 4.7c.9-.4 1.9 0 2.3.9l.9 2c.3.8.1 1.6-.5 2.1l-1 .8a10.6 10.6 0 0 0 4.8 4.8l.8-1c.5-.6 1.4-.8 2.1-.5l2 .9c.9.4 1.3 1.4.9 2.3l-.7 1.8c-.4.9-1.3 1.4-2.3 1.2C10.6 18.8 5.2 13.4 4 5.7c-.2-1 .3-1.9 1.2-2.3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="Trasa" onclick="openMapsRoute();return false;">
-              <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 21s6-5.7 6-10a6 6 0 1 0-12 0c0 4.3 6 10 6 10Z" stroke="currentColor" stroke-width="2"/>
-                <circle cx="12" cy="11" r="2.2" stroke="currentColor" stroke-width="2"/>
               </svg>
             </a>
           </div>
@@ -5623,9 +5680,9 @@
 </section>
 
 <div id="siteSettingsPop" class="site-settings-pop" role="menu" aria-label="Menu ustawień">
+  <button type="button" id="openProductInfoBtn" data-i18n="settings.more">Więcej informacji</button>
   <a href="https://mrozowski-automation-production.up.railway.app/?page=demos#demos" target="_blank" rel="noopener" data-i18n="settings.demo">Powrót do demo</a>
   <button type="button" id="openAdminAccessBtn" data-i18n="settings.admin">Panel administratora</button>
-  <button type="button" id="openProductInfoBtn" data-i18n="settings.more">Więcej informacji</button>
 </div>
 
 <section class="product-info-sheet" id="adminAccessSheet" aria-hidden="true">
@@ -6366,19 +6423,33 @@ overlay?.addEventListener("click", (e) => {
       });
     }
 
+    function positionSettingsPop(anchor) {
+      if (!settingsPop || !anchor) return;
+      const rect = anchor.getBoundingClientRect();
+      settingsPop.style.top = `${Math.round(rect.bottom + 8)}px`;
+      settingsPop.style.left = `${Math.round(rect.left)}px`;
+    }
+
     function toggleSettingsPop(button) {
-      const open = settingsPop?.classList.toggle("open");
-      document.querySelectorAll("[data-site-settings-btn]").forEach((btn) => {
-        btn.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-      if (open && button && window.innerWidth <= 900) {
-        settingsPop.style.top = `${button.getBoundingClientRect().bottom + 8}px`;
+      if (!settingsPop) return;
+      const wasOpen = settingsPop.classList.contains("open");
+      if (wasOpen) {
+        closeSettingsPop();
+        return;
       }
+      positionSettingsPop(button);
+      settingsPop.classList.add("open");
+      document.querySelectorAll("[data-site-settings-btn]").forEach((btn) => {
+        btn.setAttribute("aria-expanded", "true");
+      });
     }
 
     function bindSettingsMenu() {
       document.querySelectorAll("[data-site-settings-btn]").forEach((button) => {
-        button.addEventListener("click", () => toggleSettingsPop(button));
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          toggleSettingsPop(button);
+        });
       });
 
       document.getElementById("openAdminAccessBtn")?.addEventListener("click", openAdminAccess);
@@ -6390,6 +6461,12 @@ overlay?.addEventListener("click", (e) => {
         const target = event.target;
         if (target && target.closest && (target.closest("#siteSettingsPop") || target.closest("[data-site-settings-btn]"))) return;
         closeSettingsPop();
+      });
+      window.addEventListener("resize", () => {
+        const openBtn = document.querySelector('[data-site-settings-btn][aria-expanded="true"]');
+        if (openBtn && settingsPop?.classList.contains("open")) {
+          positionSettingsPop(openBtn);
+        }
       });
 
       const adminForm = document.getElementById("adminAccessForm");
@@ -6528,25 +6605,7 @@ overlay?.addEventListener("click", (e) => {
 
 
     function handleDesktopScroll() {
-  if (window.innerWidth <= 900) return;
-      
-  const currentY = window.scrollY;
-
-  if (siteHeader) {
-    const delta = currentY - lastScrollY;
-    const goingDown = delta > 4;
-    const goingUp = delta < -2;
-
-    if (goingDown && currentY > 120) {
-      siteHeader.classList.add("header-hidden");
-    }
-
-    if (goingUp || currentY < 70) {
-      siteHeader.classList.remove("header-hidden");
-    }
-  }
-
-      lastScrollY = Math.max(currentY, 0);
+      if (siteHeader) siteHeader.classList.remove("header-hidden");
       ticking = false;
     }
 
