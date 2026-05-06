@@ -6512,7 +6512,7 @@
 </section>
 
 <div id="siteSettingsPop" class="site-settings-pop" role="menu" aria-label="Menu ustawień">
-  <a href="https://mrozowski-automation-production.up.railway.app/?page=demos#demos" target="_blank" rel="noopener" data-i18n="settings.demo">Powrót do demo</a>
+  <a href="https://mrozowski-automation-production.up.railway.app/" target="_blank" rel="noopener" data-i18n="settings.demo">Powrót do demo</a>
   <button type="button" id="openAdminAccessBtn" data-i18n="settings.admin">Panel administratora</button>
   <button type="button" id="openProductInfoBtn" data-i18n="settings.more">Więcej informacji</button>
 </div>
@@ -7530,7 +7530,7 @@ overlay?.addEventListener("click", (e) => {
 
       if (!settingsPop || settingsButtons.length === 0) return;
 
-      const DEMO_URL = "https://mrozowski-automation-production.up.railway.app/?page=demos#demos";
+      const DEMO_URL = "https://mrozowski-automation-production.up.railway.app/";
       const demoBackLink = settingsPop.querySelector('a[data-i18n="settings.demo"]');
       if (demoBackLink && !demoBackLink.getAttribute("href")) {
         demoBackLink.setAttribute("href", DEMO_URL);
