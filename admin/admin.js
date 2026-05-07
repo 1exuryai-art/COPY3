@@ -2121,8 +2121,21 @@ function renderBookingEditor(container) {
     openAddServiceCategorySheet();
   });
 
+  function getAddServiceCategorySheet() {
+    return document.getElementById("bookingAddSvcSheet");
+  }
+
+  function ensureAddServiceCategorySheetInBody() {
+    const sheet = getAddServiceCategorySheet();
+    if (!sheet) return null;
+    if (sheet.parentElement !== document.body) {
+      document.body.appendChild(sheet);
+    }
+    return sheet;
+  }
+
   function closeAddServiceCategorySheet() {
-    const sheet = container.querySelector("#bookingAddSvcSheet");
+    const sheet = getAddServiceCategorySheet();
     if (!sheet) return;
     sheet.classList.remove("open");
     sheet.setAttribute("aria-hidden", "true");
@@ -2167,8 +2180,8 @@ function renderBookingEditor(container) {
   }
 
   function openAddServiceCategorySheet() {
-    const sheet = container.querySelector("#bookingAddSvcSheet");
-    const listEl = container.querySelector("[data-add-svc-cats]");
+    const sheet = ensureAddServiceCategorySheetInBody();
+    const listEl = sheet ? sheet.querySelector("[data-add-svc-cats]") : null;
     if (!sheet || !listEl) return;
     const categories = (cfg.serviceCategories || [])
       .slice()
@@ -2198,10 +2211,14 @@ function renderBookingEditor(container) {
     sheet.setAttribute("aria-hidden", "false");
   }
 
-  container.querySelector("[data-close-add-svc-sheet]")?.addEventListener("click", closeAddServiceCategorySheet);
-  container.querySelector("#bookingAddSvcSheet")?.addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) closeAddServiceCategorySheet();
-  });
+  const globalSheet = ensureAddServiceCategorySheetInBody();
+  if (globalSheet && globalSheet.dataset.boundClose !== "1") {
+    globalSheet.dataset.boundClose = "1";
+    globalSheet.querySelector("[data-close-add-svc-sheet]")?.addEventListener("click", closeAddServiceCategorySheet);
+    globalSheet.addEventListener("click", (e) => {
+      if (e.target === e.currentTarget) closeAddServiceCategorySheet();
+    });
+  }
 
   bindBookingForm();
 }
