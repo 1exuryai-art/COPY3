@@ -195,12 +195,12 @@
       "barberId": "maja",
       "title": {
         "pl": "Maja",
-        "ru": "???",
+        "ru": "Мая",
         "en": "Maja"
       },
       "description": {
         "pl": "Clean manicure, subtelne kolory i naturalny efekt.",
-        "ru": "Clean manicure, ?????????? ????? ? ??????????? ??????.",
+        "ru": "Clean manicure, деликатные цвета и натуральный эффект.",
         "en": "Clean manicure, subtle colors and a natural effect."
       },
       "tags": [
@@ -210,7 +210,7 @@
       ],
       "bookCta": {
         "pl": "Zarezerwuj u Mai",
-        "ru": "?????????? ? ????",
+        "ru": "Записаться к Мае",
         "en": "Book with Maja"
       },
       "media": {
@@ -218,7 +218,7 @@
         "src": "/images/masters/maja-1x1.png",
         "alt": {
           "pl": "Maja",
-          "ru": "???",
+          "ru": "Мая",
           "en": "Maja"
         }
       },
@@ -235,12 +235,12 @@
       "barberId": "ola",
       "title": {
         "pl": "Ola",
-        "ru": "???",
+        "ru": "Ола",
         "en": "Ola"
       },
       "description": {
         "pl": "French, baby boomer i minimalistyczne zdobienia.",
-        "ru": "French, baby boomer ? ??????????????? ??????.",
+        "ru": "French, baby boomer и минималистичный дизайн.",
         "en": "French, baby boomer and minimalist details."
       },
       "tags": [
@@ -250,7 +250,7 @@
       ],
       "bookCta": {
         "pl": "Zarezerwuj u Oli",
-        "ru": "?????????? ? ???",
+        "ru": "Записаться к Оле",
         "en": "Book with Ola"
       },
       "media": {
@@ -258,7 +258,7 @@
         "src": "/images/masters/ola-1x1.png",
         "alt": {
           "pl": "Ola",
-          "ru": "???",
+          "ru": "Ола",
           "en": "Ola"
         }
       },
@@ -275,12 +275,12 @@
       "barberId": "nina",
       "title": {
         "pl": "Nina",
-        "ru": "????",
+        "ru": "Нина",
         "en": "Nina"
       },
       "description": {
-        "pl": "Zel, przedluzanie i mocniejsze stylizacje premium.",
-        "ru": "????, ??????????? ? ????? ????????????? ???????-??????????.",
+        "pl": "Żel, przedłużanie i mocniejsze stylizacje premium.",
+        "ru": "Гель, наращивание и более выразительные премиум-стилизации.",
         "en": "Gel, extensions and stronger premium styles."
       },
       "tags": [
@@ -290,7 +290,7 @@
       ],
       "bookCta": {
         "pl": "Zarezerwuj u Niny",
-        "ru": "?????????? ? ????",
+        "ru": "Записаться к Нине",
         "en": "Book with Nina"
       },
       "media": {
@@ -298,7 +298,7 @@
         "src": "/images/masters/nina-1x1.png",
         "alt": {
           "pl": "Nina",
-          "ru": "????",
+          "ru": "Нина",
           "en": "Nina"
         }
       },
@@ -316,18 +316,18 @@
       "visible": true,
       "title": {
         "pl": "Manicure hybrydowy",
-        "ru": "????????? ???????",
+        "ru": "Гибридный маникюр",
         "en": "Gel polish manicure"
       },
       "description": {
-        "pl": "Opracowanie sk?rek, czysty ksztalt i elegancki kolor na co dzien.",
-        "ru": "?????????? ????????? ? ??????? ???????? ?? ?????? ????.",
+        "pl": "Opracowanie skórek, czysty kształt i elegancki kolor na co dzień.",
+        "ru": "Обработка кутикулы, аккуратная форма и стойкое покрытие.",
         "en": "Cuticle care, clean shape and elegant color for everyday style."
       },
       "priceDisplay": "120 zl",
       "buttonLabel": {
-        "pl": "Wybierz usluge",
-        "ru": "??????? ??????",
+        "pl": "Wybierz usługę",
+        "ru": "Выбрать услугу",
         "en": "Choose service"
       },
       "visualClass": "haircut",
@@ -347,19 +347,19 @@
       "order": 2,
       "visible": true,
       "title": {
-        "pl": "Przedluzanie zelowe",
-        "ru": "??????? ???????????",
+        "pl": "Przedłużanie żelowe",
+        "ru": "Гелевое наращивание",
         "en": "Gel extension"
       },
       "description": {
-        "pl": "Budowa paznokci, proporcja i estetyczne wykonczenie premium.",
-        "ru": "????????????? ????? ? ?????????? ???????-?????.",
+        "pl": "Budowa paznokci, proporcja i estetyczne wykończenie premium.",
+        "ru": "Моделирование ногтей, правильная форма и эстетичное премиум-покрытие.",
         "en": "Nail build-up, balanced shape and refined premium finish."
       },
       "priceDisplay": "180 zl",
       "buttonLabel": {
-        "pl": "Wybierz usluge",
-        "ru": "??????? ??????",
+        "pl": "Wybierz usługę",
+        "ru": "Выбрать услугу",
         "en": "Choose service"
       },
       "visualClass": "combo",
@@ -380,18 +380,18 @@
       "visible": true,
       "title": {
         "pl": "Zdobienia",
-        "ru": "??????",
+        "ru": "Дизайн ногтей",
         "en": "Nail art"
       },
       "description": {
         "pl": "French, baby boomer i subtelne detale dopasowane do stylizacji.",
-        "ru": "French, baby boomer ? ?????????? ???????.",
+        "ru": "French, baby boomer и аккуратные детали под стиль.",
         "en": "French, baby boomer and subtle details matched to the set."
       },
       "priceDisplay": "+35 zl",
       "buttonLabel": {
-        "pl": "Wybierz usluge",
-        "ru": "??????? ??????",
+        "pl": "Wybierz usługę",
+        "ru": "Выбрать услугу",
         "en": "Choose service"
       },
       "visualClass": "beard",
@@ -412,22 +412,107 @@
       {
         "id": "popular",
         "title": {
-          "pl": "Popularne uslugi",
-          "ru": "?????????? ??????",
+          "pl": "Popularne usługi",
+          "ru": "Популярные услуги",
           "en": "Popular services"
         },
         "description": {
-          "pl": "Nowa kategoria",
-          "ru": "Nowa kategoria",
-          "en": "Nowa kategoria"
+          "pl": "Najczęściej wybierane usługi w studio.",
+          "ru": "Самые популярные услуги студии.",
+          "en": "The most requested services in the studio."
         },
         "visible": true,
-        "order": 1,
-        "name": {
-          "pl": "Manicure hybrydowy",
-          "ru": "Nowa kategoria",
-          "en": "Nowa kategoria"
-        }
+        "order": 1
+      },
+      {
+        "id": "manicure",
+        "title": {
+          "pl": "Manicure",
+          "ru": "Маникюр",
+          "en": "Manicure"
+        },
+        "description": {
+          "pl": "Klasyczny, hybrydowy i pielęgnacyjny manicure.",
+          "ru": "Классический, гибридный и уходовый маникюр.",
+          "en": "Classic, gel polish and care manicure services."
+        },
+        "visible": true,
+        "order": 2
+      },
+      {
+        "id": "extension-gel",
+        "title": {
+          "pl": "Przedłużanie i żel",
+          "ru": "Наращивание и гель",
+          "en": "Extensions and gel"
+        },
+        "description": {
+          "pl": "Przedłużanie, uzupełnienie i stylizacja żelowa.",
+          "ru": "Наращивание, коррекция и гелевое покрытие.",
+          "en": "Extensions, refills and gel nail styling."
+        },
+        "visible": true,
+        "order": 3
+      },
+      {
+        "id": "nail-art",
+        "title": {
+          "pl": "Zdobienia",
+          "ru": "Дизайн ногтей",
+          "en": "Nail art"
+        },
+        "description": {
+          "pl": "French, baby boomer, detale i zdobienia.",
+          "ru": "Френч, baby boomer, детали и дизайн.",
+          "en": "French, baby boomer, details and nail art."
+        },
+        "visible": true,
+        "order": 4
+      },
+      {
+        "id": "pedicure",
+        "title": {
+          "pl": "Pedicure",
+          "ru": "Педикюр",
+          "en": "Pedicure"
+        },
+        "description": {
+          "pl": "Pedicure klasyczny, hybrydowy i pielęgnacyjny.",
+          "ru": "Классический, гибридный и уходовый педикюр.",
+          "en": "Classic, gel polish and care pedicure."
+        },
+        "visible": true,
+        "order": 5
+      },
+      {
+        "id": "removal-repair",
+        "title": {
+          "pl": "Zdjęcie i naprawa",
+          "ru": "Снятие и ремонт",
+          "en": "Removal and repair"
+        },
+        "description": {
+          "pl": "Zdjęcie stylizacji, naprawa i korekta paznokci.",
+          "ru": "Снятие покрытия, ремонт и коррекция ногтей.",
+          "en": "Removal, nail repair and correction."
+        },
+        "visible": true,
+        "order": 6
+      },
+      {
+        "id": "packages",
+        "title": {
+          "pl": "Pakiety",
+          "ru": "Комплексы",
+          "en": "Packages"
+        },
+        "description": {
+          "pl": "Gotowe zestawy usług w jednej rezerwacji.",
+          "ru": "Готовые комплексы услуг в одной записи.",
+          "en": "Ready-made service sets in one booking."
+        },
+        "visible": true,
+        "order": 7
       }
     ],
     "services": [
@@ -436,12 +521,12 @@
         "category": "popular",
         "name": {
           "pl": "Manicure hybrydowy",
-          "ru": "????????? ???????",
+          "ru": "Гибридный маникюр",
           "en": "Gel polish manicure"
         },
         "description": {
-          "pl": "Czysty manicure i trwaly kolor.",
-          "ru": "?????????? ??????? ? ??????? ????????.",
+          "pl": "Czysty manicure i trwały kolor.",
+          "ru": "Аккуратный маникюр и стойкое покрытие.",
           "en": "Clean manicure with durable color."
         },
         "basePrice": 120,
@@ -471,13 +556,13 @@
         "id": "gel-extension",
         "category": "popular",
         "name": {
-          "pl": "Przedluzanie zelowe",
-          "ru": "??????? ???????????",
+          "pl": "Przedłużanie żelowe",
+          "ru": "Гелевое наращивание",
           "en": "Gel extension"
         },
         "description": {
           "pl": "Budowa i modelowanie paznokci.",
-          "ru": "????????????? ? ??????????? ??????.",
+          "ru": "Моделирование и наращивание ногтей.",
           "en": "Nail build-up and shaping."
         },
         "basePrice": 180,
@@ -508,12 +593,12 @@
         "category": "popular",
         "name": {
           "pl": "Zdobienia",
-          "ru": "??????",
+          "ru": "Дизайн ногтей",
           "en": "Nail art"
         },
         "description": {
           "pl": "French, baby boomer i detale.",
-          "ru": "French, baby boomer ? ??????.",
+          "ru": "Френч, baby boomer и детали.",
           "en": "French, baby boomer and details."
         },
         "basePrice": 35,
@@ -540,22 +625,22 @@
         }
       },
       {
-        "id": "svc-1778008960205",
+        "id": "pedicure-hybrid",
         "category": "popular",
         "name": {
-          "pl": "Nowa usługa",
-          "ru": "Nowa kategoria",
-          "en": "Nowa kategoria"
+          "pl": "Pedicure hybrydowy",
+          "ru": "Гибридный педикюр",
+          "en": "Gel polish pedicure"
         },
         "description": {
-          "pl": "Nowa kategoria",
-          "ru": "Nowa kategoria",
-          "en": "Nowa kategoria"
+          "pl": "Estetyczny pedicure z trwałym kolorem.",
+          "ru": "Аккуратный педикюр со стойким покрытием.",
+          "en": "Clean pedicure with durable color."
         },
-        "basePrice": 100,
+        "basePrice": 140,
         "discountedPrice": "",
-        "duration": "1h",
-        "durationMinutes": 60,
+        "duration": "1h 30min",
+        "durationMinutes": 90,
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
@@ -574,6 +659,468 @@
           "startMinutes": 600,
           "endMinutes": 960
         }
+      },
+      {
+        "id": "manicure-classic",
+        "category": "manicure",
+        "name": {
+          "pl": "Manicure klasyczny",
+          "ru": "Классический маникюр",
+          "en": "Classic manicure"
+        },
+        "description": {
+          "pl": "Opracowanie skórek i naturalne wykończenie.",
+          "ru": "Обработка кутикулы и натуральный аккуратный результат.",
+          "en": "Cuticle care with a clean natural finish."
+        },
+        "basePrice": 90,
+        "discountedPrice": "",
+        "duration": "1h",
+        "durationMinutes": 60,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "manicure-hybrid-full",
+        "category": "manicure",
+        "name": {
+          "pl": "Manicure hybrydowy",
+          "ru": "Гибридный маникюр",
+          "en": "Gel polish manicure"
+        },
+        "description": {
+          "pl": "Opracowanie skórek, kształt i trwały kolor.",
+          "ru": "Обработка кутикулы, форма и стойкое покрытие.",
+          "en": "Cuticle care, shape and durable color."
+        },
+        "basePrice": 120,
+        "discountedPrice": "",
+        "duration": "1h 30min",
+        "durationMinutes": 90,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "manicure-japanese",
+        "category": "manicure",
+        "name": {
+          "pl": "Manicure japoński",
+          "ru": "Японский маникюр",
+          "en": "Japanese manicure"
+        },
+        "description": {
+          "pl": "Naturalny połysk i wzmocnienie płytki.",
+          "ru": "Натуральный блеск и укрепление ногтевой пластины.",
+          "en": "Natural shine and nail plate strengthening."
+        },
+        "basePrice": 110,
+        "discountedPrice": "",
+        "duration": "1h",
+        "durationMinutes": 60,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "manicure-men",
+        "category": "manicure",
+        "name": {
+          "pl": "Manicure męski",
+          "ru": "Мужской маникюр",
+          "en": "Men’s manicure"
+        },
+        "description": {
+          "pl": "Czysty kształt i zadbane dłonie.",
+          "ru": "Аккуратная форма и ухоженные руки.",
+          "en": "Clean shape and well-groomed hands."
+        },
+        "basePrice": 90,
+        "discountedPrice": "",
+        "duration": "1h",
+        "durationMinutes": 60,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "gel-extension-premium",
+        "category": "extension-gel",
+        "name": {
+          "pl": "Przedłużanie żelowe",
+          "ru": "Гелевое наращивание",
+          "en": "Gel extension"
+        },
+        "description": {
+          "pl": "Budowa paznokci, proporcja i estetyczne wykończenie premium.",
+          "ru": "Моделирование ногтей, правильная форма и эстетичное премиум-покрытие.",
+          "en": "Nail build-up, balanced shape and refined premium finish."
+        },
+        "basePrice": 180,
+        "discountedPrice": "",
+        "duration": "2h",
+        "durationMinutes": 120,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "gel-refill",
+        "category": "extension-gel",
+        "name": {
+          "pl": "Uzupełnienie żelowe",
+          "ru": "Коррекция геля",
+          "en": "Gel refill"
+        },
+        "description": {
+          "pl": "Odświeżenie stylizacji i uzupełnienie odrostu.",
+          "ru": "Обновление покрытия и коррекция отросшей части.",
+          "en": "Refreshing the set and filling the regrowth."
+        },
+        "basePrice": 150,
+        "discountedPrice": "",
+        "duration": "1h 45min",
+        "durationMinutes": 105,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "gel-overlay-natural",
+        "category": "extension-gel",
+        "name": {
+          "pl": "Żel na naturalnej płytce",
+          "ru": "Гель на натуральные ногти",
+          "en": "Gel overlay on natural nails"
+        },
+        "description": {
+          "pl": "Wzmocnienie naturalnych paznokci żelem.",
+          "ru": "Укрепление натуральных ногтей гелем.",
+          "en": "Strengthening natural nails with gel."
+        },
+        "basePrice": 140,
+        "discountedPrice": "",
+        "duration": "1h 30min",
+        "durationMinutes": 90,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "one-nail-extension",
+        "category": "extension-gel",
+        "name": {
+          "pl": "Przedłużenie jednego paznokcia",
+          "ru": "Наращивание одного ногтя",
+          "en": "One nail extension"
+        },
+        "description": {
+          "pl": "Odbudowa lub przedłużenie jednego paznokcia.",
+          "ru": "Восстановление или наращивание одного ногтя.",
+          "en": "Rebuilding or extending one nail."
+        },
+        "basePrice": 20,
+        "discountedPrice": "",
+        "duration": "15min",
+        "durationMinutes": 15,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "french",
+        "category": "nail-art",
+        "name": {
+          "pl": "French",
+          "ru": "Френч",
+          "en": "French"
+        },
+        "description": {
+          "pl": "Klasyczna, czysta linia french.",
+          "ru": "Классическая аккуратная линия френча.",
+          "en": "Classic clean French line."
+        },
+        "basePrice": 25,
+        "discountedPrice": "",
+        "duration": "15min",
+        "durationMinutes": 15,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "baby-boomer",
+        "category": "nail-art",
+        "name": {
+          "pl": "Baby boomer",
+          "ru": "Baby boomer",
+          "en": "Baby boomer"
+        },
+        "description": {
+          "pl": "Delikatne przejście koloru w naturalnym stylu.",
+          "ru": "Нежный градиент в натуральном стиле.",
+          "en": "Soft gradient in a natural style."
+        },
+        "basePrice": 35,
+        "discountedPrice": "",
+        "duration": "20min",
+        "durationMinutes": 20,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "subtle-nail-art",
+        "category": "nail-art",
+        "name": {
+          "pl": "Subtelne zdobienie",
+          "ru": "Деликатный дизайн",
+          "en": "Subtle nail art"
+        },
+        "description": {
+          "pl": "Minimalistyczny detal bez przeładowania.",
+          "ru": "Минималистичный акцент без перегруза.",
+          "en": "Minimal detail without overloading the look."
+        },
+        "basePrice": 20,
+        "discountedPrice": "",
+        "duration": "15min",
+        "durationMinutes": 15,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "premium-nail-art",
+        "category": "nail-art",
+        "name": {
+          "pl": "Zdobienia premium",
+          "ru": "Премиум-дизайн",
+          "en": "Premium nail art"
+        },
+        "description": {
+          "pl": "Bardziej dopracowane zdobienia i eleganckie detale.",
+          "ru": "Более сложный дизайн и элегантные детали.",
+          "en": "More refined nail art and elegant details."
+        },
+        "basePrice": 50,
+        "discountedPrice": "",
+        "duration": "30min",
+        "durationMinutes": 30,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "pedicure-classic",
+        "category": "pedicure",
+        "name": {
+          "pl": "Pedicure klasyczny",
+          "ru": "Классический педикюр",
+          "en": "Classic pedicure"
+        },
+        "description": {
+          "pl": "Opracowanie paznokci i czyste wykończenie.",
+          "ru": "Обработка ногтей и аккуратный чистый результат.",
+          "en": "Nail care with a clean finish."
+        },
+        "basePrice": 120,
+        "discountedPrice": "",
+        "duration": "1h",
+        "durationMinutes": 60,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "pedicure-hybrid-main",
+        "category": "pedicure",
+        "name": {
+          "pl": "Pedicure hybrydowy",
+          "ru": "Гибридный педикюр",
+          "en": "Gel polish pedicure"
+        },
+        "description": {
+          "pl": "Pedicure z trwałym kolorem hybrydowym.",
+          "ru": "Педикюр со стойким гибридным покрытием.",
+          "en": "Pedicure with durable gel polish color."
+        },
+        "basePrice": 140,
+        "discountedPrice": "",
+        "duration": "1h 30min",
+        "durationMinutes": 90,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "pedicure-spa",
+        "category": "pedicure",
+        "name": {
+          "pl": "Pedicure SPA",
+          "ru": "SPA-педикюр",
+          "en": "SPA pedicure"
+        },
+        "description": {
+          "pl": "Pielęgnacja stóp, paznokci i relaksujące wykończenie.",
+          "ru": "Уход за стопами, ногтями и расслабляющий финал.",
+          "en": "Foot and nail care with a relaxing finish."
+        },
+        "basePrice": 170,
+        "discountedPrice": "",
+        "duration": "1h 45min",
+        "durationMinutes": 105,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "gel-polish-removal",
+        "category": "removal-repair",
+        "name": {
+          "pl": "Zdjęcie hybrydy",
+          "ru": "Снятие гибридного покрытия",
+          "en": "Gel polish removal"
+        },
+        "description": {
+          "pl": "Bezpieczne zdjęcie starej stylizacji.",
+          "ru": "Безопасное снятие старого покрытия.",
+          "en": "Safe removal of the old set."
+        },
+        "basePrice": 40,
+        "discountedPrice": "",
+        "duration": "30min",
+        "durationMinutes": 30,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "gel-removal",
+        "category": "removal-repair",
+        "name": {
+          "pl": "Zdjęcie żelu",
+          "ru": "Снятие геля",
+          "en": "Gel removal"
+        },
+        "description": {
+          "pl": "Bezpieczne usunięcie stylizacji żelowej.",
+          "ru": "Безопасное снятие гелевого покрытия.",
+          "en": "Safe removal of gel styling."
+        },
+        "basePrice": 60,
+        "discountedPrice": "",
+        "duration": "40min",
+        "durationMinutes": 40,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "nail-repair",
+        "category": "removal-repair",
+        "name": {
+          "pl": "Naprawa paznokcia",
+          "ru": "Ремонт ногтя",
+          "en": "Nail repair"
+        },
+        "description": {
+          "pl": "Naprawa pęknięcia lub uszkodzonego paznokcia.",
+          "ru": "Ремонт трещины или повреждённого ногтя.",
+          "en": "Repair of a crack or damaged nail."
+        },
+        "basePrice": 20,
+        "discountedPrice": "",
+        "duration": "15min",
+        "durationMinutes": 15,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "package-gel-mani-pedi",
+        "category": "packages",
+        "name": {
+          "pl": "Manicure + pedicure hybrydowy",
+          "ru": "Гибридный маникюр + педикюр",
+          "en": "Gel manicure + pedicure"
+        },
+        "description": {
+          "pl": "Komplet dłoni i stóp z trwałym kolorem.",
+          "ru": "Комплекс для рук и ног со стойким покрытием.",
+          "en": "Hands and feet set with durable color."
+        },
+        "basePrice": 240,
+        "discountedPrice": "",
+        "duration": "3h",
+        "durationMinutes": 180,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "package-mani-art",
+        "category": "packages",
+        "name": {
+          "pl": "Manicure hybrydowy + zdobienie",
+          "ru": "Гибридный маникюр + дизайн",
+          "en": "Gel manicure + nail art"
+        },
+        "description": {
+          "pl": "Trwały kolor z delikatnym zdobieniem.",
+          "ru": "Стойкое покрытие с аккуратным дизайном.",
+          "en": "Durable color with subtle nail art."
+        },
+        "basePrice": 150,
+        "discountedPrice": "",
+        "duration": "1h 50min",
+        "durationMinutes": 110,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
+      },
+      {
+        "id": "package-extension-art",
+        "category": "packages",
+        "name": {
+          "pl": "Przedłużanie żelowe + zdobienie",
+          "ru": "Гелевое наращивание + дизайн",
+          "en": "Gel extension + nail art"
+        },
+        "description": {
+          "pl": "Przedłużenie paznokci z dopracowanym detalem.",
+          "ru": "Наращивание ногтей с продуманным дизайном.",
+          "en": "Nail extensions with a refined detail."
+        },
+        "basePrice": 220,
+        "discountedPrice": "",
+        "duration": "2h 30min",
+        "durationMinutes": 150,
+        "visible": true,
+        "bookingEnabled": true,
+        "availableBarberIds": [],
+        "allowClientBarberChoice": true
       }
     ],
     "barbers": [

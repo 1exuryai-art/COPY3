@@ -1708,8 +1708,13 @@ function renderBookingEditor(container) {
     .join("");
 
   container.innerHTML = `
-    <div class="dogma-item dogma-subcard dogma-booking-intro">
+    <div class="dogma-item dogma-subcard dogma-booking-intro" id="booking-intro">
       <p class="dogma-hint">Tu ustawiasz usługi w kreatorze rezerwacji, godziny pracy i zniżki. Zapis: „Zapisz zmiany” na górze.</p>
+      <div class="dogma-booking-quicknav">
+        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-jump="booking-hours">Godziny pracy</button>
+        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-jump="booking-discount">Zniżka</button>
+        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-jump="booking-catalog">Kategorie i usługi</button>
+      </div>
       <div class="dogma-booking-actions">
         <button type="button" class="dogma-btn dogma-btn--ghost dogma-btn--block-sm" id="bookingResetDefaults">Przywróć ustawienia jak na początku</button>
         <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--block-sm" id="bookingAddCategory">+ Dodaj kategorię usług</button>
@@ -1717,11 +1722,11 @@ function renderBookingEditor(container) {
       </div>
     </div>
 
-    <h3 class="dogma-panel-subtitle">Godziny pracy salonu</h3>
+    <h3 class="dogma-panel-subtitle" id="booking-hours">Godziny pracy salonu</h3>
     <p class="dogma-field-hint">Na podstawie tych godzin pokazujemy wolne terminy.</p>
     <div class="dogma-item dogma-hours">${dayRows}</div>
 
-    <h3 class="dogma-panel-subtitle">Zniżka ogólna (dla wielu usług naraz)</h3>
+    <h3 class="dogma-panel-subtitle" id="booking-discount">Zniżka ogólna (dla wielu usług naraz)</h3>
     <div class="dogma-item dogma-subcard">
       <div class="dogma-field dogma-field--inline"><label><input type="checkbox" id="disc-enabled" ${disc.enabled !== false ? "checked" : ""} /> Włączyć ogólną zniżkę?</label></div>
       <div class="dogma-field"><label>Nazwa dla Ciebie (nie musi być na stronie)</label><input type="text" id="disc-name" value="${esc(disc.name || "")}" /></div>
@@ -1736,10 +1741,20 @@ function renderBookingEditor(container) {
       <div class="dogma-field"><label>Do której godziny?</label><input type="time" id="disc-end-time" value="${esc(minutesToTime(disc.endMinutes != null ? disc.endMinutes : 960))}" /></div>
     </div>
 
-    <h3 class="dogma-panel-subtitle">Kategorie i usługi w rezerwacji</h3>
+    <h3 class="dogma-panel-subtitle" id="booking-catalog">Kategorie i usługi w rezerwacji</h3>
     <p class="dogma-field-hint dogma-field-hint--tight">Kategoria to „folder” — w środku widać tylko usługi z niej.</p>
     <div class="dogma-stack">${catBlocksNested}</div>
   `;
+
+  container.querySelectorAll("[data-booking-jump]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-booking-jump");
+      if (!id) return;
+      const target = container.querySelector(`#${id}`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 
   function syncDiscountFromForm() {
     const weekdays = [...container.querySelectorAll("[data-disc-day]")]
@@ -2138,6 +2153,7 @@ function renderAllPanels() {
 function setActiveTab(id) {
   document.querySelectorAll(".dogma-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === id));
   document.querySelectorAll(".dogma-panel").forEach((p) => p.classList.toggle("active", p.dataset.panel === id));
+  document.getElementById("appView")?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   if (id === "booking") {
     const el = document.getElementById("panel-booking");
@@ -2150,6 +2166,23 @@ function setActiveTab(id) {
     const el = document.getElementById("panel-services");
     if (el) renderLandingServicesEditor(el);
   }
+}
+
+function initScrollTopButton() {
+  const btn = document.getElementById("scrollTopBtn");
+  if (!btn || btn.dataset.bound === "1") return;
+  btn.dataset.bound = "1";
+
+  const toggle = () => {
+    btn.classList.toggle("visible", window.scrollY > 420);
+  };
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
 }
 
 function buildTabs() {
@@ -2209,6 +2242,7 @@ async function tryBoot() {
     setActiveTab("works");
     renderAllPanels();
     bindCardExpandDelegation();
+    initScrollTopButton();
     bindDirtyTracking();
     updateDirtyBanner();
     showSave("Wczytano", "ok");

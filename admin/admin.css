@@ -1325,8 +1325,7 @@ video.dogma-preview {
   }
 
   .dogma-tabs {
-    position: relative;
-    top: auto;
+    top: 8px;
   }
 
   .dogma-tab {
@@ -2444,6 +2443,52 @@ body.monarch-admin-body::after {
 
 .admin-app .dogma-tabs {
   scrollbar-color: rgba(217, 167, 93, 0.35) rgba(0, 0, 0, 0.2);
+}
+
+.dogma-scroll-top {
+  position: fixed;
+  right: 16px;
+  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  z-index: 70;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(239, 186, 115, 0.36);
+  color: #18120b;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.28), transparent 42%),
+    linear-gradient(180deg, var(--accent-2) 0%, var(--accent) 56%, var(--accent-deep) 100%);
+  box-shadow: var(--shadow-amber), 0 0 24px rgba(239, 186, 115, 0.14);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 180ms var(--ease), transform 180ms var(--ease), filter 180ms var(--ease);
+}
+
+.dogma-scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dogma-scroll-top:hover {
+  filter: brightness(1.04) saturate(1.04);
+}
+
+.dogma-booking-quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.dogma-booking-quicknav .dogma-btn {
+  flex: 1 1 180px;
+  min-height: 40px;
 }
 
 /* Panel chrome (second definition merges) */
