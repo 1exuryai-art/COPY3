@@ -383,7 +383,7 @@ body.monarch-admin-body > * {
   align-items: flex-start;
   justify-content: flex-start;
   padding: 0;
-  background: rgba(5, 8, 18, 0.18);
+  background: rgba(5, 8, 18, 0.32);
   z-index: 1200;
 }
 
@@ -398,7 +398,7 @@ body.monarch-admin-body > * {
   overflow: auto;
   border-radius: 16px;
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(10, 12, 18, 0.92));
+  background: #0f1522;
   box-shadow: 0 20px 54px rgba(0, 0, 0, 0.42);
   padding: 12px;
   transform: translateY(8px);
@@ -435,6 +435,13 @@ body.monarch-admin-body > * {
   gap: 8px;
   max-height: 50vh;
   overflow: auto;
+}
+
+@media (max-width: 900px) {
+  .dogma-tabs {
+    position: static;
+    top: auto;
+  }
 }
 
 .dogma-item__toolbar {
