@@ -380,12 +380,10 @@ body.monarch-admin-body > * {
   position: fixed;
   inset: 0;
   display: none;
-  align-items: flex-end;
-  justify-content: stretch;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding: 0;
-  background: rgba(5, 8, 18, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(5, 8, 18, 0.18);
   z-index: 1200;
 }
 
@@ -394,21 +392,23 @@ body.monarch-admin-body > * {
 }
 
 .dogma-sheet {
-  width: 100%;
-  max-width: 100%;
-  max-height: min(74vh, 780px);
+  position: fixed;
+  width: min(340px, calc(100vw - 24px));
+  max-height: min(62vh, 520px);
   overflow: auto;
-  border-radius: 18px 18px 0 0;
+  border-radius: 16px;
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(10, 12, 18, 0.92));
-  box-shadow: 0 -20px 54px rgba(0, 0, 0, 0.42);
-  padding: 16px clamp(12px, 2vw, 22px) max(16px, env(safe-area-inset-bottom));
-  transform: translateY(100%);
-  transition: transform 220ms ease;
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.42);
+  padding: 12px;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform 180ms ease, opacity 180ms ease;
 }
 
 .dogma-sheet-backdrop.open .dogma-sheet {
   transform: translateY(0);
+  opacity: 1;
 }
 
 .dogma-sheet h4 {

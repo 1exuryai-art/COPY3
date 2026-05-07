@@ -2183,6 +2183,21 @@ function renderBookingEditor(container) {
     const sheet = ensureAddServiceCategorySheetInBody();
     const listEl = sheet ? sheet.querySelector("[data-add-svc-cats]") : null;
     if (!sheet || !listEl) return;
+    const triggerBtn = container.querySelector("#bookingAddService");
+    const rect = triggerBtn ? triggerBtn.getBoundingClientRect() : null;
+
+    if (rect) {
+      const pad = 12;
+      const desiredWidth = Math.min(360, Math.max(260, Math.round(rect.width)));
+      const left = Math.max(pad, Math.min(rect.left, window.innerWidth - desiredWidth - pad));
+      const top = Math.max(pad, rect.bottom + 8);
+      const maxH = Math.max(180, window.innerHeight - top - pad);
+      sheet.style.left = `${Math.round(left)}px`;
+      sheet.style.top = `${Math.round(top)}px`;
+      sheet.style.width = `${Math.round(desiredWidth)}px`;
+      sheet.style.maxHeight = `${Math.round(maxH)}px`;
+    }
+
     const categories = (cfg.serviceCategories || [])
       .slice()
       .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
