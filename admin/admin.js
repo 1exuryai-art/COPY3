@@ -1772,12 +1772,6 @@ function renderBookingEditor(container) {
         <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-jump="booking-discount">Zniżka</button>
         <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-jump="booking-catalog">Kategorie i usługi</button>
       </div>
-      <div class="dogma-booking-arrows">
-        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="prev" aria-label="Poprzednia sekcja">←</button>
-        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="next" aria-label="Następna sekcja">→</button>
-        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="up" aria-label="Przewiń wyżej">↑</button>
-        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="down" aria-label="Przewiń niżej">↓</button>
-      </div>
       <div class="dogma-booking-actions">
         <button type="button" class="dogma-btn dogma-btn--ghost dogma-btn--block-sm" id="bookingResetDefaults">Przywróć ustawienia jak na początku</button>
         <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--block-sm dogma-btn--plus" id="bookingAddCategory">+ Dodaj kategorię usług</button>
@@ -2183,15 +2177,21 @@ function renderBookingEditor(container) {
     const listEl = container.querySelector("[data-add-svc-cats]");
     const panel = sheet?.querySelector(".dogma-sheet--booking");
     if (!sheet || !listEl || !panel) return;
+    if (window.getComputedStyle(container).position === "static") {
+      container.style.position = "relative";
+    }
     const positionPanelToTrigger = () => {
       const triggerBtn = container.querySelector("#bookingAddService");
       const rect = triggerBtn ? triggerBtn.getBoundingClientRect() : null;
       if (!rect) return;
+      const hostRect = container.getBoundingClientRect();
       const pad = 12;
       const desiredWidth = Math.min(360, Math.max(220, Math.round(rect.width)));
-      const left = Math.max(pad, Math.min(rect.left, window.innerWidth - desiredWidth - pad));
-      const top = Math.max(pad, rect.bottom + 6);
-      const maxH = Math.max(180, window.innerHeight - top - pad);
+      const hostWidth = Math.max(240, container.clientWidth || Math.round(hostRect.width));
+      const rawLeft = rect.left - hostRect.left;
+      const left = Math.max(pad, Math.min(rawLeft, hostWidth - desiredWidth - pad));
+      const top = Math.max(pad, rect.bottom - hostRect.top + 6);
+      const maxH = Math.max(180, window.innerHeight - rect.bottom - pad);
       panel.style.left = `${Math.round(left)}px`;
       panel.style.top = `${Math.round(top)}px`;
       panel.style.width = `${Math.round(desiredWidth)}px`;

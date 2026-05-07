@@ -377,7 +377,7 @@ body.monarch-admin-body > * {
 }
 
 .dogma-sheet-backdrop {
-  position: fixed;
+  position: absolute;
   inset: 0;
   display: none;
   background: transparent;
@@ -390,16 +390,16 @@ body.monarch-admin-body > * {
 }
 
 .dogma-sheet {
-  position: fixed;
+  position: absolute;
   left: 12px;
   top: 12px;
   width: min(340px, calc(100vw - 24px));
   max-height: min(62vh, 520px);
   overflow: auto;
   border-radius: 16px;
-  border: 1px solid var(--line);
-  background: #0f1522;
-  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(140, 176, 255, 0.38);
+  background: linear-gradient(180deg, rgba(26, 38, 64, 0.96), rgba(18, 28, 50, 0.94));
+  box-shadow: 0 18px 42px rgba(8, 14, 28, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   padding: 12px;
   pointer-events: auto;
   transform: translateY(8px);
@@ -414,6 +414,8 @@ body.monarch-admin-body > * {
 
 .dogma-sheet h4 {
   margin: 0 0 10px;
+  color: #eef4ff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .dogma-sheet-close {
@@ -422,8 +424,8 @@ body.monarch-admin-body > * {
   height: 34px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: rgba(173, 202, 255, 0.16);
+  color: #eaf2ff;
   font-size: 22px;
   line-height: 1;
   display: grid;
@@ -436,6 +438,23 @@ body.monarch-admin-body > * {
   gap: 8px;
   max-height: 50vh;
   overflow: auto;
+}
+
+.dogma-sheet .dogma-field-hint {
+  color: rgba(236, 244, 255, 0.94);
+}
+
+.dogma-sheet .dogma-btn--ghost {
+  border-color: rgba(126, 168, 255, 0.45);
+  background: linear-gradient(180deg, rgba(118, 160, 250, 0.18), rgba(68, 108, 196, 0.2));
+  color: #f4f8ff !important;
+  font-weight: 800;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.28);
+}
+
+.dogma-sheet .dogma-btn--ghost:hover,
+.dogma-sheet .dogma-btn--ghost:focus-visible {
+  color: #ffffff !important;
 }
 
 @media (max-width: 900px) {

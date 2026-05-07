@@ -9,12 +9,12 @@
       "type": "image",
       "title": {
         "pl": "Clean manicure",
-        "ru": "?????? ???????",
+        "ru": "\u0427\u0438\u0441\u0442\u044b\u0439 \u043c\u0430\u043d\u0438\u043a\u044e\u0440",
         "en": "Clean manicure"
       },
       "description": {
         "pl": "Jasny, spokojny efekt na co dzien.",
-        "ru": "??????? ? ?????????? ????????? ?? ?????? ????.",
+        "ru": "\u0421\u0432\u0435\u0442\u043b\u044b\u0439 \u0438 \u0430\u043a\u043a\u0443\u0440\u0430\u0442\u043d\u044b\u0439 \u044d\u0444\u0444\u0435\u043a\u0442 \u043d\u0430 \u043a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c.",
         "en": "A bright and clean look for everyday wear."
       },
       "media": {
@@ -22,14 +22,14 @@
         "src": "/images/nails/clean-manicure.jpg",
         "alt": {
           "pl": "Clean manicure",
-          "ru": "?????? ???????",
+          "ru": "\u0427\u0438\u0441\u0442\u044b\u0439 \u043c\u0430\u043d\u0438\u043a\u044e\u0440",
           "en": "Clean manicure"
         },
         "poster": ""
       },
       "alt": {
         "pl": "Clean manicure",
-        "ru": "?????? ???????",
+        "ru": "\u0427\u0438\u0441\u0442\u044b\u0439 \u043c\u0430\u043d\u0438\u043a\u044e\u0440",
         "en": "Clean manicure"
       }
     },
@@ -45,7 +45,7 @@
       },
       "description": {
         "pl": "Naturalne wykonczenie i czysta linia.",
-        "ru": "??????????? ????? ? ?????? ?????.",
+        "ru": "\u041d\u0430\u0442\u0443\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0444\u0438\u043d\u0438\u0448 \u0438 \u0447\u0438\u0441\u0442\u0430\u044f \u043b\u0438\u043d\u0438\u044f.",
         "en": "Natural finish with a clean line."
       },
       "media": {
@@ -71,12 +71,12 @@
       "type": "image",
       "title": {
         "pl": "Premium french",
-        "ru": "??????? french",
+        "ru": "\u041f\u0440\u0435\u043c\u0438\u0443\u043c \u0444\u0440\u0435\u043d\u0447",
         "en": "Premium french"
       },
       "description": {
         "pl": "Dopracowany french i elegancki detal.",
-        "ru": "?????? french ? ?????????? ???????-??????.",
+        "ru": "\u0412\u044b\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0439 \u0444\u0440\u0435\u043d\u0447 \u0438 \u044d\u043b\u0435\u0433\u0430\u043d\u0442\u043d\u0430\u044f \u0434\u0435\u0442\u0430\u043b\u044c.",
         "en": "Refined French style with elegant detail."
       },
       "media": {
@@ -84,14 +84,14 @@
         "src": "/images/nails/premium-french.jpg",
         "alt": {
           "pl": "Premium french",
-          "ru": "??????? french",
+          "ru": "\u041f\u0440\u0435\u043c\u0438\u0443\u043c \u0444\u0440\u0435\u043d\u0447",
           "en": "Premium french"
         },
         "poster": ""
       },
       "alt": {
         "pl": "Premium french",
-        "ru": "??????? french",
+        "ru": "\u041f\u0440\u0435\u043c\u0438\u0443\u043c \u0444\u0440\u0435\u043d\u0447",
         "en": "Premium french"
       }
     },
@@ -102,12 +102,12 @@
       "type": "image",
       "title": {
         "pl": "Subtle art",
-        "ru": "?????????? ??????",
+        "ru": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u044b\u0439 \u0434\u0438\u0437\u0430\u0439\u043d",
         "en": "Subtle art"
       },
       "description": {
         "pl": "Delikatny detal bez przeladowania.",
-        "ru": "?????????? ?????? ??? ?????????.",
+        "ru": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u0430\u044f \u0434\u0435\u0442\u0430\u043b\u044c \u0431\u0435\u0437 \u043f\u0435\u0440\u0435\u0433\u0440\u0443\u0437\u0430.",
         "en": "Subtle detail without overloading the look."
       },
       "media": {
@@ -115,14 +115,14 @@
         "src": "/images/nails/subtle-art.jpg",
         "alt": {
           "pl": "Subtle art",
-          "ru": "?????????? ??????",
+          "ru": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u044b\u0439 \u0434\u0438\u0437\u0430\u0439\u043d",
           "en": "Subtle art"
         },
         "poster": ""
       },
       "alt": {
         "pl": "Subtle art",
-        "ru": "?????????? ??????",
+        "ru": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u044b\u0439 \u0434\u0438\u0437\u0430\u0439\u043d",
         "en": "Subtle art"
       }
     },
@@ -133,12 +133,12 @@
       "type": "image",
       "title": {
         "pl": "Studio interior",
-        "ru": "???????? ??????",
+        "ru": "\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440 \u0441\u0442\u0443\u0434\u0438\u0438",
         "en": "Studio interior"
       },
       "description": {
         "pl": "Jasne wnetrze i spokojna atmosfera Luna.",
-        "ru": "??????? ???????? ? ????????? ????????? Luna.",
+        "ru": "\u0421\u0432\u0435\u0442\u043b\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u044c\u0435\u0440 \u0438 \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u0430\u044f \u0430\u0442\u043c\u043e\u0441\u0444\u0435\u0440\u0430 Luna.",
         "en": "Bright interior and calm Luna atmosphere."
       },
       "media": {
@@ -146,42 +146,16 @@
         "src": "/images/nails/studio-interior.jpg",
         "alt": {
           "pl": "Studio interior",
-          "ru": "???????? ??????",
+          "ru": "\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440 \u0441\u0442\u0443\u0434\u0438\u0438",
           "en": "Studio interior"
         },
         "poster": ""
       },
       "alt": {
         "pl": "Studio interior",
-        "ru": "???????? ??????",
+        "ru": "\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440 \u0441\u0442\u0443\u0434\u0438\u0438",
         "en": "Studio interior"
       }
-    },
-    {
-      "id": "282fa880-b3f9-4b83-afc1-c68b5f0a7f85",
-      "type": "video",
-      "title": {
-        "pl": "",
-        "ru": "",
-        "en": ""
-      },
-      "description": {
-        "pl": "",
-        "ru": "",
-        "en": ""
-      },
-      "media": {
-        "type": "video",
-        "src": "/assets/admin-uploads/1778018909298-16c5b4d49894e5e2.mp4",
-        "poster": "",
-        "alt": {
-          "pl": "",
-          "ru": "",
-          "en": ""
-        }
-      },
-      "visible": true,
-      "order": 5
     }
   ],
   "effectPhotos": [],
@@ -422,7 +396,9 @@
           "en": "The most requested services in the studio."
         },
         "visible": true,
-        "order": 1
+        "order": 1,
+        "marker": "🔵",
+        "marker2": ""
       },
       {
         "id": "manicure",
@@ -437,7 +413,9 @@
           "en": "Classic, gel polish and care manicure services."
         },
         "visible": true,
-        "order": 2
+        "order": 2,
+        "marker": "🟣",
+        "marker2": ""
       },
       {
         "id": "extension-gel",
@@ -452,7 +430,9 @@
           "en": "Extensions, refills and gel nail styling."
         },
         "visible": true,
-        "order": 3
+        "order": 3,
+        "marker": "🟠",
+        "marker2": ""
       },
       {
         "id": "nail-art",
@@ -467,7 +447,9 @@
           "en": "French, baby boomer, details and nail art."
         },
         "visible": true,
-        "order": 4
+        "order": 4,
+        "marker": "🟡",
+        "marker2": ""
       },
       {
         "id": "pedicure",
@@ -482,7 +464,9 @@
           "en": "Classic, gel polish and care pedicure."
         },
         "visible": true,
-        "order": 5
+        "order": 5,
+        "marker": "🔴",
+        "marker2": ""
       },
       {
         "id": "removal-repair",
@@ -497,7 +481,9 @@
           "en": "Removal, nail repair and correction."
         },
         "visible": true,
-        "order": 6
+        "order": 6,
+        "marker": "⚫",
+        "marker2": ""
       },
       {
         "id": "packages",
@@ -512,7 +498,9 @@
           "en": "Ready-made service sets in one booking."
         },
         "visible": true,
-        "order": 7
+        "order": 7,
+        "marker": "⚪",
+        "marker2": ""
       }
     ],
     "services": [
@@ -680,7 +668,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "manicure-hybrid-full",
@@ -702,7 +704,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "manicure-japanese",
@@ -724,7 +740,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "manicure-men",
@@ -746,7 +776,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "gel-extension-premium",
@@ -768,7 +812,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "gel-refill",
@@ -790,7 +848,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "gel-overlay-natural",
@@ -812,7 +884,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "one-nail-extension",
@@ -834,7 +920,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "french",
@@ -856,7 +956,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "baby-boomer",
@@ -878,7 +992,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "subtle-nail-art",
@@ -900,7 +1028,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "premium-nail-art",
@@ -922,7 +1064,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "pedicure-classic",
@@ -944,7 +1100,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "pedicure-hybrid-main",
@@ -966,7 +1136,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "pedicure-spa",
@@ -988,7 +1172,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "gel-polish-removal",
@@ -1010,7 +1208,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "gel-removal",
@@ -1032,7 +1244,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "nail-repair",
@@ -1054,7 +1280,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "package-gel-mani-pedi",
@@ -1076,7 +1316,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "package-mani-art",
@@ -1098,7 +1352,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       },
       {
         "id": "package-extension-art",
@@ -1120,7 +1388,21 @@
         "visible": true,
         "bookingEnabled": true,
         "availableBarberIds": [],
-        "allowClientBarberChoice": true
+        "allowClientBarberChoice": true,
+        "promoDiscount": {
+          "enabled": false,
+          "usePercent": true,
+          "percent": 10,
+          "priceAfter": "",
+          "weekdays": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "startMinutes": 600,
+          "endMinutes": 960
+        }
       }
     ],
     "barbers": [
@@ -1215,7 +1497,7 @@
     "hoursDisplay": "Pn-Sob 10:00-20:00, Nd 10:00-18:00",
     "address": {
       "pl": "ul. Przykladowa 12A, Wroclaw",
-      "ru": "ul. Przykladowa 12A, ???????",
+      "ru": "ul. Przykladowa 12A, Wroclaw",
       "en": "ul. Przykladowa 12A, Wroclaw"
     },
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ul.+Przyk%C5%82adowa+12A,+Wroc%C5%82aw",
