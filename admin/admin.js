@@ -1807,6 +1807,15 @@ function renderBookingEditor(container) {
     <h3 class="dogma-panel-subtitle" id="booking-catalog" data-booking-anchor>Kategorie i usługi w rezerwacji</h3>
     <p class="dogma-field-hint dogma-field-hint--tight">Kategoria to „folder” — w środku widać tylko usługi z niej.</p>
     <div class="dogma-stack">${catBlocksNested}</div>
+
+    <div class="dogma-sheet-backdrop" id="bookingAddSvcSheet" aria-hidden="true">
+      <div class="dogma-sheet dogma-sheet--booking" role="dialog" aria-modal="true" aria-labelledby="bookingAddSvcSheetTitle">
+        <button type="button" class="dogma-sheet-close" data-close-add-svc-sheet aria-label="Zamknij">×</button>
+        <h4 id="bookingAddSvcSheetTitle">Do której kategorii?</h4>
+        <p class="dogma-field-hint">Wybierz kategorię, a od razu przejdziesz do edycji nowej usługi.</p>
+        <div class="dogma-sheet-list" data-add-svc-cats></div>
+      </div>
+    </div>
   `;
 
   container.querySelectorAll("[data-booking-jump]").forEach((btn) => {
@@ -2109,13 +2118,24 @@ function renderBookingEditor(container) {
   });
 
   container.querySelector("#bookingAddService")?.addEventListener("click", () => {
+    openAddServiceCategorySheet();
+  });
+
+  function closeAddServiceCategorySheet() {
+    const sheet = container.querySelector("#bookingAddSvcSheet");
+    if (!sheet) return;
+    sheet.classList.remove("open");
+    sheet.setAttribute("aria-hidden", "true");
+  }
+
+  function addBookingServiceInCategory(categoryId) {
     if (state.bookingConfig == null) {
       state.bookingConfig = deepClone(getDefaultBookingConfig());
     }
     const id = `svc-${Date.now()}`;
     cfg.services.push({
       id,
-      category: (cfg.serviceCategories[0] && cfg.serviceCategories[0].id) || "popular",
+      category: categoryId,
       name: { pl: "Nowa usługa", ru: "", en: "" },
       description: { pl: "", ru: "", en: "" },
       basePrice: 100,
@@ -2132,12 +2152,55 @@ function renderBookingEditor(container) {
     renderBookingEditor(container);
     updateDirtyBanner();
     requestAnimationFrame(() => {
-      const el = container.querySelector(`[data-b-svc="${newSvcIdx}"]`);
-      el?.scrollIntoView({ behavior: "smooth", block: "center" });
-      el?.classList.add("dogma-card--flash");
-      window.setTimeout(() => el?.classList.remove("dogma-card--flash"), 1600);
-      el?.querySelector('[data-locale-path="name"][data-lang="pl"]')?.focus({ preventScroll: true });
+      const catIdx = cfg.serviceCategories.findIndex((cat) => cat && cat.id === categoryId);
+      const catEl = catIdx >= 0 ? container.querySelector(`[data-b-cat="${catIdx}"]`) : null;
+      const svcEl = container.querySelector(`[data-b-svc="${newSvcIdx}"]`);
+      catEl?.scrollIntoView({ behavior: "smooth", block: "start" });
+      catEl?.classList.add("dogma-card--flash");
+      svcEl?.classList.add("dogma-card--flash");
+      window.setTimeout(() => {
+        catEl?.classList.remove("dogma-card--flash");
+        svcEl?.classList.remove("dogma-card--flash");
+      }, 1600);
+      svcEl?.querySelector('[data-locale-path="name"][data-lang="pl"]')?.focus({ preventScroll: true });
     });
+  }
+
+  function openAddServiceCategorySheet() {
+    const sheet = container.querySelector("#bookingAddSvcSheet");
+    const listEl = container.querySelector("[data-add-svc-cats]");
+    if (!sheet || !listEl) return;
+    const categories = (cfg.serviceCategories || [])
+      .slice()
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+    if (!categories.length) {
+      listEl.innerHTML = `<p class="dogma-hint">Na razie nie masz utworzonych kategorii.</p>`;
+      sheet.classList.add("open");
+      sheet.setAttribute("aria-hidden", "false");
+      return;
+    }
+    listEl.innerHTML = categories
+      .map(
+        (cat) => `<button type="button" class="dogma-btn dogma-btn--ghost dogma-btn--block-sm" data-add-svc-cat-id="${esc(cat.id)}">
+          ${esc(pickLocAdmin(cat.title, "pl") || cat.id)}
+        </button>`
+      )
+      .join("");
+    listEl.querySelectorAll("[data-add-svc-cat-id]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const categoryId = btn.getAttribute("data-add-svc-cat-id");
+        if (!categoryId) return;
+        closeAddServiceCategorySheet();
+        addBookingServiceInCategory(categoryId);
+      });
+    });
+    sheet.classList.add("open");
+    sheet.setAttribute("aria-hidden", "false");
+  }
+
+  container.querySelector("[data-close-add-svc-sheet]")?.addEventListener("click", closeAddServiceCategorySheet);
+  container.querySelector("#bookingAddSvcSheet")?.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeAddServiceCategorySheet();
   });
 
   bindBookingForm();
