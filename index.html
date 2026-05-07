@@ -573,6 +573,7 @@
       position: relative;
       max-width: 520px;
       margin: 8vh auto 0;
+      max-height: calc(100dvh - 32px);
       border-radius: 20px;
       padding: 20px;
       border: 1px solid rgba(148, 163, 184, 0.3);
@@ -584,6 +585,9 @@
       transform: translateY(8px) scale(.985);
       opacity: 0;
       animation: settingsSheetIn 180ms ease forwards;
+      overflow: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
     .product-info-sheet__close {
       position: absolute;
