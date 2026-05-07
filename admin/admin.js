@@ -2117,8 +2117,16 @@ function renderBookingEditor(container) {
     });
   });
 
+  let detachAddServiceSheetGlobalListeners = null;
+
   container.querySelector("#bookingAddService")?.addEventListener("click", () => {
-    openAddServiceCategorySheet();
+    const sheet = container.querySelector("#bookingAddSvcSheet");
+    if (!sheet) return;
+    if (sheet.classList.contains("open")) {
+      closeAddServiceCategorySheet();
+    } else {
+      openAddServiceCategorySheet();
+    }
   });
 
   function closeAddServiceCategorySheet() {
@@ -2126,6 +2134,10 @@ function renderBookingEditor(container) {
     if (!sheet) return;
     sheet.classList.remove("open");
     sheet.setAttribute("aria-hidden", "true");
+    if (detachAddServiceSheetGlobalListeners) {
+      detachAddServiceSheetGlobalListeners();
+      detachAddServiceSheetGlobalListeners = null;
+    }
   }
 
   function addBookingServiceInCategory(categoryId) {
@@ -2171,18 +2183,21 @@ function renderBookingEditor(container) {
     const listEl = container.querySelector("[data-add-svc-cats]");
     const panel = sheet?.querySelector(".dogma-sheet--booking");
     if (!sheet || !listEl || !panel) return;
-    const triggerBtn = container.querySelector("#bookingAddService");
-    const rect = triggerBtn ? triggerBtn.getBoundingClientRect() : null;
-    if (!rect) return;
-    const pad = 12;
-    const desiredWidth = Math.min(360, Math.max(220, Math.round(rect.width)));
-    const left = Math.max(pad, Math.min(rect.left, window.innerWidth - desiredWidth - pad));
-    const top = Math.max(pad, rect.bottom + 6);
-    const maxH = Math.max(180, window.innerHeight - top - pad);
-    panel.style.left = `${Math.round(left)}px`;
-    panel.style.top = `${Math.round(top)}px`;
-    panel.style.width = `${Math.round(desiredWidth)}px`;
-    panel.style.maxHeight = `${Math.round(maxH)}px`;
+    const positionPanelToTrigger = () => {
+      const triggerBtn = container.querySelector("#bookingAddService");
+      const rect = triggerBtn ? triggerBtn.getBoundingClientRect() : null;
+      if (!rect) return;
+      const pad = 12;
+      const desiredWidth = Math.min(360, Math.max(220, Math.round(rect.width)));
+      const left = Math.max(pad, Math.min(rect.left, window.innerWidth - desiredWidth - pad));
+      const top = Math.max(pad, rect.bottom + 6);
+      const maxH = Math.max(180, window.innerHeight - top - pad);
+      panel.style.left = `${Math.round(left)}px`;
+      panel.style.top = `${Math.round(top)}px`;
+      panel.style.width = `${Math.round(desiredWidth)}px`;
+      panel.style.maxHeight = `${Math.round(maxH)}px`;
+    };
+    positionPanelToTrigger();
 
     const categories = (cfg.serviceCategories || [])
       .slice()
@@ -2210,15 +2225,32 @@ function renderBookingEditor(container) {
     });
     sheet.classList.add("open");
     sheet.setAttribute("aria-hidden", "false");
+
+    const onPointerDown = (event) => {
+      if (!sheet.classList.contains("open")) return;
+      const target = event.target;
+      const triggerBtn = container.querySelector("#bookingAddService");
+      if (panel.contains(target) || (triggerBtn && triggerBtn.contains(target))) return;
+      closeAddServiceCategorySheet();
+    };
+    const onViewportChange = () => {
+      if (!sheet.classList.contains("open")) return;
+      positionPanelToTrigger();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("resize", onViewportChange, { passive: true });
+    window.addEventListener("scroll", onViewportChange, true);
+    detachAddServiceSheetGlobalListeners = () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("resize", onViewportChange);
+      window.removeEventListener("scroll", onViewportChange, true);
+    };
   }
 
   const localSheet = container.querySelector("#bookingAddSvcSheet");
   if (localSheet && localSheet.dataset.boundClose !== "1") {
     localSheet.dataset.boundClose = "1";
     localSheet.querySelector("[data-close-add-svc-sheet]")?.addEventListener("click", closeAddServiceCategorySheet);
-    localSheet.addEventListener("click", (e) => {
-      if (e.target === e.currentTarget) closeAddServiceCategorySheet();
-    });
   }
 
   bindBookingForm();

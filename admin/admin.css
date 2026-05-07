@@ -380,15 +380,13 @@ body.monarch-admin-body > * {
   position: fixed;
   inset: 0;
   display: none;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0;
-  background: rgba(5, 8, 18, 0.32);
+  background: transparent;
+  pointer-events: none;
   z-index: 1200;
 }
 
 .dogma-sheet-backdrop.open {
-  display: flex;
+  display: block;
 }
 
 .dogma-sheet {
@@ -403,6 +401,7 @@ body.monarch-admin-body > * {
   background: #0f1522;
   box-shadow: 0 20px 54px rgba(0, 0, 0, 0.42);
   padding: 12px;
+  pointer-events: auto;
   transform: translateY(8px);
   opacity: 0;
   transition: transform 180ms ease, opacity 180ms ease;
