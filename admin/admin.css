@@ -2491,6 +2491,128 @@ body.monarch-admin-body::after {
   min-height: 40px;
 }
 
+.dogma-booking-arrows {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dogma-booking-arrows .dogma-btn {
+  min-height: 40px;
+  font-size: 18px;
+  font-weight: 900;
+  padding-inline: 0;
+}
+
+.dogma-btn--plus {
+  border-color: rgba(57, 255, 20, 0.45) !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.36), transparent 40%),
+    linear-gradient(180deg, #9bff7a 0%, #39ff14 52%, #1ec20a 100%) !important;
+  color: #0b1807 !important;
+  box-shadow: 0 18px 40px rgba(57, 255, 20, 0.28), 0 0 0 4px rgba(57, 255, 20, 0.12) !important;
+}
+
+.dogma-btn--plus:hover {
+  filter: brightness(1.08) saturate(1.08);
+}
+
+.dogma-collapsible-cat {
+  border-color: rgba(79, 139, 255, 0.38) !important;
+  background: linear-gradient(180deg, rgba(79, 139, 255, 0.12), rgba(79, 139, 255, 0.04)) !important;
+}
+
+.dogma-collapsible-svc {
+  border-color: rgba(239, 186, 115, 0.34) !important;
+  background: linear-gradient(180deg, rgba(239, 186, 115, 0.1), rgba(239, 186, 115, 0.03)) !important;
+}
+
+.dogma-collapsible-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dogma-collapsible-summary::-webkit-details-marker {
+  display: none;
+}
+
+.dogma-collapsible-title {
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+.dogma-marker-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.2em;
+  margin-left: 6px;
+}
+
+.dogma-marker-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dogma-marker-row > select {
+  max-width: 120px;
+}
+
+.dogma-btn--marker-plus {
+  min-width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.dogma-collapsible-meta {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.82;
+}
+
+.dogma-collapsible-cat > .dogma-collapsible-summary .dogma-collapsible-meta {
+  color: #4f8bff;
+}
+
+.dogma-collapsible-svc > .dogma-collapsible-summary .dogma-collapsible-meta {
+  color: #efba73;
+}
+
+.dogma-collapsible-body {
+  margin-top: 10px;
+}
+
+.dogma-search-mark {
+  position: relative;
+}
+
+.dogma-search-mark::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #39ff14;
+  box-shadow: 0 0 0 2px rgba(6, 20, 5, 0.85), 0 0 14px rgba(57, 255, 20, 0.65);
+  pointer-events: none;
+}
+
 /* Panel chrome (second definition merges) */
 
 .admin-app .dogma-panel.active {

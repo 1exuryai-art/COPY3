@@ -1537,8 +1537,39 @@ function ensureBookingServiceLocales(svc) {
   }
 }
 
+const BOOKING_CATEGORY_MARKERS = ["🟢", "🔵", "🟣", "🟠", "🟡", "🔴", "⚫", "⚪"];
+
+function getCategoryMarker(cat) {
+  const m = String(cat?.marker || "").trim();
+  return BOOKING_CATEGORY_MARKERS.includes(m) ? m : "🟢";
+}
+
+function getCategorySecondMarker(cat) {
+  const m = String(cat?.marker2 || "").trim();
+  return BOOKING_CATEGORY_MARKERS.includes(m) ? m : "";
+}
+
+function getCategoryMarkerLabel(cat) {
+  const primary = getCategoryMarker(cat);
+  const second = getCategorySecondMarker(cat);
+  return second ? `${primary}${second}` : primary;
+}
+
+function getCategoryById(cfg, id) {
+  return (cfg?.serviceCategories || []).find((c) => c && c.id === id) || null;
+}
+
+function markerSelectHtml(selectedMarker, attrs = "") {
+  const safeSelected = BOOKING_CATEGORY_MARKERS.includes(selectedMarker) ? selectedMarker : "🟢";
+  return `<select ${attrs}>${BOOKING_CATEGORY_MARKERS.map(
+    (m) => `<option value="${esc(m)}" ${m === safeSelected ? "selected" : ""}>${esc(m)}</option>`
+  ).join("")}</select>`;
+}
+
 function buildBookingServiceCardHtml(svc, svcIdx, cfg) {
   ensureBookingServiceLocales(svc);
+  const cat = getCategoryById(cfg, svc.category);
+  const marker = getCategoryMarkerLabel(cat);
   const barberIds = Array.isArray(svc.availableBarberIds) ? svc.availableBarberIds : [];
   const catOptions = (cfg.serviceCategories || [])
     .map((c) => {
@@ -1566,11 +1597,15 @@ function buildBookingServiceCardHtml(svc, svcIdx, cfg) {
   const pctVal = Number(p.percent) || 10;
   const priceAfterVal = p.priceAfter === "" || p.priceAfter == null ? "" : String(p.priceAfter);
   return `
-      <div class="dogma-subcard dogma-subcard--booking-svc" data-b-svc="${svcIdx}">
-        <h5 class="dogma-booking-svc-title">${esc(servicePlName(svc) || "Usługa")}</h5>
-        <div class="dogma-card-hero__actions" style="margin-bottom:8px;">
-          <button type="button" class="dogma-btn dogma-btn--danger" data-svc-del="${svcIdx}">Usuń usługę</button>
-        </div>
+      <details class="dogma-subcard dogma-subcard--booking-svc dogma-collapsible-svc dogma-search-mark" data-b-svc="${svcIdx}">
+        <summary class="dogma-collapsible-summary">
+          <span class="dogma-collapsible-title dogma-booking-svc-title">${esc(servicePlName(svc) || "Usługa")} <span class="dogma-marker-chip">${esc(marker)}</span></span>
+          <span class="dogma-collapsible-meta">${Number(svc.basePrice) || 0} zł · ${esc(svc.duration || "—")}</span>
+        </summary>
+        <div class="dogma-collapsible-body">
+          <div class="dogma-card-hero__actions" style="margin-bottom:8px;">
+            <button type="button" class="dogma-btn dogma-btn--danger" data-svc-del="${svcIdx}">Usuń usługę</button>
+          </div>
         ${fieldLocaleBlock(svc, "name", "bookingSvcName")}
         ${fieldLocaleBlock(svc, "description", "bookingSvcDesc")}
         <div class="dogma-field"><label>Cena normalna (zł)</label><input type="number" data-svc-price value="${Number(svc.basePrice) || 0}" min="0" step="1" /></div>
@@ -1607,7 +1642,8 @@ function buildBookingServiceCardHtml(svc, svcIdx, cfg) {
           <p class="dogma-field-hint">Wewnętrzny zapis w systemie.</p>
           <div class="dogma-field"><label>Wewnętrzny identyfikator</label><input type="text" readonly value="${esc(svc.id)}" /></div>
         </details>
-      </div>`;
+        </div>
+      </details>`;
 }
 
 function getFallbackPopularBookingCategory() {
@@ -1623,6 +1659,8 @@ function getFallbackPopularBookingCategory() {
       ru: "Самые популярные услуги.",
       en: "Most popular services."
     },
+    marker: "🟢",
+    marker2: "",
     visible: true,
     order: 1
   };
@@ -1665,14 +1703,20 @@ function renderBookingEditor(container) {
     .map(({ cat, idx }) => {
       ensureLocaleRef(cat, "title");
       ensureLocaleRef(cat, "description");
+      cat.marker = getCategoryMarker(cat);
+      cat.marker2 = getCategorySecondMarker(cat);
       const svcInner = (cfg.services || [])
         .map((svc, svcIdx) => ({ svc, svcIdx }))
         .filter((x) => x.svc.category === cat.id)
         .map((x) => buildBookingServiceCardHtml(x.svc, x.svcIdx, cfg))
         .join("");
       return `
-      <div class="dogma-booking-cat-block dogma-subcard" data-b-cat="${idx}">
-        <h4 class="dogma-booking-cat-heading">Kategoria: ${esc(pickLocAdmin(cat.title, "pl") || "—")}</h4>
+      <details class="dogma-booking-cat-block dogma-subcard dogma-collapsible-cat dogma-search-mark" data-b-cat="${idx}" data-booking-anchor>
+        <summary class="dogma-collapsible-summary dogma-collapsible-summary--cat">
+          <span class="dogma-collapsible-title dogma-booking-cat-heading">Kategoria: ${esc(pickLocAdmin(cat.title, "pl") || "—")} <span class="dogma-marker-chip">${esc(getCategoryMarkerLabel(cat))}</span></span>
+          <span class="dogma-collapsible-meta">${(cfg.services || []).filter((s) => s.category === cat.id).length} usług</span>
+        </summary>
+        <div class="dogma-collapsible-body">
         ${fieldLocaleBlock(cat, "title", "catTitle")}
         ${fieldLocaleBlock(cat, "description", "catDesc")}
         <div class="dogma-field dogma-field--inline">
@@ -1682,6 +1726,18 @@ function renderBookingEditor(container) {
           <label>Kolejność na stronie</label>
           <input type="number" data-cat-order value="${Number(cat.order) || idx}" />
           <p class="dogma-field-hint">Niższa liczba = wyżej na liście.</p>
+        </div>
+        <div class="dogma-field">
+          <label>Szybki kolor / emoji kategorii</label>
+          <div class="dogma-marker-row">
+            ${markerSelectHtml(cat.marker, 'data-cat-marker')}
+            <button type="button" class="dogma-btn dogma-btn--ghost dogma-btn--marker-plus" data-cat-second-toggle title="Dodaj drugi kolor">+</button>
+          </div>
+          <div class="dogma-marker-row dogma-marker-row--second" data-cat-second-wrap ${cat.marker2 ? "" : 'style="display:none;"'}>
+            ${markerSelectHtml(cat.marker2 || "🔵", 'data-cat-marker2')}
+            <button type="button" class="dogma-btn dogma-btn--ghost dogma-btn--marker-plus" data-cat-second-remove title="Usuń drugi kolor">×</button>
+          </div>
+          <p class="dogma-field-hint">Ten sam marker (1 lub 2 kolory) automatycznie pojawi się przy wszystkich usługach tej kategorii.</p>
         </div>
         <details class="dogma-details dogma-details--tech"><summary>Ustawienia techniczne — tylko dla programisty</summary>
           <p class="dogma-field-hint">Wewnętrzny zapis kategorii.</p>
@@ -1694,7 +1750,8 @@ function renderBookingEditor(container) {
           <h5 class="dogma-panel-subtitle dogma-panel-subtitle--nest">Usługi w tej kategorii</h5>
           <div class="dogma-stack dogma-stack--nest">${svcInner || `<p class="dogma-hint">Brak usług — dodaj nową poniżej lub przenieś tu istniejącą zmianą kategorii.</p>`}</div>
         </div>
-      </div>`;
+        </div>
+      </details>`;
     })
     .join("");
 
@@ -1715,18 +1772,24 @@ function renderBookingEditor(container) {
         <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-jump="booking-discount">Zniżka</button>
         <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-jump="booking-catalog">Kategorie i usługi</button>
       </div>
+      <div class="dogma-booking-arrows">
+        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="prev" aria-label="Poprzednia sekcja">←</button>
+        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="next" aria-label="Następna sekcja">→</button>
+        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="up" aria-label="Przewiń wyżej">↑</button>
+        <button type="button" class="dogma-btn dogma-btn--ghost" data-booking-nav="down" aria-label="Przewiń niżej">↓</button>
+      </div>
       <div class="dogma-booking-actions">
         <button type="button" class="dogma-btn dogma-btn--ghost dogma-btn--block-sm" id="bookingResetDefaults">Przywróć ustawienia jak na początku</button>
-        <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--block-sm" id="bookingAddCategory">+ Dodaj kategorię usług</button>
-        <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--block-sm" id="bookingAddService">+ Dodaj usługę do rezerwacji</button>
+        <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--block-sm dogma-btn--plus" id="bookingAddCategory">+ Dodaj kategorię usług</button>
+        <button type="button" class="dogma-btn dogma-btn--primary dogma-btn--block-sm dogma-btn--plus" id="bookingAddService">+ Dodaj usługę do rezerwacji</button>
       </div>
     </div>
 
-    <h3 class="dogma-panel-subtitle" id="booking-hours">Godziny pracy salonu</h3>
+    <h3 class="dogma-panel-subtitle" id="booking-hours" data-booking-anchor>Godziny pracy salonu</h3>
     <p class="dogma-field-hint">Na podstawie tych godzin pokazujemy wolne terminy.</p>
     <div class="dogma-item dogma-hours">${dayRows}</div>
 
-    <h3 class="dogma-panel-subtitle" id="booking-discount">Zniżka ogólna (dla wielu usług naraz)</h3>
+    <h3 class="dogma-panel-subtitle" id="booking-discount" data-booking-anchor>Zniżka ogólna (dla wielu usług naraz)</h3>
     <div class="dogma-item dogma-subcard">
       <div class="dogma-field dogma-field--inline"><label><input type="checkbox" id="disc-enabled" ${disc.enabled !== false ? "checked" : ""} /> Włączyć ogólną zniżkę?</label></div>
       <div class="dogma-field"><label>Nazwa dla Ciebie (nie musi być na stronie)</label><input type="text" id="disc-name" value="${esc(disc.name || "")}" /></div>
@@ -1741,7 +1804,7 @@ function renderBookingEditor(container) {
       <div class="dogma-field"><label>Do której godziny?</label><input type="time" id="disc-end-time" value="${esc(minutesToTime(disc.endMinutes != null ? disc.endMinutes : 960))}" /></div>
     </div>
 
-    <h3 class="dogma-panel-subtitle" id="booking-catalog">Kategorie i usługi w rezerwacji</h3>
+    <h3 class="dogma-panel-subtitle" id="booking-catalog" data-booking-anchor>Kategorie i usługi w rezerwacji</h3>
     <p class="dogma-field-hint dogma-field-hint--tight">Kategoria to „folder” — w środku widać tylko usługi z niej.</p>
     <div class="dogma-stack">${catBlocksNested}</div>
   `;
@@ -1753,6 +1816,35 @@ function renderBookingEditor(container) {
       const target = container.querySelector(`#${id}`);
       if (!target) return;
       target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  container.querySelectorAll("[data-booking-nav]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const action = btn.getAttribute("data-booking-nav");
+      const anchors = [...container.querySelectorAll("[data-booking-anchor]")];
+      if (!anchors.length) return;
+      const currentTop = window.scrollY + 140;
+      let currentIndex = anchors.findIndex((el) => el.getBoundingClientRect().top + window.scrollY >= currentTop - 8);
+      if (currentIndex < 0) currentIndex = anchors.length - 1;
+
+      if (action === "prev") {
+        const target = anchors[Math.max(0, currentIndex - 1)];
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      if (action === "next") {
+        const target = anchors[Math.min(anchors.length - 1, currentIndex + 1)];
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      if (action === "up") {
+        window.scrollBy({ top: -520, behavior: "smooth" });
+        return;
+      }
+      if (action === "down") {
+        window.scrollBy({ top: 520, behavior: "smooth" });
+      }
     });
   });
 
@@ -1817,15 +1909,37 @@ function renderBookingEditor(container) {
         cat.order = Number(e.target.value) || 0;
         updateDirtyBanner();
       });
+      el.querySelector("[data-cat-marker]")?.addEventListener("change", (e) => {
+        cat.marker = BOOKING_CATEGORY_MARKERS.includes(e.target.value) ? e.target.value : "🟢";
+        const h = el.querySelector(".dogma-booking-cat-heading");
+        if (h) h.textContent = `Kategoria: ${pickLocAdmin(cat.title, "pl") || "—"} ${getCategoryMarkerLabel(cat)}`;
+        renderBookingEditor(container);
+        updateDirtyBanner();
+      });
+      el.querySelector("[data-cat-second-toggle]")?.addEventListener("click", () => {
+        if (!getCategorySecondMarker(cat)) cat.marker2 = "🔵";
+        renderBookingEditor(container);
+        updateDirtyBanner();
+      });
+      el.querySelector("[data-cat-second-remove]")?.addEventListener("click", () => {
+        cat.marker2 = "";
+        renderBookingEditor(container);
+        updateDirtyBanner();
+      });
+      el.querySelector("[data-cat-marker2]")?.addEventListener("change", (e) => {
+        cat.marker2 = BOOKING_CATEGORY_MARKERS.includes(e.target.value) ? e.target.value : "";
+        renderBookingEditor(container);
+        updateDirtyBanner();
+      });
       bindLocalePath(el, cat);
       bindPlCopyEmptyButtons(el, cat, () => {
         const h = el.querySelector(".dogma-booking-cat-heading");
-        if (h) h.textContent = `Kategoria: ${pickLocAdmin(cat.title, "pl") || "—"}`;
+        if (h) h.textContent = `Kategoria: ${pickLocAdmin(cat.title, "pl") || "—"} ${getCategoryMarkerLabel(cat)}`;
       });
       el.querySelectorAll('[data-locale-path="title"]').forEach((inp) => {
         inp.addEventListener("input", () => {
           const h = el.querySelector(".dogma-booking-cat-heading");
-          if (h) h.textContent = `Kategoria: ${pickLocAdmin(cat.title, "pl") || "—"}`;
+          if (h) h.textContent = `Kategoria: ${pickLocAdmin(cat.title, "pl") || "—"} ${getCategoryMarkerLabel(cat)}`;
         });
       });
       el.querySelector("[data-cat-del]")?.addEventListener("click", () => {
@@ -1977,6 +2091,8 @@ function renderBookingEditor(container) {
       id,
       title: { pl: "Nowa kategoria", ru: "", en: "" },
       description: { pl: "", ru: "", en: "" },
+      marker: "🟢",
+      marker2: "",
       visible: true,
       order: cfg.serviceCategories.length + 1
     });
