@@ -393,6 +393,8 @@ body.monarch-admin-body > * {
 
 .dogma-sheet {
   position: fixed;
+  left: 12px;
+  top: 12px;
   width: min(340px, calc(100vw - 24px));
   max-height: min(62vh, 520px);
   overflow: auto;

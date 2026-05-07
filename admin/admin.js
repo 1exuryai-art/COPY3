@@ -2169,19 +2169,20 @@ function renderBookingEditor(container) {
   function openAddServiceCategorySheet() {
     const sheet = container.querySelector("#bookingAddSvcSheet");
     const listEl = container.querySelector("[data-add-svc-cats]");
-    if (!sheet || !listEl) return;
+    const panel = sheet?.querySelector(".dogma-sheet--booking");
+    if (!sheet || !listEl || !panel) return;
     const triggerBtn = container.querySelector("#bookingAddService");
     const rect = triggerBtn ? triggerBtn.getBoundingClientRect() : null;
     if (!rect) return;
     const pad = 12;
-    const desiredWidth = Math.max(220, Math.round(rect.width));
+    const desiredWidth = Math.min(360, Math.max(220, Math.round(rect.width)));
     const left = Math.max(pad, Math.min(rect.left, window.innerWidth - desiredWidth - pad));
     const top = Math.max(pad, rect.bottom + 6);
     const maxH = Math.max(180, window.innerHeight - top - pad);
-    sheet.style.left = `${Math.round(left)}px`;
-    sheet.style.top = `${Math.round(top)}px`;
-    sheet.style.width = `${Math.round(desiredWidth)}px`;
-    sheet.style.maxHeight = `${Math.round(maxH)}px`;
+    panel.style.left = `${Math.round(left)}px`;
+    panel.style.top = `${Math.round(top)}px`;
+    panel.style.width = `${Math.round(desiredWidth)}px`;
+    panel.style.maxHeight = `${Math.round(maxH)}px`;
 
     const categories = (cfg.serviceCategories || [])
       .slice()
