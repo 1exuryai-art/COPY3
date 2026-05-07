@@ -2121,21 +2121,8 @@ function renderBookingEditor(container) {
     openAddServiceCategorySheet();
   });
 
-  function getAddServiceCategorySheet() {
-    return document.getElementById("bookingAddSvcSheet");
-  }
-
-  function ensureAddServiceCategorySheetInBody() {
-    const sheet = getAddServiceCategorySheet();
-    if (!sheet) return null;
-    if (sheet.parentElement !== document.body) {
-      document.body.appendChild(sheet);
-    }
-    return sheet;
-  }
-
   function closeAddServiceCategorySheet() {
-    const sheet = getAddServiceCategorySheet();
+    const sheet = container.querySelector("#bookingAddSvcSheet");
     if (!sheet) return;
     sheet.classList.remove("open");
     sheet.setAttribute("aria-hidden", "true");
@@ -2180,8 +2167,8 @@ function renderBookingEditor(container) {
   }
 
   function openAddServiceCategorySheet() {
-    const sheet = ensureAddServiceCategorySheetInBody();
-    const listEl = sheet ? sheet.querySelector("[data-add-svc-cats]") : null;
+    const sheet = container.querySelector("#bookingAddSvcSheet");
+    const listEl = container.querySelector("[data-add-svc-cats]");
     if (!sheet || !listEl) return;
     const triggerBtn = container.querySelector("#bookingAddService");
     const rect = triggerBtn ? triggerBtn.getBoundingClientRect() : null;
@@ -2226,11 +2213,11 @@ function renderBookingEditor(container) {
     sheet.setAttribute("aria-hidden", "false");
   }
 
-  const globalSheet = ensureAddServiceCategorySheetInBody();
-  if (globalSheet && globalSheet.dataset.boundClose !== "1") {
-    globalSheet.dataset.boundClose = "1";
-    globalSheet.querySelector("[data-close-add-svc-sheet]")?.addEventListener("click", closeAddServiceCategorySheet);
-    globalSheet.addEventListener("click", (e) => {
+  const localSheet = container.querySelector("#bookingAddSvcSheet");
+  if (localSheet && localSheet.dataset.boundClose !== "1") {
+    localSheet.dataset.boundClose = "1";
+    localSheet.querySelector("[data-close-add-svc-sheet]")?.addEventListener("click", closeAddServiceCategorySheet);
+    localSheet.addEventListener("click", (e) => {
       if (e.target === e.currentTarget) closeAddServiceCategorySheet();
     });
   }
